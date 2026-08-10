@@ -48,9 +48,9 @@ Moon-Inferno is organized as a monorepo containing specialized packages:
 
 | Component | Status | Description |
 | --- | --- | --- |
-| **Button** | Planned | Interactive button primitive with tactile focus and active states |
-| **Input** | Planned | Accessible form controls (text, checkbox, radio, select) |
-| **Card** | Planned | Content container with customizable borders and retro framing |
+| **Button** | ✅ Ready (Phase 1) | Interactive button primitive with tactile focus and active states (`inferno`, `outline`, `ghost`, `pixel`) |
+| **Input** | ✅ Ready (Phase 1) | Accessible form controls with label, helper text, and error states |
+| **Card** | ✅ Ready (Phase 1) | Content container with customizable borders (`CardHeader`, `CardBody`, `CardFooter`) |
 | **Dialog** | Planned | Modal dialog with focus trap and keyboard dismissal |
 | **Tabs** | Planned | Accessible tabbed interfaces with ARIA pattern support |
 | **Tooltip** | Planned | Contextual popovers with positioning and screen reader text |
@@ -61,30 +61,24 @@ Moon-Inferno is organized as a monorepo containing specialized packages:
 
 ---
 
-## Accessibility
+## Interactive Playground & Testing
 
-Accessibility is an architectural requirement, not a feature added after the fact. Every component in Moon-Inferno is designed around accessibility standards:
+To see and interact with all implemented components in real time:
 
-* **WCAG Compliance**: Targeted compliance for contrast ratios and interactive target sizes.
-* **Keyboard Navigation**: Full focus management, logical tab sequences, and expected keybindings (Esc, Arrow keys, Enter, Space).
-* **Visible Focus States**: Unapologetically bold, accessible focus rings across all themes.
-* **Semantic HTML**: Built on native browser elements (`<button>`, `<dialog>`, `<nav>`, `<main>`).
-* **Screen Reader Compatibility**: Thoughtfully configured ARIA roles, states, and live regions.
-* **Reduced Motion**: Respects `prefers-reduced-motion: reduce` across all animations and visual effects.
+```bash
+pnpm dev
+```
 
----
+This launches the interactive Vite dev server at `http://localhost:5173`.
 
-## Design Philosophy
-
-> Moon-Inferno should feel expressive on the surface and boringly reliable underneath.
-
-Visual experimentation should never compromise usability. By separating expressive visual layers (CRT shaders, scanlines, pixel borders, neon glows) from underlying accessibility and behavioral logic, Moon-Inferno ensures that wild designs remain fully functional for every user.
+* **Sandbox File**: You can view and experiment with component code directly in [`playground/src/App.tsx`](file:///c:/Users/biagio.scaglia/Desktop/moon-inferno/playground/src/App.tsx).
+* **Theme Testing**: Toggle live between `moon-inferno`, `terminal`, and `y2k` themes.
 
 ---
 
 ## Installation
 
-Moon-Inferno is currently in early development.
+Moon-Inferno is currently in early development (Phase 1 complete).
 Installation instructions will be published with the first usable release.
 
 ---
