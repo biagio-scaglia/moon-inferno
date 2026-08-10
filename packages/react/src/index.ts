@@ -58,3 +58,4 @@ import './Avatar/Avatar.css';
 import './Progress/Progress.css';
 import './Slider/Slider.css';
 import './Gallery/Gallery.css';
+import './styles/scrollbar.css';

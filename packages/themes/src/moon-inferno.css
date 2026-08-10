@@ -26,3 +26,24 @@
 
   --mi-crt-scanline: rgba(255, 77, 0, 0.05);
 }
+
+/* Custom Retro Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--mi-color-bg-subtle, #14121A);
+  border: 1px solid var(--mi-color-border, #332D40);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mi-color-primary, #FF4D00);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(255, 77, 0, 0.4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mi-color-primary-hover, #FF661A);
+}
