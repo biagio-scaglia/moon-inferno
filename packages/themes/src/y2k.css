@@ -1,0 +1,27 @@
+/**
+ * Moon-Inferno Y2K Theme
+ * Cyber Pastel / Silver Chrome / Electric Cyan Aesthetic
+ */
+
+[data-theme="y2k"] {
+  --mi-color-bg: #0F0E17;
+  --mi-color-bg-subtle: #1B1A2E;
+  --mi-color-surface: #2A2845;
+  --mi-color-border: #4D4775;
+  --mi-color-border-accent: #00E5FF;
+
+  --mi-color-primary: #00E5FF;
+  --mi-color-primary-hover: #52EDFF;
+  --mi-color-primary-active: #00B4CC;
+  --mi-color-primary-text: #0F0E17;
+
+  --mi-color-text: #F8FAFC;
+  --mi-color-text-muted: #CBD5E1;
+  --mi-color-text-dim: #8B85C1;
+
+  --mi-color-focus-ring: #00E5FF;
+  --mi-shadow-glow: 0 0 16px rgba(0, 229, 255, 0.45);
+  --mi-shadow-pixel: 3px 3px 0px #0F0E17;
+
+  --mi-crt-scanline: rgba(0, 229, 255, 0.05);
+}

@@ -9,7 +9,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./moon-inferno.css": "./src/moon-inferno.css",
+    "./terminal.css": "./src/terminal.css",
+    "./y2k.css": "./src/y2k.css"
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",

@@ -1,0 +1,51 @@
+/* Moon-Inferno Card Styles */
+
+.mi-card {
+  background-color: var(--mi-color-surface, #1E1B26);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-md, 6px);
+  color: var(--mi-color-text, #F1F5F9);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mi-card--interactive {
+  cursor: pointer;
+}
+
+.mi-card--interactive:hover {
+  border-color: var(--mi-color-border-accent, #FF4D00);
+  box-shadow: var(--mi-shadow-glow);
+}
+
+.mi-card--pixel {
+  border: 2px solid var(--mi-color-primary, #FF4D00);
+  border-radius: 0;
+  box-shadow: var(--mi-shadow-pixel, 3px 3px 0px #000);
+}
+
+.mi-card__header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--mi-color-border, #332D40);
+  font-family: var(--mi-font-mono, monospace);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mi-card__body {
+  padding: 1.25rem;
+  font-family: var(--mi-font-sans, sans-serif);
+  line-height: 1.6;
+}
+
+.mi-card__footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--mi-color-border, #332D40);
+  background-color: var(--mi-color-bg-subtle, #14121A);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}

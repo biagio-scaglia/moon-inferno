@@ -1,0 +1,28 @@
+/**
+ * Moon-Inferno Official Signature Theme
+ * Solar Infernal Orange / Crimson Fire on Obsidian Space
+ */
+
+:root,
+[data-theme="moon-inferno"] {
+  --mi-color-bg: #0A090D;
+  --mi-color-bg-subtle: #14121A;
+  --mi-color-surface: #1E1B26;
+  --mi-color-border: #332D40;
+  --mi-color-border-accent: #FF4D00;
+
+  --mi-color-primary: #FF4D00;
+  --mi-color-primary-hover: #FF661A;
+  --mi-color-primary-active: #FF2E00;
+  --mi-color-primary-text: #FFFFFF;
+
+  --mi-color-text: #F1F5F9;
+  --mi-color-text-muted: #94A3B8;
+  --mi-color-text-dim: #64748B;
+
+  --mi-color-focus-ring: #FF4D00;
+  --mi-shadow-glow: 0 0 16px rgba(255, 77, 0, 0.45);
+  --mi-shadow-pixel: 3px 3px 0px #000000;
+
+  --mi-crt-scanline: rgba(255, 77, 0, 0.05);
+}

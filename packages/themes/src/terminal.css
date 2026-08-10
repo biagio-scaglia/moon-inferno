@@ -1,0 +1,27 @@
+/**
+ * Moon-Inferno Terminal Theme
+ * Classic Phosphor CRT Green Matrix Aesthetic
+ */
+
+[data-theme="terminal"] {
+  --mi-color-bg: #05130A;
+  --mi-color-bg-subtle: #0B2213;
+  --mi-color-surface: #10331C;
+  --mi-color-border: #1A542E;
+  --mi-color-border-accent: #00FF66;
+
+  --mi-color-primary: #00FF66;
+  --mi-color-primary-hover: #33FF85;
+  --mi-color-primary-active: #00CC52;
+  --mi-color-primary-text: #05130A;
+
+  --mi-color-text: #00FF66;
+  --mi-color-text-muted: #66FF99;
+  --mi-color-text-dim: #26994D;
+
+  --mi-color-focus-ring: #00FF66;
+  --mi-shadow-glow: 0 0 16px rgba(0, 255, 102, 0.45);
+  --mi-shadow-pixel: 3px 3px 0px #000000;
+
+  --mi-crt-scanline: rgba(0, 255, 102, 0.08);
+}

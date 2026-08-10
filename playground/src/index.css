@@ -1,0 +1,24 @@
+@import "@moon-inferno/themes/moon-inferno.css";
+@import "@moon-inferno/themes/terminal.css";
+@import "@moon-inferno/themes/y2k.css";
+@import "@moon-inferno/react/styles.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--mi-color-bg, #0A090D);
+  color: var(--mi-color-text, #F1F5F9);
+  font-family: var(--mi-font-mono, monospace);
+  min-height: 100vh;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
