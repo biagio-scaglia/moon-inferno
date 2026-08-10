@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/logo.png" alt="Moon-Inferno Logo" width="180" />
-</p>
-
 # 🌙 Moon-Inferno
 
 > The web doesn't need another SaaS dashboard.
@@ -55,12 +51,13 @@ Moon-Inferno is organized as a monorepo containing specialized packages:
 | **Button** | ✅ Ready (Phase 1) | Interactive button primitive with tactile focus and active states (`inferno`, `outline`, `ghost`, `pixel`) |
 | **Input** | ✅ Ready (Phase 1) | Accessible form controls with label, helper text, and error states |
 | **Card** | ✅ Ready (Phase 1) | Content container with customizable borders (`CardHeader`, `CardBody`, `CardFooter`) |
-| **Dialog** | Planned | Modal dialog with focus trap and keyboard dismissal |
-| **Tabs** | Planned | Accessible tabbed interfaces with ARIA pattern support |
+| **Dialog** | ✅ Ready (Phase 2) | Accessible modal dialog with focus trap, backdrop blur, and Esc key dismissal |
+| **Tabs** | ✅ Ready (Phase 2) | Accessible tabbed interfaces with ARIA pattern and keyboard arrow navigation |
+| **Terminal** | ✅ Ready (Phase 2) | Interactive CRT terminal emulator component |
+| **CRT Effects** | ✅ Ready (Phase 2) | Scanlines and flickering CRT overlay component |
+| **Icons** | ✅ Ready (Phase 2) | SVG iconography system (`@moon-inferno/icons`) |
 | **Tooltip** | Planned | Contextual popovers with positioning and screen reader text |
 | **Toast** | Planned | Non-modal status notifications with live region updates |
-| **Terminal** | Planned | Interactive terminal emulator component |
-| **CRT Effects** | Planned | Scanline, chromatic aberration, and screen flicker overlays |
 | **Pixel UI** | Planned | Pixel-perfect containers, borders, and decorative elements |
 
 ---

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@moon-inferno/core": "workspace:*",
+    "@moon-inferno/icons": "workspace:*",
     "@moon-inferno/react": "workspace:*",
     "@moon-inferno/themes": "workspace:*",
     "react": "^19.0.0",

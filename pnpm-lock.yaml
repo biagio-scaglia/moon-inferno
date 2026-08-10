@@ -20,13 +20,23 @@ importers:
 
   packages/core: {}
 
-  packages/icons: {}
+  packages/icons:
+    devDependencies:
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.2.18
+      react:
+        specifier: ^19.0.0
+        version: 19.2.8
 
   packages/react:
     dependencies:
       '@moon-inferno/core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
+      '@moon-inferno/icons':
+        specifier: workspace:*
+        version: link:../icons
     devDependencies:
       '@types/react':
         specifier: ^19.2.18
@@ -48,6 +58,9 @@ importers:
       '@moon-inferno/core':
         specifier: workspace:*
         version: link:../packages/core
+      '@moon-inferno/icons':
+        specifier: workspace:*
+        version: link:../packages/icons
       '@moon-inferno/react':
         specifier: workspace:*
         version: link:../packages/react

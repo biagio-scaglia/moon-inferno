@@ -1,4 +1,9 @@
 // @moon-inferno/icons
-// Icon system for Moon-Inferno (UI icons, pixel icons, retro iconography)
-// TODO: Implement icon components and SVG assets
-export {};
+
+export * from './Icon';
+export * from './icons/FlameIcon';
+export * from './icons/MoonIcon';
+export * from './icons/TerminalIcon';
+export * from './icons/CheckIcon';
+export * from './icons/CloseIcon';
+export * from './icons/ShieldIcon';

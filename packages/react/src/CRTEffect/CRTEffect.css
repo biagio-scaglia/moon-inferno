@@ -1,0 +1,40 @@
+/* Moon-Inferno CRT Overlay Styles */
+
+.mi-crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--mi-z-overlay, 1300);
+  overflow: hidden;
+}
+
+.mi-crt-scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+}
+
+.mi-crt-flicker {
+  position: absolute;
+  inset: 0;
+  background: var(--mi-crt-scanline, rgba(255, 77, 0, 0.05));
+  opacity: 0.15;
+  animation: mi-crt-flicker-anim 0.15s infinite;
+}
+
+@keyframes mi-crt-flicker-anim {
+  0% { opacity: 0.12; }
+  50% { opacity: 0.18; }
+  100% { opacity: 0.14; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-crt-flicker {
+    animation: none !important;
+    opacity: 0.08 !important;
+  }
+}

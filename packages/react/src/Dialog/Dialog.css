@@ -1,0 +1,98 @@
+/* Moon-Inferno Dialog Styles */
+
+.mi-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 9, 13, 0.85);
+  backdrop-filter: blur(4px);
+  z-index: var(--mi-z-modal, 1400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: mi-fade-in 0.2s ease-out;
+}
+
+.mi-dialog {
+  background-color: var(--mi-color-surface, #1E1B26);
+  border: 2px solid var(--mi-color-border-accent, #FF4D00);
+  border-radius: var(--mi-radius-md, 6px);
+  color: var(--mi-color-text, #F1F5F9);
+  width: 100%;
+  max-width: 540px;
+  box-shadow: var(--mi-shadow-glow), 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  outline: none;
+  animation: mi-scale-in 0.2s ease-out;
+}
+
+.mi-dialog--pixel {
+  border-radius: 0;
+  box-shadow: var(--mi-shadow-pixel, 4px 4px 0px #000);
+}
+
+.mi-dialog__header {
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--mi-color-border, #332D40);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--mi-font-mono, monospace);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.mi-dialog__close-btn {
+  background: transparent;
+  border: none;
+  color: var(--mi-color-text-muted, #94A3B8);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: var(--mi-radius-sm, 2px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.mi-dialog__close-btn:hover {
+  color: var(--mi-color-primary, #FF4D00);
+  background-color: rgba(255, 77, 0, 0.1);
+}
+
+.mi-dialog__close-btn:focus-visible {
+  outline: 2px solid var(--mi-color-focus-ring, #FF4D00);
+}
+
+.mi-dialog__body {
+  padding: 1.5rem 1.25rem;
+  font-family: var(--mi-font-sans, sans-serif);
+  line-height: 1.6;
+}
+
+.mi-dialog__footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--mi-color-border, #332D40);
+  background-color: var(--mi-color-bg-subtle, #14121A);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+@keyframes mi-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes mi-scale-in {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-dialog-backdrop,
+  .mi-dialog {
+    animation: none !important;
+  }
+}
