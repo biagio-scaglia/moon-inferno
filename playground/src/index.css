@@ -3,6 +3,12 @@
 @import "@moon-inferno/themes/y2k.css";
 @import "@moon-inferno/react/styles.css";
 
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,7 +24,15 @@ body {
 }
 
 #root {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 0.5rem;
+  overflow-x: hidden;
+}
+
+@media (max-width: 640px) {
+  #root {
+    padding: 0.75rem 0.25rem;
+  }
 }

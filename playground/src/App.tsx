@@ -200,7 +200,7 @@ function PlaygroundContent() {
           <Stack gap="0.5rem">
             <Stack direction="row" align="center" gap="0.75rem" wrap>
               <MoonIcon size={36} color="var(--mi-color-primary)" />
-              <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: '2.25rem' }} />
+              <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.25rem)' }} />
               <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.7.0</Badge>
               <SignalLight status="online" pulse label="CORE ONLINE" />
             </Stack>
