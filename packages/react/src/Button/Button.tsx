@@ -1,4 +1,5 @@
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
+import { ZapIcon } from '@moon-inferno/icons';
 import './Button.css';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -46,7 +47,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading ? (
-          <span className="mi-button__spinner" aria-hidden="true">⚡</span>
+          <span className="mi-button__spinner" aria-hidden="true">
+            <ZapIcon size={16} />
+          </span>
         ) : (
           leftIcon && <span className="mi-button__icon">{leftIcon}</span>
         )}

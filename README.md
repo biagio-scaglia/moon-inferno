@@ -1,4 +1,4 @@
-# 🌙 Moon-Inferno
+# Moon-Inferno
 
 > The web doesn't need another SaaS dashboard.
 
@@ -21,13 +21,13 @@ Moon-Inferno exists to reclaim expressive web design without reverting to inacce
 
 ## Features
 
-* ♿ **Accessibility-first**: WCAG guidelines, screen reader support, and robust keyboard navigation baked in from day one.
-* 📱 **Responsive by default**: Adapts gracefully across mobile, tablet, and desktop viewports.
-* 🎨 **Themeable**: CSS variable tokens allow instant switching between retro, futuristic, and custom styles.
-* 🧩 **Composable**: Modular building blocks engineered for effortless composition.
-* 🌙 **Expressive visual language**: Unique aesthetics that break away from standard SaaS templates.
-* ⚡ **Lightweight**: Zero unnecessary dependencies to keep bundle sizes lean.
-* 🧑‍💻 **TypeScript-first**: Strict type safety and complete auto-completion support across all packages.
+* **Accessibility-first**: WCAG guidelines, screen reader support, and robust keyboard navigation baked in from day one.
+* **Responsive by default**: Adapts gracefully across mobile, tablet, and desktop viewports.
+* **Themeable**: CSS variable tokens allow instant switching between retro, futuristic, and custom styles.
+* **Composable**: Modular building blocks engineered for effortless composition.
+* **Expressive visual language**: Unique aesthetics that break away from standard SaaS templates.
+* **Lightweight**: Zero unnecessary dependencies to keep bundle sizes lean.
+* **TypeScript-first**: Strict type safety and complete auto-completion support across all packages.
 
 ---
 
