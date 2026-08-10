@@ -93,17 +93,42 @@
 .mi-button--pixel {
   background-color: var(--mi-color-surface, #1E1B26);
   color: var(--mi-color-primary, #FF4D00);
-  border: 2px solid var(--mi-color-primary, #FF4D00);
-  box-shadow: var(--mi-shadow-pixel, 3px 3px 0px #000);
+  border: none;
+  font-family: var(--mi-font-mono, monospace);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   border-radius: 0;
+  box-shadow: 
+    0 -3px 0 0 var(--mi-color-primary, #FF4D00),
+    0 3px 0 0 var(--mi-color-primary, #FF4D00),
+    -3px 0 0 0 var(--mi-color-primary, #FF4D00),
+    3px 0 0 0 var(--mi-color-primary, #FF4D00),
+    3px 3px 0 0 #000000,
+    6px 6px 0 0 rgba(0, 0, 0, 0.9);
+  margin: 3px 6px 6px 3px;
+  position: relative;
+  transition: transform 0.08s step-end, box-shadow 0.08s step-end;
 }
 
 .mi-button--pixel:hover:not(:disabled) {
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px #000, var(--mi-shadow-glow);
+  background-color: var(--mi-color-primary, #FF4D00);
+  color: var(--mi-color-primary-text, #FFFFFF);
+  box-shadow: 
+    0 -3px 0 0 #FFFFFF,
+    0 3px 0 0 #FFFFFF,
+    -3px 0 0 0 #FFFFFF,
+    3px 0 0 0 #FFFFFF,
+    4px 4px 0 0 #000000,
+    8px 8px 0 0 var(--mi-color-primary, #FF4D00);
 }
 
 .mi-button--pixel:active:not(:disabled) {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #000;
+  transform: translate(3px, 3px);
+  box-shadow: 
+    0 -3px 0 0 var(--mi-color-primary, #FF4D00),
+    0 3px 0 0 var(--mi-color-primary, #FF4D00),
+    -3px 0 0 0 var(--mi-color-primary, #FF4D00),
+    3px 0 0 0 var(--mi-color-primary, #FF4D00),
+    1px 1px 0 0 #000000;
 }

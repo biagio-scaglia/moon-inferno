@@ -48,17 +48,19 @@ Moon-Inferno is organized as a monorepo containing specialized packages:
 
 | Component | Status | Description |
 | --- | --- | --- |
-| **Button** | ✅ Ready (Phase 1) | Interactive button primitive with tactile focus and active states (`inferno`, `outline`, `ghost`, `pixel`) |
+| **Button** | ✅ Ready (Phase 1) | Interactive button with tactile focus, loading states, and authentic stepped pixel borders |
 | **Input** | ✅ Ready (Phase 1) | Accessible form controls with label, helper text, and error states |
 | **Card** | ✅ Ready (Phase 1) | Content container with customizable borders (`CardHeader`, `CardBody`, `CardFooter`) |
 | **Dialog** | ✅ Ready (Phase 2) | Accessible modal dialog with focus trap, backdrop blur, and Esc key dismissal |
 | **Tabs** | ✅ Ready (Phase 2) | Accessible tabbed interfaces with ARIA pattern and keyboard arrow navigation |
 | **Terminal** | ✅ Ready (Phase 2) | Interactive CRT terminal emulator component |
 | **CRT Effects** | ✅ Ready (Phase 2) | Scanlines and flickering CRT overlay component |
-| **Icons** | ✅ Ready (Phase 2) | SVG iconography system (`@moon-inferno/icons`) |
+| **Icons** | ✅ Ready (Phase 2) | 36+ SVG iconography system (`@moon-inferno/icons`) |
+| **GlitchText** | ✅ Ready (Phase 2) | Retro RGB-split animated glitch text component |
+| **PixelContainer** | ✅ Ready (Phase 2) | Retro arcade/OS window container with pixel borders and titlebar controls |
+| **Badge** | ✅ Ready (Phase 2) | Expressive status badges (`inferno`, `pixel`, `success`, `error`) |
 | **Tooltip** | Planned | Contextual popovers with positioning and screen reader text |
 | **Toast** | Planned | Non-modal status notifications with live region updates |
-| **Pixel UI** | Planned | Pixel-perfect containers, borders, and decorative elements |
 
 ---
 
