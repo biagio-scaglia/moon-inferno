@@ -1,0 +1,63 @@
+/* Moon-Inferno Checkbox Styles */
+
+.mi-checkbox-label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--mi-font-sans, sans-serif);
+  font-size: 0.875rem;
+  color: var(--mi-color-text, #F1F5F9);
+  min-height: 44px;
+}
+
+.mi-checkbox-label--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mi-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.mi-checkbox-box {
+  width: 20px;
+  height: 20px;
+  background-color: var(--mi-color-surface, #1E1B26);
+  border: 2px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-sm, 2px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  transition: all 0.15s ease-in-out;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.mi-checkbox-input:focus-visible + .mi-checkbox-box {
+  outline: 2px solid var(--mi-color-focus-ring, #FF4D00);
+  outline-offset: 2px;
+  border-color: var(--mi-color-primary, #FF4D00);
+}
+
+.mi-checkbox-input:checked + .mi-checkbox-box {
+  background-color: var(--mi-color-primary, #FF4D00);
+  border-color: var(--mi-color-primary, #FF4D00);
+  color: #FFFFFF;
+  box-shadow: var(--mi-shadow-glow);
+}
+
+.mi-checkbox-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.mi-checkbox-description {
+  font-size: 0.75rem;
+  color: var(--mi-color-text-muted, #94A3B8);
+}

@@ -1,0 +1,72 @@
+/* Moon-Inferno Radio Styles */
+
+.mi-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mi-radio-label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--mi-font-sans, sans-serif);
+  font-size: 0.875rem;
+  color: var(--mi-color-text, #F1F5F9);
+  min-height: 44px;
+}
+
+.mi-radio-label--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mi-radio-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.mi-radio-circle {
+  width: 20px;
+  height: 20px;
+  background-color: var(--mi-color-surface, #1E1B26);
+  border: 2px solid var(--mi-color-border, #332D40);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease-in-out;
+  margin-top: 2px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.mi-radio-circle::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.15s ease-in-out;
+}
+
+.mi-radio-input:focus-visible + .mi-radio-circle {
+  outline: 2px solid var(--mi-color-focus-ring, #FF4D00);
+  outline-offset: 2px;
+  border-color: var(--mi-color-primary, #FF4D00);
+}
+
+.mi-radio-input:checked + .mi-radio-circle {
+  background-color: var(--mi-color-primary, #FF4D00);
+  border-color: var(--mi-color-primary, #FF4D00);
+  box-shadow: var(--mi-shadow-glow);
+}
+
+.mi-radio-input:checked + .mi-radio-circle::after {
+  transform: scale(1);
+}

@@ -100,13 +100,14 @@
   text-transform: uppercase;
   border-radius: 0;
   box-shadow: 
-    0 -3px 0 0 var(--mi-color-primary, #FF4D00),
-    0 3px 0 0 var(--mi-color-primary, #FF4D00),
-    -3px 0 0 0 var(--mi-color-primary, #FF4D00),
-    3px 0 0 0 var(--mi-color-primary, #FF4D00),
-    3px 3px 0 0 #000000,
-    6px 6px 0 0 rgba(0, 0, 0, 0.9);
-  margin: 3px 6px 6px 3px;
+    0 -2px 0 0 var(--mi-color-primary, #FF4D00),
+    0 2px 0 0 var(--mi-color-primary, #FF4D00),
+    -2px 0 0 0 var(--mi-color-primary, #FF4D00),
+    2px 0 0 0 var(--mi-color-primary, #FF4D00),
+    2px 2px 0 0 #000000,
+    4px 4px 0 0 rgba(0, 0, 0, 0.9);
+  margin: 2px 4px 4px 2px;
+  max-width: calc(100% - 6px);
   position: relative;
   transition: transform 0.08s step-end, box-shadow 0.08s step-end;
 }

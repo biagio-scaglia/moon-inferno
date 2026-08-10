@@ -15,6 +15,10 @@ export * from './Stack/Stack';
 export * from './Grid/Grid';
 export * from './Tooltip/Tooltip';
 export * from './Toast/Toast';
+export * from './Loader/Loader';
+export * from './Checkbox/Checkbox';
+export * from './Radio/Radio';
+export * from './Switch/Switch';
 
 // Styles
 import './Button/Button.css';
@@ -32,3 +36,7 @@ import './Stack/Stack.css';
 import './Grid/Grid.css';
 import './Tooltip/Tooltip.css';
 import './Toast/Toast.css';
+import './Loader/Loader.css';
+import './Checkbox/Checkbox.css';
+import './Radio/Radio.css';
+import './Switch/Switch.css';

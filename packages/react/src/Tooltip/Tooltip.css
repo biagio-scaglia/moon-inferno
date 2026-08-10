@@ -14,7 +14,11 @@
   padding: 0.35rem 0.65rem;
   font-family: var(--mi-font-mono, monospace);
   font-size: 0.75rem;
-  white-space: nowrap;
+  max-width: 240px;
+  width: max-content;
+  white-space: normal;
+  word-break: break-word;
+  text-align: center;
   box-shadow: var(--mi-shadow-glow);
   z-index: var(--mi-z-tooltip, 1800);
   pointer-events: none;

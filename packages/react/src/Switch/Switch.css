@@ -1,0 +1,63 @@
+/* Moon-Inferno Switch Styles */
+
+.mi-switch-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--mi-font-sans, sans-serif);
+  font-size: 0.875rem;
+  color: var(--mi-color-text, #F1F5F9);
+  min-height: 44px;
+}
+
+.mi-switch-label--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mi-switch-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.mi-switch-track {
+  width: 44px;
+  height: 24px;
+  background-color: var(--mi-color-surface, #1E1B26);
+  border: 2px solid var(--mi-color-border, #332D40);
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.mi-switch-thumb {
+  width: 16px;
+  height: 16px;
+  background-color: var(--mi-color-text-muted, #94A3B8);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mi-switch-input:focus-visible + .mi-switch-track {
+  outline: 2px solid var(--mi-color-focus-ring, #FF4D00);
+  outline-offset: 2px;
+}
+
+.mi-switch-input:checked + .mi-switch-track {
+  background-color: var(--mi-color-primary, #FF4D00);
+  border-color: var(--mi-color-primary, #FF4D00);
+  box-shadow: var(--mi-shadow-glow);
+}
+
+.mi-switch-input:checked + .mi-switch-track .mi-switch-thumb {
+  transform: translateX(20px);
+  background-color: #FFFFFF;
+}

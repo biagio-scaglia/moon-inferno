@@ -1,0 +1,50 @@
+/* Moon-Inferno Loader Styles */
+
+.mi-loader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mi-loader--sm { width: 16px; height: 16px; }
+.mi-loader--md { width: 28px; height: 28px; }
+.mi-loader--lg { width: 44px; height: 44px; }
+
+.mi-loader__spinner {
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(255, 77, 0, 0.2);
+  border-top-color: var(--mi-color-primary, #FF4D00);
+  border-radius: 50%;
+  animation: mi-spin 0.75s linear infinite;
+}
+
+.mi-loader--pixel .mi-loader__spinner {
+  border-radius: 0;
+  border-style: double;
+  border-width: 4px;
+}
+
+.mi-loader--pulse .mi-loader__spinner {
+  border: none;
+  background-color: var(--mi-color-primary, #FF4D00);
+  border-radius: 50%;
+  animation: mi-pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes mi-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes mi-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-loader__spinner {
+    animation-duration: 2s !important;
+  }
+}

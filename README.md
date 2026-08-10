@@ -55,12 +55,17 @@ Moon-Inferno is organized as a monorepo containing specialized packages:
 | **Tabs** | ✅ Ready (Phase 2) | Accessible tabbed interfaces with ARIA pattern and keyboard arrow navigation |
 | **Terminal** | ✅ Ready (Phase 2) | Interactive CRT terminal emulator component |
 | **CRT Effects** | ✅ Ready (Phase 2) | Scanlines and flickering CRT overlay component |
-| **Icons** | ✅ Ready (Phase 2) | 36+ SVG iconography system (`@moon-inferno/icons`) |
+| **Icons** | ✅ Ready (Phase 2) | 34+ vector SVG iconography system (`@moon-inferno/icons`) |
 | **GlitchText** | ✅ Ready (Phase 2) | Retro RGB-split animated glitch text component |
 | **PixelContainer** | ✅ Ready (Phase 2) | Retro arcade/OS window container with pixel borders and titlebar controls |
 | **Badge** | ✅ Ready (Phase 2) | Expressive status badges (`inferno`, `pixel`, `success`, `error`) |
-| **Tooltip** | Planned | Contextual popovers with positioning and screen reader text |
-| **Toast** | Planned | Non-modal status notifications with live region updates |
+| **Container / Stack / Grid** | ✅ Ready (Phase 3) | Responsive max-width container, flexbox stack, and CSS grid primitives |
+| **Tooltip** | ✅ Ready (Phase 3) | Accessible popover with ARIA `role="tooltip"` and focus/hover triggers |
+| **Toast** | ✅ Ready (Phase 3) | Non-modal status notifications using ARIA live regions (`aria-live="polite"`) |
+| **Loader** | ✅ Ready (Phase 3) | Retro animated spinners and pulse loading indicators (`inferno`, `pixel`, `pulse`) |
+| **Checkbox** | ✅ Ready (Phase 3) | Accessible custom checkbox with ARIA focus rings, label, and description |
+| **Radio & RadioGroup** | ✅ Ready (Phase 3) | Accessible radio button group with ARIA keyboard navigation |
+| **Switch** | ✅ Ready (Phase 3) | Accessible toggle switch control (`role="switch"`) |
 
 ---
 

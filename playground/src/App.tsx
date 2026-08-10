@@ -20,6 +20,11 @@ import {
   Tooltip,
   ToastProvider,
   useToast,
+  Loader,
+  Checkbox,
+  RadioGroup,
+  Radio,
+  Switch,
 } from '@moon-inferno/react';
 import {
   FlameIcon,
@@ -96,16 +101,43 @@ const ALL_ICONS = [
   { name: 'FilterIcon', Component: FilterIcon },
 ];
 
+function CodeBlock({ code }: { code: string }) {
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div style={{ position: 'relative', backgroundColor: 'var(--mi-color-bg-subtle, #14121A)', border: '1px solid var(--mi-color-border, #332D40)', borderRadius: 'var(--mi-radius-base, 4px)', padding: '1rem', fontFamily: 'var(--mi-font-mono, monospace)', fontSize: '0.85rem', overflowX: 'auto' }}>
+      <button
+        type="button"
+        onClick={copy}
+        style={{ position: 'absolute', top: '8px', right: '8px', background: 'none', border: '1px solid var(--mi-color-border)', borderRadius: '4px', color: 'var(--mi-color-text-muted)', cursor: 'pointer', padding: '0.2rem 0.5rem', fontSize: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+      >
+        {copied ? <CheckIcon size={12} color="var(--mi-color-success)" /> : <CopyIcon size={12} />}
+        {copied ? 'Copied' : 'Copy'}
+      </button>
+      <pre style={{ margin: 0, color: 'var(--mi-color-primary, #FF4D00)' }}>{code}</pre>
+    </div>
+  );
+}
+
 function PlaygroundContent() {
   const [currentTheme, setCurrentTheme] = useState<ThemeName>('moon-inferno');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isCRTActive, setIsCRTActive] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [inputError, setInputError] = useState('');
-  const [copiedIcon, setCopiedIcon] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const [passwordValue, setPasswordValue] = useState('Inferno2026!');
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Interactive Form State
+  const [checkboxValue, setCheckboxValue] = useState(true);
+  const [radioValue, setRadioValue] = useState('inferno');
+  const [switchValue, setSwitchValue] = useState(true);
 
   const { addToast } = useToast();
 
@@ -128,9 +160,7 @@ function PlaygroundContent() {
 
   const handleCopyIcon = (name: string) => {
     navigator.clipboard.writeText(`<${name} />`);
-    setCopiedIcon(name);
     addToast(`Copied <${name} /> to clipboard!`, { variant: 'inferno', duration: 2500 });
-    setTimeout(() => setCopiedIcon(null), 2000);
   };
 
   const filteredIcons = ALL_ICONS.filter((icon) =>
@@ -158,16 +188,16 @@ function PlaygroundContent() {
             <Stack direction="row" align="center" gap="0.75rem">
               <MoonIcon size={36} color="var(--mi-color-primary)" />
               <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: '2.25rem' }} />
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.3.0</Badge>
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.4.0</Badge>
             </Stack>
             <p style={{ color: 'var(--mi-color-text-muted, #94A3B8)', margin: 0, fontSize: '0.9rem' }}>
-              The web doesn't need another SaaS dashboard. Expressive, accessible & responsive UI primitives.
+              Documentation Portal & Component Playground. Expressive, accessible & responsive UI primitives.
             </p>
           </Stack>
 
           {/* Global Controls */}
           <Stack direction="row" align="center" gap="0.75rem" wrap>
-            <Tooltip content="Toggle retro CRT scanlines and flickering effect">
+            <Tooltip content="Toggle retro CRT scanlines and screen flicker effect">
               <Button
                 size="sm"
                 variant={isCRTActive ? 'inferno' : 'outline'}
@@ -211,138 +241,225 @@ function PlaygroundContent() {
           </Stack>
         </header>
 
-        {/* Hero Showcase: PixelContainer & GlitchText */}
-        <section>
-          <PixelContainer title="SYSTEM SHOWCASE // RETRO PIXEL CONTAINER FRAME">
-            <Stack gap="1rem">
-              <Stack direction="row" align="center" gap="0.75rem" wrap>
-                <Badge variant="inferno" icon={<FlameIcon size={14} />}>Lava Core</Badge>
-                <Badge variant="pixel" icon={<SparklesIcon size={14} />}>Pixel Perfect</Badge>
-                <Badge variant="success" icon={<CheckIcon size={14} />}>WCAG AA Compliant</Badge>
-                <Badge variant="error" icon={<WarnIcon size={14} />}>Zero SaaS Boredom</Badge>
-              </Stack>
-              <p style={{ margin: 0 }}>
-                Moon-Inferno provides radical retro visual primitives—authentic stepped pixel borders, CRT scanlines, RGB glitch text, and expressive tactile controls—backed by strict semantic HTML and zero-compromise keyboard accessibility.
-              </p>
-            </Stack>
-          </PixelContainer>
-        </section>
-
-        {/* Grid: Component Showcases */}
-        <Grid minChildWidth="340px" gap="2rem">
-          {/* Buttons Component Showcase */}
-          <Card variant="pixel">
-            <CardHeader>
-              <Stack direction="row" align="center" gap="0.5rem">
-                <ZapIcon size={18} /> BUTTON PRIMITIVES
-              </Stack>
-            </CardHeader>
-            <CardBody>
-              <Stack gap="1.25rem">
-                <div>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)', display: 'block', marginBottom: '0.5rem' }}>
-                    VARIANTS & TOOLTIPS:
-                  </span>
-                  <Stack direction="row" align="center" gap="0.5rem" wrap>
-                    <Tooltip content="Signature Inferno high-energy action">
-                      <Button variant="inferno" leftIcon={<FlameIcon size={16} />}>Inferno</Button>
-                    </Tooltip>
-                    <Tooltip content="Tactile outline for secondary actions">
-                      <Button variant="outline" leftIcon={<ShieldIcon size={16} />}>Outline</Button>
-                    </Tooltip>
-                    <Tooltip content="Minimal backgroundless button">
-                      <Button variant="ghost" leftIcon={<SparklesIcon size={16} />}>Ghost</Button>
-                    </Tooltip>
-                    <Tooltip content="Stepped pixel corners & hard drop shadow">
-                      <Button variant="pixel" leftIcon={<GamepadIcon size={16} />}>Pixel</Button>
-                    </Tooltip>
-                  </Stack>
-                </div>
-
-                <div>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)', display: 'block', marginBottom: '0.5rem' }}>
-                    SIZES & STATES:
-                  </span>
-                  <Stack direction="row" align="center" gap="0.5rem" wrap>
-                    <Button size="sm" variant="inferno">Small</Button>
-                    <Button size="md" variant="inferno">Medium</Button>
-                    <Button size="lg" variant="inferno">Large</Button>
-                    <Button isLoading variant="inferno">Processing</Button>
-                    <Button disabled variant="outline" leftIcon={<LockIcon size={16} />}>Locked</Button>
-                  </Stack>
-                </div>
-              </Stack>
-            </CardBody>
-          </Card>
-
-          {/* Input & Form Control Showcase */}
-          <Card>
-            <CardHeader>
-              <Stack direction="row" align="center" gap="0.5rem">
-                <CodeIcon size={18} /> INPUT CONTROLS
-              </Stack>
-            </CardHeader>
-            <CardBody>
-              <Stack gap="1.25rem">
-                <Input
-                  label="TRANSMISSION_KEY"
-                  placeholder="e.g. ALPHA-994-INFERNO"
-                  helperText="Enter encrypted transmission key to open dialog."
-                  value={inputValue}
-                  onChange={(e) => {
-                    setInputValue(e.target.value);
-                    if (inputError) setInputError('');
-                  }}
-                  errorMessage={inputError}
-                />
-
-                <div style={{ position: 'relative' }}>
-                  <Input
-                    label="ENCRYPTED_SECRET"
-                    type={showPassword ? 'text' : 'password'}
-                    value={passwordValue}
-                    onChange={(e) => setPasswordValue(e.target.value)}
-                    helperText="Click eye icon to toggle visibility."
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    style={{
-                      position: 'absolute',
-                      right: '10px',
-                      top: '32px',
-                      background: 'none',
-                      border: 'none',
-                      color: 'var(--mi-color-text-muted)',
-                      cursor: 'pointer',
-                      minHeight: '44px',
-                      minWidth: '44px',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                    aria-label="Toggle password visibility"
-                  >
-                    {showPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
-                  </button>
-                </div>
-              </Stack>
-            </CardBody>
-            <CardFooter>
-              <Button variant="outline" size="sm" onClick={() => { setInputValue(''); setInputError(''); }}>
-                Clear
-              </Button>
-              <Button variant="inferno" size="sm" onClick={handleValidate} rightIcon={<CheckIcon size={16} />}>
-                Open Dialog
-              </Button>
-            </CardFooter>
-          </Card>
-        </Grid>
-
-        {/* Tabs & Terminal & Icon Explorer Section */}
-        <section>
+        {/* Documentation Portal Tabs */}
+        <main>
           <Tabs
             items={[
+              {
+                id: 'getting-started',
+                label: (
+                  <Stack direction="row" align="center" gap="0.5rem">
+                    <CodeIcon size={16} /> Getting Started
+                  </Stack>
+                ),
+                content: (
+                  <Stack gap="1.5rem">
+                    <PixelContainer title="QUICKSTART // INSTALLATION & SETUP">
+                      <Stack gap="1rem">
+                        <h3>1. Install Package Dependencies</h3>
+                        <CodeBlock code="pnpm add @moon-inferno/core @moon-inferno/react @moon-inferno/themes @moon-inferno/icons" />
+
+                        <h3>2. Import Styles & Initialize Theme</h3>
+                        <CodeBlock code={`import '@moon-inferno/react/styles.css';\nimport { setTheme } from '@moon-inferno/themes';\n\n// Set signature theme\nsetTheme('moon-inferno');`} />
+
+                        <h3>3. Render Primitives in React</h3>
+                        <CodeBlock code={`import { Button, Input, GlitchText, ToastProvider } from '@moon-inferno/react';\nimport { FlameIcon } from '@moon-inferno/icons';\n\nexport default function App() {\n  return (\n    <ToastProvider>\n      <GlitchText text="WELCOME TO THE INFERNO" />\n      <Button variant="inferno" leftIcon={<FlameIcon size={16} />}>\n        Initiate Sequence\n      </Button>\n    </ToastProvider>\n  );\n}`} />
+                      </Stack>
+                    </PixelContainer>
+                  </Stack>
+                ),
+              },
+              {
+                id: 'components-demo',
+                label: (
+                  <Stack direction="row" align="center" gap="0.5rem">
+                    <LayersIcon size={16} /> Component Reference
+                  </Stack>
+                ),
+                content: (
+                  <Stack gap="2rem">
+                    {/* Buttons & Action Controls */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <ZapIcon size={18} /> Button & Actions
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.25rem">
+                          <Stack direction="row" align="center" gap="0.5rem" wrap>
+                            <Button variant="inferno" leftIcon={<FlameIcon size={16} />}>Inferno</Button>
+                            <Button variant="outline" leftIcon={<ShieldIcon size={16} />}>Outline</Button>
+                            <Button variant="ghost" leftIcon={<SparklesIcon size={16} />}>Ghost</Button>
+                            <Button variant="pixel" leftIcon={<GamepadIcon size={16} />}>Pixel</Button>
+                          </Stack>
+                          <Stack direction="row" align="center" gap="0.5rem" wrap>
+                            <Button size="sm" variant="inferno">Small</Button>
+                            <Button size="md" variant="inferno">Medium</Button>
+                            <Button size="lg" variant="inferno">Large</Button>
+                            <Button isLoading variant="inferno">Processing</Button>
+                            <Button disabled variant="outline" leftIcon={<LockIcon size={16} />}>Disabled</Button>
+                          </Stack>
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* Form Controls (Inputs, Checkbox, Radio, Switch) */}
+                    <Grid minChildWidth="320px" gap="1.5rem">
+                      <Card>
+                        <CardHeader>
+                          <Stack direction="row" align="center" gap="0.5rem">
+                            <CodeIcon size={18} /> Form Controls & Inputs
+                          </Stack>
+                        </CardHeader>
+                        <CardBody>
+                          <Stack gap="1.25rem">
+                            <Input
+                              label="TRANSMISSION_KEY"
+                              placeholder="e.g. ALPHA-994-INFERNO"
+                              helperText="Enter signal key to test validation."
+                              value={inputValue}
+                              onChange={(e) => {
+                                setInputValue(e.target.value);
+                                if (inputError) setInputError('');
+                              }}
+                              errorMessage={inputError}
+                            />
+
+                            <div style={{ position: 'relative' }}>
+                              <Input
+                                label="ENCRYPTED_SECRET"
+                                type={showPassword ? 'text' : 'password'}
+                                value={passwordValue}
+                                onChange={(e) => setPasswordValue(e.target.value)}
+                              />
+                              <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                style={{
+                                  position: 'absolute',
+                                  right: '10px',
+                                  top: '32px',
+                                  background: 'none',
+                                  border: 'none',
+                                  color: 'var(--mi-color-text-muted)',
+                                  cursor: 'pointer',
+                                  minHeight: '44px',
+                                  minWidth: '44px',
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                }}
+                                aria-label="Toggle password visibility"
+                              >
+                                {showPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
+                              </button>
+                            </div>
+                          </Stack>
+                        </CardBody>
+                        <CardFooter>
+                          <Button variant="outline" size="sm" onClick={() => { setInputValue(''); setInputError(''); }}>
+                            Clear
+                          </Button>
+                          <Button variant="inferno" size="sm" onClick={handleValidate} rightIcon={<CheckIcon size={16} />}>
+                            Test Validation
+                          </Button>
+                        </CardFooter>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <Stack direction="row" align="center" gap="0.5rem">
+                            <FilterIcon size={18} /> Checkbox, Radio & Switch
+                          </Stack>
+                        </CardHeader>
+                        <CardBody>
+                          <Stack gap="1.25rem">
+                            <Checkbox
+                              label="Enable Quantum Telemetry"
+                              description="Transmits live telemetry stream over WebSockets."
+                              checked={checkboxValue}
+                              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCheckboxValue(e.target.checked)}
+                            />
+
+                            <div>
+                              <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)', display: 'block', marginBottom: '0.5rem' }}>
+                                MODE SELECTOR (RADIO GROUP):
+                              </span>
+                              <RadioGroup name="mode" value={radioValue} onChange={setRadioValue}>
+                                <Radio value="inferno" label="Solar Inferno (Default)" />
+                                <Radio value="cyber" label="Cyberpunk Grid" />
+                                <Radio value="stealth" label="Stealth Obsidian" />
+                              </RadioGroup>
+                            </div>
+
+                            <Switch
+                              label="CRT Scanline Shaders"
+                              checked={switchValue}
+                              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                setSwitchValue(e.target.checked);
+                                setIsCRTActive(e.target.checked);
+                              }}
+                            />
+                          </Stack>
+                        </CardBody>
+                      </Card>
+                    </Grid>
+
+                    {/* Loaders & Feedback */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <RefreshIcon size={18} /> Feedback, Loaders & Badges
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.25rem">
+                          <Stack direction="row" align="center" gap="1.5rem" wrap>
+                            <Stack direction="row" align="center" gap="0.5rem">
+                              <Loader size="sm" variant="inferno" /> <span>Spinner SM</span>
+                            </Stack>
+                            <Stack direction="row" align="center" gap="0.5rem">
+                              <Loader size="md" variant="inferno" /> <span>Spinner MD</span>
+                            </Stack>
+                            <Stack direction="row" align="center" gap="0.5rem">
+                              <Loader size="md" variant="pixel" /> <span>Pixel Loader</span>
+                            </Stack>
+                            <Stack direction="row" align="center" gap="0.5rem">
+                              <Loader size="md" variant="pulse" /> <span>Pulse Loader</span>
+                            </Stack>
+                          </Stack>
+
+                          <Stack direction="row" align="center" gap="0.75rem" wrap>
+                            <Badge variant="inferno" icon={<FlameIcon size={14} />}>Lava Core</Badge>
+                            <Badge variant="pixel" icon={<SparklesIcon size={14} />}>Pixel Perfect</Badge>
+                            <Badge variant="success" icon={<CheckIcon size={14} />}>Success</Badge>
+                            <Badge variant="error" icon={<WarnIcon size={14} />}>Error</Badge>
+                            <Badge variant="outline" icon={<InfoIcon size={14} />}>Outline</Badge>
+                          </Stack>
+
+                          <Stack direction="row" align="center" gap="0.5rem" wrap>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => addToast('System status: 100% Operational', { variant: 'success' })}
+                            >
+                              Trigger Success Toast
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => addToast('Warning: High core temperature detected', { variant: 'error' })}
+                            >
+                              Trigger Error Toast
+                            </Button>
+                          </Stack>
+                        </Stack>
+                      </CardBody>
+                    </Card>
+                  </Stack>
+                ),
+              },
               {
                 id: 'icon-explorer',
                 label: (
@@ -355,16 +472,14 @@ function PlaygroundContent() {
                     <Stack direction="row" justify="between" align="center" wrap gap="1rem">
                       <div style={{ maxWidth: '300px', width: '100%' }}>
                         <Input
-                          placeholder="Search icons..."
+                          placeholder="Search vector icons..."
                           value={searchQuery}
                           onChange={(e) => setSearchQuery(e.target.value)}
                         />
                       </div>
-                      {copiedIcon && (
-                        <span style={{ fontSize: '0.85rem', color: 'var(--mi-color-success)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                          <CheckIcon size={16} /> Copied &lt;{copiedIcon} /&gt; to clipboard!
-                        </span>
-                      )}
+                      <p style={{ fontSize: '0.85rem', color: 'var(--mi-color-text-muted)', margin: 0 }}>
+                        Click any SVG icon component to copy code snippet to clipboard.
+                      </p>
                     </Stack>
 
                     <Grid minChildWidth="120px" gap="1rem">
@@ -408,7 +523,7 @@ function PlaygroundContent() {
                 content: (
                   <Terminal
                     initialLines={[
-                      { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.3.0 INITIALIZED.' },
+                      { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.4.0 INITIALIZED.' },
                       { id: '2', type: 'output', text: 'Type "help", "icons", "status", or "clear".' },
                     ]}
                     onCommand={(cmd) => {
@@ -421,25 +536,9 @@ function PlaygroundContent() {
                   />
                 ),
               },
-              {
-                id: 'architecture',
-                label: (
-                  <Stack direction="row" align="center" gap="0.5rem">
-                    <LayersIcon size={16} /> Architecture
-                  </Stack>
-                ),
-                content: (
-                  <Stack gap="0.75rem" style={{ fontSize: '0.9rem' }}>
-                    <p><strong style={{ color: 'var(--mi-color-primary)' }}>Accessibility First:</strong> WCAG contrast standards, visible focus rings, full keyboard support.</p>
-                    <p><strong style={{ color: 'var(--mi-color-primary)' }}>Responsive Default:</strong> Native layout adaptivity across mobile, tablet, and desktop viewports.</p>
-                    <p><strong style={{ color: 'var(--mi-color-primary)' }}>Theme Independence:</strong> Complete decoupling of component logic from CSS variable styling.</p>
-                    <p><strong style={{ color: 'var(--mi-color-primary)' }}>Vector Iconography:</strong> 34+ built-in native SVG icon components for clean, resolution-independent rendering.</p>
-                  </Stack>
-                ),
-              },
             ]}
           />
-        </section>
+        </main>
 
         {/* Modal Dialog */}
         <Dialog
