@@ -35,13 +35,16 @@ export default function App() {
           gap: '1rem',
         }}
       >
-        <div>
-          <h1 style={{ fontSize: '2.25rem', color: 'var(--mi-color-primary, #FF4D00)', letterSpacing: '-0.02em' }}>
-            🌙 Moon-Inferno
-          </h1>
-          <p style={{ color: 'var(--mi-color-text-muted, #94A3B8)', marginTop: '0.25rem', fontSize: '0.9rem' }}>
-            The web doesn't need another SaaS dashboard.
-          </p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <img src="/logo.png" alt="Moon-Inferno Logo" style={{ width: '48px', height: '48px', borderRadius: '8px' }} />
+          <div>
+            <h1 style={{ fontSize: '2.25rem', color: 'var(--mi-color-primary, #FF4D00)', letterSpacing: '-0.02em' }}>
+              Moon-Inferno
+            </h1>
+            <p style={{ color: 'var(--mi-color-text-muted, #94A3B8)', marginTop: '0.1rem', fontSize: '0.9rem' }}>
+              The web doesn't need another SaaS dashboard.
+            </p>
+          </div>
         </div>
 
         {/* Theme Switcher */}

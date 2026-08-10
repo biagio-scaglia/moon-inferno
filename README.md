@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Moon-Inferno Logo" width="180" />
+</p>
+
 # 🌙 Moon-Inferno
 
 > The web doesn't need another SaaS dashboard.
