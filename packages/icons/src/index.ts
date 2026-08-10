@@ -21,8 +21,6 @@ export * from './icons/LockIcon';
 export * from './icons/UserIcon';
 export * from './icons/LayersIcon';
 export * from './icons/CpuIcon';
-export * from './icons/PixelHeartIcon';
-export * from './icons/PixelStarIcon';
 export * from './icons/GamepadIcon';
 export * from './icons/SkullIcon';
 export * from './icons/CrosshairIcon';

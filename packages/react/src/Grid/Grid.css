@@ -1,0 +1,6 @@
+/* Moon-Inferno Grid Styles */
+
+.mi-grid {
+  display: grid;
+  width: 100%;
+}

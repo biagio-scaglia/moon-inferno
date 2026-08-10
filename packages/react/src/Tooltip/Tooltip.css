@@ -1,0 +1,55 @@
+/* Moon-Inferno Tooltip Styles */
+
+.mi-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.mi-tooltip {
+  position: absolute;
+  background-color: var(--mi-color-surface, #1E1B26);
+  color: var(--mi-color-text, #F1F5F9);
+  border: 1px solid var(--mi-color-border-accent, #FF4D00);
+  border-radius: var(--mi-radius-base, 4px);
+  padding: 0.35rem 0.65rem;
+  font-family: var(--mi-font-mono, monospace);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  box-shadow: var(--mi-shadow-glow);
+  z-index: var(--mi-z-tooltip, 1800);
+  pointer-events: none;
+  animation: mi-tooltip-fade 0.15s ease-out;
+}
+
+.mi-tooltip--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+}
+
+.mi-tooltip--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+}
+
+.mi-tooltip--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 8px;
+}
+
+.mi-tooltip--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 8px;
+}
+
+@keyframes mi-tooltip-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
