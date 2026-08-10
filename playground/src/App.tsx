@@ -25,6 +25,11 @@ import {
   RadioGroup,
   Radio,
   Switch,
+  Accordion,
+  AccordionItem,
+  MatrixRain,
+  SignalLight,
+  CodeBlock,
 } from '@moon-inferno/react';
 import {
   FlameIcon,
@@ -101,40 +106,18 @@ const ALL_ICONS = [
   { name: 'FilterIcon', Component: FilterIcon },
 ];
 
-function CodeBlock({ code }: { code: string }) {
-  const [copied, setCopied] = useState(false);
-  const copy = () => {
-    navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <div style={{ position: 'relative', backgroundColor: 'var(--mi-color-bg-subtle, #14121A)', border: '1px solid var(--mi-color-border, #332D40)', borderRadius: 'var(--mi-radius-base, 4px)', padding: '1rem', fontFamily: 'var(--mi-font-mono, monospace)', fontSize: '0.85rem', overflowX: 'auto' }}>
-      <button
-        type="button"
-        onClick={copy}
-        style={{ position: 'absolute', top: '8px', right: '8px', background: 'none', border: '1px solid var(--mi-color-border)', borderRadius: '4px', color: 'var(--mi-color-text-muted)', cursor: 'pointer', padding: '0.2rem 0.5rem', fontSize: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
-      >
-        {copied ? <CheckIcon size={12} color="var(--mi-color-success)" /> : <CopyIcon size={12} />}
-        {copied ? 'Copied' : 'Copy'}
-      </button>
-      <pre style={{ margin: 0, color: 'var(--mi-color-primary, #FF4D00)' }}>{code}</pre>
-    </div>
-  );
-}
-
 function PlaygroundContent() {
   const [currentTheme, setCurrentTheme] = useState<ThemeName>('moon-inferno');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isCRTActive, setIsCRTActive] = useState(false);
+  const [isMatrixActive, setIsMatrixActive] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [inputError, setInputError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [passwordValue, setPasswordValue] = useState('Inferno2026!');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Interactive Form State
+  // Form states
   const [checkboxValue, setCheckboxValue] = useState(true);
   const [radioValue, setRadioValue] = useState('inferno');
   const [switchValue, setSwitchValue] = useState(true);
@@ -168,8 +151,9 @@ function PlaygroundContent() {
   );
 
   return (
-    <Container size="xl">
-      <Stack gap="2.5rem">
+    <Container size="xl" style={{ position: 'relative' }}>
+      {isMatrixActive && <MatrixRain />}
+      <Stack gap="2.5rem" style={{ position: 'relative', zIndex: 1 }}>
         {isCRTActive && <CRTEffect />}
 
         {/* Header Banner */}
@@ -188,22 +172,37 @@ function PlaygroundContent() {
             <Stack direction="row" align="center" gap="0.75rem">
               <MoonIcon size={36} color="var(--mi-color-primary)" />
               <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: '2.25rem' }} />
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.4.0</Badge>
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.5.0</Badge>
+              <SignalLight status="online" pulse label="CORE ONLINE" />
             </Stack>
             <p style={{ color: 'var(--mi-color-text-muted, #94A3B8)', margin: 0, fontSize: '0.9rem' }}>
-              Documentation Portal & Component Playground. Expressive, accessible & responsive UI primitives.
+              The web doesn't need another SaaS dashboard. Expressive, accessible & responsive UI primitives.
             </p>
           </Stack>
 
           {/* Global Controls */}
           <Stack direction="row" align="center" gap="0.75rem" wrap>
+            <Tooltip content="Toggle cyberpunk ASCII matrix rain animation">
+              <Button
+                size="sm"
+                variant={isMatrixActive ? 'inferno' : 'outline'}
+                onClick={() => {
+                  setIsMatrixActive(!isMatrixActive);
+                  addToast(`Matrix Rain ${!isMatrixActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
+                }}
+                leftIcon={<CodeIcon size={14} />}
+              >
+                Matrix Rain: {isMatrixActive ? 'ON' : 'OFF'}
+              </Button>
+            </Tooltip>
+
             <Tooltip content="Toggle retro CRT scanlines and screen flicker effect">
               <Button
                 size="sm"
                 variant={isCRTActive ? 'inferno' : 'outline'}
                 onClick={() => {
                   setIsCRTActive(!isCRTActive);
-                  addToast(`CRT Effect ${!isCRTActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
+                  addToast(`CRT Overlay ${!isCRTActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
                 }}
                 leftIcon={<CpuIcon size={14} />}
               >
@@ -257,13 +256,13 @@ function PlaygroundContent() {
                     <PixelContainer title="QUICKSTART // INSTALLATION & SETUP">
                       <Stack gap="1rem">
                         <h3>1. Install Package Dependencies</h3>
-                        <CodeBlock code="pnpm add @moon-inferno/core @moon-inferno/react @moon-inferno/themes @moon-inferno/icons" />
+                        <CodeBlock filename="terminal" code="pnpm add @moon-inferno/core @moon-inferno/react @moon-inferno/themes @moon-inferno/icons" />
 
                         <h3>2. Import Styles & Initialize Theme</h3>
-                        <CodeBlock code={`import '@moon-inferno/react/styles.css';\nimport { setTheme } from '@moon-inferno/themes';\n\n// Set signature theme\nsetTheme('moon-inferno');`} />
+                        <CodeBlock filename="main.tsx" code={`import '@moon-inferno/react/styles.css';\nimport { setTheme } from '@moon-inferno/themes';\n\n// Set signature theme\nsetTheme('moon-inferno');`} />
 
                         <h3>3. Render Primitives in React</h3>
-                        <CodeBlock code={`import { Button, Input, GlitchText, ToastProvider } from '@moon-inferno/react';\nimport { FlameIcon } from '@moon-inferno/icons';\n\nexport default function App() {\n  return (\n    <ToastProvider>\n      <GlitchText text="WELCOME TO THE INFERNO" />\n      <Button variant="inferno" leftIcon={<FlameIcon size={16} />}>\n        Initiate Sequence\n      </Button>\n    </ToastProvider>\n  );\n}`} />
+                        <CodeBlock filename="App.tsx" code={`import { Button, Input, GlitchText, ToastProvider, SignalLight } from '@moon-inferno/react';\nimport { FlameIcon } from '@moon-inferno/icons';\n\nexport default function App() {\n  return (\n    <ToastProvider>\n      <SignalLight status="online" label="LAVA_NODE_ACTIVE" />\n      <GlitchText text="WELCOME TO THE INFERNO" />\n      <Button variant="inferno" leftIcon={<FlameIcon size={16} />}>\n        Initiate Sequence\n      </Button>\n    </ToastProvider>\n  );\n}`} />
                       </Stack>
                     </PixelContainer>
                   </Stack>
@@ -278,7 +277,7 @@ function PlaygroundContent() {
                 ),
                 content: (
                   <Stack gap="2rem">
-                    {/* Buttons & Action Controls */}
+                    {/* Buttons & Actions */}
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
@@ -304,7 +303,7 @@ function PlaygroundContent() {
                       </CardBody>
                     </Card>
 
-                    {/* Form Controls (Inputs, Checkbox, Radio, Switch) */}
+                    {/* Form Controls */}
                     <Grid minChildWidth="320px" gap="1.5rem">
                       <Card>
                         <CardHeader>
@@ -405,6 +404,37 @@ function PlaygroundContent() {
                         </CardBody>
                       </Card>
                     </Grid>
+
+                    {/* Custom Primitives: Accordion & SignalLight */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <LayersIcon size={18} /> Accordion & Custom Signal Beacons
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <Stack direction="row" align="center" gap="1.5rem" wrap>
+                            <SignalLight status="online" label="ONLINE" />
+                            <SignalLight status="warning" label="WARNING" />
+                            <SignalLight status="busy" label="BUSY" />
+                            <SignalLight status="offline" pulse={false} label="OFFLINE" />
+                          </Stack>
+
+                          <Accordion>
+                            <AccordionItem title="ARCHITECTURAL FOUNDATION" defaultOpen>
+                              Decouples component logic from theme tokens, guaranteeing WCAG AA accessibility, keyboard navigation, and full screen-reader compliance.
+                            </AccordionItem>
+                            <AccordionItem title="RETRO SHADERS & VISUAL LANGUAGE">
+                              Built-in support for CRT scanlines overlay, RGB-split glitch text animations, and authentic stepped pixel borders.
+                            </AccordionItem>
+                            <AccordionItem title="ZERO SAAS STERILITY">
+                              Designed explicitly for interfaces with distinct character—retro web, Y2K, cyberpunk, pixel art, anime-inspired, and experimental applications.
+                            </AccordionItem>
+                          </Accordion>
+                        </Stack>
+                      </CardBody>
+                    </Card>
 
                     {/* Loaders & Feedback */}
                     <Card>
@@ -523,7 +553,7 @@ function PlaygroundContent() {
                 content: (
                   <Terminal
                     initialLines={[
-                      { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.4.0 INITIALIZED.' },
+                      { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.5.0 INITIALIZED.' },
                       { id: '2', type: 'output', text: 'Type "help", "icons", "status", or "clear".' },
                     ]}
                     onCommand={(cmd) => {

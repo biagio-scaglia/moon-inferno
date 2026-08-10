@@ -1,0 +1,52 @@
+/* Moon-Inferno CodeBlock Styles */
+
+.mi-codeblock-wrapper {
+  position: relative;
+  background-color: var(--mi-color-bg-subtle, #14121A);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-base, 4px);
+  padding: 1rem;
+  font-family: var(--mi-font-mono, monospace);
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+.mi-codeblock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--mi-color-border, #332D40);
+  font-size: 0.75rem;
+  color: var(--mi-color-text-muted, #94A3B8);
+}
+
+.mi-codeblock-copy-btn {
+  background: transparent;
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: 4px;
+  color: var(--mi-color-text-muted, #94A3B8);
+  cursor: pointer;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-family: var(--mi-font-mono, monospace);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+  min-height: 32px;
+}
+
+.mi-codeblock-copy-btn:hover {
+  border-color: var(--mi-color-primary, #FF4D00);
+  color: var(--mi-color-primary, #FF4D00);
+}
+
+.mi-codeblock-pre {
+  margin: 0;
+  color: var(--mi-color-primary, #FF4D00);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

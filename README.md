@@ -66,6 +66,10 @@ Moon-Inferno is organized as a monorepo containing specialized packages:
 | **Checkbox** | ✅ Ready (Phase 3) | Accessible custom checkbox with ARIA focus rings, label, and description |
 | **Radio & RadioGroup** | ✅ Ready (Phase 3) | Accessible radio button group with ARIA keyboard navigation |
 | **Switch** | ✅ Ready (Phase 3) | Accessible toggle switch control (`role="switch"`) |
+| **Accordion** | ✅ Ready (Phase 4) | Accessible collapsible disclosure panel group (`Accordion`, `AccordionItem`) |
+| **MatrixRain** | ✅ Ready (Phase 4) | Cyberpunk ASCII digital rain animation overlay |
+| **SignalLight** | ✅ Ready (Phase 4) | Glowing retro status beacon light (`online`, `warning`, `busy`, `offline`) |
+| **CodeBlock** | ✅ Ready (Phase 4) | Expressive code snippet viewer with one-click copy button |
 
 ---
 

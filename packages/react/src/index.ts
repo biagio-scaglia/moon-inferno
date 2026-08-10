@@ -19,6 +19,10 @@ export * from './Loader/Loader';
 export * from './Checkbox/Checkbox';
 export * from './Radio/Radio';
 export * from './Switch/Switch';
+export * from './Accordion/Accordion';
+export * from './MatrixRain/MatrixRain';
+export * from './SignalLight/SignalLight';
+export * from './CodeBlock/CodeBlock';
 
 // Styles
 import './Button/Button.css';
@@ -40,3 +44,7 @@ import './Loader/Loader.css';
 import './Checkbox/Checkbox.css';
 import './Radio/Radio.css';
 import './Switch/Switch.css';
+import './Accordion/Accordion.css';
+import './MatrixRain/MatrixRain.css';
+import './SignalLight/SignalLight.css';
+import './CodeBlock/CodeBlock.css';

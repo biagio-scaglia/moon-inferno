@@ -1,0 +1,68 @@
+/* Moon-Inferno Accordion Styles */
+
+.mi-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.mi-accordion-item {
+  background-color: var(--mi-color-surface, #1E1B26);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-base, 4px);
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+
+.mi-accordion-item--open {
+  border-color: var(--mi-color-border-accent, #FF4D00);
+}
+
+.mi-accordion-header {
+  width: 100%;
+  padding: 0.875rem 1.125rem;
+  background: transparent;
+  border: none;
+  color: var(--mi-color-text, #F1F5F9);
+  font-family: var(--mi-font-mono, monospace);
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+  min-height: 44px;
+}
+
+.mi-accordion-header:hover {
+  background-color: var(--mi-color-bg-subtle, #14121A);
+  color: var(--mi-color-primary, #FF4D00);
+}
+
+.mi-accordion-header:focus-visible {
+  outline: 2px solid var(--mi-color-focus-ring, #FF4D00);
+  outline-offset: -2px;
+}
+
+.mi-accordion-icon {
+  transition: transform 0.2s ease;
+  color: var(--mi-color-text-muted, #94A3B8);
+}
+
+.mi-accordion-item--open .mi-accordion-icon {
+  transform: rotate(180deg);
+  color: var(--mi-color-primary, #FF4D00);
+}
+
+.mi-accordion-content {
+  padding: 0 1.125rem 1rem 1.125rem;
+  font-family: var(--mi-font-sans, sans-serif);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--mi-color-text-muted, #94A3B8);
+  border-top: 1px dashed var(--mi-color-border, #332D40);
+  margin-top: -0.25rem;
+  padding-top: 0.875rem;
+}
