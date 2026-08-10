@@ -30,6 +30,12 @@ import {
   MatrixRain,
   SignalLight,
   CodeBlock,
+  Select,
+  Avatar,
+  AvatarGroup,
+  Progress,
+  Slider,
+  Gallery,
 } from '@moon-inferno/react';
 import {
   FlameIcon,
@@ -106,6 +112,27 @@ const ALL_ICONS = [
   { name: 'FilterIcon', Component: FilterIcon },
 ];
 
+const GALLERY_ITEMS = [
+  {
+    id: '1',
+    src: '/assets/inferno-moon.png',
+    title: 'INFERNO_MOON // CORE VISUAL',
+    caption: 'Atmospheric crimson moon glowing over obsidian dystopian architecture.',
+  },
+  {
+    id: '2',
+    src: '/assets/cyberpunk-grid.png',
+    title: 'CYBERPUNK_GRID // MATRIX NODE',
+    caption: 'Glowing neon data streams and high-contrast ASCII terminal matrix.',
+  },
+  {
+    id: '3',
+    src: '/assets/retro-arcade.png',
+    title: 'RETRO_ARCADE // SYNTHWAVE VIBE',
+    caption: '80s arcade synthwave aesthetics with CRT scanline reflections.',
+  },
+];
+
 function PlaygroundContent() {
   const [currentTheme, setCurrentTheme] = useState<ThemeName>('moon-inferno');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -117,10 +144,12 @@ function PlaygroundContent() {
   const [passwordValue, setPasswordValue] = useState('Inferno2026!');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Form states
+  // Form & Input States
   const [checkboxValue, setCheckboxValue] = useState(true);
   const [radioValue, setRadioValue] = useState('inferno');
   const [switchValue, setSwitchValue] = useState(true);
+  const [selectValue, setSelectValue] = useState('alpha');
+  const [sliderValue, setSliderValue] = useState(75);
 
   const { addToast } = useToast();
 
@@ -169,10 +198,10 @@ function PlaygroundContent() {
           }}
         >
           <Stack gap="0.5rem">
-            <Stack direction="row" align="center" gap="0.75rem">
+            <Stack direction="row" align="center" gap="0.75rem" wrap>
               <MoonIcon size={36} color="var(--mi-color-primary)" />
               <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: '2.25rem' }} />
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.5.0</Badge>
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.7.0</Badge>
               <SignalLight status="online" pulse label="CORE ONLINE" />
             </Stack>
             <p style={{ color: 'var(--mi-color-text-muted, #94A3B8)', margin: 0, fontSize: '0.9rem' }}>
@@ -210,7 +239,7 @@ function PlaygroundContent() {
               </Button>
             </Tooltip>
 
-            <Stack direction="row" align="center" gap="0.35rem">
+            <Stack direction="row" align="center" gap="0.35rem" wrap>
               <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim, #64748B)' }}>THEME:</span>
               <Button
                 size="sm"
@@ -262,7 +291,7 @@ function PlaygroundContent() {
                         <CodeBlock filename="main.tsx" code={`import '@moon-inferno/react/styles.css';\nimport { setTheme } from '@moon-inferno/themes';\n\n// Set signature theme\nsetTheme('moon-inferno');`} />
 
                         <h3>3. Render Primitives in React</h3>
-                        <CodeBlock filename="App.tsx" code={`import { Button, Input, GlitchText, ToastProvider, SignalLight } from '@moon-inferno/react';\nimport { FlameIcon } from '@moon-inferno/icons';\n\nexport default function App() {\n  return (\n    <ToastProvider>\n      <SignalLight status="online" label="LAVA_NODE_ACTIVE" />\n      <GlitchText text="WELCOME TO THE INFERNO" />\n      <Button variant="inferno" leftIcon={<FlameIcon size={16} />}>\n        Initiate Sequence\n      </Button>\n    </ToastProvider>\n  );\n}`} />
+                        <CodeBlock filename="App.tsx" code={`import { Button, Input, GlitchText, ToastProvider, SignalLight, Gallery } from '@moon-inferno/react';\nimport { FlameIcon } from '@moon-inferno/icons';\n\nexport default function App() {\n  return (\n    <ToastProvider>\n      <SignalLight status="online" label="LAVA_NODE_ACTIVE" />\n      <GlitchText text="WELCOME TO THE INFERNO" />\n      <Gallery items={[{ id: '1', src: '/hero.png', title: 'INFERNO_CORE' }]} />\n    </ToastProvider>\n  );\n}`} />
                       </Stack>
                     </PixelContainer>
                   </Stack>
@@ -303,12 +332,29 @@ function PlaygroundContent() {
                       </CardBody>
                     </Card>
 
+                    {/* Media Gallery & Lightbox */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <EyeIcon size={18} /> Media Gallery & Lightbox Modal
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Click any image card to open the accessible Lightbox modal with keyboard arrow navigation.
+                          </p>
+                          <Gallery items={GALLERY_ITEMS} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
                     {/* Form Controls */}
-                    <Grid minChildWidth="320px" gap="1.5rem">
+                    <Grid minChildWidth="300px" gap="1.5rem">
                       <Card>
                         <CardHeader>
                           <Stack direction="row" align="center" gap="0.5rem">
-                            <CodeIcon size={18} /> Form Controls & Inputs
+                            <CodeIcon size={18} /> Form Controls & Select
                           </Stack>
                         </CardHeader>
                         <CardBody>
@@ -354,6 +400,25 @@ function PlaygroundContent() {
                                 {showPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
                               </button>
                             </div>
+
+                            <Select
+                              label="SECURITY_PROTOCOL"
+                              value={selectValue}
+                              onChange={setSelectValue}
+                              options={[
+                                { value: 'alpha', label: 'Protocol Alpha (Default)' },
+                                { value: 'beta', label: 'Protocol Beta (High Security)' },
+                                { value: 'gamma', label: 'Protocol Gamma (Stealth Mode)' },
+                              ]}
+                            />
+
+                            <Slider
+                              label={`POWER LEVEL OUTPUT: ${sliderValue}%`}
+                              value={sliderValue}
+                              onChange={setSliderValue}
+                              min={0}
+                              max={100}
+                            />
                           </Stack>
                         </CardBody>
                         <CardFooter>
@@ -404,6 +469,42 @@ function PlaygroundContent() {
                         </CardBody>
                       </Card>
                     </Grid>
+
+                    {/* Progress Bars & Avatars */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <UserIcon size={18} /> Progress Bars & Avatars
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <Grid minChildWidth="240px" gap="1rem">
+                            <Progress value={sliderValue} label="Inferno Core Charge" variant="inferno" />
+                            <Progress value={65} label="Pixel Sync Progress" variant="pixel" />
+                            <Progress value={85} label="Striped Matrix Stream" variant="striped" animated />
+                          </Grid>
+
+                          <div>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)', display: 'block', marginBottom: '0.5rem' }}>
+                              AVATAR PRIMITIVES & AVATAR GROUP:
+                            </span>
+                            <Stack direction="row" align="center" gap="1rem" wrap>
+                              <Avatar size="sm" name="Alpha One" />
+                              <Avatar size="md" name="Biagio Scaglia" />
+                              <Avatar size="lg" name="Cyber Punk" variant="pixel" />
+                              <Avatar size="xl" name="Solar Inferno" />
+
+                              <AvatarGroup>
+                                <Avatar size="md" name="Biagio Scaglia" />
+                                <Avatar size="md" name="Cyber Punk" />
+                                <Avatar size="md" name="Alpha One" />
+                              </AvatarGroup>
+                            </Stack>
+                          </div>
+                        </Stack>
+                      </CardBody>
+                    </Card>
 
                     {/* Custom Primitives: Accordion & SignalLight */}
                     <Card>
@@ -553,7 +654,7 @@ function PlaygroundContent() {
                 content: (
                   <Terminal
                     initialLines={[
-                      { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.5.0 INITIALIZED.' },
+                      { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.7.0 INITIALIZED.' },
                       { id: '2', type: 'output', text: 'Type "help", "icons", "status", or "clear".' },
                     ]}
                     onCommand={(cmd) => {

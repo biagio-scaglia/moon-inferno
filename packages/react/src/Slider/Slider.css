@@ -1,0 +1,67 @@
+/* Moon-Inferno Slider Styles */
+
+.mi-slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+.mi-slider-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mi-font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--mi-color-text, #F1F5F9);
+  text-transform: uppercase;
+}
+
+.mi-slider-input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background-color: var(--mi-color-surface, #1E1B26);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.mi-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--mi-color-primary, #FF4D00);
+  border: 2px solid #FFFFFF;
+  box-shadow: var(--mi-shadow-glow);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.mi-slider-input::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--mi-color-primary, #FF4D00);
+  border: 2px solid #FFFFFF;
+  box-shadow: var(--mi-shadow-glow);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.mi-slider-input:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--mi-color-focus-ring, #FF4D00);
+  outline-offset: 2px;
+  transform: scale(1.2);
+}
+
+.mi-slider-input:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--mi-color-focus-ring, #FF4D00);
+  outline-offset: 2px;
+  transform: scale(1.2);
+}

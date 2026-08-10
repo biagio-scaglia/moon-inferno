@@ -1,0 +1,69 @@
+/* Moon-Inferno Progress Styles */
+
+.mi-progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+.mi-progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mi-font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--mi-color-text, #F1F5F9);
+  text-transform: uppercase;
+}
+
+.mi-progress-track {
+  width: 100%;
+  height: 12px;
+  background-color: var(--mi-color-surface, #1E1B26);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-base, 4px);
+  overflow: hidden;
+  position: relative;
+}
+
+.mi-progress-bar {
+  height: 100%;
+  background-color: var(--mi-color-primary, #FF4D00);
+  box-shadow: var(--mi-shadow-glow);
+  transition: width 0.3s ease;
+}
+
+.mi-progress-track--pixel {
+  border-radius: 0;
+  border-width: 2px;
+}
+
+.mi-progress-bar--striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+.mi-progress-bar--animated {
+  animation: mi-progress-stripes 1s linear infinite;
+}
+
+@keyframes mi-progress-stripes {
+  from { background-position: 1rem 0; }
+  to { background-position: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-progress-bar--animated {
+    animation: none !important;
+  }
+}

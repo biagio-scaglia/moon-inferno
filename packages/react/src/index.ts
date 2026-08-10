@@ -23,6 +23,11 @@ export * from './Accordion/Accordion';
 export * from './MatrixRain/MatrixRain';
 export * from './SignalLight/SignalLight';
 export * from './CodeBlock/CodeBlock';
+export * from './Select/Select';
+export * from './Avatar/Avatar';
+export * from './Progress/Progress';
+export * from './Slider/Slider';
+export * from './Gallery/Gallery';
 
 // Styles
 import './Button/Button.css';
@@ -48,3 +53,8 @@ import './Accordion/Accordion.css';
 import './MatrixRain/MatrixRain.css';
 import './SignalLight/SignalLight.css';
 import './CodeBlock/CodeBlock.css';
+import './Select/Select.css';
+import './Avatar/Avatar.css';
+import './Progress/Progress.css';
+import './Slider/Slider.css';
+import './Gallery/Gallery.css';

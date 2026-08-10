@@ -70,6 +70,7 @@ Moon-Inferno is organized as a monorepo containing specialized packages:
 | **MatrixRain** | ✅ Ready (Phase 4) | Cyberpunk ASCII digital rain animation overlay |
 | **SignalLight** | ✅ Ready (Phase 4) | Glowing retro status beacon light (`online`, `warning`, `busy`, `offline`) |
 | **CodeBlock** | ✅ Ready (Phase 4) | Expressive code snippet viewer with one-click copy button |
+| **Gallery & Lightbox** | ✅ Ready (Phase 4) | Responsive media card grid with accessible Modal Lightbox and arrow key navigation |
 
 ---
 

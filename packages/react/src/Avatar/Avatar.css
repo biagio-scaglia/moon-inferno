@@ -1,0 +1,51 @@
+/* Moon-Inferno Avatar Styles */
+
+.mi-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--mi-color-surface, #1E1B26);
+  color: var(--mi-color-primary, #FF4D00);
+  border: 1px solid var(--mi-color-border-accent, #FF4D00);
+  border-radius: 50%;
+  font-family: var(--mi-font-mono, monospace);
+  font-weight: 700;
+  overflow: hidden;
+  user-select: none;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.mi-avatar--sm { width: 28px; height: 28px; font-size: 0.75rem; }
+.mi-avatar--md { width: 38px; height: 38px; font-size: 0.875rem; }
+.mi-avatar--lg { width: 52px; height: 52px; font-size: 1.125rem; }
+.mi-avatar--xl { width: 68px; height: 68px; font-size: 1.5rem; }
+
+.mi-avatar--pixel {
+  border-radius: 0;
+  box-shadow: 
+    0 -2px 0 0 var(--mi-color-primary, #FF4D00),
+    0 2px 0 0 var(--mi-color-primary, #FF4D00),
+    -2px 0 0 0 var(--mi-color-primary, #FF4D00),
+    2px 0 0 0 var(--mi-color-primary, #FF4D00);
+  margin: 2px;
+}
+
+.mi-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mi-avatar-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.mi-avatar-group .mi-avatar {
+  margin-left: -0.5rem;
+}
+
+.mi-avatar-group .mi-avatar:first-child {
+  margin-left: 0;
+}
