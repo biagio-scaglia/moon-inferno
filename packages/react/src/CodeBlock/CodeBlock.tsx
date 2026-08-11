@@ -21,9 +21,14 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
       <div ref={ref} className={`mi-codeblock-wrapper ${className}`.trim()} {...props}>
         <div className="mi-codeblock-header">
           <span>{filename || 'bash'}</span>
-          <button type="button" onClick={handleCopy} className="mi-codeblock-copy-btn">
+          <button
+            type="button"
+            onClick={handleCopy}
+            className="mi-codeblock-copy-btn"
+            aria-label={copied ? 'Code snippet copied' : 'Copy code to clipboard'}
+          >
             {copied ? <CheckIcon size={14} color="var(--mi-color-success)" /> : <CopyIcon size={14} />}
-            <span>{copied ? 'Copied!' : 'Copy'}</span>
+            <span aria-live="polite">{copied ? 'Copied!' : 'Copy'}</span>
           </button>
         </div>
         <pre className="mi-codeblock-pre">

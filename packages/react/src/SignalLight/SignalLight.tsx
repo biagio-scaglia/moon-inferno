@@ -10,7 +10,13 @@ export interface SignalLightProps extends HTMLAttributes<HTMLDivElement> {
 export const SignalLight = forwardRef<HTMLDivElement, SignalLightProps>(
   ({ status = 'online', pulse = true, label, className = '', ...props }, ref) => {
     return (
-      <div ref={ref} className={`mi-signal-light ${className}`.trim()} {...props}>
+      <div
+        ref={ref}
+        role="status"
+        aria-label={label ? `${label}: status ${status}` : `Status: ${status}`}
+        className={`mi-signal-light ${className}`.trim()}
+        {...props}
+      >
         <span
           className={`mi-signal-beacon mi-signal-beacon--${status} ${pulse ? 'mi-signal-beacon--pulse' : ''}`}
           aria-hidden="true"

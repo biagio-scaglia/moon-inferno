@@ -10,6 +10,7 @@ export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ label, description, disabled, className = '', id, ...props }, ref) => {
     const inputId = id || (label ? `mi-cb-${label.toLowerCase().replace(/\s+/g, '-')}` : undefined);
+    const descId = description ? `${inputId}-desc` : undefined;
 
     return (
       <label
@@ -20,6 +21,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           ref={ref}
           type="checkbox"
           id={inputId}
+          aria-describedby={descId}
           disabled={disabled}
           className="mi-checkbox-input"
           {...props}
@@ -30,7 +32,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         {(label || description) && (
           <span className="mi-checkbox-text">
             {label && <span>{label}</span>}
-            {description && <span className="mi-checkbox-description">{description}</span>}
+            {description && <span id={descId} className="mi-checkbox-description">{description}</span>}
           </span>
         )}
       </label>

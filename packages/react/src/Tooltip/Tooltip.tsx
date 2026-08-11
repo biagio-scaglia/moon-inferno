@@ -32,6 +32,7 @@ export const Tooltip: FC<TooltipProps> = ({
     onMouseLeave?: (e: React.MouseEvent) => void;
     onFocus?: (e: React.FocusEvent) => void;
     onBlur?: (e: React.FocusEvent) => void;
+    onKeyDown?: (e: React.KeyboardEvent) => void;
   };
 
   const trigger = cloneElement(children, {
@@ -51,6 +52,10 @@ export const Tooltip: FC<TooltipProps> = ({
     onBlur: (e: React.FocusEvent) => {
       hide();
       childProps.onBlur?.(e);
+    },
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === 'Escape') hide();
+      childProps.onKeyDown?.(e);
     },
   });
 
