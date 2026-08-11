@@ -192,10 +192,14 @@ function MasterGuideWebsite() {
         {/* Glassmorphic Cyber Header Control Deck */}
         <header className="header-nav">
           <div className="header-brand">
-            <img src="/assets/logo.png" alt="Moon-Inferno Logo" style={{ height: '38px', width: 'auto', borderRadius: '4px' }} />
-            <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: '1.65rem', margin: 0, letterSpacing: '-0.02em' }} />
-            <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.0</Badge>
-            <SignalLight status="online" pulse label="ONLINE" />
+            <Stack direction="row" align="center" gap="0.65rem">
+              <img src="/favicon.svg" alt="Moon-Inferno Favicon" style={{ height: '32px', width: '32px' }} />
+              <h1 className="brand-title">Moon-Inferno</h1>
+            </Stack>
+            <Stack direction="row" align="center" gap="0.5rem">
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.0</Badge>
+              <SignalLight status="online" pulse label="ONLINE" />
+            </Stack>
           </div>
 
           {/* Controls */}
@@ -209,6 +213,7 @@ function MasterGuideWebsite() {
                   addToast(`Matrix Rain ${!isMatrixActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
                 }}
                 leftIcon={<CodeIcon size={14} />}
+                style={{ width: '100%' }}
               >
                 Matrix Rain: {isMatrixActive ? 'ON' : 'OFF'}
               </Button>
@@ -223,6 +228,7 @@ function MasterGuideWebsite() {
                   addToast(`CRT Shader ${!isCRTActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
                 }}
                 leftIcon={<CpuIcon size={14} />}
+                style={{ width: '100%' }}
               >
                 CRT Shader: {isCRTActive ? 'ON' : 'OFF'}
               </Button>
@@ -234,7 +240,7 @@ function MasterGuideWebsite() {
                 variant={currentTheme === 'moon-inferno' ? 'inferno' : 'ghost'}
                 onClick={() => handleThemeChange('moon-inferno')}
                 leftIcon={<FlameIcon size={13} />}
-                style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem' }}
+                style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem', flex: 1 }}
               >
                 Inferno
               </Button>
@@ -243,7 +249,7 @@ function MasterGuideWebsite() {
                 variant={currentTheme === 'terminal' ? 'inferno' : 'ghost'}
                 onClick={() => handleThemeChange('terminal')}
                 leftIcon={<TerminalIcon size={13} />}
-                style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem' }}
+                style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem', flex: 1 }}
               >
                 Terminal
               </Button>
@@ -252,7 +258,7 @@ function MasterGuideWebsite() {
                 variant={currentTheme === 'y2k' ? 'inferno' : 'ghost'}
                 onClick={() => handleThemeChange('y2k')}
                 leftIcon={<SunIcon size={13} />}
-                style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem' }}
+                style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem', flex: 1 }}
               >
                 Y2K
               </Button>
