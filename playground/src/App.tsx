@@ -189,7 +189,7 @@ function MasterGuideWebsite() {
       <Stack gap="2.5rem" style={{ position: 'relative', zIndex: 1 }}>
         {isCRTActive && <CRTEffect />}
 
-        {/* Navigation Bar */}
+        {/* Global Navigation Bar */}
         <header
           style={{
             borderBottom: '2px solid var(--mi-color-border-accent, #FF4D00)',
@@ -208,7 +208,7 @@ function MasterGuideWebsite() {
             <SignalLight status="online" pulse label="CORE ONLINE" />
           </Stack>
 
-          {/* Controls */}
+          {/* Global Theme & Shader Controls */}
           <Stack direction="row" align="center" gap="0.75rem" wrap>
             <Tooltip content="Toggle cyberpunk ASCII matrix rain background animation">
               <Button
@@ -268,7 +268,7 @@ function MasterGuideWebsite() {
           </Stack>
         </header>
 
-        {/* Hero Banner */}
+        {/* Hero Section Banner */}
         <section
           style={{
             padding: '2.5rem 1.5rem',
@@ -283,14 +283,14 @@ function MasterGuideWebsite() {
             gap: '1.25rem',
           }}
         >
-          <Badge variant="inferno" icon={<FlameIcon size={14} />}>DOCUMENTATION & MASTER COMPONENT GUIDE</Badge>
+          <Badge variant="inferno" icon={<FlameIcon size={14} />}>OFFICIAL DOCUMENTATION & COMPONENT MASTER GUIDE</Badge>
           
           <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontFamily: 'var(--mi-font-mono)', margin: 0 }}>
             Reclaim Expressive Web Design
           </h2>
 
           <p style={{ maxWidth: '780px', color: 'var(--mi-color-text-muted)', fontSize: '1.05rem', lineHeight: '1.6', margin: 0 }}>
-            Moon-Inferno is an accessibility-first React UI framework designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications. Fully WCAG AA compliant out of the box with zero SaaS sterility.
+            Moon-Inferno is an accessibility-first React UI framework created by <strong>Biagio Scaglia</strong> for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications. Fully WCAG 2.1 AA compliant out of the box with zero SaaS sterility.
           </p>
 
           <Stack direction="row" align="center" justify="center" gap="1rem" wrap style={{ marginTop: '0.5rem' }}>
@@ -303,7 +303,7 @@ function MasterGuideWebsite() {
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Explore Manual
+              Explore Component Catalog
             </Button>
             <Button
               size="lg"
@@ -313,10 +313,18 @@ function MasterGuideWebsite() {
             >
               GitHub Repository
             </Button>
+            <Button
+              size="lg"
+              variant="ghost"
+              leftIcon={<UserIcon size={18} />}
+              onClick={() => window.open('https://github.com/biagio-scaglia', '_blank')}
+            >
+              Biagio Scaglia Profile
+            </Button>
           </Stack>
         </section>
 
-        {/* Marquee Ticker */}
+        {/* Global Ticker Marquee */}
         <Marquee variant="pixel" speed={22}>
           <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.1.0 IS LIVE ON NPM</span>
           <span>--</span>
@@ -324,7 +332,7 @@ function MasterGuideWebsite() {
           <span>--</span>
           <span style={{ color: 'var(--mi-color-primary)' }}>100% WCAG 2.1 AA ACCESSIBLE</span>
           <span>--</span>
-          <span>FULL KEYBOARD NAVIGATION & SCREEN READER AUDITED</span>
+          <span>CREATOR: BIAGIO SCAGLIA</span>
           <span>--</span>
         </Marquee>
 
@@ -336,7 +344,7 @@ function MasterGuideWebsite() {
                 id: 'architecture-guide',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
-                    <InfoIcon size={16} /> Guida Architettura & Visione
+                    <InfoIcon size={16} /> Architecture & Vision
                   </Stack>
                 ),
                 content: (
@@ -344,16 +352,16 @@ function MasterGuideWebsite() {
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
-                          <ShieldIcon size={18} /> Perché Moon-Inferno?
+                          <ShieldIcon size={18} /> Why Moon-Inferno? (Design Philosophy)
                         </Stack>
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1rem">
                           <p>
-                            La maggior parte delle librerie di componenti moderne ha portato il web a convergere su un'estetica piatta, uniforme e priva di identita visiva. Moon-Inferno e stato creato per restituire al web la propria espressivita senza sacrificare l'accessibilita e la responsivita.
+                            Modern web UI libraries have converged on uniform, sterile enterprise dashboards. While functional, they strip websites of individuality, character, and visual experimentation.
                           </p>
                           <p>
-                            Ogni componente combina token estetici avanzati (bordi pixel, riflessi CRT, testi al neon e sfarfallii) con fondamenta HTML semantiche e conformi alle specifiche WCAG 2.1 AA.
+                            Created by <strong>Biagio Scaglia</strong>, Moon-Inferno exists to reclaim expressive web design without reverting to inaccessible practices. It combines radical visual aesthetics (retro web, Y2K, cyberpunk, CRT, pixel art) with rock-solid semantic foundations, screen reader support, keyboard navigation, and responsive behavior.
                           </p>
                         </Stack>
                       </CardBody>
@@ -363,15 +371,15 @@ function MasterGuideWebsite() {
                       <Card>
                         <CardHeader>
                           <Stack direction="row" align="center" gap="0.5rem">
-                            <CheckIcon size={18} /> Requisiti di Accessibilità (WCAG AA)
+                            <CheckIcon size={18} /> Accessibility Requirements (WCAG 2.1 AA)
                           </Stack>
                         </CardHeader>
                         <CardBody>
                           <Stack gap="0.75rem">
-                            <p><strong>- Focus Rings ad Alto Contrasto:</strong> Visibili solo via tastiera con :focus-visible.</p>
-                            <p><strong>- Gestione ARIA:</strong> Ruoli dialog, combobox, tablist, status, tooltip nativi.</p>
-                            <p><strong>- Navigazione da Tastiera:</strong> Tasti Tab, Esc, Invio, Spazio e Frecce Direzionali.</p>
-                            <p><strong>- Riduzione Movimento:</strong> Disattivazione automatica animazioni se prefers-reduced-motion e attivo.</p>
+                            <p><strong>High-Contrast Focus Rings:</strong> Keyboard focus rings powered by :focus-visible.</p>
+                            <p><strong>WAI-ARIA Attributes:</strong> Native roles for dialog, combobox, tablist, status, and tooltip.</p>
+                            <p><strong>Full Keyboard Navigation:</strong> Tab, Esc, Enter, Space, and Arrow Key directionals.</p>
+                            <p><strong>Reduced Motion Safety:</strong> Automatic animation disablement when prefers-reduced-motion is active.</p>
                           </Stack>
                         </CardBody>
                       </Card>
@@ -379,15 +387,15 @@ function MasterGuideWebsite() {
                       <Card>
                         <CardHeader>
                           <Stack direction="row" align="center" gap="0.5rem">
-                            <LayersIcon size={18} /> Struttura Monorepo Pacchetti
+                            <LayersIcon size={18} /> Monorepo Package Ecosystem
                           </Stack>
                         </CardHeader>
                         <CardBody>
                           <Stack gap="0.75rem">
-                            <p><strong>@moon-inferno/core:</strong> Token di design, variabili CSS e utility a11y.</p>
-                            <p><strong>@moon-inferno/react:</strong> Componenti React pronti all'uso e stili universali.</p>
-                            <p><strong>@moon-inferno/themes:</strong> Temi ufficiali (Inferno, Terminal, Y2K).</p>
-                            <p><strong>@moon-inferno/icons:</strong> Sistema di icone vettoriali SVG.</p>
+                            <p><strong>@moon-inferno/core:</strong> Design tokens, CSS variables, and accessibility utilities.</p>
+                            <p><strong>@moon-inferno/react:</strong> Production-ready React component primitives and universal styles.</p>
+                            <p><strong>@moon-inferno/themes:</strong> Official color palettes (Inferno, Terminal, Y2K).</p>
+                            <p><strong>@moon-inferno/icons:</strong> Custom vector SVG iconography system.</p>
                           </Stack>
                         </CardBody>
                       </Card>
@@ -399,33 +407,33 @@ function MasterGuideWebsite() {
                 id: 'getting-started',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
-                    <CodeIcon size={16} /> Guida Installazione & Setup
+                    <CodeIcon size={16} /> Quickstart & Installation
                   </Stack>
                 ),
                 content: (
                   <Stack gap="2rem">
-                    <PixelContainer title="1. INSTALLAZIONE DIPENDENZE NPM">
+                    <PixelContainer title="1. INSTALL NPM PACKAGES">
                       <Stack gap="1rem">
                         <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
-                          Installa i pacchetti ufficiali pubblicati su NPM nel tuo progetto React:
+                          Install the published NPM packages using your preferred package manager:
                         </p>
                         <CodeBlock filename="terminal" code="pnpm add @moon-inferno/core @moon-inferno/react @moon-inferno/themes @moon-inferno/icons" />
                       </Stack>
                     </PixelContainer>
 
-                    <PixelContainer title="2. IMPORTAZIONE STILI E INIZIALIZZAZIONE TEMA">
+                    <PixelContainer title="2. IMPORT STYLES & INITIALIZE THEME">
                       <Stack gap="1rem">
                         <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
-                          Nel file principale della tua applicazione (es. main.tsx o App.tsx), importa il foglio di stile universale ed imposta il tema desiderato:
+                          Import global component CSS and initialize your signature theme in your application entry point (`main.tsx` / `App.tsx`):
                         </p>
-                        <CodeBlock filename="main.tsx" code={`import '@moon-inferno/react/styles.css';\nimport { setTheme } from '@moon-inferno/themes';\n\n// Imposta il tema primario ('moon-inferno' | 'terminal' | 'y2k')\nsetTheme('moon-inferno');`} />
+                        <CodeBlock filename="main.tsx" code={`import '@moon-inferno/react/styles.css';\nimport { setTheme } from '@moon-inferno/themes';\n\n// Set signature theme ('moon-inferno' | 'terminal' | 'y2k')\nsetTheme('moon-inferno');`} />
                       </Stack>
                     </PixelContainer>
 
-                    <PixelContainer title="3. TEMPLATE REACT COMPLETO PRONTO DA INCOLLARE">
+                    <PixelContainer title="3. COMPLETE REACT APPLICATION TEMPLATE">
                       <Stack gap="1rem">
                         <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
-                          Copia e incolla questo template di partenza per utilizzare subito i componenti con supporto alle notifiche Toast:
+                          Copy and paste this starter template to render primitives with full accessibility and toast notifications:
                         </p>
                         <CodeBlock filename="App.tsx" code={`import { 
   Button, 
@@ -449,7 +457,7 @@ function AppContent() {
       <SignalLight status="online" label="CORE_ONLINE" />
       <GlitchText text="WELCOME TO MOON-INFERNO" />
       <Marquee speed={18}>
-        <NeonText text="EXPRESSIVE UI PRIMITIVES" color="inferno" />
+        <NeonText text="EXPRESSIVE UI PRIMITIVES BY BIAGIO SCAGLIA" color="inferno" />
       </Marquee>
       <Button 
         variant="inferno" 
@@ -478,7 +486,7 @@ export default function App() {
                 id: 'components-catalog',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
-                    <LayersIcon size={16} /> Catalogo Componenti & Snippet
+                    <LayersIcon size={16} /> Component Catalog & API Snippets
                   </Stack>
                 ),
                 content: (
@@ -487,13 +495,13 @@ export default function App() {
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
-                          <SparklesIcon size={18} /> Componenti di Testo Custom & Ticker
+                          <SparklesIcon size={18} /> Custom Text Primitives & Tickers
                         </Stack>
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>PIXEL TEXT (`<PixelText />`):</span>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>PIXEL TEXT (`<PixelText />`): Stepped pixelated retro typography with hard pixel shadow.</span>
                             <Stack direction="row" align="center" gap="1rem" wrap>
                               <PixelText text="LEVEL 01" size="sm" />
                               <PixelText text="GAME OVER" size="md" />
@@ -504,7 +512,7 @@ export default function App() {
                           </Stack>
 
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>NEON TEXT (`<NeonText />`):</span>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>NEON TEXT (`<NeonText />`): Glowing pulsing cathode tube text with optional flicker.</span>
                             <Stack direction="row" align="center" gap="1.5rem" wrap>
                               <NeonText text="INFERNO" color="inferno" flicker />
                               <NeonText text="CYBERPUNK" color="cyan" />
@@ -515,7 +523,7 @@ export default function App() {
                           </Stack>
 
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>TYPING EFFECT (`<TypingText />`):</span>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>TYPING EFFECT (`<TypingText />`): Typewriter animation with blinking terminal cursor.</span>
                             <TypingText text="Establishing encrypted link to satellite node 094..." speed={40} cursorChar="█" />
                             <CodeBlock filename="TypingText.snippet.tsx" code={`<TypingText text="Establishing encrypted link..." speed={40} cursorChar="█" />`} />
                           </Stack>
@@ -527,11 +535,14 @@ export default function App() {
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
-                          <ZapIcon size={18} /> Pulsanti & Azioni (`<Button />`)
+                          <ZapIcon size={18} /> Buttons & Action Triggers (`<Button />`)
                         </Stack>
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.25rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Tactile interactive button supporting stepped pixel borders, loading state aria-busy, and high-contrast focus rings.
+                          </p>
                           <Stack direction="row" align="center" gap="0.5rem" wrap>
                             <Button variant="inferno" leftIcon={<FlameIcon size={16} />}>Inferno</Button>
                             <Button variant="outline" leftIcon={<ShieldIcon size={16} />}>Outline</Button>
@@ -554,13 +565,13 @@ export default function App() {
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
-                          <EyeIcon size={18} /> Gallerie Multimediali & Lightbox Modale
+                          <EyeIcon size={18} /> Media Gallery &amp; Modal Lightbox (Gallery Primitive)
                         </Stack>
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1rem">
                           <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
-                            Clicca su qualsiasi immagine per aprire il lightbox modale accessibile con navigazione via frecce direzionali.
+                            Click any image card to open the accessible Lightbox modal with keyboard arrow navigation (Left/Right arrow keys, Escape key dismissal).
                           </p>
                           <Gallery items={GALLERY_ITEMS} />
                           <CodeBlock filename="Gallery.snippet.tsx" code={`<Gallery items={[\n  { id: '1', src: '/img1.png', title: 'NODE_01', caption: 'Atmospheric crimson visual.' },\n  { id: '2', src: '/img2.png', title: 'NODE_02', caption: 'Cyberpunk grid streams.' }\n]} />`} />
@@ -573,7 +584,7 @@ export default function App() {
                       <Card>
                         <CardHeader>
                           <Stack direction="row" align="center" gap="0.5rem">
-                            <CodeIcon size={18} /> Controlli di Form & Select
+                            <CodeIcon size={18} /> Form Inputs & Custom Select
                           </Stack>
                         </CardHeader>
                         <CardBody>
@@ -653,7 +664,7 @@ export default function App() {
                       <Card>
                         <CardHeader>
                           <Stack direction="row" align="center" gap="0.5rem">
-                            <FilterIcon size={18} /> Checkbox, Radio & Switch
+                            <FilterIcon size={18} /> Checkbox, Radio & Switch Controls
                           </Stack>
                         </CardHeader>
                         <CardBody>
@@ -814,7 +825,7 @@ export default function App() {
                 id: 'icon-explorer',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
-                    <SparklesIcon size={16} /> Libreria Icone SVG ({ALL_ICONS.length})
+                    <SparklesIcon size={16} /> SVG Icon Library ({ALL_ICONS.length})
                   </Stack>
                 ),
                 content: (
@@ -828,7 +839,7 @@ export default function App() {
                         />
                       </div>
                       <p style={{ fontSize: '0.85rem', color: 'var(--mi-color-text-muted)', margin: 0 }}>
-                        Clicca su qualsiasi icona per copiare il tag JSX negli appunti.
+                        Click any SVG icon component to copy code snippet to clipboard.
                       </p>
                     </Stack>
 
@@ -867,15 +878,15 @@ export default function App() {
                 id: 'custom-css-guide',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
-                    <SettingsIcon size={16} /> Guida Temi & Variabili CSS
+                    <SettingsIcon size={16} /> CSS Variables & Themes Guide
                   </Stack>
                 ),
                 content: (
                   <Stack gap="1.5rem">
-                    <PixelContainer title="TOKEN DI DESIGN E VARIABILI CSS NATIVE">
+                    <PixelContainer title="DESIGN TOKENS AND NATIVE CSS VARIABLES">
                       <Stack gap="1rem">
                         <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
-                          Tutti i componenti di Moon-Inferno utilizzano variabili CSS native. Puoi sovrascrivere o personalizzare qualsiasi colore, ombra o raggio direttamente nel tuo foglio di stile:
+                          All Moon-Inferno components use native CSS variables. Override any color, shadow, or radius token directly in your stylesheet to create custom themes:
                         </p>
                         <CodeBlock filename="custom-theme.css" code={`:root {\n  --mi-color-bg: #0A090D;\n  --mi-color-bg-subtle: #14121A;\n  --mi-color-surface: #1E1B26;\n  --mi-color-border: #332D40;\n  --mi-color-border-accent: #FF4D00;\n  --mi-color-primary: #FF4D00;\n  --mi-color-primary-hover: #FF661A;\n  --mi-shadow-glow: 0 0 16px rgba(255, 77, 0, 0.45);\n}`} />
                       </Stack>
@@ -887,17 +898,18 @@ export default function App() {
                 id: 'terminal',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
-                    <TerminalIcon size={16} /> Terminale Interattivo OS
+                    <TerminalIcon size={16} /> Interactive Terminal OS
                   </Stack>
                 ),
                 content: (
                   <Terminal
                     initialLines={[
                       { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.1.0 (NPM PUBLISHED) INITIALIZED.' },
-                      { id: '2', type: 'output', text: 'Type "help", "install", "icons", "status", or "clear".' },
+                      { id: '2', type: 'output', text: 'Type "help", "author", "install", "icons", "status", or "clear".' },
                     ]}
                     onCommand={(cmd) => {
-                      if (cmd === 'help') return 'Available commands: help, install, status, icons, inferno, clear';
+                      if (cmd === 'help') return 'Available commands: help, author, install, status, icons, inferno, clear';
+                      if (cmd === 'author') return 'CREATOR: Biagio Scaglia (https://github.com/biagio-scaglia)';
                       if (cmd === 'install') return 'pnpm add @moon-inferno/react @moon-inferno/themes @moon-inferno/icons';
                       if (cmd === 'status') return 'SYSTEM STATUS: 100% ONLINE. ALL NPM PACKAGES LIVE.';
                       if (cmd === 'icons') return `Available SVG icons (${ALL_ICONS.length}): ${ALL_ICONS.map(i => i.name).join(', ')}`;
@@ -937,9 +949,14 @@ export default function App() {
           </DialogFooter>
         </Dialog>
 
-        {/* Footer info */}
-        <footer style={{ textAlign: 'center', color: 'var(--mi-color-text-dim)', fontSize: '0.8rem', marginTop: '1rem', padding: '1rem 0' }}>
-          Moon-Inferno Framework — Built with TypeScript, React & WCAG AA Accessibility. MIT Licensed.
+        {/* Footer info & Creator Credits */}
+        <footer style={{ textAlign: 'center', color: 'var(--mi-color-text-dim)', fontSize: '0.85rem', marginTop: '1rem', padding: '1.5rem 0', borderTop: '1px solid var(--mi-color-border)' }}>
+          <p style={{ margin: '0 0 0.5rem 0' }}>
+            Moon-Inferno Framework -- Created and Maintained by <strong><a href="https://github.com/biagio-scaglia" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--mi-color-primary)', textDecoration: 'none' }}>Biagio Scaglia</a></strong>.
+          </p>
+          <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--mi-color-text-muted)' }}>
+            Built with TypeScript, React & WCAG 2.1 AA Accessibility Standards. MIT Licensed.
+          </p>
         </footer>
       </Stack>
     </Container>
