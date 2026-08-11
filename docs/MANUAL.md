@@ -37,7 +37,8 @@ Welcome to the complete developer manual for **Moon-Inferno** (`v0.1.0`), the ac
      - [Badge](#badge)
      - [Progress](#progress)
      - [SignalLight](#signallight)
-   - [Overlay & Disclosure](#overlay--disclosure)
+   - [Navigation & Disclosure](#navigation--disclosure)
+     - [Breadcrumbs](#breadcrumbs)
      - [Dialog](#dialog)
      - [Accordion](#accordion)
      - [Tabs](#tabs)
@@ -354,7 +355,39 @@ import { SignalLight } from '@moon-inferno/react';
 
 ---
 
-### Overlay & Disclosure
+### Navigation & Disclosure
+
+#### `<Breadcrumbs>` & `<BreadcrumbItem>`
+WCAG 2.1 AA compliant breadcrumb navigation trail with array declarative format or child composition.
+
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `items` | `BreadcrumbItemData[]` | `undefined` | Array of breadcrumb item data objects. |
+| `separator` | `ReactNode` | `'/'` | Custom separator character or SVG icon. |
+| `variant` | `'default' \| 'pixel' \| 'ghost'` | `'default'` | Visual styling variant. |
+
+##### Example Usage:
+```tsx
+import { Breadcrumbs, BreadcrumbItem } from '@moon-inferno/react';
+import { FlameIcon } from '@moon-inferno/icons';
+
+// Array declarative format
+<Breadcrumbs
+  variant="pixel"
+  separator=">"
+  items={[
+    { label: 'HOME', icon: <FlameIcon size={14} />, href: '#' },
+    { label: 'ARCADE', href: '#' },
+    { label: 'LEVEL 01', isCurrent: true }
+  ]}
+/>
+
+// JSX Composition format
+<Breadcrumbs variant="ghost">
+  <BreadcrumbItem href="#">Console</BreadcrumbItem>
+  <BreadcrumbItem isCurrent>Active Node</BreadcrumbItem>
+</Breadcrumbs>
+```
 
 #### `<Dialog>`
 Accessible modal dialog with focus trap and `Esc` dismissal.

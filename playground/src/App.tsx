@@ -40,6 +40,8 @@ import {
   PixelText,
   TypingText,
   NeonText,
+  Breadcrumbs,
+  BreadcrumbItem,
 } from '@moon-inferno/react';
 import {
   FlameIcon,
@@ -197,7 +199,7 @@ function MasterGuideWebsite() {
               <h1 className="brand-title">Moon-Inferno</h1>
             </Stack>
             <Stack direction="row" align="center" gap="0.5rem">
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.1</Badge>
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.2</Badge>
             </Stack>
           </div>
 
@@ -371,7 +373,7 @@ function MasterGuideWebsite() {
 
         {/* Global Ticker Marquee */}
         <Marquee variant="pixel" speed={22}>
-          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.1.1 IS LIVE ON NPM</span>
+          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.1.2 IS LIVE ON NPM</span>
           <span>--</span>
           <span>pnpm add @moon-inferno/react @moon-inferno/themes @moon-inferno/icons</span>
           <span>--</span>
@@ -764,6 +766,54 @@ export default function App() {
                         </CardBody>
                       </Card>
                     </Grid>
+
+                    {/* Accessible Breadcrumbs Navigation */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <LayersIcon size={18} /> Breadcrumbs Navigation Primitives
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <Stack gap="0.5rem">
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>DEFAULT VARIANT (SLASH SEPARATOR):</span>
+                            <Breadcrumbs
+                              items={[
+                                { label: 'Root Node', href: '#' },
+                                { label: 'Subsystem', href: '#' },
+                                { label: 'Security Clusters', href: '#' },
+                                { label: 'Alpha Alpha 99', isCurrent: true },
+                              ]}
+                            />
+                          </Stack>
+
+                          <Stack gap="0.5rem">
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>PIXEL VARIANT WITH CUSTOM SEPARATOR (&gt;):</span>
+                            <Breadcrumbs
+                              variant="pixel"
+                              separator=">"
+                              items={[
+                                { label: 'HOME', icon: <FlameIcon size={14} />, href: '#' },
+                                { label: 'ARCADE', href: '#' },
+                                { label: 'HIGH SCORES', isCurrent: true },
+                              ]}
+                            />
+                          </Stack>
+
+                          <Stack gap="0.5rem">
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>GHOST VARIANT WITH ICONS:</span>
+                            <Breadcrumbs variant="ghost">
+                              <BreadcrumbItem href="#" icon={<TerminalIcon size={14} />}>Console</BreadcrumbItem>
+                              <BreadcrumbItem href="#" icon={<ShieldIcon size={14} />}>Protocols</BreadcrumbItem>
+                              <BreadcrumbItem isCurrent icon={<SparklesIcon size={14} />}>Active Transmission</BreadcrumbItem>
+                            </Breadcrumbs>
+                          </Stack>
+
+                          <CodeBlock filename="Breadcrumbs.snippet.tsx" code={`import { Breadcrumbs, BreadcrumbItem } from '@moon-inferno/react';\nimport { FlameIcon } from '@moon-inferno/icons';\n\n// Array declarative format\n<Breadcrumbs\n  variant="pixel"\n  separator=">"\n  items={[\n    { label: 'HOME', icon: <FlameIcon size={14} />, href: '#' },\n    { label: 'ARCADE', href: '#' },\n    { label: 'LEVEL 01', isCurrent: true }\n  ]}\n/>\n\n// JSX Composition format\n<Breadcrumbs variant="ghost">\n  <BreadcrumbItem href="#">Console</BreadcrumbItem>\n  <BreadcrumbItem isCurrent>Active Node</BreadcrumbItem>\n</Breadcrumbs>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
 
                     {/* Progress Bars & Avatars */}
                     <Card>

@@ -32,6 +32,7 @@ export * from './Marquee/Marquee';
 export * from './PixelText/PixelText';
 export * from './TypingText/TypingText';
 export * from './NeonText/NeonText';
+export * from './Breadcrumbs/Breadcrumbs';
 
 // Styles
 import './Button/Button.css';
@@ -67,3 +68,4 @@ import './Marquee/Marquee.css';
 import './PixelText/PixelText.css';
 import './TypingText/TypingText.css';
 import './NeonText/NeonText.css';
+import './Breadcrumbs/Breadcrumbs.css';
