@@ -1,6 +1,6 @@
 {
   "name": "@moon-inferno/themes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Signature color palettes and CSS variable theme definitions for Moon-Inferno (Inferno, Terminal, Y2K).",
   "license": "MIT",
   "author": "Biagio Scaglia",
@@ -18,6 +18,7 @@
     "y2k",
     "terminal",
     "design-tokens",
+    "webkit-compatible",
     "moon-inferno"
   ],
   "type": "module",
@@ -33,7 +34,7 @@
     "./y2k.css": "./src/y2k.css"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "build": "tsup src/index.ts --format esm,cjs --dts --target es2020",
     "typecheck": "tsc --noEmit"
   }
 }

@@ -197,7 +197,7 @@ function MasterGuideWebsite() {
               <h1 className="brand-title">Moon-Inferno</h1>
             </Stack>
             <Stack direction="row" align="center" gap="0.5rem">
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.0</Badge>
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.1</Badge>
               <SignalLight status="online" pulse label="ONLINE" />
             </Stack>
           </div>
@@ -372,7 +372,7 @@ function MasterGuideWebsite() {
 
         {/* Global Ticker Marquee */}
         <Marquee variant="pixel" speed={22}>
-          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.1.0 IS LIVE ON NPM</span>
+          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.1.1 IS LIVE ON NPM</span>
           <span>--</span>
           <span>pnpm add @moon-inferno/react @moon-inferno/themes @moon-inferno/icons</span>
           <span>--</span>

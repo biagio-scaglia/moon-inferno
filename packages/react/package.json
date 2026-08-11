@@ -1,6 +1,6 @@
 {
   "name": "@moon-inferno/react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Accessibility-first, expressive React UI component library for retro, Y2K, CRT, and cyberpunk web applications.",
   "license": "MIT",
   "author": "Biagio Scaglia",
@@ -21,6 +21,7 @@
     "retro",
     "cyberpunk",
     "pixel-art",
+    "webkit-compatible",
     "y2k",
     "moon-inferno"
   ],
@@ -35,7 +36,7 @@
     "./styles.css": "./dist/index.css"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --external react,react-dom",
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react,react-dom --target es2020",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {

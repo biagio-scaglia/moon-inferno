@@ -1,5 +1,17 @@
-/* Custom Retro Obsidian Scrollbar for Moon-Inferno */
+/* Universal WebKit Engine Reset & Cross-Browser Normalization */
+html, body {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(255, 77, 0, 0.2);
+}
 
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* Custom Retro Obsidian Scrollbar for Moon-Inferno (WebKit & Blink) */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

@@ -1,6 +1,6 @@
 {
   "name": "@moon-inferno/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Framework-independent design tokens, CSS variables, responsive primitives, and accessibility utilities for Moon-Inferno.",
   "license": "MIT",
   "author": "Biagio Scaglia",
@@ -19,6 +19,7 @@
     "wcag",
     "retro",
     "cyberpunk",
+    "webkit-compatible",
     "moon-inferno"
   ],
   "type": "module",
@@ -31,7 +32,7 @@
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "build": "tsup src/index.ts --format esm,cjs --dts --target es2020",
     "typecheck": "tsc --noEmit"
   }
 }

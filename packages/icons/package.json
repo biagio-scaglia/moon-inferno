@@ -1,6 +1,6 @@
 {
   "name": "@moon-inferno/icons",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Custom retro SVG iconography system for Moon-Inferno.",
   "license": "MIT",
   "author": "Biagio Scaglia",
@@ -17,6 +17,7 @@
     "icons",
     "react-icons",
     "retro-icons",
+    "webkit-compatible",
     "moon-inferno"
   ],
   "type": "module",
@@ -29,7 +30,7 @@
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --external react,react-dom",
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react,react-dom --target es2020",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
