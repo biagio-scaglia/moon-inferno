@@ -6,7 +6,7 @@ export interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
   alt?: string;
   name?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'circle' | 'pixel';
+  variant?: 'circle' | 'pixel' | 'square';
 }
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(

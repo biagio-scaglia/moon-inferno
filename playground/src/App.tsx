@@ -121,19 +121,19 @@ const ALL_ICONS = [
 const GALLERY_ITEMS = [
   {
     id: '1',
-    src: '/assets/placeholder-1.svg',
+    src: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80',
     title: 'INFERNO_MOON // CORE VISUAL',
     caption: 'Atmospheric crimson moon glowing over obsidian dystopian architecture.',
   },
   {
     id: '2',
-    src: '/assets/placeholder-2.svg',
+    src: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&auto=format&fit=crop&q=80',
     title: 'CYBERPUNK_GRID // MATRIX NODE',
     caption: 'Glowing neon data streams and high-contrast ASCII terminal matrix.',
   },
   {
     id: '3',
-    src: '/assets/placeholder-3.svg',
+    src: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&auto=format&fit=crop&q=80',
     title: 'RETRO_ARCADE // SYNTHWAVE VIBE',
     caption: '80s arcade synthwave aesthetics with CRT scanline reflections.',
   },
@@ -187,6 +187,7 @@ function MasterGuideWebsite() {
 
   return (
     <Container size="xl" style={{ position: 'relative' }}>
+      <a href="#main-tabs" className="skip-link">Skip to main content</a>
       {isMatrixActive && <MatrixRain />}
       <Stack gap="2.5rem" style={{ position: 'relative', zIndex: 1 }}>
         {isCRTActive && <CRTEffect />}
@@ -831,24 +832,50 @@ export default function App() {
                           </Grid>
                           <CodeBlock filename="Progress.snippet.tsx" code={`<Progress value={75} label="Core Charge" variant="inferno" />`} />
 
-                          <div>
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)', display: 'block', marginBottom: '0.5rem' }}>
-                              AVATARS & AVATAR GROUP:
-                            </span>
-                            <Stack direction="row" align="center" gap="1rem" wrap>
-                              <Avatar size="sm" name="Alpha One" />
-                              <Avatar size="md" name="Biagio Scaglia" />
-                              <Avatar size="lg" name="Cyber Punk" variant="pixel" />
-                              <Avatar size="xl" name="Solar Inferno" />
-
-                              <AvatarGroup>
-                                <Avatar size="md" name="Biagio Scaglia" />
-                                <Avatar size="md" name="Cyber Punk" />
-                                <Avatar size="md" name="Alpha One" />
-                              </AvatarGroup>
+                          <Stack gap="1.5rem">
+                            <Stack gap="0.5rem">
+                              <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>
+                                IMAGE AVATARS (SIZES & VARIANTS):
+                              </span>
+                              <Stack direction="row" align="center" gap="1rem" wrap>
+                                <Avatar size="sm" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" name="Cyber Female" />
+                                <Avatar size="md" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" name="Biagio Scaglia" variant="circle" />
+                                <Avatar size="lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80" name="Pixel Hacker" variant="pixel" />
+                                <Avatar size="xl" src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" name="Solar Nomad" variant="square" />
+                              </Stack>
                             </Stack>
-                            <CodeBlock filename="Avatar.snippet.tsx" code={`<AvatarGroup>\n  <Avatar name="Biagio Scaglia" />\n  <Avatar name="Cyber Punk" variant="pixel" />\n</AvatarGroup>`} />
-                          </div>
+
+                            <Stack gap="0.5rem">
+                              <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>
+                                INITIALS AVATARS (FALLBACK WHEN NO IMAGE):
+                              </span>
+                              <Stack direction="row" align="center" gap="1rem" wrap>
+                                <Avatar size="sm" name="Alpha One" />
+                                <Avatar size="md" name="Biagio Scaglia" variant="circle" />
+                                <Avatar size="lg" name="Cyber Punk" variant="pixel" />
+                                <Avatar size="xl" name="Solar Inferno" variant="square" />
+                              </Stack>
+                            </Stack>
+
+                            <Stack gap="0.5rem">
+                              <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>
+                                STACKED AVATAR GROUP:
+                              </span>
+                              <Stack direction="row" align="center" gap="1rem" wrap>
+                                <AvatarGroup max={4}>
+                                  <Avatar size="md" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" name="Biagio Scaglia" />
+                                  <Avatar size="md" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" name="Cyber Hacker" />
+                                  <Avatar size="md" name="Alpha One" />
+                                  <Avatar size="md" name="Solar Inferno" variant="pixel" />
+                                </AvatarGroup>
+                              </Stack>
+                            </Stack>
+
+                            <CodeBlock
+                              filename="Avatar.snippet.tsx"
+                              code={`import { Avatar, AvatarGroup } from '@moon-inferno/react';\n\n// Image Avatar with variants (circle | pixel | square) and sizes (sm | md | lg | xl)\n<Avatar \n  size="lg" \n  src="https://images.unsplash.com/photo-..." \n  name="Biagio Scaglia" \n  variant="pixel" \n/>\n\n// Initials fallback Avatar\n<Avatar size="md" name="Biagio Scaglia" variant="circle" />\n\n// Stacked Avatar Group\n<AvatarGroup max={4}>\n  <Avatar src="https://..." name="User 1" />\n  <Avatar src="https://..." name="User 2" />\n  <Avatar name="Biagio Scaglia" />\n</AvatarGroup>`}
+                            />
+                          </Stack>
                         </Stack>
                       </CardBody>
                     </Card>
@@ -918,11 +945,30 @@ export default function App() {
                         </Stack>
                       </CardHeader>
                       <CardBody>
-                        <Stack gap="1.25rem">
+                        <Stack gap="1.5rem">
                           <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
-                            Toggle retro scanline overlays or matrix digital rain directly in your application:
+                            Cyberpunk ASCII digital matrix rain canvas overlay and retro cathode-ray tube (CRT) scanline flicker effects:
                           </p>
-                          <CodeBlock filename="Shaders.snippet.tsx" code={`import { CRTEffect, MatrixRain } from '@moon-inferno/react';\n\n// Full screen retro CRT scanlines\n<CRTEffect />\n\n// Cyberpunk ASCII matrix rain canvas overlay\n<MatrixRain color="#FF4D00" />`} />
+
+                          <Stack gap="0.5rem">
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>
+                              MATRIX RAIN COMPONENT SNIPPET:
+                            </span>
+                            <CodeBlock
+                              filename="MatrixRain.snippet.tsx"
+                              code={`import { MatrixRain } from '@moon-inferno/react';\n\n// Basic fullscreen Matrix rain canvas\n<MatrixRain />\n\n// Custom Matrix rain with primary color, font size and speed\n<MatrixRain \n  color="#FF4D00" \n  fontSize={18} \n  speed={33} \n/>`}
+                            />
+                          </Stack>
+
+                          <Stack gap="0.5rem">
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>
+                              CRT SCANLINE SHADER COMPONENT SNIPPET:
+                            </span>
+                            <CodeBlock
+                              filename="CRTEffect.snippet.tsx"
+                              code={`import { CRTEffect } from '@moon-inferno/react';\n\n// Fullscreen retro scanline overlay with flicker animation\n<CRTEffect />`}
+                            />
+                          </Stack>
                         </Stack>
                       </CardBody>
                     </Card>

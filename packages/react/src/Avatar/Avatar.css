@@ -21,6 +21,10 @@
 .mi-avatar--lg { width: 52px; height: 52px; font-size: 1.125rem; }
 .mi-avatar--xl { width: 68px; height: 68px; font-size: 1.5rem; }
 
+.mi-avatar--square {
+  border-radius: var(--mi-radius-sm, 4px);
+}
+
 .mi-avatar--pixel {
   border-radius: 0;
   box-shadow: 
