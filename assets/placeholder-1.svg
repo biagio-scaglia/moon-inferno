@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#14121A"/>
+  <rect x="2" y="2" width="796" height="446" fill="none" stroke="#FF4D00" stroke-width="4"/>
+  <circle cx="400" cy="225" r="80" fill="none" stroke="#FF4D00" stroke-width="3" stroke-dasharray="10 5"/>
+  <text x="400" y="220" fill="#F1F5F9" font-family="monospace" font-size="24" font-weight="bold" text-anchor="middle">MEDIA_FRAME // 01</text>
+  <text x="400" y="255" fill="#FF4D00" font-family="monospace" font-size="14" text-anchor="middle">SOLAR_INFERNO_NODE</text>
+</svg>
