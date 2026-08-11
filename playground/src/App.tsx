@@ -137,7 +137,7 @@ const GALLERY_ITEMS = [
   },
 ];
 
-function OfficialWebsiteContent() {
+function MasterGuideWebsite() {
   const [currentTheme, setCurrentTheme] = useState<ThemeName>('moon-inferno');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isCRTActive, setIsCRTActive] = useState(false);
@@ -148,7 +148,7 @@ function OfficialWebsiteContent() {
   const [passwordValue, setPasswordValue] = useState('Inferno2026!');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Interactive Component States
+  // Component Demo States
   const [checkboxValue, setCheckboxValue] = useState(true);
   const [radioValue, setRadioValue] = useState('inferno');
   const [switchValue, setSwitchValue] = useState(true);
@@ -189,7 +189,7 @@ function OfficialWebsiteContent() {
       <Stack gap="2.5rem" style={{ position: 'relative', zIndex: 1 }}>
         {isCRTActive && <CRTEffect />}
 
-        {/* Global Navigation Bar */}
+        {/* Navigation Bar */}
         <header
           style={{
             borderBottom: '2px solid var(--mi-color-border-accent, #FF4D00)',
@@ -205,10 +205,10 @@ function OfficialWebsiteContent() {
             <img src="/assets/logo.png" alt="Moon-Inferno Logo" style={{ height: '42px', width: 'auto', borderRadius: '4px' }} />
             <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.25rem)' }} />
             <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.0 (NPM)</Badge>
-            <SignalLight status="online" pulse label="REGISTRY LIVE" />
+            <SignalLight status="online" pulse label="CORE ONLINE" />
           </Stack>
 
-          {/* Global Controls */}
+          {/* Controls */}
           <Stack direction="row" align="center" gap="0.75rem" wrap>
             <Tooltip content="Toggle cyberpunk ASCII matrix rain background animation">
               <Button
@@ -268,7 +268,7 @@ function OfficialWebsiteContent() {
           </Stack>
         </header>
 
-        {/* Hero Section Banner */}
+        {/* Hero Banner */}
         <section
           style={{
             padding: '2.5rem 1.5rem',
@@ -283,14 +283,14 @@ function OfficialWebsiteContent() {
             gap: '1.25rem',
           }}
         >
-          <Badge variant="inferno" icon={<FlameIcon size={14} />}>OFFICIAL DOCUMENTATION & COMPONENT CATALOG</Badge>
+          <Badge variant="inferno" icon={<FlameIcon size={14} />}>DOCUMENTATION & MASTER COMPONENT GUIDE</Badge>
           
           <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontFamily: 'var(--mi-font-mono)', margin: 0 }}>
             Reclaim Expressive Web Design
           </h2>
 
           <p style={{ maxWidth: '780px', color: 'var(--mi-color-text-muted)', fontSize: '1.05rem', lineHeight: '1.6', margin: 0 }}>
-            Moon-Inferno is an accessibility-first React UI framework designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications. WCAG AA compliant out of the box with zero SaaS sterility.
+            Moon-Inferno is an accessibility-first React UI framework designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications. Fully WCAG AA compliant out of the box with zero SaaS sterility.
           </p>
 
           <Stack direction="row" align="center" justify="center" gap="1rem" wrap style={{ marginTop: '0.5rem' }}>
@@ -303,7 +303,7 @@ function OfficialWebsiteContent() {
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Get Started
+              Explore Manual
             </Button>
             <Button
               size="lg"
@@ -316,53 +316,116 @@ function OfficialWebsiteContent() {
           </Stack>
         </section>
 
-        {/* Global Ticker Marquee */}
+        {/* Marquee Ticker */}
         <Marquee variant="pixel" speed={22}>
-          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>⚡ MOON-INFERNO v0.1.0 IS LIVE ON NPM</span>
-          <span>•</span>
+          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.1.0 IS LIVE ON NPM</span>
+          <span>--</span>
           <span>pnpm add @moon-inferno/react @moon-inferno/themes @moon-inferno/icons</span>
-          <span>•</span>
+          <span>--</span>
           <span style={{ color: 'var(--mi-color-primary)' }}>100% WCAG 2.1 AA ACCESSIBLE</span>
-          <span>•</span>
+          <span>--</span>
           <span>FULL KEYBOARD NAVIGATION & SCREEN READER AUDITED</span>
-          <span>•</span>
+          <span>--</span>
         </Marquee>
 
-        {/* Documentation & Component Portal */}
+        {/* Master Portal Tabs */}
         <main id="main-tabs">
           <Tabs
             items={[
               {
-                id: 'getting-started',
+                id: 'architecture-guide',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
-                    <CodeIcon size={16} /> Quickstart & Setup
+                    <InfoIcon size={16} /> Guida Architettura & Visione
                   </Stack>
                 ),
                 content: (
                   <Stack gap="2rem">
-                    <PixelContainer title="1. INSTALLATION // PACKAGE MANAGER">
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <ShieldIcon size={18} /> Perché Moon-Inferno?
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1rem">
+                          <p>
+                            La maggior parte delle librerie di componenti moderne ha portato il web a convergere su un'estetica piatta, uniforme e priva di identita visiva. Moon-Inferno e stato creato per restituire al web la propria espressivita senza sacrificare l'accessibilita e la responsivita.
+                          </p>
+                          <p>
+                            Ogni componente combina token estetici avanzati (bordi pixel, riflessi CRT, testi al neon e sfarfallii) con fondamenta HTML semantiche e conformi alle specifiche WCAG 2.1 AA.
+                          </p>
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    <Grid minChildWidth="300px" gap="1.5rem">
+                      <Card>
+                        <CardHeader>
+                          <Stack direction="row" align="center" gap="0.5rem">
+                            <CheckIcon size={18} /> Requisiti di Accessibilità (WCAG AA)
+                          </Stack>
+                        </CardHeader>
+                        <CardBody>
+                          <Stack gap="0.75rem">
+                            <p><strong>- Focus Rings ad Alto Contrasto:</strong> Visibili solo via tastiera con :focus-visible.</p>
+                            <p><strong>- Gestione ARIA:</strong> Ruoli dialog, combobox, tablist, status, tooltip nativi.</p>
+                            <p><strong>- Navigazione da Tastiera:</strong> Tasti Tab, Esc, Invio, Spazio e Frecce Direzionali.</p>
+                            <p><strong>- Riduzione Movimento:</strong> Disattivazione automatica animazioni se prefers-reduced-motion e attivo.</p>
+                          </Stack>
+                        </CardBody>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <Stack direction="row" align="center" gap="0.5rem">
+                            <LayersIcon size={18} /> Struttura Monorepo Pacchetti
+                          </Stack>
+                        </CardHeader>
+                        <CardBody>
+                          <Stack gap="0.75rem">
+                            <p><strong>@moon-inferno/core:</strong> Token di design, variabili CSS e utility a11y.</p>
+                            <p><strong>@moon-inferno/react:</strong> Componenti React pronti all'uso e stili universali.</p>
+                            <p><strong>@moon-inferno/themes:</strong> Temi ufficiali (Inferno, Terminal, Y2K).</p>
+                            <p><strong>@moon-inferno/icons:</strong> Sistema di icone vettoriali SVG.</p>
+                          </Stack>
+                        </CardBody>
+                      </Card>
+                    </Grid>
+                  </Stack>
+                ),
+              },
+              {
+                id: 'getting-started',
+                label: (
+                  <Stack direction="row" align="center" gap="0.5rem">
+                    <CodeIcon size={16} /> Guida Installazione & Setup
+                  </Stack>
+                ),
+                content: (
+                  <Stack gap="2rem">
+                    <PixelContainer title="1. INSTALLAZIONE DIPENDENZE NPM">
                       <Stack gap="1rem">
                         <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
-                          Install the published NPM packages using your preferred package manager:
+                          Installa i pacchetti ufficiali pubblicati su NPM nel tuo progetto React:
                         </p>
                         <CodeBlock filename="terminal" code="pnpm add @moon-inferno/core @moon-inferno/react @moon-inferno/themes @moon-inferno/icons" />
                       </Stack>
                     </PixelContainer>
 
-                    <PixelContainer title="2. STYLES & THEME INITIALIZATION">
+                    <PixelContainer title="2. IMPORTAZIONE STILI E INIZIALIZZAZIONE TEMA">
                       <Stack gap="1rem">
                         <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
-                          Import global component CSS and initialize your signature theme in your application entry point (`main.tsx` / `App.tsx`):
+                          Nel file principale della tua applicazione (es. main.tsx o App.tsx), importa il foglio di stile universale ed imposta il tema desiderato:
                         </p>
-                        <CodeBlock filename="main.tsx" code={`import '@moon-inferno/react/styles.css';\nimport { setTheme } from '@moon-inferno/themes';\n\n// Set signature theme ('moon-inferno' | 'terminal' | 'y2k')\nsetTheme('moon-inferno');`} />
+                        <CodeBlock filename="main.tsx" code={`import '@moon-inferno/react/styles.css';\nimport { setTheme } from '@moon-inferno/themes';\n\n// Imposta il tema primario ('moon-inferno' | 'terminal' | 'y2k')\nsetTheme('moon-inferno');`} />
                       </Stack>
                     </PixelContainer>
 
-                    <PixelContainer title="3. REACT APPLICATION CODE TEMPLATE">
+                    <PixelContainer title="3. TEMPLATE REACT COMPLETO PRONTO DA INCOLLARE">
                       <Stack gap="1rem">
                         <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
-                          Copy and paste this starter template to render primitives with full accessibility and toast notifications:
+                          Copia e incolla questo template di partenza per utilizzare subito i componenti con supporto alle notifiche Toast:
                         </p>
                         <CodeBlock filename="App.tsx" code={`import { 
   Button, 
@@ -415,7 +478,7 @@ export default function App() {
                 id: 'components-catalog',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
-                    <LayersIcon size={16} /> Component Catalog & Snippets
+                    <LayersIcon size={16} /> Catalogo Componenti & Snippet
                   </Stack>
                 ),
                 content: (
@@ -424,13 +487,13 @@ export default function App() {
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
-                          <SparklesIcon size={18} /> Custom Text Primitives & Tickers
+                          <SparklesIcon size={18} /> Componenti di Testo Custom & Ticker
                         </Stack>
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>PIXEL TEXT PRIMITIVE (`<PixelText />`):</span>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>PIXEL TEXT (`<PixelText />`):</span>
                             <Stack direction="row" align="center" gap="1rem" wrap>
                               <PixelText text="LEVEL 01" size="sm" />
                               <PixelText text="GAME OVER" size="md" />
@@ -441,7 +504,7 @@ export default function App() {
                           </Stack>
 
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>NEON GLOW TEXT (`<NeonText />`):</span>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>NEON TEXT (`<NeonText />`):</span>
                             <Stack direction="row" align="center" gap="1.5rem" wrap>
                               <NeonText text="INFERNO" color="inferno" flicker />
                               <NeonText text="CYBERPUNK" color="cyan" />
@@ -464,7 +527,7 @@ export default function App() {
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
-                          <ZapIcon size={18} /> Button Variants & States
+                          <ZapIcon size={18} /> Pulsanti & Azioni (`<Button />`)
                         </Stack>
                       </CardHeader>
                       <CardBody>
@@ -491,13 +554,13 @@ export default function App() {
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
-                          <EyeIcon size={18} /> Media Gallery & Accessible Modal Lightbox
+                          <EyeIcon size={18} /> Gallerie Multimediali & Lightbox Modale
                         </Stack>
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1rem">
                           <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
-                            Click any image card to open the accessible Lightbox modal with keyboard arrow navigation.
+                            Clicca su qualsiasi immagine per aprire il lightbox modale accessibile con navigazione via frecce direzionali.
                           </p>
                           <Gallery items={GALLERY_ITEMS} />
                           <CodeBlock filename="Gallery.snippet.tsx" code={`<Gallery items={[\n  { id: '1', src: '/img1.png', title: 'NODE_01', caption: 'Atmospheric crimson visual.' },\n  { id: '2', src: '/img2.png', title: 'NODE_02', caption: 'Cyberpunk grid streams.' }\n]} />`} />
@@ -510,7 +573,7 @@ export default function App() {
                       <Card>
                         <CardHeader>
                           <Stack direction="row" align="center" gap="0.5rem">
-                            <CodeIcon size={18} /> Form Controls & Select
+                            <CodeIcon size={18} /> Controlli di Form & Select
                           </Stack>
                         </CardHeader>
                         <CardBody>
@@ -643,7 +706,7 @@ export default function App() {
 
                           <div>
                             <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)', display: 'block', marginBottom: '0.5rem' }}>
-                              AVATAR PRIMITIVES & AVATAR GROUP:
+                              AVATARS & AVATAR GROUP:
                             </span>
                             <Stack direction="row" align="center" gap="1rem" wrap>
                               <Avatar size="sm" name="Alpha One" />
@@ -751,7 +814,7 @@ export default function App() {
                 id: 'icon-explorer',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
-                    <SparklesIcon size={16} /> SVG Icon Explorer ({ALL_ICONS.length})
+                    <SparklesIcon size={16} /> Libreria Icone SVG ({ALL_ICONS.length})
                   </Stack>
                 ),
                 content: (
@@ -765,7 +828,7 @@ export default function App() {
                         />
                       </div>
                       <p style={{ fontSize: '0.85rem', color: 'var(--mi-color-text-muted)', margin: 0 }}>
-                        Click any SVG icon component to copy code snippet to clipboard.
+                        Clicca su qualsiasi icona per copiare il tag JSX negli appunti.
                       </p>
                     </Stack>
 
@@ -801,10 +864,30 @@ export default function App() {
                 ),
               },
               {
+                id: 'custom-css-guide',
+                label: (
+                  <Stack direction="row" align="center" gap="0.5rem">
+                    <SettingsIcon size={16} /> Guida Temi & Variabili CSS
+                  </Stack>
+                ),
+                content: (
+                  <Stack gap="1.5rem">
+                    <PixelContainer title="TOKEN DI DESIGN E VARIABILI CSS NATIVE">
+                      <Stack gap="1rem">
+                        <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
+                          Tutti i componenti di Moon-Inferno utilizzano variabili CSS native. Puoi sovrascrivere o personalizzare qualsiasi colore, ombra o raggio direttamente nel tuo foglio di stile:
+                        </p>
+                        <CodeBlock filename="custom-theme.css" code={`:root {\n  --mi-color-bg: #0A090D;\n  --mi-color-bg-subtle: #14121A;\n  --mi-color-surface: #1E1B26;\n  --mi-color-border: #332D40;\n  --mi-color-border-accent: #FF4D00;\n  --mi-color-primary: #FF4D00;\n  --mi-color-primary-hover: #FF661A;\n  --mi-shadow-glow: 0 0 16px rgba(255, 77, 0, 0.45);\n}`} />
+                      </Stack>
+                    </PixelContainer>
+                  </Stack>
+                ),
+              },
+              {
                 id: 'terminal',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
-                    <TerminalIcon size={16} /> Interactive Terminal
+                    <TerminalIcon size={16} /> Terminale Interattivo OS
                   </Stack>
                 ),
                 content: (
@@ -866,7 +949,7 @@ export default function App() {
 export default function App() {
   return (
     <ToastProvider>
-      <OfficialWebsiteContent />
+      <MasterGuideWebsite />
     </ToastProvider>
   );
 }
