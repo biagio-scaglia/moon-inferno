@@ -198,7 +198,6 @@ function MasterGuideWebsite() {
             </Stack>
             <Stack direction="row" align="center" gap="0.5rem">
               <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.1</Badge>
-              <SignalLight status="online" pulse label="ONLINE" />
             </Stack>
           </div>
 
