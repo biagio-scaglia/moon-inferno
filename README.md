@@ -35,6 +35,42 @@ Moon-Inferno exists to reclaim expressive web design without reverting to inacce
 
 ---
 
+## Quickstart & Complete Manual
+
+📖 **Read the Full Developer Manual & API Reference**: [docs/MANUAL.md](docs/MANUAL.md)
+
+### Installation
+
+```bash
+pnpm add @moon-inferno/core @moon-inferno/react @moon-inferno/themes @moon-inferno/icons
+```
+
+### Usage
+
+```tsx
+import '@moon-inferno/react/styles.css';
+import { setTheme } from '@moon-inferno/themes';
+import { Button, GlitchText, SignalLight, ToastProvider } from '@moon-inferno/react';
+import { FlameIcon } from '@moon-inferno/icons';
+
+// Set signature theme
+setTheme('moon-inferno');
+
+export default function App() {
+  return (
+    <ToastProvider>
+      <SignalLight status="online" label="CORE_ONLINE" />
+      <GlitchText text="WELCOME TO MOON-INFERNO" />
+      <Button variant="inferno" leftIcon={<FlameIcon size={16} />}>
+        Initiate Sequence
+      </Button>
+    </ToastProvider>
+  );
+}
+```
+
+---
+
 ## Planned Ecosystem
 
 Moon-Inferno is organized as a monorepo containing specialized packages:

@@ -1,7 +1,26 @@
 {
   "name": "@moon-inferno/core",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
+  "description": "Framework-independent design tokens, CSS variables, responsive primitives, and accessibility utilities for Moon-Inferno.",
+  "license": "MIT",
+  "author": "Biagio Scaglia",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/biagio-scaglia/moon-inferno.git",
+    "directory": "packages/core"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "css",
+    "design-tokens",
+    "accessibility",
+    "wcag",
+    "retro",
+    "cyberpunk",
+    "moon-inferno"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

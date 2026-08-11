@@ -1,7 +1,29 @@
 {
   "name": "@moon-inferno/react",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
+  "description": "Accessibility-first, expressive React UI component library for retro, Y2K, CRT, and cyberpunk web applications.",
+  "license": "MIT",
+  "author": "Biagio Scaglia",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/biagio-scaglia/moon-inferno.git",
+    "directory": "packages/react"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "ui-library",
+    "components",
+    "accessibility",
+    "wcag",
+    "retro",
+    "cyberpunk",
+    "pixel-art",
+    "y2k",
+    "moon-inferno"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
