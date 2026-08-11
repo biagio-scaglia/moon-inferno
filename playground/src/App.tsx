@@ -189,18 +189,8 @@ function MasterGuideWebsite() {
       <Stack gap="2.5rem" style={{ position: 'relative', zIndex: 1 }}>
         {isCRTActive && <CRTEffect />}
 
-        {/* Global Navigation Bar */}
-        <header
-          style={{
-            borderBottom: '2px solid var(--mi-color-border-accent, #FF4D00)',
-            paddingBottom: '1.25rem',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem',
-          }}
-        >
+        {/* Glassmorphic Navigation Bar */}
+        <header className="header-nav" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <Stack direction="row" align="center" gap="0.75rem" wrap>
             <img src="/assets/logo.png" alt="Moon-Inferno Logo" style={{ height: '42px', width: 'auto', borderRadius: '4px' }} />
             <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.25rem)' }} />
@@ -208,7 +198,7 @@ function MasterGuideWebsite() {
             <SignalLight status="online" pulse label="CORE ONLINE" />
           </Stack>
 
-          {/* Global Theme & Shader Controls */}
+          {/* Theme & Shader Controls */}
           <Stack direction="row" align="center" gap="0.75rem" wrap>
             <Tooltip content="Toggle cyberpunk ASCII matrix rain background animation">
               <Button
@@ -269,60 +259,108 @@ function MasterGuideWebsite() {
         </header>
 
         {/* Hero Section Banner */}
-        <section
-          style={{
-            padding: '2.5rem 1.5rem',
-            backgroundColor: 'var(--mi-color-bg-subtle, #14121A)',
-            border: '2px solid var(--mi-color-border-accent, #FF4D00)',
-            borderRadius: 'var(--mi-radius-md, 6px)',
-            boxShadow: 'var(--mi-shadow-glow), 0 20px 25px -5px rgba(0, 0, 0, 0.5)',
-            textAlign: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '1.25rem',
-          }}
-        >
-          <Badge variant="inferno" icon={<FlameIcon size={14} />}>OFFICIAL DOCUMENTATION & COMPONENT MASTER GUIDE</Badge>
-          
-          <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontFamily: 'var(--mi-font-mono)', margin: 0 }}>
-            Reclaim Expressive Web Design
-          </h2>
+        <section className="hero-card">
+          <Stack gap="1.25rem" align="center">
+            <Badge variant="inferno" icon={<FlameIcon size={14} />}>OFFICIAL DOCUMENTATION & COMPONENT MASTER GUIDE</Badge>
+            
+            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontFamily: 'var(--mi-font-mono)', margin: 0, letterSpacing: '-0.02em' }}>
+              Reclaim Expressive Web Design
+            </h2>
 
-          <p style={{ maxWidth: '780px', color: 'var(--mi-color-text-muted)', fontSize: '1.05rem', lineHeight: '1.6', margin: 0 }}>
-            Moon-Inferno is an accessibility-first React UI framework created by <strong>Biagio Scaglia</strong> for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications. Fully WCAG 2.1 AA compliant out of the box with zero SaaS sterility.
-          </p>
+            <p style={{ maxWidth: '780px', color: 'var(--mi-color-text-muted)', fontSize: '1.1rem', lineHeight: '1.6', margin: 0 }}>
+              Moon-Inferno is an accessibility-first React UI framework created by <strong>Biagio Scaglia</strong> for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications. Fully WCAG 2.1 AA compliant out of the box with zero SaaS sterility.
+            </p>
 
-          <Stack direction="row" align="center" justify="center" gap="1rem" wrap style={{ marginTop: '0.5rem' }}>
-            <Button
-              size="lg"
-              variant="inferno"
-              leftIcon={<FlameIcon size={18} />}
-              onClick={() => {
-                const el = document.getElementById('main-tabs');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Explore Component Catalog
-            </Button>
-            <Button
-              size="lg"
-              variant="pixel"
-              leftIcon={<ExternalLinkIcon size={18} />}
-              onClick={() => window.open('https://github.com/biagio-scaglia/moon-inferno', '_blank')}
-            >
-              GitHub Repository
-            </Button>
-            <Button
-              size="lg"
-              variant="ghost"
-              leftIcon={<UserIcon size={18} />}
-              onClick={() => window.open('https://github.com/biagio-scaglia', '_blank')}
-            >
-              Biagio Scaglia Profile
-            </Button>
+            <Stack direction="row" align="center" justify="center" gap="1rem" wrap style={{ marginTop: '0.5rem' }}>
+              <Button
+                size="lg"
+                variant="inferno"
+                leftIcon={<FlameIcon size={18} />}
+                onClick={() => {
+                  const el = document.getElementById('main-tabs');
+                  el?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Explore Component Catalog
+              </Button>
+              <Button
+                size="lg"
+                variant="pixel"
+                leftIcon={<ExternalLinkIcon size={18} />}
+                onClick={() => window.open('https://github.com/biagio-scaglia/moon-inferno', '_blank')}
+              >
+                GitHub Repository
+              </Button>
+              <Button
+                size="lg"
+                variant="ghost"
+                leftIcon={<UserIcon size={18} />}
+                onClick={() => window.open('https://github.com/biagio-scaglia', '_blank')}
+              >
+                Biagio Scaglia Profile
+              </Button>
+            </Stack>
           </Stack>
         </section>
+
+        {/* Feature Highlights Grid */}
+        <Grid minChildWidth="240px" gap="1.25rem">
+          <Card className="feature-card">
+            <CardBody>
+              <Stack gap="0.5rem">
+                <Stack direction="row" align="center" gap="0.5rem">
+                  <ShieldIcon size={20} color="var(--mi-color-primary)" />
+                  <strong style={{ fontSize: '0.95rem' }}>WCAG 2.1 AA Compliant</strong>
+                </Stack>
+                <p style={{ fontSize: '0.85rem', color: 'var(--mi-color-text-muted)', margin: 0 }}>
+                  High-contrast focus rings, full keyboard traversal, and screen-reader audit readiness.
+                </p>
+              </Stack>
+            </CardBody>
+          </Card>
+
+          <Card className="feature-card">
+            <CardBody>
+              <Stack gap="0.5rem">
+                <Stack direction="row" align="center" gap="0.5rem">
+                  <SparklesIcon size={20} color="var(--mi-color-primary)" />
+                  <strong style={{ fontSize: '0.95rem' }}>Custom Text FX</strong>
+                </Stack>
+                <p style={{ fontSize: '0.85rem', color: 'var(--mi-color-text-muted)', margin: 0 }}>
+                  GlitchText, PixelText, TypingText, NeonText, and Marquee continuous tickers.
+                </p>
+              </Stack>
+            </CardBody>
+          </Card>
+
+          <Card className="feature-card">
+            <CardBody>
+              <Stack gap="0.5rem">
+                <Stack direction="row" align="center" gap="0.5rem">
+                  <LayersIcon size={20} color="var(--mi-color-primary)" />
+                  <strong style={{ fontSize: '0.95rem' }}>34+ Vector SVG Icons</strong>
+                </Stack>
+                <p style={{ fontSize: '0.85rem', color: 'var(--mi-color-text-muted)', margin: 0 }}>
+                  Integrated `@moon-inferno/icons` package with 1-click copyable JSX tags.
+                </p>
+              </Stack>
+            </CardBody>
+          </Card>
+
+          <Card className="feature-card">
+            <CardBody>
+              <Stack gap="0.5rem">
+                <Stack direction="row" align="center" gap="0.5rem">
+                  <SunIcon size={20} color="var(--mi-color-primary)" />
+                  <strong style={{ fontSize: '0.95rem' }}>Themeable Tokens</strong>
+                </Stack>
+                <p style={{ fontSize: '0.85rem', color: 'var(--mi-color-text-muted)', margin: 0 }}>
+                  Switch dynamically between Inferno, Terminal Phosphor Green, and Y2K Silver Cyber.
+                </p>
+              </Stack>
+            </CardBody>
+          </Card>
+        </Grid>
 
         {/* Global Ticker Marquee */}
         <Marquee variant="pixel" speed={22}>
@@ -501,7 +539,7 @@ export default function App() {
                       <CardBody>
                         <Stack gap="1.5rem">
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>PIXEL TEXT (`<PixelText />`): Stepped pixelated retro typography with hard pixel shadow.</span>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>PIXEL TEXT: Stepped pixelated retro typography with hard pixel shadow.</span>
                             <Stack direction="row" align="center" gap="1rem" wrap>
                               <PixelText text="LEVEL 01" size="sm" />
                               <PixelText text="GAME OVER" size="md" />
@@ -512,7 +550,7 @@ export default function App() {
                           </Stack>
 
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>NEON TEXT (`<NeonText />`): Glowing pulsing cathode tube text with optional flicker.</span>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>NEON TEXT: Glowing pulsing cathode tube text with optional flicker.</span>
                             <Stack direction="row" align="center" gap="1.5rem" wrap>
                               <NeonText text="INFERNO" color="inferno" flicker />
                               <NeonText text="CYBERPUNK" color="cyan" />
@@ -523,7 +561,7 @@ export default function App() {
                           </Stack>
 
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>TYPING EFFECT (`<TypingText />`): Typewriter animation with blinking terminal cursor.</span>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>TYPING EFFECT: Typewriter animation with blinking terminal cursor.</span>
                             <TypingText text="Establishing encrypted link to satellite node 094..." speed={40} cursorChar="█" />
                             <CodeBlock filename="TypingText.snippet.tsx" code={`<TypingText text="Establishing encrypted link..." speed={40} cursorChar="█" />`} />
                           </Stack>
@@ -535,7 +573,7 @@ export default function App() {
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
-                          <ZapIcon size={18} /> Buttons & Action Triggers (`<Button />`)
+                          <ZapIcon size={18} /> Buttons & Action Triggers
                         </Stack>
                       </CardHeader>
                       <CardBody>
@@ -565,7 +603,7 @@ export default function App() {
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
-                          <EyeIcon size={18} /> Media Gallery &amp; Modal Lightbox (Gallery Primitive)
+                          <EyeIcon size={18} /> Media Gallery & Modal Lightbox (Gallery Primitive)
                         </Stack>
                       </CardHeader>
                       <CardBody>
