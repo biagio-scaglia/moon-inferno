@@ -28,6 +28,10 @@ export * from './Avatar/Avatar';
 export * from './Progress/Progress';
 export * from './Slider/Slider';
 export * from './Gallery/Gallery';
+export * from './Marquee/Marquee';
+export * from './PixelText/PixelText';
+export * from './TypingText/TypingText';
+export * from './NeonText/NeonText';
 
 // Styles
 import './Button/Button.css';
@@ -59,3 +63,7 @@ import './Progress/Progress.css';
 import './Slider/Slider.css';
 import './Gallery/Gallery.css';
 import './styles/scrollbar.css';
+import './Marquee/Marquee.css';
+import './PixelText/PixelText.css';
+import './TypingText/TypingText.css';
+import './NeonText/NeonText.css';

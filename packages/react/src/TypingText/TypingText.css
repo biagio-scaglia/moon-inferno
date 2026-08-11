@@ -1,0 +1,25 @@
+/* Moon-Inferno TypingText Styles */
+
+.mi-typing-text {
+  font-family: var(--mi-font-mono, monospace);
+  color: var(--mi-color-text, #F1F5F9);
+  display: inline-flex;
+  align-items: center;
+}
+
+.mi-typing-cursor {
+  color: var(--mi-color-primary, #FF4D00);
+  font-weight: 700;
+  margin-left: 2px;
+  animation: mi-blink 1s steps(2, start) infinite;
+}
+
+@keyframes mi-blink {
+  to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-typing-cursor {
+    animation: none !important;
+  }
+}

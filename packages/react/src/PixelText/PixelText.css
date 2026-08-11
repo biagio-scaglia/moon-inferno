@@ -1,0 +1,15 @@
+/* Moon-Inferno PixelText Styles */
+
+.mi-pixel-text {
+  font-family: var(--mi-font-mono, monospace);
+  font-weight: 700;
+  color: var(--mi-color-primary, #FF4D00);
+  text-shadow: var(--mi-shadow-pixel, 3px 3px 0px #000000);
+  letter-spacing: 0.05em;
+  display: inline-block;
+}
+
+.mi-pixel-text--sm { font-size: 0.9rem; }
+.mi-pixel-text--md { font-size: 1.25rem; }
+.mi-pixel-text--lg { font-size: 1.75rem; }
+.mi-pixel-text--xl { font-size: 2.5rem; }

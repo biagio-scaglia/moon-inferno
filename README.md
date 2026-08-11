@@ -75,6 +75,10 @@ Moon-Inferno is organized as a monorepo containing specialized packages:
 | **SignalLight** | ✅ Ready (Phase 4) | Glowing retro status beacon light (`online`, `warning`, `busy`, `offline`) |
 | **CodeBlock** | ✅ Ready (Phase 4) | Expressive code snippet viewer with one-click copy button |
 | **Gallery & Lightbox** | ✅ Ready (Phase 4) | Responsive media card grid with accessible Modal Lightbox and arrow key navigation |
+| **Marquee** | ✅ Ready (Phase 5) | Infinite scrolling ticker primitive with `pauseOnHover` and reduced motion safety |
+| **PixelText** | ✅ Ready (Phase 5) | Stepped pixelated typography component with retro hard pixel shadow |
+| **TypingText** | ✅ Ready (Phase 5) | Accessible typewriter effect component with blinking terminal cursor |
+| **NeonText** | ✅ Ready (Phase 5) | Glowing pulsing neon tube text component (`inferno`, `cyan`, `green`, `magenta`) |
 
 ---
 

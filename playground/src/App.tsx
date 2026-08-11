@@ -36,6 +36,10 @@ import {
   Progress,
   Slider,
   Gallery,
+  Marquee,
+  PixelText,
+  TypingText,
+  NeonText,
 } from '@moon-inferno/react';
 import {
   FlameIcon,
@@ -201,7 +205,7 @@ function PlaygroundContent() {
             <Stack direction="row" align="center" gap="0.75rem" wrap>
               <img src="/assets/logo.png" alt="Moon-Inferno Logo" style={{ height: '42px', width: 'auto', borderRadius: '4px' }} />
               <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.25rem)' }} />
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.7.0</Badge>
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.8.0</Badge>
               <SignalLight status="online" pulse label="CORE ONLINE" />
             </Stack>
             <p style={{ color: 'var(--mi-color-text-muted, #94A3B8)', margin: 0, fontSize: '0.9rem' }}>
@@ -269,6 +273,18 @@ function PlaygroundContent() {
           </Stack>
         </header>
 
+        {/* Global Retro Marquee Ticker */}
+        <Marquee variant="pixel" speed={20}>
+          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>⚡ MOON-INFERNO v0.8.0 DEPLOYED</span>
+          <span>•</span>
+          <span>EXPRESSIVE UI PRIMITIVES</span>
+          <span>•</span>
+          <span style={{ color: 'var(--mi-color-primary)' }}>ACCESSIBILITY FIRST</span>
+          <span>•</span>
+          <span>RETRO Y2K & CYBERPUNK TOKENS</span>
+          <span>•</span>
+        </Marquee>
+
         {/* Documentation Portal Tabs */}
         <main>
           <Tabs
@@ -291,7 +307,7 @@ function PlaygroundContent() {
                         <CodeBlock filename="main.tsx" code={`import '@moon-inferno/react/styles.css';\nimport { setTheme } from '@moon-inferno/themes';\n\n// Set signature theme\nsetTheme('moon-inferno');`} />
 
                         <h3>3. Render Primitives in React</h3>
-                        <CodeBlock filename="App.tsx" code={`import { Button, Input, GlitchText, ToastProvider, SignalLight, Gallery } from '@moon-inferno/react';\nimport { FlameIcon } from '@moon-inferno/icons';\n\nexport default function App() {\n  return (\n    <ToastProvider>\n      <SignalLight status="online" label="LAVA_NODE_ACTIVE" />\n      <GlitchText text="WELCOME TO THE INFERNO" />\n      <Gallery items={[{ id: '1', src: '/hero.png', title: 'INFERNO_CORE' }]} />\n    </ToastProvider>\n  );\n}`} />
+                        <CodeBlock filename="App.tsx" code={`import { Button, Input, GlitchText, PixelText, NeonText, TypingText, Marquee } from '@moon-inferno/react';\nimport { FlameIcon } from '@moon-inferno/icons';\n\nexport default function App() {\n  return (\n    <main>\n      <Marquee speed={15}>\n        <NeonText text="SOLAR INFERNO ONLINE" color="inferno" />\n      </Marquee>\n      <PixelText text="GAME START" size="xl" />\n      <TypingText text="Initializing quantum mainframe..." speed={40} />\n    </main>\n  );\n}`} />
                       </Stack>
                     </PixelContainer>
                   </Stack>
@@ -306,6 +322,43 @@ function PlaygroundContent() {
                 ),
                 content: (
                   <Stack gap="2rem">
+                    {/* Typography & Custom Text FX */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <SparklesIcon size={18} /> Custom Text Primitives (Marquee, PixelText, NeonText, TypingText)
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <Stack gap="0.5rem">
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>PIXEL TEXT PRIMITIVE (`<PixelText />`):</span>
+                            <Stack direction="row" align="center" gap="1rem" wrap>
+                              <PixelText text="LEVEL 01" size="sm" />
+                              <PixelText text="GAME OVER" size="md" />
+                              <PixelText text="PRESS START" size="lg" />
+                              <PixelText text="INFERNO" size="xl" />
+                            </Stack>
+                          </Stack>
+
+                          <Stack gap="0.5rem">
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>NEON GLOW TEXT (`<NeonText />`):</span>
+                            <Stack direction="row" align="center" gap="1.5rem" wrap>
+                              <NeonText text="INFERNO" color="inferno" flicker />
+                              <NeonText text="CYBERPUNK" color="cyan" />
+                              <NeonText text="MATRIX" color="green" />
+                              <NeonText text="SYNTHWAVE" color="magenta" flicker />
+                            </Stack>
+                          </Stack>
+
+                          <Stack gap="0.5rem">
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>TYPING EFFECT (`<TypingText />`):</span>
+                            <TypingText text="Establishing encrypted link to satellite node 094..." speed={40} cursorChar="█" />
+                          </Stack>
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
                     {/* Buttons & Actions */}
                     <Card>
                       <CardHeader>
@@ -654,7 +707,7 @@ function PlaygroundContent() {
                 content: (
                   <Terminal
                     initialLines={[
-                      { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.7.0 INITIALIZED.' },
+                      { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.8.0 INITIALIZED.' },
                       { id: '2', type: 'output', text: 'Type "help", "icons", "status", or "clear".' },
                     ]}
                     onCommand={(cmd) => {

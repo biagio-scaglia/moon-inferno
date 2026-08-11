@@ -1,0 +1,63 @@
+/* Moon-Inferno NeonText Styles */
+
+.mi-neon-text {
+  font-family: var(--mi-font-mono, monospace);
+  font-weight: 700;
+  color: #FFFFFF;
+  display: inline-block;
+}
+
+.mi-neon-text--inferno {
+  color: #FF4D00;
+  text-shadow: 
+    0 0 5px #FF4D00,
+    0 0 10px #FF4D00,
+    0 0 20px #FF4D00,
+    0 0 40px #FF2E00;
+}
+
+.mi-neon-text--cyan {
+  color: #00E5FF;
+  text-shadow: 
+    0 0 5px #00E5FF,
+    0 0 10px #00E5FF,
+    0 0 20px #00E5FF,
+    0 0 40px #00B4CC;
+}
+
+.mi-neon-text--green {
+  color: #00FF66;
+  text-shadow: 
+    0 0 5px #00FF66,
+    0 0 10px #00FF66,
+    0 0 20px #00FF66,
+    0 0 40px #00CC52;
+}
+
+.mi-neon-text--magenta {
+  color: #FF00E5;
+  text-shadow: 
+    0 0 5px #FF00E5,
+    0 0 10px #FF00E5,
+    0 0 20px #FF00E5,
+    0 0 40px #CC00B8;
+}
+
+.mi-neon-text--flicker {
+  animation: mi-neon-flicker 3s infinite alternate;
+}
+
+@keyframes mi-neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-neon-text--flicker {
+    animation: none !important;
+  }
+}

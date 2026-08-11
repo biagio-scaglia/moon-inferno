@@ -1,0 +1,53 @@
+/* Moon-Inferno Marquee Styles */
+
+.mi-marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  width: 100%;
+  max-width: 100%;
+  background-color: var(--mi-color-surface, #1E1B26);
+  border-top: 1px solid var(--mi-color-border-accent, #FF4D00);
+  border-bottom: 1px solid var(--mi-color-border-accent, #FF4D00);
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.mi-marquee--pixel {
+  border-width: 2px;
+  background-color: var(--mi-color-bg-subtle, #14121A);
+}
+
+.mi-marquee__track {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2rem;
+  align-items: center;
+  white-space: nowrap;
+  animation: mi-marquee-left 25s linear infinite;
+  min-width: 100%;
+}
+
+.mi-marquee--right .mi-marquee__track {
+  animation-name: mi-marquee-right;
+}
+
+.mi-marquee--pause:hover .mi-marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes mi-marquee-left {
+  from { transform: translateX(0%); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes mi-marquee-right {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-marquee__track {
+    animation: none !important;
+  }
+}
