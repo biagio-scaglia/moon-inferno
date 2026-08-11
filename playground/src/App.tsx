@@ -189,17 +189,17 @@ function MasterGuideWebsite() {
       <Stack gap="2.5rem" style={{ position: 'relative', zIndex: 1 }}>
         {isCRTActive && <CRTEffect />}
 
-        {/* Glassmorphic Navigation Bar */}
-        <header className="header-nav" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-          <Stack direction="row" align="center" gap="0.75rem" wrap>
-            <img src="/assets/logo.png" alt="Moon-Inferno Logo" style={{ height: '42px', width: 'auto', borderRadius: '4px' }} />
-            <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.25rem)' }} />
-            <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.0 (NPM)</Badge>
-            <SignalLight status="online" pulse label="CORE ONLINE" />
-          </Stack>
+        {/* Glassmorphic Cyber Header Control Deck */}
+        <header className="header-nav">
+          <div className="header-brand">
+            <img src="/assets/logo.png" alt="Moon-Inferno Logo" style={{ height: '38px', width: 'auto', borderRadius: '4px' }} />
+            <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: '1.65rem', margin: 0, letterSpacing: '-0.02em' }} />
+            <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.0</Badge>
+            <SignalLight status="online" pulse label="ONLINE" />
+          </div>
 
-          {/* Theme & Shader Controls */}
-          <Stack direction="row" align="center" gap="0.75rem" wrap>
+          {/* Controls */}
+          <div className="header-controls">
             <Tooltip content="Toggle cyberpunk ASCII matrix rain background animation">
               <Button
                 size="sm"
@@ -228,13 +228,13 @@ function MasterGuideWebsite() {
               </Button>
             </Tooltip>
 
-            <Stack direction="row" align="center" gap="0.35rem" wrap>
-              <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim, #64748B)' }}>THEME:</span>
+            <div className="segmented-theme-group">
               <Button
                 size="sm"
                 variant={currentTheme === 'moon-inferno' ? 'inferno' : 'ghost'}
                 onClick={() => handleThemeChange('moon-inferno')}
-                leftIcon={<FlameIcon size={14} />}
+                leftIcon={<FlameIcon size={13} />}
+                style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem' }}
               >
                 Inferno
               </Button>
@@ -242,7 +242,8 @@ function MasterGuideWebsite() {
                 size="sm"
                 variant={currentTheme === 'terminal' ? 'inferno' : 'ghost'}
                 onClick={() => handleThemeChange('terminal')}
-                leftIcon={<TerminalIcon size={14} />}
+                leftIcon={<TerminalIcon size={13} />}
+                style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem' }}
               >
                 Terminal
               </Button>
@@ -250,12 +251,13 @@ function MasterGuideWebsite() {
                 size="sm"
                 variant={currentTheme === 'y2k' ? 'inferno' : 'ghost'}
                 onClick={() => handleThemeChange('y2k')}
-                leftIcon={<SunIcon size={14} />}
+                leftIcon={<SunIcon size={13} />}
+                style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem' }}
               >
                 Y2K
               </Button>
-            </Stack>
-          </Stack>
+            </div>
+          </div>
         </header>
 
         {/* Hero Section Banner */}
