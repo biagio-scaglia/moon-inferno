@@ -193,7 +193,7 @@ function MasterGuideWebsite() {
         <header className="header-nav">
           <div className="header-brand">
             <Stack direction="row" align="center" gap="0.65rem">
-              <img src="/favicon.svg" alt="Moon-Inferno Favicon" style={{ height: '32px', width: '32px' }} />
+              <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '32px', width: '32px' }} />
               <h1 className="brand-title">Moon-Inferno</h1>
             </Stack>
             <Stack direction="row" align="center" gap="0.5rem">
