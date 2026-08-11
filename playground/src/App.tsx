@@ -539,6 +539,12 @@ export default function App() {
                       <CardBody>
                         <Stack gap="1.5rem">
                           <Stack gap="0.5rem">
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>GLITCH TEXT: Animated RGB-split glitch headline component.</span>
+                            <GlitchText text="CYBERPUNK INFERNO" as="h3" style={{ fontSize: '1.5rem' }} />
+                            <CodeBlock filename="GlitchText.snippet.tsx" code={`<GlitchText text="CYBERPUNK INFERNO" as="h3" />`} />
+                          </Stack>
+
+                          <Stack gap="0.5rem">
                             <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>PIXEL TEXT: Stepped pixelated retro typography with hard pixel shadow.</span>
                             <Stack direction="row" align="center" gap="1rem" wrap>
                               <PixelText text="LEVEL 01" size="sm" />
@@ -564,6 +570,14 @@ export default function App() {
                             <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>TYPING EFFECT: Typewriter animation with blinking terminal cursor.</span>
                             <TypingText text="Establishing encrypted link to satellite node 094..." speed={40} cursorChar="█" />
                             <CodeBlock filename="TypingText.snippet.tsx" code={`<TypingText text="Establishing encrypted link..." speed={40} cursorChar="█" />`} />
+                          </Stack>
+
+                          <Stack gap="0.5rem">
+                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>MARQUEE TICKER: Infinite continuous scrolling marquee primitive.</span>
+                            <Marquee speed={18} variant="pixel">
+                              <span>RETRO PRIMITIVES</span> - <span>ACCESSIBLE TICKER</span> - <span>MOON-INFERNO</span>
+                            </Marquee>
+                            <CodeBlock filename="Marquee.snippet.tsx" code={`<Marquee speed={18} variant="pixel">\n  <span>RETRO PRIMITIVES</span>\n</Marquee>`} />
                           </Stack>
                         </Stack>
                       </CardBody>
@@ -594,7 +608,7 @@ export default function App() {
                             <Button isLoading variant="inferno">Processing</Button>
                             <Button disabled variant="outline" leftIcon={<LockIcon size={16} />}>Disabled</Button>
                           </Stack>
-                          <CodeBlock filename="Button.snippet.tsx" code={`<Button variant="inferno" leftIcon={<FlameIcon size={16} />}>\n  Initiate Sequence\n</Button>`} />
+                          <CodeBlock filename="Button.snippet.tsx" code={`<Button variant="inferno" size="md" leftIcon={<FlameIcon size={16} />}>\n  Initiate Sequence\n</Button>`} />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -638,6 +652,7 @@ export default function App() {
                               }}
                               errorMessage={inputError}
                             />
+                            <CodeBlock filename="Input.snippet.tsx" code={`<Input label="SIGNAL_KEY" placeholder="Key..." errorMessage={error} />`} />
 
                             <div style={{ position: 'relative' }}>
                               <Input
@@ -679,6 +694,7 @@ export default function App() {
                                 { value: 'gamma', label: 'Protocol Gamma (Stealth Mode)' },
                               ]}
                             />
+                            <CodeBlock filename="Select.snippet.tsx" code={`<Select label="PROTOCOL" value={val} onChange={setVal} options={options} />`} />
 
                             <Slider
                               label={`POWER LEVEL OUTPUT: ${sliderValue}%`}
@@ -687,6 +703,7 @@ export default function App() {
                               min={0}
                               max={100}
                             />
+                            <CodeBlock filename="Slider.snippet.tsx" code={`<Slider label="POWER" value={power} onChange={setPower} min={0} max={100} />`} />
                           </Stack>
                         </CardBody>
                         <CardFooter>
@@ -713,6 +730,7 @@ export default function App() {
                               checked={checkboxValue}
                               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCheckboxValue(e.target.checked)}
                             />
+                            <CodeBlock filename="Checkbox.snippet.tsx" code={`<Checkbox label="Enable Telemetry" checked={active} onChange={toggle} />`} />
 
                             <div>
                               <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)', display: 'block', marginBottom: '0.5rem' }}>
@@ -724,6 +742,7 @@ export default function App() {
                                 <Radio value="stealth" label="Stealth Obsidian" />
                               </RadioGroup>
                             </div>
+                            <CodeBlock filename="RadioGroup.snippet.tsx" code={`<RadioGroup name="mode" value={mode} onChange={setMode}>\n  <Radio value="inferno" label="Inferno" />\n</RadioGroup>`} />
 
                             <Switch
                               label="CRT Scanline Shaders"
@@ -733,6 +752,7 @@ export default function App() {
                                 setIsCRTActive(e.target.checked);
                               }}
                             />
+                            <CodeBlock filename="Switch.snippet.tsx" code={`<Switch label="CRT Shaders" checked={active} onChange={toggle} />`} />
                           </Stack>
                         </CardBody>
                       </Card>
@@ -752,6 +772,7 @@ export default function App() {
                             <Progress value={65} label="Pixel Sync Progress" variant="pixel" />
                             <Progress value={85} label="Striped Matrix Stream" variant="striped" animated />
                           </Grid>
+                          <CodeBlock filename="Progress.snippet.tsx" code={`<Progress value={75} label="Core Charge" variant="inferno" />`} />
 
                           <div>
                             <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)', display: 'block', marginBottom: '0.5rem' }}>
@@ -769,6 +790,7 @@ export default function App() {
                                 <Avatar size="md" name="Alpha One" />
                               </AvatarGroup>
                             </Stack>
+                            <CodeBlock filename="Avatar.snippet.tsx" code={`<AvatarGroup>\n  <Avatar name="Biagio Scaglia" />\n  <Avatar name="Cyber Punk" variant="pixel" />\n</AvatarGroup>`} />
                           </div>
                         </Stack>
                       </CardBody>
@@ -789,6 +811,7 @@ export default function App() {
                             <SignalLight status="busy" label="BUSY" />
                             <SignalLight status="offline" pulse={false} label="OFFLINE" />
                           </Stack>
+                          <CodeBlock filename="SignalLight.snippet.tsx" code={`<SignalLight status="online" pulse label="NODE_ONLINE" />`} />
 
                           <Accordion>
                             <AccordionItem title="ARCHITECTURAL FOUNDATION" defaultOpen>
@@ -801,6 +824,48 @@ export default function App() {
                               Designed explicitly for interfaces with distinct character—retro web, Y2K, cyberpunk, pixel art, anime-inspired, and experimental applications.
                             </AccordionItem>
                           </Accordion>
+                          <CodeBlock filename="Accordion.snippet.tsx" code={`<Accordion>\n  <AccordionItem title="PANEL TITLE" defaultOpen>\n    Content inside panel.\n  </AccordionItem>\n</Accordion>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* Containers & Modal Dialog */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <LayersIcon size={18} /> Pixel Container & Accessible Dialog Modal
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.25rem">
+                          <PixelContainer title="PIXEL_CONTAINER_NODE // DEMO">
+                            Custom arcade window container with stepped pixel borders and retro titlebar.
+                          </PixelContainer>
+                          <CodeBlock filename="PixelContainer.snippet.tsx" code={`<PixelContainer title="TERMINAL // NODE 01">\n  Content inside pixel frame.\n</PixelContainer>`} />
+
+                          <Stack direction="row" align="center" gap="1rem">
+                            <Button variant="inferno" onClick={() => setIsDialogOpen(true)}>
+                              Open Dialog Modal
+                            </Button>
+                          </Stack>
+                          <CodeBlock filename="Dialog.snippet.tsx" code={`<Dialog isOpen={open} onClose={() => setOpen(false)} title="TITLE">\n  <p>Modal body content.</p>\n  <DialogFooter>\n    <Button onClick={() => setOpen(false)}>Close</Button>\n  </DialogFooter>\n</Dialog>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* Shaders & Overlays */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <CpuIcon size={18} /> CRT Shader Overlay & Matrix Rain Animation
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.25rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Toggle retro scanline overlays or matrix digital rain directly in your application:
+                          </p>
+                          <CodeBlock filename="Shaders.snippet.tsx" code={`import { CRTEffect, MatrixRain } from '@moon-inferno/react';\n\n// Full screen retro CRT scanlines\n<CRTEffect />\n\n// Cyberpunk ASCII matrix rain canvas overlay\n<MatrixRain color="#FF4D00" />`} />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -828,6 +893,7 @@ export default function App() {
                               <Loader size="md" variant="pulse" /> <span>Pulse Loader</span>
                             </Stack>
                           </Stack>
+                          <CodeBlock filename="Loader.snippet.tsx" code={`<Loader size="md" variant="pixel" />`} />
 
                           <Stack direction="row" align="center" gap="0.75rem" wrap>
                             <Badge variant="inferno" icon={<FlameIcon size={14} />}>Lava Core</Badge>
@@ -836,6 +902,7 @@ export default function App() {
                             <Badge variant="error" icon={<WarnIcon size={14} />}>Error</Badge>
                             <Badge variant="outline" icon={<InfoIcon size={14} />}>Outline</Badge>
                           </Stack>
+                          <CodeBlock filename="Badge.snippet.tsx" code={`<Badge variant="inferno" icon={<FlameIcon size={14} />}>Lava Core</Badge>`} />
 
                           <Stack direction="row" align="center" gap="0.5rem" wrap>
                             <Button
@@ -853,6 +920,7 @@ export default function App() {
                               Trigger Error Toast
                             </Button>
                           </Stack>
+                          <CodeBlock filename="Toast.snippet.tsx" code={`const { addToast } = useToast();\naddToast('Operation success!', { variant: 'success' });`} />
                         </Stack>
                       </CardBody>
                     </Card>
