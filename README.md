@@ -1,5 +1,9 @@
 # Moon-Inferno
 
+<p align="center">
+  <img src="assets/logo.png" alt="Moon-Inferno Logo" width="480" />
+</p>
+
 > The web doesn't need another SaaS dashboard.
 
 Moon-Inferno is an accessibility-first UI framework designed for developers who want to build expressive websites without sacrificing usability or performance. Built for interfaces with distinct personality—retro web, Y2K, cyberpunk, CRT, pixel art, anime-inspired, and experimental aesthetics—it provides accessible, responsive, and composable primitives that feel like a forgotten futuristic corner of the early internet.

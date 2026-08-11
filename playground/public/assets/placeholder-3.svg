@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#1B1A2E"/>
+  <rect x="2" y="2" width="796" height="446" fill="none" stroke="#00E5FF" stroke-width="4"/>
+  <polygon points="400,100 480,300 320,300" fill="none" stroke="#00E5FF" stroke-width="3"/>
+  <text x="400" y="220" fill="#00E5FF" font-family="monospace" font-size="24" font-weight="bold" text-anchor="middle">SYNTHWAVE_FRAME // 03</text>
+  <text x="400" y="255" fill="#CBD5E1" font-family="monospace" font-size="14" text-anchor="middle">Y2K_CYBER_PASTEL</text>
+</svg>

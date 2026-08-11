@@ -115,19 +115,19 @@ const ALL_ICONS = [
 const GALLERY_ITEMS = [
   {
     id: '1',
-    src: '/assets/inferno-moon.png',
+    src: '/assets/placeholder-1.svg',
     title: 'INFERNO_MOON // CORE VISUAL',
     caption: 'Atmospheric crimson moon glowing over obsidian dystopian architecture.',
   },
   {
     id: '2',
-    src: '/assets/cyberpunk-grid.png',
+    src: '/assets/placeholder-2.svg',
     title: 'CYBERPUNK_GRID // MATRIX NODE',
     caption: 'Glowing neon data streams and high-contrast ASCII terminal matrix.',
   },
   {
     id: '3',
-    src: '/assets/retro-arcade.png',
+    src: '/assets/placeholder-3.svg',
     title: 'RETRO_ARCADE // SYNTHWAVE VIBE',
     caption: '80s arcade synthwave aesthetics with CRT scanline reflections.',
   },
@@ -199,7 +199,7 @@ function PlaygroundContent() {
         >
           <Stack gap="0.5rem">
             <Stack direction="row" align="center" gap="0.75rem" wrap>
-              <MoonIcon size={36} color="var(--mi-color-primary)" />
+              <img src="/assets/logo.png" alt="Moon-Inferno Logo" style={{ height: '42px', width: 'auto', borderRadius: '4px' }} />
               <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.25rem)' }} />
               <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.7.0</Badge>
               <SignalLight status="online" pulse label="CORE ONLINE" />
