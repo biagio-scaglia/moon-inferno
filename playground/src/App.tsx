@@ -137,7 +137,7 @@ const GALLERY_ITEMS = [
   },
 ];
 
-function PlaygroundContent() {
+function OfficialWebsiteContent() {
   const [currentTheme, setCurrentTheme] = useState<ThemeName>('moon-inferno');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isCRTActive, setIsCRTActive] = useState(false);
@@ -148,7 +148,7 @@ function PlaygroundContent() {
   const [passwordValue, setPasswordValue] = useState('Inferno2026!');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Form & Input States
+  // Interactive Component States
   const [checkboxValue, setCheckboxValue] = useState(true);
   const [radioValue, setRadioValue] = useState('inferno');
   const [switchValue, setSwitchValue] = useState(true);
@@ -189,11 +189,11 @@ function PlaygroundContent() {
       <Stack gap="2.5rem" style={{ position: 'relative', zIndex: 1 }}>
         {isCRTActive && <CRTEffect />}
 
-        {/* Header Banner */}
+        {/* Global Navigation Bar */}
         <header
           style={{
             borderBottom: '2px solid var(--mi-color-border-accent, #FF4D00)',
-            paddingBottom: '1.5rem',
+            paddingBottom: '1.25rem',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -201,21 +201,16 @@ function PlaygroundContent() {
             gap: '1rem',
           }}
         >
-          <Stack gap="0.5rem">
-            <Stack direction="row" align="center" gap="0.75rem" wrap>
-              <img src="/assets/logo.png" alt="Moon-Inferno Logo" style={{ height: '42px', width: 'auto', borderRadius: '4px' }} />
-              <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.25rem)' }} />
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.8.0</Badge>
-              <SignalLight status="online" pulse label="CORE ONLINE" />
-            </Stack>
-            <p style={{ color: 'var(--mi-color-text-muted, #94A3B8)', margin: 0, fontSize: '0.9rem' }}>
-              The web doesn't need another SaaS dashboard. Expressive, accessible & responsive UI primitives.
-            </p>
+          <Stack direction="row" align="center" gap="0.75rem" wrap>
+            <img src="/assets/logo.png" alt="Moon-Inferno Logo" style={{ height: '42px', width: 'auto', borderRadius: '4px' }} />
+            <GlitchText text="Moon-Inferno" as="h1" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.25rem)' }} />
+            <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.0 (NPM)</Badge>
+            <SignalLight status="online" pulse label="REGISTRY LIVE" />
           </Stack>
 
           {/* Global Controls */}
           <Stack direction="row" align="center" gap="0.75rem" wrap>
-            <Tooltip content="Toggle cyberpunk ASCII matrix rain animation">
+            <Tooltip content="Toggle cyberpunk ASCII matrix rain background animation">
               <Button
                 size="sm"
                 variant={isMatrixActive ? 'inferno' : 'outline'}
@@ -235,11 +230,11 @@ function PlaygroundContent() {
                 variant={isCRTActive ? 'inferno' : 'outline'}
                 onClick={() => {
                   setIsCRTActive(!isCRTActive);
-                  addToast(`CRT Overlay ${!isCRTActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
+                  addToast(`CRT Shader ${!isCRTActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
                 }}
                 leftIcon={<CpuIcon size={14} />}
               >
-                CRT Overlay: {isCRTActive ? 'ON' : 'OFF'}
+                CRT Shader: {isCRTActive ? 'ON' : 'OFF'}
               </Button>
             </Tooltip>
 
@@ -273,51 +268,154 @@ function PlaygroundContent() {
           </Stack>
         </header>
 
-        {/* Global Retro Marquee Ticker */}
-        <Marquee variant="pixel" speed={20}>
-          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>⚡ MOON-INFERNO v0.8.0 DEPLOYED</span>
+        {/* Hero Section Banner */}
+        <section
+          style={{
+            padding: '2.5rem 1.5rem',
+            backgroundColor: 'var(--mi-color-bg-subtle, #14121A)',
+            border: '2px solid var(--mi-color-border-accent, #FF4D00)',
+            borderRadius: 'var(--mi-radius-md, 6px)',
+            boxShadow: 'var(--mi-shadow-glow), 0 20px 25px -5px rgba(0, 0, 0, 0.5)',
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1.25rem',
+          }}
+        >
+          <Badge variant="inferno" icon={<FlameIcon size={14} />}>OFFICIAL DOCUMENTATION & COMPONENT CATALOG</Badge>
+          
+          <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontFamily: 'var(--mi-font-mono)', margin: 0 }}>
+            Reclaim Expressive Web Design
+          </h2>
+
+          <p style={{ maxWidth: '780px', color: 'var(--mi-color-text-muted)', fontSize: '1.05rem', lineHeight: '1.6', margin: 0 }}>
+            Moon-Inferno is an accessibility-first React UI framework designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications. WCAG AA compliant out of the box with zero SaaS sterility.
+          </p>
+
+          <Stack direction="row" align="center" justify="center" gap="1rem" wrap style={{ marginTop: '0.5rem' }}>
+            <Button
+              size="lg"
+              variant="inferno"
+              leftIcon={<FlameIcon size={18} />}
+              onClick={() => {
+                const el = document.getElementById('main-tabs');
+                el?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Get Started
+            </Button>
+            <Button
+              size="lg"
+              variant="pixel"
+              leftIcon={<ExternalLinkIcon size={18} />}
+              onClick={() => window.open('https://github.com/biagio-scaglia/moon-inferno', '_blank')}
+            >
+              GitHub Repository
+            </Button>
+          </Stack>
+        </section>
+
+        {/* Global Ticker Marquee */}
+        <Marquee variant="pixel" speed={22}>
+          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>⚡ MOON-INFERNO v0.1.0 IS LIVE ON NPM</span>
           <span>•</span>
-          <span>EXPRESSIVE UI PRIMITIVES</span>
+          <span>pnpm add @moon-inferno/react @moon-inferno/themes @moon-inferno/icons</span>
           <span>•</span>
-          <span style={{ color: 'var(--mi-color-primary)' }}>ACCESSIBILITY FIRST</span>
+          <span style={{ color: 'var(--mi-color-primary)' }}>100% WCAG 2.1 AA ACCESSIBLE</span>
           <span>•</span>
-          <span>RETRO Y2K & CYBERPUNK TOKENS</span>
+          <span>FULL KEYBOARD NAVIGATION & SCREEN READER AUDITED</span>
           <span>•</span>
         </Marquee>
 
-        {/* Documentation Portal Tabs */}
-        <main>
+        {/* Documentation & Component Portal */}
+        <main id="main-tabs">
           <Tabs
             items={[
               {
                 id: 'getting-started',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
-                    <CodeIcon size={16} /> Getting Started
+                    <CodeIcon size={16} /> Quickstart & Setup
                   </Stack>
                 ),
                 content: (
-                  <Stack gap="1.5rem">
-                    <PixelContainer title="QUICKSTART // INSTALLATION & SETUP">
+                  <Stack gap="2rem">
+                    <PixelContainer title="1. INSTALLATION // PACKAGE MANAGER">
                       <Stack gap="1rem">
-                        <h3>1. Install Package Dependencies</h3>
+                        <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
+                          Install the published NPM packages using your preferred package manager:
+                        </p>
                         <CodeBlock filename="terminal" code="pnpm add @moon-inferno/core @moon-inferno/react @moon-inferno/themes @moon-inferno/icons" />
+                      </Stack>
+                    </PixelContainer>
 
-                        <h3>2. Import Styles & Initialize Theme</h3>
-                        <CodeBlock filename="main.tsx" code={`import '@moon-inferno/react/styles.css';\nimport { setTheme } from '@moon-inferno/themes';\n\n// Set signature theme\nsetTheme('moon-inferno');`} />
+                    <PixelContainer title="2. STYLES & THEME INITIALIZATION">
+                      <Stack gap="1rem">
+                        <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
+                          Import global component CSS and initialize your signature theme in your application entry point (`main.tsx` / `App.tsx`):
+                        </p>
+                        <CodeBlock filename="main.tsx" code={`import '@moon-inferno/react/styles.css';\nimport { setTheme } from '@moon-inferno/themes';\n\n// Set signature theme ('moon-inferno' | 'terminal' | 'y2k')\nsetTheme('moon-inferno');`} />
+                      </Stack>
+                    </PixelContainer>
 
-                        <h3>3. Render Primitives in React</h3>
-                        <CodeBlock filename="App.tsx" code={`import { Button, Input, GlitchText, PixelText, NeonText, TypingText, Marquee } from '@moon-inferno/react';\nimport { FlameIcon } from '@moon-inferno/icons';\n\nexport default function App() {\n  return (\n    <main>\n      <Marquee speed={15}>\n        <NeonText text="SOLAR INFERNO ONLINE" color="inferno" />\n      </Marquee>\n      <PixelText text="GAME START" size="xl" />\n      <TypingText text="Initializing quantum mainframe..." speed={40} />\n    </main>\n  );\n}`} />
+                    <PixelContainer title="3. REACT APPLICATION CODE TEMPLATE">
+                      <Stack gap="1rem">
+                        <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
+                          Copy and paste this starter template to render primitives with full accessibility and toast notifications:
+                        </p>
+                        <CodeBlock filename="App.tsx" code={`import { 
+  Button, 
+  Input, 
+  GlitchText, 
+  PixelText, 
+  NeonText, 
+  TypingText, 
+  Marquee, 
+  SignalLight,
+  ToastProvider,
+  useToast 
+} from '@moon-inferno/react';
+import { FlameIcon } from '@moon-inferno/icons';
+
+function AppContent() {
+  const { addToast } = useToast();
+
+  return (
+    <div style={{ padding: '2rem' }}>
+      <SignalLight status="online" label="CORE_ONLINE" />
+      <GlitchText text="WELCOME TO MOON-INFERNO" />
+      <Marquee speed={18}>
+        <NeonText text="EXPRESSIVE UI PRIMITIVES" color="inferno" />
+      </Marquee>
+      <Button 
+        variant="inferno" 
+        leftIcon={<FlameIcon size={16} />}
+        onClick={() => addToast('Signal broadcasted!', { variant: 'success' })}
+      >
+        Initiate Transmission
+      </Button>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ToastProvider>
+      <AppContent />
+    </ToastProvider>
+  );
+}`} />
                       </Stack>
                     </PixelContainer>
                   </Stack>
                 ),
               },
               {
-                id: 'components-demo',
+                id: 'components-catalog',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
-                    <LayersIcon size={16} /> Component Reference
+                    <LayersIcon size={16} /> Component Catalog & Snippets
                   </Stack>
                 ),
                 content: (
@@ -326,7 +424,7 @@ function PlaygroundContent() {
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
-                          <SparklesIcon size={18} /> Custom Text Primitives (Marquee, PixelText, NeonText, TypingText)
+                          <SparklesIcon size={18} /> Custom Text Primitives & Tickers
                         </Stack>
                       </CardHeader>
                       <CardBody>
@@ -339,6 +437,7 @@ function PlaygroundContent() {
                               <PixelText text="PRESS START" size="lg" />
                               <PixelText text="INFERNO" size="xl" />
                             </Stack>
+                            <CodeBlock filename="PixelText.snippet.tsx" code={`<PixelText text="PRESS START" size="lg" />`} />
                           </Stack>
 
                           <Stack gap="0.5rem">
@@ -349,11 +448,13 @@ function PlaygroundContent() {
                               <NeonText text="MATRIX" color="green" />
                               <NeonText text="SYNTHWAVE" color="magenta" flicker />
                             </Stack>
+                            <CodeBlock filename="NeonText.snippet.tsx" code={`<NeonText text="INFERNO" color="inferno" flicker />`} />
                           </Stack>
 
                           <Stack gap="0.5rem">
                             <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>TYPING EFFECT (`<TypingText />`):</span>
                             <TypingText text="Establishing encrypted link to satellite node 094..." speed={40} cursorChar="█" />
+                            <CodeBlock filename="TypingText.snippet.tsx" code={`<TypingText text="Establishing encrypted link..." speed={40} cursorChar="█" />`} />
                           </Stack>
                         </Stack>
                       </CardBody>
@@ -363,7 +464,7 @@ function PlaygroundContent() {
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
-                          <ZapIcon size={18} /> Button & Actions
+                          <ZapIcon size={18} /> Button Variants & States
                         </Stack>
                       </CardHeader>
                       <CardBody>
@@ -381,6 +482,7 @@ function PlaygroundContent() {
                             <Button isLoading variant="inferno">Processing</Button>
                             <Button disabled variant="outline" leftIcon={<LockIcon size={16} />}>Disabled</Button>
                           </Stack>
+                          <CodeBlock filename="Button.snippet.tsx" code={`<Button variant="inferno" leftIcon={<FlameIcon size={16} />}>\n  Initiate Sequence\n</Button>`} />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -389,7 +491,7 @@ function PlaygroundContent() {
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
-                          <EyeIcon size={18} /> Media Gallery & Lightbox Modal
+                          <EyeIcon size={18} /> Media Gallery & Accessible Modal Lightbox
                         </Stack>
                       </CardHeader>
                       <CardBody>
@@ -398,6 +500,7 @@ function PlaygroundContent() {
                             Click any image card to open the accessible Lightbox modal with keyboard arrow navigation.
                           </p>
                           <Gallery items={GALLERY_ITEMS} />
+                          <CodeBlock filename="Gallery.snippet.tsx" code={`<Gallery items={[\n  { id: '1', src: '/img1.png', title: 'NODE_01', caption: 'Atmospheric crimson visual.' },\n  { id: '2', src: '/img2.png', title: 'NODE_02', caption: 'Cyberpunk grid streams.' }\n]} />`} />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -707,12 +810,13 @@ function PlaygroundContent() {
                 content: (
                   <Terminal
                     initialLines={[
-                      { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.8.0 INITIALIZED.' },
-                      { id: '2', type: 'output', text: 'Type "help", "icons", "status", or "clear".' },
+                      { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.1.0 (NPM PUBLISHED) INITIALIZED.' },
+                      { id: '2', type: 'output', text: 'Type "help", "install", "icons", "status", or "clear".' },
                     ]}
                     onCommand={(cmd) => {
-                      if (cmd === 'help') return 'Available commands: help, status, icons, inferno, clear';
-                      if (cmd === 'status') return 'SYSTEM STATUS: 100% ONLINE. ALL PRIMITIVES ACTIVE.';
+                      if (cmd === 'help') return 'Available commands: help, install, status, icons, inferno, clear';
+                      if (cmd === 'install') return 'pnpm add @moon-inferno/react @moon-inferno/themes @moon-inferno/icons';
+                      if (cmd === 'status') return 'SYSTEM STATUS: 100% ONLINE. ALL NPM PACKAGES LIVE.';
                       if (cmd === 'icons') return `Available SVG icons (${ALL_ICONS.length}): ${ALL_ICONS.map(i => i.name).join(', ')}`;
                       if (cmd === 'inferno') return 'SYSTEM OVERRIDE: SOLAR INFERNO ACTIVE';
                       return `Command not recognized: ${cmd}`;
@@ -751,8 +855,8 @@ function PlaygroundContent() {
         </Dialog>
 
         {/* Footer info */}
-        <footer style={{ textAlign: 'center', color: 'var(--mi-color-text-dim)', fontSize: '0.8rem', marginTop: '1rem' }}>
-          Moon-Inferno Framework — Expressive, Accessible & Responsive UI Primitives.
+        <footer style={{ textAlign: 'center', color: 'var(--mi-color-text-dim)', fontSize: '0.8rem', marginTop: '1rem', padding: '1rem 0' }}>
+          Moon-Inferno Framework — Built with TypeScript, React & WCAG AA Accessibility. MIT Licensed.
         </footer>
       </Stack>
     </Container>
@@ -762,7 +866,7 @@ function PlaygroundContent() {
 export default function App() {
   return (
     <ToastProvider>
-      <PlaygroundContent />
+      <OfficialWebsiteContent />
     </ToastProvider>
   );
 }
