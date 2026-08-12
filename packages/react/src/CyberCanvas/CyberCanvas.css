@@ -32,9 +32,9 @@
 }
 
 .mi-cybercanvas-color-swatch {
-  width: 20px;
-  height: 20px;
-  border-radius: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
   padding: 0;
@@ -44,7 +44,47 @@
 .mi-cybercanvas-color-swatch:hover,
 .mi-cybercanvas-color-swatch--active {
   transform: scale(1.2);
-  box-shadow: 0 0 8px currentColor;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.mi-cybercanvas-custom-color {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid var(--mi-color-primary, #FF4D00);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 6px rgba(255, 77, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.mi-cybercanvas-custom-color-input {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.mi-cybercanvas-select {
+  background-color: var(--mi-color-bg, #0A090D);
+  color: var(--mi-color-text, #F1F5F9);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-sm, 4px);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+.mi-cybercanvas-select option {
+  background-color: #0A090D;
+  color: #F1F5F9;
+  padding: 0.35rem;
 }
 
 .mi-cybercanvas-btn {

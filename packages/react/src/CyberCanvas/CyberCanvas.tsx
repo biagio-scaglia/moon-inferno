@@ -115,7 +115,24 @@ export const CyberCanvas = ({
     <div className={`mi-cybercanvas-container ${className}`.trim()} {...props}>
       <div className="mi-cybercanvas-toolbar">
         <div className="mi-cybercanvas-tools">
-          <span style={{ fontSize: '0.75rem', color: 'var(--mi-color-text-muted)' }}>TOOL:</span>
+          <span style={{ fontSize: '0.75rem', color: 'var(--mi-color-text-muted)', fontWeight: 'bold' }}>COLOR:</span>
+          
+          {/* Custom Color Picker Swatch */}
+          <div
+            className="mi-cybercanvas-custom-color"
+            style={{ backgroundColor: currentColor }}
+            title="Pick custom color"
+          >
+            <input
+              type="color"
+              value={currentColor.length === 7 ? currentColor : '#FF4D00'}
+              onChange={(e) => setCurrentColor(e.target.value)}
+              className="mi-cybercanvas-custom-color-input"
+              aria-label="Pick custom stroke color"
+            />
+          </div>
+
+          {/* Preset Swatches */}
           {PALETTE.map((color) => (
             <button
               key={color}
@@ -126,18 +143,12 @@ export const CyberCanvas = ({
               aria-label={`Select canvas color ${color === '#0A090D' ? 'Eraser' : color}`}
             />
           ))}
+
+          <span style={{ fontSize: '0.75rem', color: 'var(--mi-color-text-muted)', marginLeft: '0.5rem', fontWeight: 'bold' }}>SIZE:</span>
           <select
             value={lineWidth}
             onChange={(e) => setLineWidth(Number(e.target.value))}
-            style={{
-              backgroundColor: 'transparent',
-              color: 'var(--mi-color-text)',
-              border: '1px solid var(--mi-color-border)',
-              borderRadius: '3px',
-              padding: '0.2rem',
-              fontSize: '0.75rem',
-              fontFamily: 'inherit',
-            }}
+            className="mi-cybercanvas-select"
             aria-label="Stroke width"
           >
             <option value={2}>2px</option>
