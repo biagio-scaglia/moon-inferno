@@ -201,7 +201,7 @@ function MasterGuideWebsite() {
               <h1 className="brand-title">Moon-Inferno</h1>
             </Stack>
             <Stack direction="row" align="center" gap="0.5rem">
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.2</Badge>
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.3</Badge>
             </Stack>
           </div>
 
