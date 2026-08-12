@@ -37,21 +37,28 @@ export const CliGuideTab = () => {
           <Stack gap="1.5rem">
             <div>
               <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--mi-color-primary)', fontFamily: 'var(--mi-font-mono)' }}>
-                1. Add a Component directly to your project:
+                1. Recommended All-In-One Package (Single Line Install):
+              </h4>
+              <CodeBlock filename="Terminal (All-In-One Package)" code="npm install moon-inferno" />
+            </div>
+
+            <div>
+              <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--mi-color-primary)', fontFamily: 'var(--mi-font-mono)' }}>
+                2. Add a Component directly to your project via CLI:
               </h4>
               <CodeBlock filename="Terminal (npx CLI Add)" code="npx @moon-inferno/cli add MoonTypewriterDialogue" />
             </div>
 
             <div>
               <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--mi-color-primary)', fontFamily: 'var(--mi-font-mono)' }}>
-                2. List all accessible components available:
+                3. List all accessible components available:
               </h4>
               <CodeBlock filename="Terminal (npx CLI List)" code="npx @moon-inferno/cli list" />
             </div>
 
             <div>
               <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--mi-color-primary)', fontFamily: 'var(--mi-font-mono)' }}>
-                3. Optional: Global CLI Installation
+                4. Optional: Global CLI Installation
               </h4>
               <CodeBlock filename="Terminal (Global CLI)" code={`# Install globally to use the "moon" command alias\nnpm install -g @moon-inferno/cli\n\n# Run via short alias:\nmoon list\nmoon add MoonRPGGrid`} />
             </div>

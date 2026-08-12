@@ -353,6 +353,11 @@ function MasterGuideWebsite() {
                 Biagio Scaglia Profile
               </Button>
             </Stack>
+
+            {/* Hero Quickstart Single Line Command */}
+            <div style={{ width: '100%', maxWidth: '540px', margin: '0.75rem auto 0 auto' }}>
+              <CodeBlock filename="Quickstart (All-In-One Package)" code="npm install moon-inferno" />
+            </div>
           </Stack>
         </section>
 
