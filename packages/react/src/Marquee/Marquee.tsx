@@ -57,7 +57,7 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>(
           `mi-marquee--${direction}`,
           pauseOnHover ? 'mi-marquee--pause-hover' : '',
           pauseOnFocus ? 'mi-marquee--pause-focus' : '',
-          isPaused ? 'mi-marquee--paused' : '',
+          isPaused ? 'mi-marquee--paused' : 'mi-marquee--playing',
           variant === 'pixel' ? 'mi-marquee--pixel' : '',
           showPauseButton ? `mi-marquee--has-controls mi-marquee--controls-${pauseButtonPosition}` : '',
           className,

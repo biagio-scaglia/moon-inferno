@@ -42,11 +42,20 @@
   animation-name: mi-marquee-right;
 }
 
-/* Hover & Focus Pause (WCAG 2.2.2) */
-.mi-marquee--pause-hover:hover .mi-marquee__track,
-.mi-marquee--pause-focus:focus-within .mi-marquee__track,
+/* Hover & Focus Pause (WCAG 2.2.2) - Scoped to text viewport */
+.mi-marquee--pause-hover .mi-marquee__viewport:hover .mi-marquee__track,
+.mi-marquee--pause-focus .mi-marquee__viewport:focus-within .mi-marquee__track {
+  animation-play-state: paused;
+}
+
+/* Explicit Manual Pause State */
 .mi-marquee--paused .mi-marquee__track {
   animation-play-state: paused !important;
+}
+
+/* Explicit Manual Play Override */
+.mi-marquee--playing .mi-marquee__track {
+  animation-play-state: running !important;
 }
 
 /* Accessible Pause / Play Control Button */
