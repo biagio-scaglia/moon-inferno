@@ -71,11 +71,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .header-nav::before {
@@ -91,12 +90,8 @@ body {
 .header-brand {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
+  gap: 0.65rem;
+  flex-shrink: 0;
 }
 
 .brand-title {
@@ -108,8 +103,6 @@ body {
   letter-spacing: -0.02em;
   line-height: 1;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .header-controls {
@@ -117,28 +110,28 @@ body {
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
-  width: 100%;
-  max-width: 100%;
+  justify-content: flex-end;
+}
+
+.header-controls-toggles {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .segmented-theme-group {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   background: rgba(10, 9, 13, 0.6);
   border: 1px solid var(--mi-color-border, rgba(255, 255, 255, 0.1));
   padding: 3px;
   border-radius: 6px;
   gap: 3px;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
 }
 
 .segmented-theme-group button {
-  flex: 1;
-  min-width: 0;
-  padding: 0.4rem 0.35rem !important;
-  font-size: clamp(0.72rem, 2.4vw, 0.85rem) !important;
+  padding: 0.35rem 0.65rem !important;
+  font-size: 0.8rem !important;
   white-space: nowrap;
 }
 
@@ -199,20 +192,33 @@ body {
   }
 
   .header-controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.65rem;
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    gap: 0.65rem;
     margin-top: 0.25rem;
     padding-top: 0.75rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  .header-controls-toggles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .header-controls-toggles button {
+    width: 100%;
+  }
+
   .segmented-theme-group {
-    grid-column: span 2;
     display: flex;
     justify-content: space-between;
     width: 100%;
+  }
+
+  .segmented-theme-group button {
+    flex: 1;
   }
 }
 
@@ -221,26 +227,8 @@ body {
     padding: 0.75rem 0.5rem;
   }
 
-  .header-nav {
-    padding: 0.75rem;
-  }
-
-  .hero-card {
-    padding: 2rem 1rem;
-  }
-
-  .header-controls {
+  .header-controls-toggles {
     grid-template-columns: 1fr;
-  }
-
-  .segmented-theme-group {
-    grid-column: span 1;
-    display: flex;
-    width: 100%;
-  }
-
-  .segmented-theme-group button {
-    padding: 0.4rem 0.25rem !important;
   }
 }
 
@@ -254,6 +242,7 @@ body {
   }
 
   .segmented-theme-group button {
-    font-size: 0.7rem !important;
+    font-size: 0.72rem !important;
+    padding: 0.35rem 0.25rem !important;
   }
 }

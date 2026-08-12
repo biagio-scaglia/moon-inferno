@@ -208,46 +208,42 @@ function MasterGuideWebsite() {
         {/* Glassmorphic Cyber Header Control Deck */}
         <header className="header-nav">
           <div className="header-brand">
-            <Stack direction="row" align="center" gap="0.5rem" wrap style={{ minWidth: 0, flex: 1 }}>
-              <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '28px', width: '28px', flexShrink: 0 }} />
-              <h1 className="brand-title">Moon-Inferno</h1>
-            </Stack>
-            <Stack direction="row" align="center" gap="0.35rem" style={{ flexShrink: 0 }}>
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.5</Badge>
-            </Stack>
+            <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '28px', width: '28px', flexShrink: 0 }} />
+            <h1 className="brand-title">Moon-Inferno</h1>
+            <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.5</Badge>
           </div>
 
           {/* Controls */}
           <div className="header-controls">
-            <Tooltip content="Toggle cyberpunk ASCII matrix rain background animation">
-              <Button
-                size="sm"
-                variant={isMatrixActive ? 'inferno' : 'outline'}
-                onClick={() => {
-                  setIsMatrixActive(!isMatrixActive);
-                  addToast(`Matrix Rain ${!isMatrixActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
-                }}
-                leftIcon={<CodeIcon size={14} />}
-                style={{ width: '100%' }}
-              >
-                Matrix Rain: {isMatrixActive ? 'ON' : 'OFF'}
-              </Button>
-            </Tooltip>
+            <div className="header-controls-toggles">
+              <Tooltip content="Toggle cyberpunk ASCII matrix rain background animation">
+                <Button
+                  size="sm"
+                  variant={isMatrixActive ? 'inferno' : 'outline'}
+                  onClick={() => {
+                    setIsMatrixActive(!isMatrixActive);
+                    addToast(`Matrix Rain ${!isMatrixActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
+                  }}
+                  leftIcon={<CodeIcon size={14} />}
+                >
+                  Matrix Rain: {isMatrixActive ? 'ON' : 'OFF'}
+                </Button>
+              </Tooltip>
 
-            <Tooltip content="Toggle retro CRT scanlines and screen flicker effect">
-              <Button
-                size="sm"
-                variant={isCRTActive ? 'inferno' : 'outline'}
-                onClick={() => {
-                  setIsCRTActive(!isCRTActive);
-                  addToast(`CRT Shader ${!isCRTActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
-                }}
-                leftIcon={<CpuIcon size={14} />}
-                style={{ width: '100%' }}
-              >
-                CRT Shader: {isCRTActive ? 'ON' : 'OFF'}
-              </Button>
-            </Tooltip>
+              <Tooltip content="Toggle retro CRT scanlines and screen flicker effect">
+                <Button
+                  size="sm"
+                  variant={isCRTActive ? 'inferno' : 'outline'}
+                  onClick={() => {
+                    setIsCRTActive(!isCRTActive);
+                    addToast(`CRT Shader ${!isCRTActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
+                  }}
+                  leftIcon={<CpuIcon size={14} />}
+                >
+                  CRT Shader: {isCRTActive ? 'ON' : 'OFF'}
+                </Button>
+              </Tooltip>
+            </div>
 
             <div className="segmented-theme-group">
               <Button
