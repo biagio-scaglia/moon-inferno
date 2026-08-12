@@ -1,0 +1,24 @@
+{
+  "name": "@moon-inferno/cli",
+  "version": "0.1.0",
+  "description": "Command line tool to add Moon-Inferno accessible retro components directly into your React codebase.",
+  "bin": {
+    "moon-inferno": "./bin/index.js",
+    "moon": "./bin/index.js"
+  },
+  "license": "MIT",
+  "author": "Biagio Scaglia",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/biagio-scaglia/moon-inferno.git",
+    "directory": "packages/cli"
+  },
+  "keywords": [
+    "moon-inferno",
+    "cli",
+    "component-installer",
+    "react",
+    "accessibility",
+    "cyberpunk-ui"
+  ]
+}
