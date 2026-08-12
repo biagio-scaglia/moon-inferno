@@ -1,93 +1,122 @@
 # Moon-Inferno
 
 <p align="center">
-  <img src="favicon.svg" alt="Moon-Inferno Favicon" width="96" />
-  <h1 align="center">Moon-Inferno</h1>
-  <p align="center"><strong>The Expressive Web UI Framework & Design System</strong></p>
+  <img src="playground/public/favicon-192x192.png" alt="Moon-Inferno Logo" width="112" />
+  <h1 align="center">Moon-Inferno UI Framework</h1>
+  <p align="center"><strong>The Accessibility-First Expressive Web UI Framework & Design System for Retro, Y2K, Cyberpunk, Gaming, and Web3 Applications</strong></p>
+  <p align="center"><em>Created and Maintained by Biagio Scaglia</em></p>
 </p>
 
-> The web doesn't need another SaaS dashboard.
+[![NPM Version](https://img.shields.io/npm/v/@moon-inferno/react?color=FF4D00)](https://www.npmjs.com/package/@moon-inferno/react)
+[![License](https://img.shields.io/badge/license-MIT-00FF66.svg)](LICENSE)
+[![WCAG Compliance](https://img.shields.io/badge/WCAG-2.1%20AA-00E5FF.svg)](https://biagio-scaglia.github.io/moon-inferno/)
+[![Build Status](https://img.shields.io/badge/build-passing-success.svg)](https://github.com/biagio-scaglia/moon-inferno)
 
-Moon-Inferno is an accessibility-first UI framework designed for developers who want to build expressive websites without sacrificing usability or performance. Built for interfaces with distinct personality—retro web, Y2K, cyberpunk, CRT, pixel art, anime-inspired, and experimental aesthetics—it provides accessible, responsive, and composable primitives that feel like a forgotten futuristic corner of the early internet.
+> The web doesn't need another sterile SaaS dashboard.
 
----
-
-## Why Moon-Inferno?
-
-Modern UI libraries have converged on uniform, sterile enterprise dashboards. While functional, they strip websites of individuality, character, and visual experimentation.
-
-Moon-Inferno exists to reclaim expressive web design without reverting to inaccessible practices. It combines radical visual aesthetics with rock-solid semantic foundations, screen reader support, keyboard navigation, and responsive behavior.
-
-* **Expressive Interfaces**: Retro, Y2K, cyberpunk, CRT, and pixel art aesthetics built as configurable design tokens and CSS variables.
-* **Built with WCAG 2.1 AA Accessibility Principles**: Strict semantic HTML, full keyboard navigation, ARIA attributes, and reduced-motion safety baked in from day one.
-* **True Themeability with `<MoonProvider>`**: Decouples component behavior from visual styling with a context provider that swaps entire UI themes instantly (`moon-inferno`, `terminal`, `y2k`).
-* **Composable Architecture**: Prefers flexible primitive composition over massive components with dozens of rigid props.
+**Moon-Inferno** is an accessibility-first React UI framework designed for developers who want to build expressive, high-personality websites without sacrificing WCAG 2.1 AA compliance or performance. Built for interfaces with distinct character—retro web, Y2K, cyberpunk, CRT shaders, pixel art, browser games, and Web3 applications—it provides accessible, responsive, and composable primitives.
 
 ---
 
-## Monorepo Architecture
+## 🌟 The 4 Pillars of World-Class DX & Accessibility
 
-Moon-Inferno is engineered as a modern monorepo divided into specialized packages:
+Moon-Inferno elevates developer experience (DX) and accessibility to industry-leading standards:
 
-| Package | Description |
-| --- | --- |
-| `@moon-inferno/core` | Framework-independent design tokens, CSS variables, responsive primitives, and accessibility utilities. |
-| `@moon-inferno/react` | React component implementations and `<MoonProvider>` theme context. |
-| `@moon-inferno/icons` | Vector SVG iconography system featuring UI icons, pixel art icons, and retro/experimental symbols. |
-| `@moon-inferno/themes` | Official theme definitions (`moon-inferno`, `terminal`, `y2k`). |
+1. **Interactive Live Playground & One-Click Code Copying**: Every component snippet features a live one-click copy button with instant feedback.
+2. **Accessibility Specification Matrix**: Detailed WAI-ARIA tables mapping keyboard shortcuts, ARIA roles (`role="grid"`, `role="meter"`, `aria-live="polite"`), and screen-reader voice transcripts.
+3. **CLI Component Installer (`@moon-inferno/cli`)**: Copy individual component source files directly into your React project via `npx @moon-inferno/cli add <component>`.
+4. **Production Recipes & Templates**: Ready-to-use Cyberpunk Web3 Login modals and RPG Game HUD dashboards.
 
 ---
 
-## Component Categorization
+## 🎮 Signature Accessible Gaming & Web3 Primitives
 
-Moon-Inferno cleanly separates **Core Accessible Primitives** from **Signature Retro Primitives**:
-
-### 🛡️ Core Accessible UI Primitives
-Standard UI components engineered with high contrast, ARIA roles, and keyboard navigation:
-`Button`, `Input`, `Select`, `Checkbox`, `RadioGroup`, `Switch`, `Slider`, `Dialog`, `Tabs`, `Accordion`, `Tooltip`, `Toast`, `Card`, `Avatar`, `AvatarGroup`, `Progress`, `Breadcrumbs`, `Container`, `Stack`, `Grid`.
-
-### ⚡ Moon-Inferno Signature Retro Primitives
-Distinctive visual primitives for expressive, high-personality web applications:
-`GlitchText`, `PixelText`, `TypingText`, `NeonText`, `Marquee`, `CRTEffect`, `MatrixRain`, `Terminal`, `PixelContainer`, `SignalLight`, `CodeBlock`, `Gallery`.
+| Component | Description | Accessibility Key Feature |
+| --- | --- | --- |
+| `<MoonTypewriterDialogue>` | RPG speech dialogue box with gradual letter reveal. | Immediate invisible screen-reader text fallback (`aria-live="polite"`) so visually impaired users hear full speech instantly. |
+| `<MoonRPGGrid>` | Pixel art 2D inventory slot grid for game items & NFTs. | Full 2D keyboard arrow navigation (`Up/Down/Left/Right`), `Space/Enter` slot swapping, and live voice announcements. |
+| `<MoonHealthMeter>` | Animated gaming Health (HP), Mana (MP), Stamina, and Shield bars. | Built natively on HTML5 `<meter>` elements with `aria-valuenow` for live percentage reporting to screen readers. |
+| `<MoonSafeGlitch>` | Cyberpunk RGB split glitch text distortion. | Listens to `(prefers-reduced-motion: reduce)` to automatically disable flickering and prevent photosensitive seizures. |
+| `<MoonConsoleLogger>` | CRT phosphor green console stream for Web3 transactions or server logs. | Uses `aria-live="polite"` stream updates so new lines are announced without stealing reading focus. |
+| `<CyberCanvas>` | HTML5 drawing canvas with pixel grid overlay and neon palette. | Full touch screen support, size selector contrast fix, custom color picker swatch, and PNG image export. |
+| `<SheetEditor>` | Retro CRT text editor notepad with line numbers gutter. | Word/character counter, text copy action, and live Markdown preview toggle. |
+| `<Table>` | Cyberpunk WAI-ARIA data table primitive. | Semantic HTML5 `<table>`, `<thead>`, `<tbody>`, `<th>`, `<td>`, `<caption>`, striped rows, and responsive scroll. |
 
 ---
 
-## Quickstart
+## 📦 Installation & CLI Usage
 
-### Installation
+### Monorepo NPM Installation
 
 ```bash
-pnpm add @moon-inferno/core @moon-inferno/react @moon-inferno/themes @moon-inferno/icons
+npm install @moon-inferno/react @moon-inferno/themes @moon-inferno/icons
+# or
+pnpm add @moon-inferno/react @moon-inferno/themes @moon-inferno/icons
 ```
 
-### Usage with `<MoonProvider>`
+### CLI Installer Tool
 
-Wrap your application entrypoint in `<MoonProvider>` for seamless theme management across all React components:
+```bash
+npx @moon-inferno/cli add MoonTypewriterDialogue
+npx @moon-inferno/cli list
+```
+
+---
+
+## ⚡ Quickstart Code Example
 
 ```tsx
 import '@moon-inferno/react/styles.css';
-import { MoonProvider, Button, GlitchText, SignalLight, ToastProvider } from '@moon-inferno/react';
+import {
+  MoonProvider,
+  MoonTypewriterDialogue,
+  MoonHealthMeter,
+  MoonRPGGrid,
+  MoonSafeGlitch,
+  ToastProvider
+} from '@moon-inferno/react';
 import { FlameIcon } from '@moon-inferno/icons';
 
 export default function App() {
   return (
     <MoonProvider defaultTheme="moon-inferno">
       <ToastProvider>
-        <GlitchText text="WELCOME TO MOON-INFERNO" />
-        <Button variant="inferno" leftIcon={<FlameIcon size={16} />}>
-          Initiate Sequence
-        </Button>
+        <MoonSafeGlitch text="NEO_INFERNO_PROTOCOL" as="h1" />
+        
+        <MoonTypewriterDialogue
+          speaker="COMMANDER_ZERO"
+          avatar={<FlameIcon size={20} color="#FF4D00" />}
+          text="Welcome to Moon-Inferno! Every signature component is 100% WCAG 2.1 AA accessible."
+          speed={25}
+        />
+
+        <MoonHealthMeter type="health" value={92} max={100} label="HP (PLAYER HEALTH)" />
+
+        <MoonRPGGrid
+          columns={5}
+          totalSlots={10}
+          title="TACTICAL_INVENTORY"
+          items={[
+            { id: '1', name: 'Inferno Core', count: 1, icon: <FlameIcon size={24} color="#FF4D00" /> }
+          ]}
+        />
       </ToastProvider>
     </MoonProvider>
   );
 }
 ```
 
-📖 **Read the Complete Developer Manual & API Reference**: [docs/MANUAL.md](docs/MANUAL.md)  
-🌐 **Live Interactive Documentation**: [https://biagio-scaglia.github.io/moon-inferno/](https://biagio-scaglia.github.io/moon-inferno/)
+---
+
+## 🌐 Official Links & Documentation
+
+* 📖 **Developer Manual & API Reference**: [docs/MANUAL.md](docs/MANUAL.md)
+* 🌐 **Official Live Playground & Website**: [https://biagio-scaglia.github.io/moon-inferno/](https://biagio-scaglia.github.io/moon-inferno/)
+* 📦 **NPM Package**: [https://www.npmjs.com/package/@moon-inferno/react](https://www.npmjs.com/package/@moon-inferno/react)
+* 🐙 **GitHub Repository**: [https://github.com/biagio-scaglia/moon-inferno](https://github.com/biagio-scaglia/moon-inferno)
 
 ---
 
-## License
+## 📄 License
 
-Distributed under the MIT License. Created & Maintained by [Biagio Scaglia](https://github.com/biagio-scaglia).
+Distributed under the MIT License. Created and maintained by [Biagio Scaglia](https://github.com/biagio-scaglia).

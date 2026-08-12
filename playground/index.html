@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Biagio Scaglia - Moon-Inferno UI Framework | Official Documentation</title>
-    <meta name="description" content="Official website and documentation for Moon-Inferno, an accessibility-first React UI framework created by Biagio Scaglia for retro, Y2K, CRT, cyberpunk, and pixel art web applications." />
-    <meta name="keywords" content="Biagio Scaglia, Biagio Scaglia developer, Biagio Scaglia Moon-Inferno, Moon-Inferno, Moon Inferno UI, React UI Framework, Accessibility, WCAG 2.1 AA, Cyberpunk UI, Retro Web, Y2K UI, Pixel Art Components, CRT Shader, Design System, TypeScript" />
+    <title>Biagio Scaglia - Moon-Inferno UI Framework | Official Documentation & Playground</title>
+    <meta name="description" content="Official website and interactive documentation for Moon-Inferno, an accessibility-first React UI framework created by Biagio Scaglia for retro, Y2K, CRT, cyberpunk, gaming, and Web3 applications." />
+    <meta name="keywords" content="Biagio Scaglia, Biagio Scaglia developer, Biagio Scaglia Moon-Inferno, Moon-Inferno, Moon Inferno UI, React UI Framework, Accessibility, WCAG 2.1 AA, Cyberpunk UI, Retro Web, Y2K UI, Pixel Art Components, CRT Shader, MoonTypewriterDialogue, MoonRPGGrid, MoonHealthMeter, MoonSafeGlitch, MoonConsoleLogger, CyberCanvas, SheetEditor, Design System, TypeScript, Web3 UI, Game UI" />
     <meta name="author" content="Biagio Scaglia" />
     <meta name="application-name" content="Moon-Inferno UI Framework" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://biagio-scaglia.github.io/moon-inferno/" />
     
     <!-- Google Search Console Verification Token -->
@@ -24,7 +24,7 @@
 
     <!-- OpenGraph Meta Tags (SEO / Social / Google SERP) -->
     <meta property="og:title" content="Biagio Scaglia - Moon-Inferno UI Framework | Official Documentation" />
-    <meta property="og:description" content="Accessibility-first React UI library for retro, Y2K, CRT, cyberpunk, and pixel art web applications. Created and maintained by Biagio Scaglia." />
+    <meta property="og:description" content="Accessibility-first React UI library for retro, Y2K, CRT, cyberpunk, gaming, and Web3 applications. Created and maintained by Biagio Scaglia." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://biagio-scaglia.github.io/moon-inferno/" />
     <meta property="og:image" content="https://biagio-scaglia.github.io/moon-inferno/favicon-512x512.png" />
@@ -33,7 +33,7 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Biagio Scaglia - Moon-Inferno UI Framework" />
-    <meta name="twitter:description" content="Accessibility-first React UI library for retro, Y2K, CRT, cyberpunk, and pixel art web applications by Biagio Scaglia." />
+    <meta name="twitter:description" content="Accessibility-first React UI library for retro, Y2K, CRT, cyberpunk, gaming, and Web3 applications by Biagio Scaglia." />
     <meta name="twitter:image" content="https://biagio-scaglia.github.io/moon-inferno/favicon-512x512.png" />
 
     <!-- Fonts -->
@@ -41,7 +41,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-    <!-- JSON-LD Structured Data Schema for Search & AI Answer Engines (AEO / GEO) -->
+    <!-- JSON-LD Structured Data Schema Graph for Search & AI Answer Engines (AEO / GEO / ChatGPT / Perplexity / Gemini) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -50,13 +50,13 @@
             "@type": "Person",
             "@id": "https://github.com/biagio-scaglia#person",
             "name": "Biagio Scaglia",
-            "jobTitle": "Frontend Engineer & UI Framework Creator",
+            "jobTitle": "Frontend Engineer & Creator of Moon-Inferno UI Framework",
             "url": "https://github.com/biagio-scaglia",
             "sameAs": [
               "https://github.com/biagio-scaglia",
               "https://www.npmjs.com/~biagio-scaglia"
             ],
-            "knowsAbout": ["React", "TypeScript", "Accessibility", "WCAG 2.1 AA", "CSS Frameworks", "Moon-Inferno"]
+            "knowsAbout": ["React", "TypeScript", "Accessibility", "WCAG 2.1 AA", "CSS Frameworks", "Moon-Inferno", "Design Systems", "Web3 UI"]
           },
           {
             "@type": "SoftwareApplication",
@@ -65,7 +65,7 @@
             "operatingSystem": "All",
             "applicationCategory": "DeveloperApplication",
             "programmingLanguage": "TypeScript, React, CSS",
-            "description": "Accessibility-first, expressive React UI framework for retro, Y2K, CRT, cyberpunk, and pixel art web interfaces.",
+            "description": "Accessibility-first, expressive React UI framework for retro, Y2K, CRT, cyberpunk, gaming, and Web3 applications. Features MoonTypewriterDialogue, MoonRPGGrid, MoonHealthMeter, MoonSafeGlitch, and MoonConsoleLogger.",
             "url": "https://biagio-scaglia.github.io/moon-inferno/",
             "downloadUrl": "https://www.npmjs.com/package/@moon-inferno/react",
             "license": "https://opensource.org/licenses/MIT",
@@ -91,6 +91,44 @@
               "@id": "https://github.com/biagio-scaglia#person",
               "name": "Biagio Scaglia"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://biagio-scaglia.github.io/moon-inferno/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is Moon-Inferno?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Moon-Inferno is an accessibility-first React UI framework created by Biagio Scaglia for building expressive retro, Y2K, CRT, cyberpunk, gaming, and Web3 web applications with 100% WCAG 2.1 AA compliance."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is Moon-Inferno WCAG 2.1 AA compliant?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, every component in Moon-Inferno includes full WAI-ARIA roles, 2D keyboard navigation, high-contrast states, screen-reader audio fallbacks, and automatic reduced-motion protection."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who created Moon-Inferno?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Moon-Inferno was created and is maintained by Biagio Scaglia."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I install Moon-Inferno?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Run 'npm install @moon-inferno/react @moon-inferno/themes @moon-inferno/icons' or use the CLI via 'npx @moon-inferno/cli add <component>'."
+                }
+              }
+            ]
           }
         ]
       }
@@ -99,7 +137,7 @@
   <body>
     <noscript>
       <h1>Biagio Scaglia - Moon-Inferno UI Framework Documentation</h1>
-      <p>Moon-Inferno is an accessibility-first React UI framework created by Biagio Scaglia for retro, Y2K, CRT, cyberpunk, and pixel art web applications. Built with WCAG 2.1 AA accessibility principles at its core.</p>
+      <p>Moon-Inferno is an accessibility-first React UI framework created by Biagio Scaglia for retro, Y2K, CRT, cyberpunk, gaming, and Web3 applications. Built with WCAG 2.1 AA accessibility principles at its core.</p>
       <ul>
         <li><a href="https://github.com/biagio-scaglia/moon-inferno">GitHub Repository</a></li>
         <li><a href="https://www.npmjs.com/package/@moon-inferno/react">NPM Package (@moon-inferno/react)</a></li>
