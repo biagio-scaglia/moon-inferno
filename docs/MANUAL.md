@@ -268,13 +268,13 @@ import { NeonText } from '@moon-inferno/react';
 ```
 
 #### `<Marquee>`
-Infinite continuous scrolling marquee ticker.
+Infinite continuous scrolling marquee ticker with WCAG 2.2.2 AA compliant pause/play controls.
 
 ```tsx
 import { Marquee } from '@moon-inferno/react';
 
-<Marquee speed={18} variant="pixel">
-  <span>RETRO PRIMITIVES</span>
+<Marquee speed={18} variant="pixel" showPauseButton pauseOnHover pauseOnFocus>
+  <span>RETRO PRIMITIVES -- WCAG 2.2.2 AA COMPLIANT</span>
 </Marquee>
 ```
 

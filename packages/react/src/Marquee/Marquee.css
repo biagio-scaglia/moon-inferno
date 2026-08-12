@@ -1,7 +1,9 @@
-/* Moon-Inferno Marquee Styles */
+/* Moon-Inferno Marquee Styles (WCAG 2.2.2 AA Compliant) */
 
 .mi-marquee {
   display: flex;
+  align-items: center;
+  position: relative;
   overflow: hidden;
   user-select: none;
   width: 100%;
@@ -9,13 +11,21 @@
   background-color: var(--mi-color-surface, #1E1B26);
   border-top: 1px solid var(--mi-color-border-accent, #FF4D00);
   border-bottom: 1px solid var(--mi-color-border-accent, #FF4D00);
-  padding: 0.5rem 0;
-  position: relative;
+  padding: 0.4rem 0;
+  box-sizing: border-box;
 }
 
 .mi-marquee--pixel {
   border-width: 2px;
   background-color: var(--mi-color-bg-subtle, #14121A);
+}
+
+.mi-marquee__viewport {
+  display: flex;
+  overflow: hidden;
+  flex: 1;
+  width: 100%;
+  position: relative;
 }
 
 .mi-marquee__track {
@@ -32,8 +42,48 @@
   animation-name: mi-marquee-right;
 }
 
-.mi-marquee--pause:hover .mi-marquee__track {
-  animation-play-state: paused;
+/* Hover & Focus Pause (WCAG 2.2.2) */
+.mi-marquee--pause-hover:hover .mi-marquee__track,
+.mi-marquee--pause-focus:focus-within .mi-marquee__track,
+.mi-marquee--paused .mi-marquee__track {
+  animation-play-state: paused !important;
+}
+
+/* Accessible Pause / Play Control Button */
+.mi-marquee__toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0.65rem;
+  padding: 0.25rem 0.55rem;
+  font-family: var(--mi-font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--mi-color-text, #ffffff);
+  background-color: rgba(255, 77, 0, 0.15);
+  border: 1px solid var(--mi-color-primary, #FF4D00);
+  border-radius: var(--mi-radius-sm, 3px);
+  cursor: pointer;
+  z-index: 10;
+  flex-shrink: 0;
+  outline: none;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.mi-marquee__toggle-btn:hover {
+  background-color: var(--mi-color-primary, #FF4D00);
+  color: #000000;
+  box-shadow: 0 0 10px rgba(255, 77, 0, 0.4);
+}
+
+.mi-marquee__toggle-btn:focus-visible {
+  outline: 2px solid var(--mi-color-primary, #FF4D00);
+  outline-offset: 2px;
+}
+
+.mi-marquee--controls-left {
+  flex-direction: row-reverse;
 }
 
 @keyframes mi-marquee-left {
@@ -46,8 +96,12 @@
   to { transform: translateX(0%); }
 }
 
+/* Prefers-Reduced-Motion (WCAG 2.2.2 & 2.3.3) */
 @media (prefers-reduced-motion: reduce) {
   .mi-marquee__track {
     animation: none !important;
+  }
+  .mi-marquee__toggle-btn {
+    display: none;
   }
 }
