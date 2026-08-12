@@ -1,0 +1,77 @@
+/* Moon-Inferno MoonHealthMeter Component Styles */
+
+.mi-healthmeter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: var(--mi-font-mono, monospace);
+  width: 100%;
+  max-width: 100%;
+}
+
+.mi-healthmeter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--mi-color-text, #F1F5F9);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mi-healthmeter-track {
+  position: relative;
+  width: 100%;
+  height: 18px;
+  background-color: #0A090D;
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-sm, 4px);
+  overflow: hidden;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+.mi-healthmeter-bar {
+  height: 100%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.mi-healthmeter-bar--health {
+  background: linear-gradient(90deg, #CC0029 0%, #FF0033 60%, #FF4D00 100%);
+  color: #FF0033;
+}
+
+.mi-healthmeter-bar--mana {
+  background: linear-gradient(90deg, #0055FF 0%, #00AAFF 60%, #00E5FF 100%);
+  color: #00E5FF;
+}
+
+.mi-healthmeter-bar--energy {
+  background: linear-gradient(90deg, #009933 0%, #00FF66 60%, #AAFF00 100%);
+  color: #00FF66;
+}
+
+.mi-healthmeter-bar--shield {
+  background: linear-gradient(90deg, #7700FF 0%, #AA00FF 60%, #FF00E5 100%);
+  color: #FF00E5;
+}
+
+/* Native HTML5 meter/progress resets */
+.mi-healthmeter-native {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Variant Pixel */
+.mi-healthmeter--pixel .mi-healthmeter-track {
+  border-width: 2px;
+  height: 20px;
+  border-radius: 0;
+  box-shadow: 2px 2px 0 #000;
+}

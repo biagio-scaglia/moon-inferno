@@ -68,6 +68,11 @@ import {
   TableCaption,
   CyberCanvas,
   SheetEditor,
+  MoonTypewriterDialogue,
+  MoonRPGGrid,
+  MoonHealthMeter,
+  MoonSafeGlitch,
+  MoonConsoleLogger,
   MoonProvider,
   useMoonTheme,
 } from '@moon-inferno/react';
@@ -236,7 +241,7 @@ function MasterGuideWebsite() {
           <div className="header-brand">
             <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '28px', width: '28px', flexShrink: 0 }} />
             <h1 className="brand-title">Moon-Inferno</h1>
-            <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.8</Badge>
+            <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.9</Badge>
           </div>
 
           {/* Controls */}
@@ -409,7 +414,7 @@ function MasterGuideWebsite() {
 
         {/* Global Ticker Marquee */}
         <Marquee variant="pixel" speed={22}>
-          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.1.8 IS LIVE ON NPM</span>
+          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.1.9 IS LIVE ON NPM</span>
           <span>--</span>
           <span>npm install @moon-inferno/react @moon-inferno/themes @moon-inferno/icons</span>
           <span>--</span>
@@ -1084,6 +1089,126 @@ export default function App() {
                             defaultValue={`# MOON-INFERNO CYBER LOG\n- All 50+ primitives compiled successfully.\n- Full WCAG 2.1 AA accessibility compliance.\n- Built by Biagio Scaglia.`}
                           />
                           <CodeBlock filename="SheetEditor.snippet.tsx" code={`<SheetEditor\n  title="CYBER_LOG_NOTES.MD"\n  defaultValue="# INFERNO NOTES..."\n/>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* MoonTypewriterDialogue */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <TerminalIcon size={18} /> MoonTypewriterDialogue (RPG Dialogue Box)
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Retro RPG typewriter dialogue box with gradual letter reveal. Features WAI-ARIA <code>aria-live="polite"</code> screen reader immediate text fallback.
+                          </p>
+                          <MoonTypewriterDialogue
+                            speaker="CYBER_NAVIGATOR_AI"
+                            avatar={<FlameIcon size={20} color="#FF4D00" />}
+                            text="Welcome to Moon-Inferno! Every signature component is designed for 100% WCAG 2.1 AA accessibility and retro gaming aesthetics."
+                            speed={25}
+                          />
+                          <CodeBlock filename="MoonTypewriterDialogue.snippet.tsx" code={`<MoonTypewriterDialogue\n  speaker="CYBER_NAVIGATOR_AI"\n  text="Welcome to Moon-Inferno! Built for WCAG 2.1 AA accessibility."\n  speed={25}\n/>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* MoonRPGGrid */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <LayersIcon size={18} /> MoonRPGGrid (Inventory & NFT 2D Slot Grid)
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Pixel art 2D inventory slot grid with full keyboard arrow navigation, <code>Space/Enter</code> slot swapping, and live voice announcements for screen readers.
+                          </p>
+                          <MoonRPGGrid
+                            columns={5}
+                            totalSlots={10}
+                            title="CYBERNETIC_INVENTORY"
+                            items={[
+                              { id: '1', name: 'Inferno Core', count: 1, icon: <FlameIcon size={24} color="#FF4D00" />, description: 'Overclocked quantum core module (+45 AP)' },
+                              { id: '2', name: 'Lightning Cell', count: 5, icon: <ZapIcon size={24} color="#FFD700" />, description: 'High-voltage energy storage cell' },
+                              { id: '3', name: 'Refresh Matrix', count: 2, icon: <RefreshIcon size={24} color="#00FF66" />, description: 'Subsystem reboot protocol token' },
+                              { id: '4', name: 'Security Key', count: 1, icon: <CheckIcon size={24} color="#00E5FF" />, description: 'Encrypted Y2K mainframe clearance key' },
+                            ]}
+                          />
+                          <CodeBlock filename="MoonRPGGrid.snippet.tsx" code={`<MoonRPGGrid\n  columns={5}\n  totalSlots={10}\n  items={[\n    { id: '1', name: 'Inferno Core', count: 1, icon: <FlameIcon /> }\n  ]}\n/>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* MoonHealthMeter */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <CheckIcon size={18} /> MoonHealthMeter (Semantic Health & Mana Bars)
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Animated gaming health, mana, and shield meters built natively on HTML5 <code>&lt;meter&gt;</code> tags for live percentage reporting to screen readers.
+                          </p>
+                          <Stack gap="1rem">
+                            <MoonHealthMeter type="health" value={85} max={100} label="HP (HEALTH)" />
+                            <MoonHealthMeter type="mana" value={60} max={100} label="MP (MANA)" />
+                            <MoonHealthMeter type="energy" value={95} max={100} label="STAMINA" />
+                            <MoonHealthMeter type="shield" value={40} max={100} label="CYBER SHIELD" />
+                          </Stack>
+                          <CodeBlock filename="MoonHealthMeter.snippet.tsx" code={`<MoonHealthMeter type="health" value={85} max={100} label="HP (HEALTH)" />\n<MoonHealthMeter type="mana" value={60} max={100} label="MP (MANA)" />`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* MoonSafeGlitch */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <SparklesIcon size={18} /> MoonSafeGlitch (Photosensitive-Safe Glitch)
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Cyberpunk RGB split glitch text that automatically disables intense flickering when <code>(prefers-reduced-motion: reduce)</code> is set.
+                          </p>
+                          <div style={{ fontSize: '1.5rem', textAlign: 'center', padding: '1rem', background: '#0A090D', borderRadius: '4px' }}>
+                            <MoonSafeGlitch text="NEO_INFERNO_PROTOCOL" as="h3" />
+                          </div>
+                          <CodeBlock filename="MoonSafeGlitch.snippet.tsx" code={`<MoonSafeGlitch text="NEO_INFERNO_PROTOCOL" as="h3" />`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* MoonConsoleLogger */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <TerminalIcon size={18} /> MoonConsoleLogger (Live Stream Terminal Logger)
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Phosphor green CRT console logger for blockchain transactions or server logs with <code>aria-live="polite"</code> stream updates.
+                          </p>
+                          <MoonConsoleLogger
+                            title="BLOCKCHAIN_TX_LOGGER"
+                            logs={[
+                              { timestamp: '23:48:12', type: 'info', message: 'Initializing Web3 provider connection...' },
+                              { timestamp: '23:48:14', type: 'success', message: 'Connected to Moon-Inferno Mainnet Node #01' },
+                              { timestamp: '23:48:18', type: 'warn', message: 'Gas price spike detected: 24 Gwei' },
+                              { timestamp: '23:48:22', type: 'success', message: 'Transaction 0x7a8...9f4 confirmed in block #189420' },
+                            ]}
+                          />
+                          <CodeBlock filename="MoonConsoleLogger.snippet.tsx" code={`<MoonConsoleLogger\n  title="BLOCKCHAIN_TX_LOGGER"\n  logs={[\n    { type: 'success', message: 'Transaction confirmed' }\n  ]}\n/>`} />
                         </Stack>
                       </CardBody>
                     </Card>

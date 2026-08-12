@@ -1,0 +1,89 @@
+/* Moon-Inferno MoonTypewriterDialogue Component Styles */
+
+.mi-typewriter-box {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--mi-color-bg-subtle, #14121A);
+  border: 2px solid var(--mi-color-border-accent, #FF4D00);
+  border-radius: var(--mi-radius-md, 6px);
+  padding: 1rem;
+  font-family: var(--mi-font-mono, monospace);
+  color: var(--mi-color-text, #F1F5F9);
+  box-shadow: var(--mi-shadow-glow, 0 4px 20px rgba(0, 0, 0, 0.4));
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.mi-typewriter-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.mi-typewriter-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid var(--mi-color-primary, #FF4D00);
+  object-fit: cover;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0A090D;
+}
+
+.mi-typewriter-speaker {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--mi-color-primary, #FF4D00);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mi-typewriter-body {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  min-height: 50px;
+  position: relative;
+  white-space: pre-wrap;
+}
+
+.mi-typewriter-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background-color: var(--mi-color-primary, #FF4D00);
+  margin-left: 4px;
+  animation: mi-typewriter-blink 0.7s infinite alternate;
+  vertical-align: middle;
+}
+
+.mi-typewriter-complete-indicator {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--mi-color-primary, #FF4D00);
+  animation: mi-typewriter-bounce 0.6s infinite alternate;
+}
+
+@keyframes mi-typewriter-blink {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes mi-typewriter-bounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+
+/* Variant Pixel */
+.mi-typewriter-box--pixel {
+  border-width: 3px;
+  background-color: #0A090D;
+  box-shadow: 4px 4px 0 #000;
+}

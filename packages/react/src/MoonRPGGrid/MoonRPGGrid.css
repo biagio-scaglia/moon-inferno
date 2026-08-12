@@ -1,0 +1,95 @@
+/* Moon-Inferno MoonRPGGrid Component Styles */
+
+.mi-rpggrid-container {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-family: var(--mi-font-mono, monospace);
+  background-color: var(--mi-color-bg-subtle, #14121A);
+  border: 2px solid var(--mi-color-border-accent, #FF4D00);
+  border-radius: var(--mi-radius-md, 6px);
+  padding: 0.75rem;
+  box-shadow: var(--mi-shadow-glow, 0 4px 20px rgba(0, 0, 0, 0.4));
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.mi-rpggrid-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--mi-color-primary, #FF4D00);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mi-rpggrid-grid {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.mi-rpggrid-slot {
+  width: 52px;
+  height: 52px;
+  background-color: #0A090D;
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-sm, 4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.mi-rpggrid-slot:hover,
+.mi-rpggrid-slot:focus-visible {
+  border-color: var(--mi-color-primary, #FF4D00);
+  box-shadow: 0 0 10px rgba(255, 77, 0, 0.4);
+}
+
+.mi-rpggrid-slot--selected {
+  border-color: #00FF66 !important;
+  box-shadow: 0 0 12px rgba(0, 255, 102, 0.6) !important;
+  background-color: rgba(0, 255, 102, 0.15);
+}
+
+.mi-rpggrid-item-count {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--mi-color-text, #ffffff);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0.1rem 0.25rem;
+  border-radius: 2px;
+}
+
+.mi-rpggrid-info-box {
+  padding: 0.5rem 0.75rem;
+  background-color: #0A090D;
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-sm, 4px);
+  font-size: 0.78rem;
+  color: var(--mi-color-text-muted, #94A3B8);
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+}
+
+/* Variant Pixel */
+.mi-rpggrid-container--pixel {
+  border-width: 3px;
+  background-color: #0A090D;
+}
+
+.mi-rpggrid-container--pixel .mi-rpggrid-slot {
+  border-width: 2px;
+  box-shadow: 2px 2px 0 #000;
+}

@@ -331,6 +331,63 @@ import { SheetEditor } from '@moon-inferno/react';
 />
 ```
 
+#### `<MoonTypewriterDialogue>`
+RPG typewriter dialogue box with gradual letter reveal and immediate WAI-ARIA `aria-live="polite"` screen-reader text fallback.
+
+```tsx
+import { MoonTypewriterDialogue } from '@moon-inferno/react';
+
+<MoonTypewriterDialogue
+  speaker="CYBER_NAVIGATOR_AI"
+  text="Welcome to Moon-Inferno!"
+  speed={25}
+/>
+```
+
+#### `<MoonRPGGrid>`
+Pixel art 2D inventory slot grid with full arrow keyboard navigation, `Space`/`Enter` slot swapping, and live voice announcements.
+
+```tsx
+import { MoonRPGGrid } from '@moon-inferno/react';
+
+<MoonRPGGrid
+  columns={5}
+  totalSlots={10}
+  items={[{ id: '1', name: 'Inferno Core', count: 1 }]}
+/>
+```
+
+#### `<MoonHealthMeter>`
+Animated gaming health, mana, and shield meters built natively on HTML5 `<meter>` elements for live percentage reporting to screen readers.
+
+```tsx
+import { MoonHealthMeter } from '@moon-inferno/react';
+
+<MoonHealthMeter type="health" value={85} max={100} label="HP (HEALTH)" />
+<MoonHealthMeter type="mana" value={60} max={100} label="MP (MANA)" />
+```
+
+#### `<MoonSafeGlitch>`
+Cyberpunk RGB split glitch text that automatically disables intense flickering when `(prefers-reduced-motion: reduce)` is enabled.
+
+```tsx
+import { MoonSafeGlitch } from '@moon-inferno/react';
+
+<MoonSafeGlitch text="NEO_INFERNO_PROTOCOL" as="h3" />
+```
+
+#### `<MoonConsoleLogger>`
+Phosphor green CRT console logger for blockchain transactions or server logs with `aria-live="polite"` stream updates.
+
+```tsx
+import { MoonConsoleLogger } from '@moon-inferno/react';
+
+<MoonConsoleLogger
+  title="BLOCKCHAIN_TX_LOGGER"
+  logs={[{ type: 'success', message: 'Transaction confirmed' }]}
+/>
+```
+
 ---
 
 ### Moon-Inferno Signature Retro Primitives

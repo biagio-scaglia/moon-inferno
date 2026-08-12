@@ -1,0 +1,73 @@
+/* Moon-Inferno MoonConsoleLogger Component Styles */
+
+.mi-consolelogger {
+  display: flex;
+  flex-direction: column;
+  background-color: #050B05;
+  border: 2px solid #00FF66;
+  border-radius: var(--mi-radius-md, 6px);
+  font-family: var(--mi-font-mono, monospace);
+  color: #00FF66;
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.mi-consolelogger-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #020602;
+  border-bottom: 1px solid rgba(0, 255, 102, 0.3);
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mi-consolelogger-body {
+  padding: 0.75rem;
+  min-height: 140px;
+  max-height: 280px;
+  overflow-y: auto;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mi-consolelogger-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  word-break: break-all;
+}
+
+.mi-consolelogger-timestamp {
+  opacity: 0.6;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+}
+
+.mi-consolelogger-type--info { color: #00FF66; }
+.mi-consolelogger-type--warn { color: #FFD700; }
+.mi-consolelogger-type--error { color: #FF0033; }
+.mi-consolelogger-type--success { color: #00E5FF; }
+
+/* Variant Inferno */
+.mi-consolelogger--inferno {
+  background-color: #0D090A;
+  border-color: #FF4D00;
+  color: #F1F5F9;
+  box-shadow: 0 0 20px rgba(255, 77, 0, 0.2);
+}
+
+.mi-consolelogger--inferno .mi-consolelogger-header {
+  border-bottom-color: rgba(255, 77, 0, 0.3);
+}
+
+.mi-consolelogger--inferno .mi-consolelogger-type--info { color: #FF4D00; }
