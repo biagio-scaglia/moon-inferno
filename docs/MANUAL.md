@@ -288,6 +288,49 @@ import { FlameIcon, RefreshIcon, ZapIcon } from '@moon-inferno/icons';
 <ZapIcon size={32} hoverEffect="bounce" />
 ```
 
+#### `<Table>`
+Cyberpunk data table with striped rows, hover highlighting, and semantic HTML5 WAI-ARIA accessibility.
+
+```tsx
+import { Table, TableHeader, TableHead, TableBody, TableRow, TableCell } from '@moon-inferno/react';
+
+<Table variant="inferno" striped hoverable>
+  <TableHeader>
+    <TableRow>
+      <TableHead>NODE ID</TableHead>
+      <TableHead>STATUS</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>#NODE-01</TableCell>
+      <TableCell>ONLINE</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+#### `<CyberCanvas>`
+Interactive HTML5 drawing canvas with pixel grid overlay, neon color palette, eraser, clear tool, and PNG image export button.
+
+```tsx
+import { CyberCanvas } from '@moon-inferno/react';
+
+<CyberCanvas height={280} gridOverlay strokeColor="#FF4D00" />
+```
+
+#### `<SheetEditor>`
+Retro CRT text editor notepad with real-time line numbering, word/char counter, copy text action, and markdown preview mode.
+
+```tsx
+import { SheetEditor } from '@moon-inferno/react';
+
+<SheetEditor
+  title="CYBER_LOG_NOTES.MD"
+  defaultValue="# MOON-INFERNO NOTES..."
+/>
+```
+
 ---
 
 ### Moon-Inferno Signature Retro Primitives

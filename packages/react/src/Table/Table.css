@@ -1,0 +1,74 @@
+/* Moon-Inferno Table Component Styles */
+
+.mi-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--mi-radius-md, 6px);
+  border: 1px solid var(--mi-color-border-accent, #FF4D00);
+  background-color: var(--mi-color-bg-subtle, #14121A);
+  box-shadow: var(--mi-shadow-glow, 0 4px 20px rgba(0, 0, 0, 0.4));
+}
+
+.mi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mi-font-mono, monospace);
+  font-size: 0.85rem;
+  color: var(--mi-color-text, #F1F5F9);
+  text-align: left;
+}
+
+.mi-table caption {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  color: var(--mi-color-text-muted, #94A3B8);
+  caption-side: bottom;
+  text-align: left;
+}
+
+.mi-table-header {
+  background-color: rgba(255, 77, 0, 0.1);
+  border-bottom: 2px solid var(--mi-color-border-accent, #FF4D00);
+}
+
+.mi-table-head {
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  color: var(--mi-color-primary, #FF4D00);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mi-table-cell {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--mi-color-border, #332D40);
+}
+
+.mi-table-row {
+  transition: background-color 0.15s ease;
+}
+
+.mi-table--hoverable .mi-table-row:hover {
+  background-color: rgba(255, 77, 0, 0.15);
+}
+
+.mi-table--striped .mi-table-row:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.mi-table--compact .mi-table-head,
+.mi-table--compact .mi-table-cell {
+  padding: 0.4rem 0.65rem;
+  font-size: 0.78rem;
+}
+
+/* Variant: Pixel */
+.mi-table-wrapper--pixel {
+  border-width: 2px;
+  background-color: #0A090D;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.mi-table-wrapper--pixel .mi-table-header {
+  background-color: #1E1B26;
+}

@@ -59,6 +59,15 @@ import {
   DropdownDivider,
   PieChart,
   ColorPicker,
+  Table,
+  TableHeader,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableCaption,
+  CyberCanvas,
+  SheetEditor,
   MoonProvider,
   useMoonTheme,
 } from '@moon-inferno/react';
@@ -988,6 +997,93 @@ export default function App() {
                             </div>
                           </Stack>
                           <CodeBlock filename="ColorPicker.snippet.tsx" code={`<ColorPicker\n  label="ACCENT COLOR"\n  variant="inferno"\n  value={pickedColor}\n  onChange={(hex) => setPickedColor(hex)}\n/>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* Cyberpunk Table Component */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <LayersIcon size={18} /> Table & Data Grid Primitives
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Cyberpunk data table with striped rows, hover highlighting, and semantic HTML5 WAI-ARIA accessibility.
+                          </p>
+                          <Table variant="inferno" striped hoverable>
+                            <TableCaption>System Node Cluster Status Log - Updated live</TableCaption>
+                            <TableHeader>
+                              <TableRow>
+                                <TableHead>NODE ID</TableHead>
+                                <TableHead>SUBSYSTEM</TableHead>
+                                <TableHead>STATUS</TableHead>
+                                <TableHead>LATENCY</TableHead>
+                              </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                              <TableRow>
+                                <TableCell style={{ fontWeight: 'bold' }}>#NODE-01</TableCell>
+                                <TableCell>Neural Matrix Core</TableCell>
+                                <TableCell><Badge variant="success" icon={<CheckIcon size={12} />}>ONLINE</Badge></TableCell>
+                                <TableCell>12ms</TableCell>
+                              </TableRow>
+                              <TableRow>
+                                <TableCell style={{ fontWeight: 'bold' }}>#NODE-02</TableCell>
+                                <TableCell>CRT Shader Engine</TableCell>
+                                <TableCell><Badge variant="inferno" icon={<FlameIcon size={12} />}>ACTIVE</Badge></TableCell>
+                                <TableCell>18ms</TableCell>
+                              </TableRow>
+                              <TableRow>
+                                <TableCell style={{ fontWeight: 'bold' }}>#NODE-03</TableCell>
+                                <TableCell>Y2K Protocol Gateway</TableCell>
+                                <TableCell><Badge variant="error" icon={<WarnIcon size={12} />}>WARNING</Badge></TableCell>
+                                <TableCell>145ms</TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                          <CodeBlock filename="Table.snippet.tsx" code={`<Table variant="inferno" striped hoverable>\n  <TableHeader>\n    <TableRow>\n      <TableHead>NODE ID</TableHead>\n      <TableHead>STATUS</TableHead>\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow>\n      <TableCell>#NODE-01</TableCell>\n      <TableCell><Badge variant="success">ONLINE</Badge></TableCell>\n    </TableRow>\n  </TableBody>\n</Table>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* CyberCanvas Drawing Tool */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <CodeIcon size={18} /> CyberCanvas Interactive Drawing Primitive
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            HTML5 drawing canvas with pixel grid overlay, neon color palette, eraser, clear tool, and PNG image export button.
+                          </p>
+                          <CyberCanvas height={280} gridOverlay strokeColor="#FF4D00" />
+                          <CodeBlock filename="CyberCanvas.snippet.tsx" code={`<CyberCanvas height={280} gridOverlay strokeColor="#FF4D00" />`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* SheetEditor CRT Text Editor */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <TerminalIcon size={18} /> SheetEditor CRT Text & Code Notepad
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Retro text editor notepad with real-time line numbering, word/char counter, copy text action, and markdown preview mode.
+                          </p>
+                          <SheetEditor
+                            title="CYBER_LOG_NOTES.MD"
+                            defaultValue={`# MOON-INFERNO CYBER LOG\n- All 50+ primitives compiled successfully.\n- Full WCAG 2.1 AA accessibility compliance.\n- Built by Biagio Scaglia.`}
+                          />
+                          <CodeBlock filename="SheetEditor.snippet.tsx" code={`<SheetEditor\n  title="CYBER_LOG_NOTES.MD"\n  defaultValue="# INFERNO NOTES..."\n/>`} />
                         </Stack>
                       </CardBody>
                     </Card>

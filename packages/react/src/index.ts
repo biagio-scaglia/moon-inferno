@@ -41,6 +41,9 @@ export * from './CommandPalette/CommandPalette';
 export * from './Dropdown/Dropdown';
 export * from './PieChart/PieChart';
 export * from './ColorPicker/ColorPicker';
+export * from './Table/Table';
+export * from './CyberCanvas/CyberCanvas';
+export * from './SheetEditor/SheetEditor';
 
 // Styles
 import './Button/Button.css';
@@ -84,3 +87,6 @@ import './CommandPalette/CommandPalette.css';
 import './Dropdown/Dropdown.css';
 import './PieChart/PieChart.css';
 import './ColorPicker/ColorPicker.css';
+import './Table/Table.css';
+import './CyberCanvas/CyberCanvas.css';
+import './SheetEditor/SheetEditor.css';
