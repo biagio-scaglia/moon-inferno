@@ -35,3 +35,7 @@ export * from './icons/ExternalLinkIcon';
 export * from './icons/CopyIcon';
 export * from './icons/TrashIcon';
 export * from './icons/FilterIcon';
+export * from './icons/CalendarIcon';
+export * from './icons/ChevronLeftIcon';
+export * from './icons/ChevronRightIcon';
+export * from './icons/MenuIcon';

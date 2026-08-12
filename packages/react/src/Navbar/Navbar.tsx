@@ -1,4 +1,5 @@
 import React, { useEffect, type ReactNode, type HTMLAttributes } from 'react';
+import { MenuIcon, CloseIcon } from '@moon-inferno/icons';
 
 export interface NavbarProps extends HTMLAttributes<HTMLElement> {
   variant?: 'inferno' | 'pixel' | 'ghost';
@@ -88,12 +89,14 @@ export const NavbarItem: React.FC<NavbarItemProps> = ({
 export interface NavbarMenuToggleProps extends HTMLAttributes<HTMLButtonElement> {
   isOpen: boolean;
   onToggle: () => void;
+  icon?: ReactNode;
   ariaLabel?: string;
 }
 
 export const NavbarMenuToggle: React.FC<NavbarMenuToggleProps> = ({
   isOpen,
   onToggle,
+  icon,
   ariaLabel = 'Toggle navigation menu',
   className = '',
   ...props
@@ -107,11 +110,13 @@ export const NavbarMenuToggle: React.FC<NavbarMenuToggleProps> = ({
       aria-expanded={isOpen}
       {...props}
     >
-      <span className="moon-navbar__toggle-icon" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-      </span>
+      {icon ? (
+        icon
+      ) : (
+        <span className="moon-navbar__toggle-icon" aria-hidden="true">
+          {isOpen ? <CloseIcon size={20} /> : <MenuIcon size={20} />}
+        </span>
+      )}
     </button>
   );
 };

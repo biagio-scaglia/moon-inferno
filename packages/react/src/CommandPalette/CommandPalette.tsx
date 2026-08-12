@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, type ReactNode, type HTMLAttributes } from 'react';
+import { SearchIcon } from '@moon-inferno/icons';
 
 export interface CommandItem {
   id: string;
@@ -133,7 +134,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         {/* Search Header */}
         <div className="moon-command-palette__search">
           <span className="moon-command-palette__search-icon" aria-hidden="true">
-            🔍
+            <SearchIcon size={18} />
           </span>
           <input
             ref={inputRef}

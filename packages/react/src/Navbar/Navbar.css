@@ -122,28 +122,14 @@
 
 .moon-navbar__toggle-icon {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 20px;
-  height: 14px;
+  align-items: center;
+  justify-content: center;
+  color: var(--moon-color-text, #ffffff);
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.moon-navbar__toggle-icon span {
-  display: block;
-  height: 2px;
-  width: 100%;
-  background-color: var(--moon-color-text, #ffffff);
-  transition: all 0.2s ease;
-}
-
-.moon-navbar__toggle--open .moon-navbar__toggle-icon span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
-}
-.moon-navbar__toggle--open .moon-navbar__toggle-icon span:nth-child(2) {
-  opacity: 0;
-}
-.moon-navbar__toggle--open .moon-navbar__toggle-icon span:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
+.moon-navbar__toggle:hover .moon-navbar__toggle-icon {
+  color: var(--moon-color-primary, #ff4444);
 }
 
 .moon-navbar__menu {

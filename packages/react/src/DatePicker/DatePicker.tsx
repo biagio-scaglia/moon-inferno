@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, type HTMLAttributes } from 'react';
+import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from '@moon-inferno/icons';
 
 export interface DatePickerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'> {
   value?: Date | null;
@@ -203,7 +204,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           {formattedValue || placeholder}
         </span>
         <span className="moon-datepicker__icon" aria-hidden="true">
-          📅
+          <CalendarIcon size={16} />
         </span>
       </button>
 
@@ -222,7 +223,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               onClick={handlePrevMonth}
               aria-label="Previous month"
             >
-              &lt;
+              <ChevronLeftIcon size={14} />
             </button>
             <span className="moon-datepicker__month-title">
               {MONTH_NAMES[month]} {year}
@@ -233,7 +234,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               onClick={handleNextMonth}
               aria-label="Next month"
             >
-              &gt;
+              <ChevronRightIcon size={14} />
             </button>
           </div>
 
