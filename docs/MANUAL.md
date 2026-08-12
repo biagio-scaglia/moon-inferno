@@ -316,6 +316,62 @@ import { PixelContainer } from '@moon-inferno/react';
 </PixelContainer>
 ```
 
+#### `<Navbar>`
+Responsive navigation header bar supporting brand, navigation items, action triggers, and mobile drawer menu.
+
+```tsx
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu } from '@moon-inferno/react';
+
+<Navbar variant="inferno">
+  <NavbarBrand>INFERNO_NAV</NavbarBrand>
+  <NavbarContent align="end">
+    <NavbarItem isActive>Dashboard</NavbarItem>
+    <NavbarItem>Docs</NavbarItem>
+  </NavbarContent>
+</Navbar>
+```
+
+#### `<DatePicker>`
+Accessible calendar date picker supporting month/year navigation, single/range selection, popover toggle, and full WCAG keyboard grid traversal (`Arrow keys`, `PageUp/Down`, `Home/End`, `Enter`, `Esc`).
+
+```tsx
+import { DatePicker } from '@moon-inferno/react';
+
+<DatePicker
+  label="Select Launch Date"
+  variant="inferno"
+  value={selectedDate}
+  onChange={(date) => setSelectedDate(date)}
+/>
+```
+
+#### `<HoloCard>`
+Interactive 3D card with cursor-based parallax tilt, dynamic holographic iridescence glare reflection, and `prefers-reduced-motion` fallback.
+
+```tsx
+import { HoloCard } from '@moon-inferno/react';
+
+<HoloCard variant="inferno" maxTilt={15}>
+  <h4>Cybernetic Node</h4>
+  <p>Hover to tilt 3D parallax card.</p>
+</HoloCard>
+```
+
+#### `<CommandPalette>`
+Accessible search modal palette triggered via `Cmd+K` / `Ctrl+K` with search input, item grouping, keyboard selection (`ArrowUp`, `ArrowDown`, `Enter`, `Escape`), and ARIA combobox pattern.
+
+```tsx
+import { CommandPalette } from '@moon-inferno/react';
+
+<CommandPalette
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  items={[
+    { id: '1', label: 'Switch Theme: Inferno', group: 'Themes', onSelect: () => setTheme('moon-inferno') }
+  ]}
+/>
+```
+
 ---
 
 ## 4. Vector Iconography (`@moon-inferno/icons`)

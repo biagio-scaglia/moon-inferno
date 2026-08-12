@@ -34,6 +34,10 @@ export * from './PixelText/PixelText';
 export * from './TypingText/TypingText';
 export * from './NeonText/NeonText';
 export * from './Breadcrumbs/Breadcrumbs';
+export * from './Navbar/Navbar';
+export * from './DatePicker/DatePicker';
+export * from './HoloCard/HoloCard';
+export * from './CommandPalette/CommandPalette';
 
 // Styles
 import './Button/Button.css';
@@ -70,3 +74,7 @@ import './PixelText/PixelText.css';
 import './TypingText/TypingText.css';
 import './NeonText/NeonText.css';
 import './Breadcrumbs/Breadcrumbs.css';
+import './Navbar/Navbar.css';
+import './DatePicker/DatePicker.css';
+import './HoloCard/HoloCard.css';
+import './CommandPalette/CommandPalette.css';

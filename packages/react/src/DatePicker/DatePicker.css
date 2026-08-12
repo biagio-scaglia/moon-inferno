@@ -1,0 +1,180 @@
+/* DatePicker Styles for Moon-Inferno */
+
+.moon-datepicker {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  font-family: var(--moon-font-mono, monospace);
+  width: 100%;
+  max-width: 320px;
+}
+
+.moon-datepicker__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--moon-color-text, #ffffff);
+  margin-bottom: var(--moon-space-xs, 0.35rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.moon-datepicker__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--moon-space-sm, 0.5rem) var(--moon-space-md, 0.75rem);
+  background-color: var(--moon-bg-surface, rgba(18, 20, 28, 0.9));
+  border: 1px solid var(--moon-color-border, rgba(255, 68, 68, 0.4));
+  border-radius: var(--moon-radius-sm, 4px);
+  color: var(--moon-color-text, #ffffff);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.moon-datepicker__trigger:focus-visible {
+  border-color: var(--moon-color-primary, #ff4444);
+  box-shadow: 0 0 10px rgba(255, 68, 68, 0.4);
+}
+
+.moon-datepicker__placeholder {
+  color: var(--moon-color-text-muted, #707585);
+}
+
+.moon-datepicker__value {
+  color: var(--moon-color-text, #ffffff);
+  font-weight: 600;
+}
+
+.moon-datepicker__icon {
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+/* Popover Calendar */
+.moon-datepicker__popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 1100;
+  width: 280px;
+  padding: var(--moon-space-md, 1rem);
+  background-color: var(--moon-bg-surface, #0d0f14);
+  border: 2px solid var(--moon-color-primary, #ff4444);
+  border-radius: var(--moon-radius-md, 8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 16px rgba(255, 68, 68, 0.2);
+  backdrop-filter: blur(16px);
+}
+
+.moon-datepicker__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--moon-space-sm, 0.5rem);
+}
+
+.moon-datepicker__month-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--moon-color-text, #ffffff);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.moon-datepicker__nav-btn {
+  background: transparent;
+  border: 1px solid var(--moon-color-border, rgba(255, 68, 68, 0.3));
+  color: var(--moon-color-text, #ffffff);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--moon-radius-sm, 4px);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.moon-datepicker__nav-btn:hover {
+  background-color: var(--moon-color-primary, #ff4444);
+  color: #000;
+}
+
+.moon-datepicker__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 0.35rem;
+  text-align: center;
+}
+
+.moon-datepicker__weekday {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--moon-color-text-muted, #707585);
+}
+
+.moon-datepicker__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.moon-datepicker__day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--moon-color-text, #ffffff);
+  font-family: inherit;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.moon-datepicker__day:hover:not(.moon-datepicker__day--disabled) {
+  background-color: rgba(255, 68, 68, 0.2);
+  border-color: var(--moon-color-primary, #ff4444);
+}
+
+.moon-datepicker__day--focused {
+  outline: 2px solid var(--moon-color-primary, #ff4444);
+  outline-offset: 1px;
+}
+
+.moon-datepicker__day--selected {
+  background-color: var(--moon-color-primary, #ff4444) !important;
+  color: #000000 !important;
+  font-weight: 700;
+  box-shadow: 0 0 10px var(--moon-color-primary, #ff4444);
+}
+
+.moon-datepicker__day--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.moon-datepicker__day--empty {
+  aspect-ratio: 1;
+}
+
+/* Pixel Variant */
+.moon-datepicker--pixel .moon-datepicker__trigger {
+  border: 2px solid var(--moon-color-primary, #ff4444);
+  box-shadow: 2px 2px 0 #000;
+  border-radius: 0;
+}
+
+.moon-datepicker--pixel .moon-datepicker__popover {
+  border: 3px solid var(--moon-color-primary, #ff4444);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.moon-datepicker--pixel .moon-datepicker__day {
+  border-radius: 0;
+}

@@ -1,0 +1,161 @@
+/* CommandPalette Styles for Moon-Inferno */
+
+.moon-command-palette__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  box-sizing: border-box;
+  animation: moonCommandFadeIn 0.15s ease-out;
+}
+
+.moon-command-palette {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--moon-bg-surface, #0d0f14);
+  border: 1px solid var(--moon-color-primary, #ff4444);
+  border-radius: var(--moon-radius-md, 10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 68, 68, 0.25);
+  overflow: hidden;
+  font-family: var(--moon-font-mono, monospace);
+  color: var(--moon-color-text, #ffffff);
+}
+
+.moon-command-palette__search {
+  display: flex;
+  align-items: center;
+  padding: var(--moon-space-md, 1rem);
+  border-bottom: 1px solid var(--moon-color-border-subtle, rgba(255, 255, 255, 0.1));
+  gap: var(--moon-space-sm, 0.5rem);
+}
+
+.moon-command-palette__search-icon {
+  font-size: 1.1rem;
+  color: var(--moon-color-text-muted, #707585);
+}
+
+.moon-command-palette__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--moon-color-text, #ffffff);
+}
+
+.moon-command-palette__input::placeholder {
+  color: var(--moon-color-text-muted, #707585);
+}
+
+.moon-command-palette__kbd {
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--moon-color-text-muted, #a0a5b5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* List & Groups */
+.moon-command-palette__list {
+  max-height: 360px;
+  overflow-y: auto;
+  padding: var(--moon-space-sm, 0.5rem);
+}
+
+.moon-command-palette__empty {
+  padding: var(--moon-space-lg, 1.5rem);
+  text-align: center;
+  color: var(--moon-color-text-muted, #707585);
+  font-size: 0.9rem;
+}
+
+.moon-command-palette__group {
+  margin-bottom: var(--moon-space-sm, 0.5rem);
+}
+
+.moon-command-palette__group-title {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--moon-color-text-muted, #707585);
+}
+
+.moon-command-palette__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.8rem;
+  border-radius: var(--moon-radius-sm, 6px);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.moon-command-palette__item-left {
+  display: flex;
+  align-items: center;
+  gap: var(--moon-space-sm, 0.5rem);
+}
+
+.moon-command-palette__item-icon {
+  display: flex;
+  align-items: center;
+  color: var(--moon-color-text-muted, #a0a5b5);
+}
+
+.moon-command-palette__item-label {
+  font-size: 0.9rem;
+}
+
+.moon-command-palette__item--selected {
+  background-color: var(--moon-color-primary, #ff4444);
+  color: #000000;
+  font-weight: 600;
+}
+
+.moon-command-palette__item--selected .moon-command-palette__item-icon,
+.moon-command-palette__item--selected .moon-command-palette__item-label {
+  color: #000000;
+}
+
+.moon-command-palette__shortcut {
+  font-family: inherit;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: inherit;
+}
+
+/* Pixel Variant */
+.moon-command-palette--pixel {
+  border: 3px solid var(--moon-color-primary, #ff4444);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 #000;
+}
+
+.moon-command-palette--pixel .moon-command-palette__item {
+  border-radius: 0;
+}
+
+@keyframes moonCommandFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -42,6 +42,15 @@ import {
   NeonText,
   Breadcrumbs,
   BreadcrumbItem,
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenu,
+  DatePicker,
+  HoloCard,
+  CommandPalette,
   MoonProvider,
   useMoonTheme,
 } from '@moon-inferno/react';
@@ -158,6 +167,9 @@ function MasterGuideWebsite() {
   const [switchValue, setSwitchValue] = useState(true);
   const [selectValue, setSelectValue] = useState('alpha');
   const [sliderValue, setSliderValue] = useState(75);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+  const [isNavbarMenuOpen, setIsNavbarMenuOpen] = useState(false);
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
 
   const { addToast } = useToast();
 
@@ -619,7 +631,188 @@ export default function App() {
                             <Button isLoading variant="inferno">Processing</Button>
                             <Button disabled variant="outline" leftIcon={<LockIcon size={16} />}>Disabled</Button>
                           </Stack>
-                          <CodeBlock filename="Button.snippet.tsx" code={`<Button variant="inferno" size="md" leftIcon={<FlameIcon size={16} />}>\n  Initiate Sequence\n</Button>`} />
+                          <CodeBlock filename="Breadcrumbs.snippet.tsx" code={`<Breadcrumbs items={[\n  { label: 'Home', href: '/' },\n  { label: 'Docs', href: '/docs' },\n  { label: 'Breadcrumbs', isCurrent: true }\n]} />`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* Accessible Navbar Component */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <LayersIcon size={18} /> Navbar Navigation Bar Primitives
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Responsive navigation header supporting brand, links, action buttons, and mobile hamburger drawer.
+                          </p>
+                          <Navbar variant="inferno" isSticky={false}>
+                            <NavbarBrand>
+                              <FlameIcon size={20} style={{ color: 'var(--moon-color-primary, #ff4444)' }} />
+                              <span>INFERNO_NAV</span>
+                            </NavbarBrand>
+                            <NavbarContent align="end">
+                              <NavbarItem isActive>Dashboard</NavbarItem>
+                              <NavbarItem>Telemetry</NavbarItem>
+                              <NavbarItem>Docs</NavbarItem>
+                              <NavbarItem>
+                                <Button size="sm" variant="inferno">Connect</Button>
+                              </NavbarItem>
+                            </NavbarContent>
+                            <NavbarMenuToggle
+                              isOpen={isNavbarMenuOpen}
+                              onToggle={() => setIsNavbarMenuOpen(!isNavbarMenuOpen)}
+                            />
+                          </Navbar>
+                          {isNavbarMenuOpen && (
+                            <NavbarMenu isOpen={isNavbarMenuOpen} onClose={() => setIsNavbarMenuOpen(false)}>
+                              <NavbarItem isActive>Dashboard</NavbarItem>
+                              <NavbarItem>Telemetry</NavbarItem>
+                              <NavbarItem>Docs</NavbarItem>
+                              <Button size="sm" variant="inferno" style={{ marginTop: '1rem' }}>Connect Wallet</Button>
+                            </NavbarMenu>
+                          )}
+                          <CodeBlock filename="Navbar.snippet.tsx" code={`<Navbar variant="inferno">\n  <NavbarBrand>INFERNO_NAV</NavbarBrand>\n  <NavbarContent align="end">\n    <NavbarItem isActive>Dashboard</NavbarItem>\n    <NavbarItem>Docs</NavbarItem>\n  </NavbarContent>\n</Navbar>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* Accessible DatePicker Component */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <SettingsIcon size={18} /> DatePicker & Calendar Primitives
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Full WCAG 2.1 AA keyboard grid navigation (Arrow keys, PageUp/Down, Home/End, Enter, Escape).
+                          </p>
+                          <Stack direction="row" gap="2rem" wrap align="start">
+                            <DatePicker
+                              label="Launch Date (Inferno)"
+                              variant="inferno"
+                              value={selectedDate}
+                              onChange={(date) => {
+                                setSelectedDate(date);
+                                addToast(`Selected launch date: ${date.toLocaleDateString()}`, { variant: 'success' });
+                              }}
+                            />
+                            <DatePicker
+                              label="Scheduled Maintenance (Pixel)"
+                              variant="pixel"
+                              placeholder="Choose date..."
+                            />
+                          </Stack>
+                          <CodeBlock filename="DatePicker.snippet.tsx" code={`<DatePicker\n  label="Launch Date"\n  variant="inferno"\n  value={selectedDate}\n  onChange={(date) => setSelectedDate(date)}\n/>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* HoloCard 3D Parallax Card */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <SparklesIcon size={18} /> HoloCard 3D Parallax Tilt Primitives
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Interactive 3D card with cursor-based parallax tilt, dynamic holographic glare, and prefers-reduced-motion fallback.
+                          </p>
+                          <Grid minChildWidth="260px" gap="1.5rem">
+                            <HoloCard variant="inferno">
+                              <Stack gap="0.75rem">
+                                <Badge variant="inferno">SOLAR_INFERNO</Badge>
+                                <h4 style={{ margin: 0, fontSize: '1.1rem' }}>Cybernetic Core Node</h4>
+                                <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--mi-color-text-muted)' }}>
+                                  Hover cursor to tilt and observe dynamic holographic iridescence reflection.
+                                </p>
+                              </Stack>
+                            </HoloCard>
+
+                            <HoloCard variant="cyber">
+                              <Stack gap="0.75rem">
+                                <Badge variant="pixel">CYBER_GRID</Badge>
+                                <h4 style={{ margin: 0, fontSize: '1.1rem' }}>Quantum Stream</h4>
+                                <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--mi-color-text-muted)' }}>
+                                  High-contrast neon cyan border and glowing glare reflection.
+                                </p>
+                              </Stack>
+                            </HoloCard>
+                          </Grid>
+                          <CodeBlock filename="HoloCard.snippet.tsx" code={`<HoloCard variant="inferno" maxTilt={15}>\n  <h4>Cybernetic Core Node</h4>\n  <p>Hover cursor to tilt.</p>\n</HoloCard>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* CommandPalette Component Trigger */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <TerminalIcon size={18} /> CommandPalette (Cmd+K Modal)
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Modal search palette triggered via <code>Cmd+K</code> or <code>Ctrl+K</code> with full keyboard selection and ARIA combobox pattern.
+                          </p>
+                          <Stack direction="row" align="center" gap="1rem">
+                            <Button
+                              variant="inferno"
+                              leftIcon={<TerminalIcon size={16} />}
+                              onClick={() => setIsCommandPaletteOpen(true)}
+                            >
+                              Open Command Palette (Cmd+K)
+                            </Button>
+                          </Stack>
+                          <CommandPalette
+                            isOpen={isCommandPaletteOpen}
+                            onClose={() => setIsCommandPaletteOpen(false)}
+                            items={[
+                              {
+                                id: 'theme-inferno',
+                                label: 'Switch Theme: Inferno',
+                                group: 'Themes',
+                                shortcut: 'Alt+1',
+                                onSelect: () => handleThemeChange('moon-inferno'),
+                              },
+                              {
+                                id: 'theme-terminal',
+                                label: 'Switch Theme: Terminal Green',
+                                group: 'Themes',
+                                shortcut: 'Alt+2',
+                                onSelect: () => handleThemeChange('terminal'),
+                              },
+                              {
+                                id: 'theme-y2k',
+                                label: 'Switch Theme: Y2K Cyber',
+                                group: 'Themes',
+                                shortcut: 'Alt+3',
+                                onSelect: () => handleThemeChange('y2k'),
+                              },
+                              {
+                                id: 'toggle-crt',
+                                label: 'Toggle CRT Shader Effect',
+                                group: 'Display FX',
+                                shortcut: 'Ctrl+Shift+C',
+                                onSelect: () => setIsCRTActive(!isCRTActive),
+                              },
+                              {
+                                id: 'toggle-matrix',
+                                label: 'Toggle Matrix Rain Animation',
+                                group: 'Display FX',
+                                shortcut: 'Ctrl+Shift+M',
+                                onSelect: () => setIsMatrixActive(!isMatrixActive),
+                              },
+                            ]}
+                          />
+                          <CodeBlock filename="CommandPalette.snippet.tsx" code={`<CommandPalette\n  isOpen={isOpen}\n  onClose={() => setIsOpen(false)}\n  items={[\n    { id: '1', label: 'Switch Theme: Inferno', group: 'Themes', onSelect: () => setTheme('moon-inferno') }\n  ]}\n/>`} />
                         </Stack>
                       </CardBody>
                     </Card>

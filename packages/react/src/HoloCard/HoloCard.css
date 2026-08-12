@@ -1,0 +1,59 @@
+/* HoloCard Styles for Moon-Inferno */
+
+.moon-holocard {
+  position: relative;
+  border-radius: var(--moon-radius-md, 12px);
+  padding: var(--moon-space-lg, 1.5rem);
+  background: var(--moon-bg-surface, rgba(13, 15, 20, 0.9));
+  border: 1px solid var(--moon-color-border, rgba(255, 68, 68, 0.4));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.15s ease-out, box-shadow 0.2s ease;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.moon-holocard__content {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(20px);
+}
+
+.moon-holocard__glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 3;
+  transition: opacity 0.2s ease;
+  mix-blend-mode: overlay;
+}
+
+/* Variant Styles */
+.moon-holocard--inferno {
+  border-color: rgba(255, 68, 68, 0.5);
+  box-shadow: 0 10px 30px rgba(255, 68, 68, 0.2);
+}
+
+.moon-holocard--cyber {
+  border-color: rgba(0, 240, 255, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+}
+
+.moon-holocard--y2k {
+  border-color: rgba(255, 0, 220, 0.6);
+  box-shadow: 0 10px 30px rgba(255, 0, 220, 0.2);
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .moon-holocard {
+    transform: none !important;
+    transition: none !important;
+  }
+  .moon-holocard__glare {
+    display: none !important;
+  }
+}
