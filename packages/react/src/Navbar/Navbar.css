@@ -1,13 +1,14 @@
 /* Navbar Styles for Moon-Inferno */
 
 .moon-navbar {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   box-sizing: border-box;
-  background-color: var(--moon-bg-surface, rgba(13, 15, 20, 0.85));
+  background-color: var(--moon-bg-surface, rgba(13, 15, 20, 0.92));
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: all var(--moon-transition-speed, 0.2s) ease;
@@ -32,7 +33,7 @@
 
 /* Variant Styles */
 .moon-navbar--inferno {
-  border-bottom: 1px solid rgba(255, 68, 68, 0.3);
+  border-bottom: 1px solid rgba(255, 68, 68, 0.4);
   box-shadow: 0 4px 20px rgba(255, 68, 68, 0.15);
 }
 
@@ -55,6 +56,7 @@
   font-weight: 700;
   color: var(--moon-color-text, #ffffff);
   text-decoration: none;
+  font-family: var(--moon-font-mono, monospace);
 }
 
 .moon-navbar__content {
@@ -87,6 +89,7 @@
   font-size: 0.9rem;
   color: var(--moon-color-text-muted, #a0a5b5);
   transition: color 0.2s ease;
+  cursor: pointer;
 }
 
 .moon-navbar__item:hover,
@@ -133,22 +136,48 @@
 }
 
 .moon-navbar__menu {
-  display: none;
-  position: fixed;
-  top: 64px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
   left: 0;
   right: 0;
-  bottom: 0;
-  background-color: rgba(13, 15, 20, 0.95);
+  background-color: var(--moon-bg-surface, #0d0f14);
+  border-bottom: 2px solid var(--moon-color-primary, #ff4444);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 68, 68, 0.25);
   backdrop-filter: blur(16px);
-  z-index: 999;
-  padding: var(--moon-space-lg, 1.5rem);
+  z-index: 1001;
+  padding: var(--moon-space-md, 1rem) var(--moon-space-lg, 1.5rem);
+  animation: moonNavbarSlideDown 0.2s ease-out;
+  box-sizing: border-box;
 }
 
 .moon-navbar__menu-content {
   display: flex;
   flex-direction: column;
-  gap: var(--moon-space-md, 1rem);
+  gap: var(--moon-space-md, 0.85rem);
+  width: 100%;
+}
+
+.moon-navbar__menu .moon-navbar__item {
+  padding: 0.35rem 0;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.moon-navbar__menu .moon-navbar__item--active::after {
+  display: none;
+}
+
+@keyframes moonNavbarSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
@@ -156,9 +185,6 @@
     display: none;
   }
   .moon-navbar__toggle {
-    display: block;
-  }
-  .moon-navbar__menu {
-    display: block;
+    display: flex;
   }
 }

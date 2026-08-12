@@ -665,15 +665,15 @@ export default function App() {
                               isOpen={isNavbarMenuOpen}
                               onToggle={() => setIsNavbarMenuOpen(!isNavbarMenuOpen)}
                             />
+                            {isNavbarMenuOpen && (
+                              <NavbarMenu isOpen={isNavbarMenuOpen} onClose={() => setIsNavbarMenuOpen(false)}>
+                                <NavbarItem isActive>Dashboard</NavbarItem>
+                                <NavbarItem>Telemetry</NavbarItem>
+                                <NavbarItem>Docs</NavbarItem>
+                                <Button size="sm" variant="inferno" style={{ marginTop: '0.5rem' }}>Connect Wallet</Button>
+                              </NavbarMenu>
+                            )}
                           </Navbar>
-                          {isNavbarMenuOpen && (
-                            <NavbarMenu isOpen={isNavbarMenuOpen} onClose={() => setIsNavbarMenuOpen(false)}>
-                              <NavbarItem isActive>Dashboard</NavbarItem>
-                              <NavbarItem>Telemetry</NavbarItem>
-                              <NavbarItem>Docs</NavbarItem>
-                              <Button size="sm" variant="inferno" style={{ marginTop: '1rem' }}>Connect Wallet</Button>
-                            </NavbarMenu>
-                          )}
                           <CodeBlock filename="Navbar.snippet.tsx" code={`<Navbar variant="inferno">\n  <NavbarBrand>INFERNO_NAV</NavbarBrand>\n  <NavbarContent align="end">\n    <NavbarItem isActive>Dashboard</NavbarItem>\n    <NavbarItem>Docs</NavbarItem>\n  </NavbarContent>\n</Navbar>`} />
                         </Stack>
                       </CardBody>
