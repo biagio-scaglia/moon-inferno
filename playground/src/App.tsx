@@ -78,6 +78,7 @@ import {
 } from '@moon-inferno/react';
 import { AccessibilitySpecTab } from './components/AccessibilitySpecTab';
 import { RecipesTab } from './components/RecipesTab';
+import { CliGuideTab } from './components/CliGuideTab';
 import {
   FlameIcon,
   MoonIcon,
@@ -1621,6 +1622,15 @@ export default function App() {
                     </Card>
                   </Stack>
                 ),
+              },
+              {
+                id: 'cli-guide',
+                label: (
+                  <Stack direction="row" align="center" gap="0.5rem">
+                    <TerminalIcon size={16} /> CLI & Installation
+                  </Stack>
+                ),
+                content: <CliGuideTab />,
               },
               {
                 id: 'icon-explorer',
