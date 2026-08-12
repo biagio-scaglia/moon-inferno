@@ -12,6 +12,8 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   user-select: none;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .mi-badge--inferno {

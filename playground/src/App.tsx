@@ -208,12 +208,12 @@ function MasterGuideWebsite() {
         {/* Glassmorphic Cyber Header Control Deck */}
         <header className="header-nav">
           <div className="header-brand">
-            <Stack direction="row" align="center" gap="0.65rem">
-              <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '32px', width: '32px' }} />
+            <Stack direction="row" align="center" gap="0.5rem" wrap style={{ minWidth: 0, flex: 1 }}>
+              <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '28px', width: '28px', flexShrink: 0 }} />
               <h1 className="brand-title">Moon-Inferno</h1>
             </Stack>
-            <Stack direction="row" align="center" gap="0.5rem">
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.3</Badge>
+            <Stack direction="row" align="center" gap="0.35rem" style={{ flexShrink: 0 }}>
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.1.5</Badge>
             </Stack>
           </div>
 
