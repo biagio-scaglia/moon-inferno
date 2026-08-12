@@ -5,7 +5,6 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  user-select: none;
   width: 100%;
   max-width: 100%;
   background-color: var(--mi-color-surface, #1E1B26);
@@ -77,7 +76,6 @@
   flex-shrink: 0;
   outline: none;
   transition: all 0.15s ease;
-  user-select: none;
 }
 
 .mi-marquee__toggle-btn:hover {

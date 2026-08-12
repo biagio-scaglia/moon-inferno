@@ -50,8 +50,6 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>(
     return (
       <div
         ref={ref}
-        role="region"
-        aria-label="Scrolling marquee announcements"
         className={[
           'mi-marquee',
           `mi-marquee--${direction}`,
