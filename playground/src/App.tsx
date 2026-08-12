@@ -1182,8 +1182,8 @@ export default function App() {
                           <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
                             Cyberpunk RGB split glitch text that automatically disables intense flickering when <code>(prefers-reduced-motion: reduce)</code> is set.
                           </p>
-                          <div style={{ fontSize: '1.5rem', textAlign: 'center', padding: '1rem', background: '#0A090D', borderRadius: '4px' }}>
-                            <MoonSafeGlitch text="NEO_INFERNO_PROTOCOL" as="h3" />
+                          <div style={{ fontSize: 'clamp(1rem, 4vw, 1.4rem)', textAlign: 'center', padding: '0.75rem', background: '#0A090D', borderRadius: '4px', maxWidth: '100%', overflow: 'hidden' }}>
+                            <MoonSafeGlitch text="NEO_INFERNO_PROTOCOL" as="h3" style={{ margin: 0 }} />
                           </div>
                           <CodeBlock filename="MoonSafeGlitch.snippet.tsx" code={`<MoonSafeGlitch text="NEO_INFERNO_PROTOCOL" as="h3" />`} />
                         </Stack>

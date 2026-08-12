@@ -47,8 +47,8 @@ export const MoonConsoleLogger = ({
       </div>
 
       <div className="mi-consolelogger-header">
-        <span>{title}</span>
-        <span style={{ opacity: 0.7 }}>{logs.length} LOGS</span>
+        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{title}</span>
+        <span style={{ opacity: 0.7, flexShrink: 0 }}>{logs.length} LOGS</span>
       </div>
 
       <div ref={bodyRef} className="mi-consolelogger-body">
@@ -57,13 +57,15 @@ export const MoonConsoleLogger = ({
         ) : (
           visibleLogs.map((log, index) => (
             <div key={log.id || index} className="mi-consolelogger-line">
-              <span className="mi-consolelogger-timestamp">
-                [{log.timestamp || new Date().toLocaleTimeString()}]
+              <span className="mi-consolelogger-meta">
+                <span className="mi-consolelogger-timestamp">
+                  [{log.timestamp || new Date().toLocaleTimeString()}]
+                </span>
+                <span className={`mi-consolelogger-type mi-consolelogger-type--${log.type || 'info'}`}>
+                  {log.type ? log.type.toUpperCase() : 'INFO'}:
+                </span>
               </span>
-              <span className={`mi-consolelogger-type--${log.type || 'info'}`}>
-                {log.type ? log.type.toUpperCase() : 'INFO'}:
-              </span>
-              <span>{log.message}</span>
+              <span className="mi-consolelogger-message">{log.message}</span>
             </div>
           ))
         )}

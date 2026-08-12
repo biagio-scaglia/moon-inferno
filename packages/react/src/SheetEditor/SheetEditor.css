@@ -22,6 +22,8 @@
   background-color: #0A090D;
   border-bottom: 1px solid var(--mi-color-border, #332D40);
   padding: 0.5rem 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .mi-sheeteditor-title {
@@ -33,18 +35,24 @@
   gap: 0.35rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 120px;
 }
 
 .mi-sheeteditor-actions {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  flex-wrap: wrap;
 }
 
 .mi-sheeteditor-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
   padding: 0.2rem 0.45rem;
   font-family: inherit;
   font-size: 0.7rem;
@@ -55,6 +63,7 @@
   border-radius: var(--mi-radius-sm, 3px);
   cursor: pointer;
   transition: all 0.15s ease;
+  white-space: nowrap;
 }
 
 .mi-sheeteditor-btn:hover {
@@ -121,4 +130,6 @@
   padding: 0.35rem 0.75rem;
   font-size: 0.72rem;
   color: var(--mi-color-text-muted, #94A3B8);
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
 }

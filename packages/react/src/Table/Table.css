@@ -2,15 +2,19 @@
 
 .mi-table-wrapper {
   width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-radius: var(--mi-radius-md, 6px);
   border: 1px solid var(--mi-color-border-accent, #FF4D00);
   background-color: var(--mi-color-bg-subtle, #14121A);
   box-shadow: var(--mi-shadow-glow, 0 4px 20px rgba(0, 0, 0, 0.4));
+  box-sizing: border-box;
 }
 
 .mi-table {
   width: 100%;
+  min-width: 480px; /* Guarantees legible column width and smooth horizontal touch scroll on mobile devices */
   border-collapse: collapse;
   font-family: var(--mi-font-mono, monospace);
   font-size: 0.85rem;
@@ -37,6 +41,7 @@
   color: var(--mi-color-primary, #FF4D00);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .mi-table-cell {
@@ -60,6 +65,14 @@
 .mi-table--compact .mi-table-cell {
   padding: 0.4rem 0.65rem;
   font-size: 0.78rem;
+}
+
+@media (max-width: 640px) {
+  .mi-table-head,
+  .mi-table-cell {
+    padding: 0.5rem 0.65rem;
+    font-size: 0.78rem;
+  }
 }
 
 /* Variant: Pixel */

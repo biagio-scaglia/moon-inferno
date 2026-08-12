@@ -20,7 +20,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.5rem 1rem;
+  gap: 0.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--mi-color-border, #332D40);
 }
@@ -28,29 +28,32 @@
 .mi-cybercanvas-tools {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.35rem 0.4rem;
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 
 .mi-cybercanvas-color-swatch {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
   padding: 0;
   transition: transform 0.15s ease;
+  flex-shrink: 0;
 }
 
 .mi-cybercanvas-color-swatch:hover,
 .mi-cybercanvas-color-swatch--active {
-  transform: scale(1.2);
+  transform: scale(1.15);
   box-shadow: 0 0 10px currentColor;
 }
 
 .mi-cybercanvas-custom-color {
   position: relative;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border-radius: 4px;
   border: 1px solid var(--mi-color-primary, #FF4D00);
   cursor: pointer;
@@ -74,11 +77,12 @@
   color: var(--mi-color-text, #F1F5F9);
   border: 1px solid var(--mi-color-border, #332D40);
   border-radius: var(--mi-radius-sm, 4px);
-  padding: 0.25rem 0.5rem;
-  font-size: 0.75rem;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.72rem;
   font-family: inherit;
   outline: none;
   cursor: pointer;
+  max-width: 100%;
 }
 
 .mi-cybercanvas-select option {
@@ -91,9 +95,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.25rem 0.55rem;
+  padding: 0.25rem 0.5rem;
   font-family: inherit;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   color: var(--mi-color-text, #ffffff);
   background-color: rgba(255, 77, 0, 0.15);
@@ -101,6 +105,7 @@
   border-radius: var(--mi-radius-sm, 3px);
   cursor: pointer;
   transition: all 0.15s ease;
+  white-space: nowrap;
 }
 
 .mi-cybercanvas-btn:hover {
@@ -111,6 +116,7 @@
 .mi-cybercanvas-canvas-wrapper {
   position: relative;
   width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,4 +135,6 @@
 .mi-cybercanvas-canvas {
   cursor: crosshair;
   touch-action: none;
+  max-width: 100%;
+  height: auto;
 }
