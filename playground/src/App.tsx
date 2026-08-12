@@ -244,7 +244,7 @@ function MasterGuideWebsite() {
           <div className="header-brand">
             <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '28px', width: '28px', flexShrink: 0 }} />
             <h1 className="brand-title">Moon-Inferno</h1>
-            <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.2.0</Badge>
+            <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.2.1</Badge>
           </div>
 
           {/* Controls */}
@@ -417,7 +417,7 @@ function MasterGuideWebsite() {
 
         {/* Global Ticker Marquee */}
         <Marquee variant="pixel" speed={22}>
-          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.2.0 IS LIVE ON NPM</span>
+          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.2.1 IS LIVE ON NPM</span>
           <span>--</span>
           <span>npm install @moon-inferno/react @moon-inferno/themes @moon-inferno/icons</span>
           <span>--</span>
