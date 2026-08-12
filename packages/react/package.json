@@ -36,7 +36,7 @@
     "./styles.css": "./dist/index.css"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --external react,react-dom --target es2020",
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react,react-dom,@moon-inferno/themes --target es2020",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@moon-inferno/core": "workspace:*",
-    "@moon-inferno/icons": "workspace:*"
+    "@moon-inferno/icons": "workspace:*",
+    "@moon-inferno/themes": "workspace:*"
   }
 }

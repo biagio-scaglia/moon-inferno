@@ -42,6 +42,8 @@ import {
   NeonText,
   Breadcrumbs,
   BreadcrumbItem,
+  MoonProvider,
+  useMoonTheme,
 } from '@moon-inferno/react';
 import {
   FlameIcon,
@@ -79,7 +81,7 @@ import {
   TrashIcon,
   FilterIcon,
 } from '@moon-inferno/icons';
-import { setTheme, type ThemeName } from '@moon-inferno/themes';
+import type { ThemeName } from '@moon-inferno/themes';
 
 const ALL_ICONS = [
   { name: 'FlameIcon', Component: FlameIcon },
@@ -140,7 +142,7 @@ const GALLERY_ITEMS = [
 ];
 
 function MasterGuideWebsite() {
-  const [currentTheme, setCurrentTheme] = useState<ThemeName>('moon-inferno');
+  const { theme: currentTheme, setTheme: setMoonTheme } = useMoonTheme();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isCRTActive, setIsCRTActive] = useState(false);
   const [isMatrixActive, setIsMatrixActive] = useState(false);
@@ -160,8 +162,7 @@ function MasterGuideWebsite() {
   const { addToast } = useToast();
 
   const handleThemeChange = (newTheme: ThemeName) => {
-    setCurrentTheme(newTheme);
-    setTheme(newTheme);
+    setMoonTheme(newTheme);
     addToast(`Theme switched to ${newTheme.toUpperCase()}`, { variant: 'info' });
   };
 
@@ -271,14 +272,14 @@ function MasterGuideWebsite() {
         {/* Hero Section Banner */}
         <section className="hero-card">
           <Stack gap="1.25rem" align="center">
-            <Badge variant="inferno" icon={<FlameIcon size={14} />}>OFFICIAL DOCUMENTATION & COMPONENT MASTER GUIDE</Badge>
-            
+            <Badge variant="inferno" icon={<FlameIcon size={14} />}>THE EXPRESSIVE WEB UI FRAMEWORK & DESIGN SYSTEM</Badge>
+
             <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontFamily: 'var(--mi-font-mono)', margin: 0, letterSpacing: '-0.02em' }}>
               Reclaim Expressive Web Design
             </h2>
 
             <p style={{ maxWidth: '780px', color: 'var(--mi-color-text-muted)', fontSize: '1.1rem', lineHeight: '1.6', margin: 0 }}>
-              Moon-Inferno is an accessibility-first React UI framework created by <strong>Biagio Scaglia</strong> for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications. Fully WCAG 2.1 AA compliant out of the box with zero SaaS sterility.
+              Moon-Inferno is an expressive React UI framework created by <strong>Biagio Scaglia</strong> for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications. Built with WCAG 2.1 AA accessibility principles at its core with zero SaaS sterility.
             </p>
 
             <Stack direction="row" align="center" justify="center" gap="1rem" wrap style={{ marginTop: '0.5rem' }}>
@@ -1174,8 +1175,10 @@ export default function App() {
 
 export default function App() {
   return (
-    <ToastProvider>
-      <MasterGuideWebsite />
-    </ToastProvider>
+    <MoonProvider defaultTheme="moon-inferno">
+      <ToastProvider>
+        <MasterGuideWebsite />
+      </ToastProvider>
+    </MoonProvider>
   );
 }

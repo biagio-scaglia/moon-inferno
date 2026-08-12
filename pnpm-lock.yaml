@@ -37,6 +37,9 @@ importers:
       '@moon-inferno/icons':
         specifier: workspace:*
         version: link:../icons
+      '@moon-inferno/themes':
+        specifier: workspace:*
+        version: link:../themes
     devDependencies:
       '@types/react':
         specifier: ^19.2.18
