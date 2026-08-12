@@ -1,0 +1,54 @@
+{
+  "name": "moon-inferno",
+  "version": "0.1.0",
+  "description": "All-in-one bundle for Moon-Inferno: Expressive, accessibility-first React UI framework for retro, Y2K, CRT, cyberpunk, gaming, and Web3 applications.",
+  "license": "MIT",
+  "author": "Biagio Scaglia",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/biagio-scaglia/moon-inferno.git",
+    "directory": "packages/moon-inferno"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/index.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react,react-dom,@moon-inferno/react,@moon-inferno/icons,@moon-inferno/themes,@moon-inferno/core --target es2020",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@moon-inferno/core": "workspace:*",
+    "@moon-inferno/icons": "workspace:*",
+    "@moon-inferno/react": "workspace:*",
+    "@moon-inferno/themes": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "keywords": [
+    "moon-inferno",
+    "react",
+    "ui-framework",
+    "accessibility",
+    "wcag-2.1-aa",
+    "cyberpunk-ui",
+    "retro-web",
+    "y2k-ui",
+    "pixel-art",
+    "all-in-one"
+  ]
+}

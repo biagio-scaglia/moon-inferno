@@ -80,8 +80,14 @@ export const CliGuideTab = () => {
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell style={{ fontWeight: 'bold' }}>NPM Monorepo Packages</TableCell>
-                  <TableCell>Full applications using 20+ components</TableCell>
+                  <TableCell style={{ fontWeight: 'bold' }}>All-In-One Package (moon-inferno)</TableCell>
+                  <TableCell>Quickest setup for React applications</TableCell>
+                  <TableCell>Single line import for icons, themes, and components</TableCell>
+                  <TableCell><code>npm install moon-inferno</code></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell style={{ fontWeight: 'bold' }}>Modular NPM Packages</TableCell>
+                  <TableCell>Full applications using targeted dependencies</TableCell>
                   <TableCell>Automatic semver version updates & shared provider context</TableCell>
                   <TableCell><code>npm i @moon-inferno/react</code></TableCell>
                 </TableRow>

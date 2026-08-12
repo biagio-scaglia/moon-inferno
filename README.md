@@ -46,12 +46,18 @@ Moon-Inferno elevates developer experience (DX) and accessibility to industry-le
 
 ## 📦 Installation & CLI Usage
 
-### Monorepo NPM Installation
+### Recommended All-in-One Command
+
+```bash
+npm install moon-inferno
+# or
+pnpm add moon-inferno
+```
+
+### Modular Package Installation
 
 ```bash
 npm install @moon-inferno/react @moon-inferno/themes @moon-inferno/icons
-# or
-pnpm add @moon-inferno/react @moon-inferno/themes @moon-inferno/icons
 ```
 
 ### CLI Installer Tool

@@ -419,6 +419,8 @@ function MasterGuideWebsite() {
         <Marquee variant="pixel" speed={22}>
           <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.2.1 IS LIVE ON NPM</span>
           <span>--</span>
+          <span>npm install moon-inferno</span>
+          <span>--</span>
           <span>npm install @moon-inferno/react @moon-inferno/themes @moon-inferno/icons</span>
           <span>--</span>
           <span>pnpm add @moon-inferno/react @moon-inferno/themes @moon-inferno/icons</span>
