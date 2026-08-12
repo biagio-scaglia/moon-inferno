@@ -387,7 +387,7 @@ function MasterGuideWebsite() {
 
         {/* Global Ticker Marquee */}
         <Marquee variant="pixel" speed={22}>
-          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.1.2 IS LIVE ON NPM</span>
+          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.1.4 IS LIVE ON NPM</span>
           <span>--</span>
           <span>pnpm add @moon-inferno/react @moon-inferno/themes @moon-inferno/icons</span>
           <span>--</span>
