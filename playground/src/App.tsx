@@ -51,6 +51,14 @@ import {
   DatePicker,
   HoloCard,
   CommandPalette,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  DropdownSection,
+  DropdownDivider,
+  PieChart,
+  ColorPicker,
   MoonProvider,
   useMoonTheme,
 } from '@moon-inferno/react';
@@ -175,6 +183,7 @@ function MasterGuideWebsite() {
   const [switchValue, setSwitchValue] = useState(true);
   const [selectValue, setSelectValue] = useState('alpha');
   const [sliderValue, setSliderValue] = useState(75);
+  const [pickedColor, setPickedColor] = useState('#FF4D00');
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [isNavbarMenuOpen, setIsNavbarMenuOpen] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
@@ -824,6 +833,165 @@ export default function App() {
                       </CardBody>
                     </Card>
 
+                    {/* Accessible DropdownMenu Component */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <LayersIcon size={18} /> DropdownMenu Floating Popover Primitives
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            WAI-ARIA menu popover supporting items, sections, dividers, custom icons, and keyboard navigation.
+                          </p>
+                          <Stack direction="row" gap="1.5rem" wrap align="center">
+                            <Dropdown variant="inferno">
+                              <DropdownTrigger>
+                                <Button variant="inferno" leftIcon={<SettingsIcon size={16} />}>
+                                  Quick Actions Menu
+                                </Button>
+                              </DropdownTrigger>
+                              <DropdownMenu>
+                                <DropdownSection title="System Controls">
+                                  <DropdownItem icon={<FlameIcon size={14} />} onSelect={() => handleThemeChange('moon-inferno')}>
+                                    Set Theme: Inferno
+                                  </DropdownItem>
+                                  <DropdownItem icon={<TerminalIcon size={14} />} onSelect={() => handleThemeChange('terminal')}>
+                                    Set Theme: Terminal
+                                  </DropdownItem>
+                                  <DropdownItem icon={<SunIcon size={14} />} onSelect={() => handleThemeChange('y2k')}>
+                                    Set Theme: Y2K
+                                  </DropdownItem>
+                                </DropdownSection>
+                                <DropdownDivider />
+                                <DropdownSection title="Display FX">
+                                  <DropdownItem icon={<CodeIcon size={14} />} onSelect={() => setIsMatrixActive(!isMatrixActive)}>
+                                    Toggle Matrix Rain
+                                  </DropdownItem>
+                                  <DropdownItem icon={<CpuIcon size={14} />} onSelect={() => setIsCRTActive(!isCRTActive)}>
+                                    Toggle CRT Shader
+                                  </DropdownItem>
+                                </DropdownSection>
+                                <DropdownDivider />
+                                <DropdownItem icon={<TrashIcon size={14} />} destructive onSelect={() => addToast('System cache cleared', { variant: 'error' })}>
+                                  Clear Cache
+                                </DropdownItem>
+                              </DropdownMenu>
+                            </Dropdown>
+
+                            <Dropdown variant="pixel" align="end">
+                              <DropdownTrigger>
+                                <Button variant="pixel" leftIcon={<UserIcon size={16} />}>
+                                  User Account
+                                </Button>
+                              </DropdownTrigger>
+                              <DropdownMenu>
+                                <DropdownItem icon={<UserIcon size={14} />}>Profile Settings</DropdownItem>
+                                <DropdownItem icon={<LockIcon size={14} />}>Security & Keys</DropdownItem>
+                                <DropdownDivider />
+                                <DropdownItem icon={<CloseIcon size={14} />} destructive>Log Out</DropdownItem>
+                              </DropdownMenu>
+                            </Dropdown>
+                          </Stack>
+                          <CodeBlock filename="Dropdown.snippet.tsx" code={`<Dropdown variant="inferno">\n  <DropdownTrigger>\n    <Button variant="inferno">Actions Menu</Button>\n  </DropdownTrigger>\n  <DropdownMenu>\n    <DropdownSection title="Options">\n      <DropdownItem icon={<FlameIcon size={14} />}>Option 1</DropdownItem>\n    </DropdownSection>\n    <DropdownDivider />\n    <DropdownItem destructive>Delete</DropdownItem>\n  </DropdownMenu>\n</Dropdown>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* Interactive PieChart Component */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <CpuIcon size={18} /> PieChart & Donut Chart Visualizer
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            SVG-based pie & donut chart visualization with hover slice expansion, percentage calculation, and accessible table summary.
+                          </p>
+                          <Grid minChildWidth="260px" gap="2rem">
+                            <Stack gap="1rem" align="center">
+                              <h5 style={{ margin: 0, fontSize: '0.9rem', color: 'var(--mi-color-text-muted)' }}>Inferno Donut Chart</h5>
+                              <PieChart
+                                donut
+                                size={180}
+                                centerValue="100%"
+                                centerText="ALLOCATED"
+                                data={[
+                                  { label: 'Cyberpunk UI', value: 45, color: '#FF4D00' },
+                                  { label: 'Terminal Core', value: 30, color: '#00FF66' },
+                                  { label: 'Y2K Theme', value: 15, color: '#00E5FF' },
+                                  { label: 'Pixel Assets', value: 10, color: '#FF00A0' },
+                                ]}
+                              />
+                            </Stack>
+
+                            <Stack gap="1rem" align="center">
+                              <h5 style={{ margin: 0, fontSize: '0.9rem', color: 'var(--mi-color-text-muted)' }}>Solid Pie Chart</h5>
+                              <PieChart
+                                size={180}
+                                data={[
+                                  { label: 'System Memory', value: 60, color: '#FF4D00' },
+                                  { label: 'GPU VRAM', value: 25, color: '#9D00FF' },
+                                  { label: 'Cache Storage', value: 15, color: '#FFD700' },
+                                ]}
+                              />
+                            </Stack>
+                          </Grid>
+                          <CodeBlock filename="PieChart.snippet.tsx" code={`<PieChart\n  donut\n  size={180}\n  centerValue="100%"\n  centerText="ALLOCATED"\n  data={[\n    { label: 'Cyberpunk UI', value: 45, color: '#FF4D00' },\n    { label: 'Terminal Core', value: 30, color: '#00FF66' }\n  ]}\n/>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
+                    {/* Cyberpunk ColorPicker Component */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <SparklesIcon size={18} /> ColorPicker Palette Primitives
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Cyberpunk color picker with preset swatches, native color trigger, hex text input, and live color preview.
+                          </p>
+                          <Stack direction="row" gap="2rem" wrap align="center">
+                            <ColorPicker
+                              label="ACCENT COLOR"
+                              variant="inferno"
+                              value={pickedColor}
+                              onChange={(c: string) => {
+                                setPickedColor(c);
+                                addToast(`Color updated: ${c}`, { variant: 'info' });
+                              }}
+                            />
+                            <div
+                              style={{
+                                width: '120px',
+                                height: '54px',
+                                backgroundColor: pickedColor,
+                                borderRadius: '6px',
+                                border: '2px solid rgba(255, 255, 255, 0.2)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontWeight: 'bold',
+                                color: '#000',
+                                textShadow: '0 0 2px #fff',
+                                fontFamily: 'var(--mi-font-mono)',
+                                fontSize: '0.8rem',
+                              }}
+                            >
+                              {pickedColor}
+                            </div>
+                          </Stack>
+                          <CodeBlock filename="ColorPicker.snippet.tsx" code={`<ColorPicker\n  label="ACCENT COLOR"\n  variant="inferno"\n  value={pickedColor}\n  onChange={(hex) => setPickedColor(hex)}\n/>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
                     {/* Media Gallery & Lightbox */}
                     <Card>
                       <CardHeader>
@@ -1252,6 +1420,44 @@ export default function App() {
                         Click any SVG icon component to copy code snippet to clipboard.
                       </p>
                     </Stack>
+
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <SparklesIcon size={18} /> Interactive Icon Hover Effects
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1rem">
+                          <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--mi-color-text-muted)' }}>
+                            Pass <code style={{ color: 'var(--mi-color-primary)' }}>hoverEffect="glow | spin | bounce | pulse | scale"</code> to any vector icon:
+                          </p>
+                          <Stack direction="row" gap="1.5rem" wrap align="center">
+                            <Stack align="center" gap="0.35rem">
+                              <FlameIcon size={32} color="#FF4D00" hoverEffect="glow" />
+                              <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)' }}>glow</span>
+                            </Stack>
+                            <Stack align="center" gap="0.35rem">
+                              <RefreshIcon size={32} color="#00FF66" hoverEffect="spin" />
+                              <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)' }}>spin</span>
+                            </Stack>
+                            <Stack align="center" gap="0.35rem">
+                              <ZapIcon size={32} color="#00E5FF" hoverEffect="bounce" />
+                              <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)' }}>bounce</span>
+                            </Stack>
+                            <Stack align="center" gap="0.35rem">
+                              <SparklesIcon size={32} color="#FF00A0" hoverEffect="pulse" />
+                              <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)' }}>pulse</span>
+                            </Stack>
+                            <Stack align="center" gap="0.35rem">
+                              <GamepadIcon size={32} color="#FFD700" hoverEffect="scale" />
+                              <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)' }}>scale</span>
+                            </Stack>
+                          </Stack>
+                          <CodeBlock filename="IconHover.snippet.tsx" code={`<FlameIcon size={32} hoverEffect="glow" />\n<RefreshIcon size={32} hoverEffect="spin" />\n<ZapIcon size={32} hoverEffect="bounce" />\n<SparklesIcon size={32} hoverEffect="pulse" />\n<GamepadIcon size={32} hoverEffect="scale" />`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
 
                     <Grid minChildWidth="120px" gap="1rem">
                       {filteredIcons.map(({ name, Component }) => (

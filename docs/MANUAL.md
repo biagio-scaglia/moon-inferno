@@ -227,6 +227,67 @@ import { Dialog, DialogFooter, Button } from '@moon-inferno/react';
 </Dialog>
 ```
 
+#### `<Dropdown>`
+WAI-ARIA menu popover supporting items, sections, dividers, custom icons, and keyboard navigation.
+
+```tsx
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, DropdownDivider } from '@moon-inferno/react';
+
+<Dropdown variant="inferno">
+  <DropdownTrigger>
+    <Button>Actions Menu</Button>
+  </DropdownTrigger>
+  <DropdownMenu>
+    <DropdownItem icon={<FlameIcon size={14} />}>Option 1</DropdownItem>
+    <DropdownDivider />
+    <DropdownItem destructive>Delete</DropdownItem>
+  </DropdownMenu>
+</Dropdown>
+```
+
+#### `<PieChart>`
+SVG pie and donut chart visualization with hover slice expansion, percentage tooltips, and accessible data summary.
+
+```tsx
+import { PieChart } from '@moon-inferno/react';
+
+<PieChart
+  donut
+  size={180}
+  centerValue="100%"
+  centerText="ALLOCATED"
+  data={[
+    { label: 'Cyberpunk UI', value: 45, color: '#FF4D00' },
+    { label: 'Terminal Core', value: 30, color: '#00FF66' }
+  ]}
+/>
+```
+
+#### `<ColorPicker>`
+Cyberpunk color picker with preset swatches, native color trigger, hex text input, and live preview.
+
+```tsx
+import { ColorPicker } from '@moon-inferno/react';
+
+<ColorPicker
+  label="ACCENT COLOR"
+  variant="inferno"
+  value={color}
+  onChange={(hex) => setColor(hex)}
+/>
+```
+
+#### Icon Hover Effects (`@moon-inferno/icons`)
+Interactive hover effect prop on all 38 SVG vector icons (`glow`, `spin`, `bounce`, `pulse`, `scale`).
+
+```tsx
+import { FlameIcon, RefreshIcon, ZapIcon } from '@moon-inferno/icons';
+
+<FlameIcon size={32} hoverEffect="glow" />
+<RefreshIcon size={32} hoverEffect="spin" />
+<ZapIcon size={32} hoverEffect="bounce" />
+```
+
 ---
 
 ### Moon-Inferno Signature Retro Primitives

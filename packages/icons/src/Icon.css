@@ -1,0 +1,52 @@
+/* @moon-inferno/icons Animation & Hover Styles */
+
+.mi-icon {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
+}
+
+/* Hover Effects */
+.mi-icon--hover-glow:hover {
+  filter: drop-shadow(0 0 8px currentColor);
+  transform: scale(1.1);
+}
+
+.mi-icon--hover-spin:hover {
+  animation: mi-icon-spin 0.6s ease-in-out;
+}
+
+.mi-icon--hover-bounce:hover {
+  animation: mi-icon-bounce 0.5s ease-in-out;
+}
+
+.mi-icon--hover-pulse:hover {
+  animation: mi-icon-pulse 0.8s ease-in-out infinite alternate;
+}
+
+.mi-icon--hover-scale:hover {
+  transform: scale(1.2);
+}
+
+@keyframes mi-icon-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes mi-icon-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes mi-icon-pulse {
+  0% { opacity: 0.7; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1.15); filter: drop-shadow(0 0 6px currentColor); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-icon--hover-spin:hover,
+  .mi-icon--hover-bounce:hover,
+  .mi-icon--hover-pulse:hover {
+    animation: none !important;
+  }
+}

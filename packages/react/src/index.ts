@@ -38,6 +38,9 @@ export * from './Navbar/Navbar';
 export * from './DatePicker/DatePicker';
 export * from './HoloCard/HoloCard';
 export * from './CommandPalette/CommandPalette';
+export * from './Dropdown/Dropdown';
+export * from './PieChart/PieChart';
+export * from './ColorPicker/ColorPicker';
 
 // Styles
 import './Button/Button.css';
@@ -78,3 +81,6 @@ import './Navbar/Navbar.css';
 import './DatePicker/DatePicker.css';
 import './HoloCard/HoloCard.css';
 import './CommandPalette/CommandPalette.css';
+import './Dropdown/Dropdown.css';
+import './PieChart/PieChart.css';
+import './ColorPicker/ColorPicker.css';

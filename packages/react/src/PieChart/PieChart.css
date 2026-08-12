@@ -1,0 +1,116 @@
+/* Moon-Inferno PieChart Component Styles */
+
+.mi-piechart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  font-family: var(--mi-font-mono, monospace);
+  width: 100%;
+  max-width: 100%;
+}
+
+.mi-piechart-svg-wrapper {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mi-piechart-slice {
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+
+.mi-piechart-slice:hover,
+.mi-piechart-slice--active {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.mi-piechart-center-label {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
+}
+
+.mi-piechart-center-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--mi-color-primary, #FF4D00);
+}
+
+.mi-piechart-center-text {
+  font-size: 0.75rem;
+  color: var(--mi-color-text-muted, #94A3B8);
+  text-transform: uppercase;
+}
+
+.mi-piechart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+.mi-piechart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--mi-color-text, #F1F5F9);
+  cursor: pointer;
+  transition: color 0.15s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--mi-radius-sm, 4px);
+}
+
+.mi-piechart-legend-item:hover {
+  color: var(--mi-color-primary, #FF4D00);
+  background-color: rgba(255, 77, 0, 0.08);
+}
+
+.mi-piechart-legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.mi-piechart-tooltip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(10, 9, 13, 0.95);
+  border: 1px solid var(--mi-color-primary, #FF4D00);
+  border-radius: var(--mi-radius-sm, 4px);
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+  color: var(--mi-color-text, #ffffff);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.mi-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
