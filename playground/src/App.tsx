@@ -89,6 +89,10 @@ import {
   CopyIcon,
   TrashIcon,
   FilterIcon,
+  CalendarIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  MenuIcon,
 } from '@moon-inferno/icons';
 import type { ThemeName } from '@moon-inferno/themes';
 
@@ -127,6 +131,10 @@ const ALL_ICONS = [
   { name: 'CopyIcon', Component: CopyIcon },
   { name: 'TrashIcon', Component: TrashIcon },
   { name: 'FilterIcon', Component: FilterIcon },
+  { name: 'CalendarIcon', Component: CalendarIcon },
+  { name: 'ChevronLeftIcon', Component: ChevronLeftIcon },
+  { name: 'ChevronRightIcon', Component: ChevronRightIcon },
+  { name: 'MenuIcon', Component: MenuIcon },
 ];
 
 const GALLERY_ITEMS = [
