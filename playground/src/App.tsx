@@ -387,7 +387,9 @@ function MasterGuideWebsite() {
 
         {/* Global Ticker Marquee */}
         <Marquee variant="pixel" speed={22}>
-          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.1.4 IS LIVE ON NPM</span>
+          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.1.5 IS LIVE ON NPM</span>
+          <span>--</span>
+          <span>npm install @moon-inferno/react @moon-inferno/themes @moon-inferno/icons</span>
           <span>--</span>
           <span>pnpm add @moon-inferno/react @moon-inferno/themes @moon-inferno/icons</span>
           <span>--</span>
@@ -478,7 +480,8 @@ function MasterGuideWebsite() {
                         <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
                           Install the published NPM packages using your preferred package manager:
                         </p>
-                        <CodeBlock filename="terminal" code="pnpm add @moon-inferno/core @moon-inferno/react @moon-inferno/themes @moon-inferno/icons" />
+                        <CodeBlock filename="npm (standard)" code="npm install @moon-inferno/core @moon-inferno/react @moon-inferno/themes @moon-inferno/icons" />
+                        <CodeBlock filename="pnpm (monorepo)" code="pnpm add @moon-inferno/core @moon-inferno/react @moon-inferno/themes @moon-inferno/icons" />
                       </Stack>
                     </PixelContainer>
 
