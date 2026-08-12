@@ -14,6 +14,7 @@ export interface DropdownProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   align?: 'start' | 'end';
   variant?: 'default' | 'pixel' | 'inferno';
+  showChevron?: boolean;
 }
 
 export interface DropdownItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -74,6 +75,7 @@ export const Dropdown = ({
   children,
   align = 'start',
   variant = 'default',
+  showChevron = true,
   className = '',
   ...props
 }: DropdownProps) => {
@@ -102,26 +104,46 @@ export const Dropdown = ({
     };
   }, [isOpen]);
 
-  let triggerElement: ReactElement<{ children?: ReactNode; onClick?: (e: unknown) => void }> | null = null;
+  let triggerElement: ReactElement<{ children?: ReactNode; onClick?: (e: unknown) => void; rightIcon?: ReactNode }> | null = null;
   let menuElement: ReactNode = null;
 
   if (Array.isArray(children)) {
     children.forEach((child) => {
       const element = child as ReactElement<{ children?: ReactNode }>;
       if (element?.type === DropdownTrigger) {
-        triggerElement = element.props.children as ReactElement<{ children?: ReactNode; onClick?: (e: unknown) => void }>;
+        triggerElement = element.props.children as ReactElement<{ children?: ReactNode; onClick?: (e: unknown) => void; rightIcon?: ReactNode }>;
       } else if (element?.type === DropdownMenu) {
         menuElement = element.props.children;
       }
     });
   }
 
+  const chevronIcon = showChevron ? (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={`mi-dropdown-chevron ${isOpen ? 'mi-dropdown-chevron--open' : ''}`}
+      aria-hidden="true"
+    >
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  ) : null;
+
   const renderTrigger = () => {
     if (triggerElement && typeof triggerElement === 'object' && 'props' in triggerElement) {
-      const elementProps = (triggerElement as ReactElement<{ onClick?: (e: unknown) => void }>).props || {};
+      const elementProps = (triggerElement as ReactElement<{ onClick?: (e: unknown) => void; rightIcon?: ReactNode }>).props || {};
+      const existingRightIcon = elementProps.rightIcon;
+
       return cloneElement(triggerElement, {
         'aria-haspopup': 'menu',
         'aria-expanded': isOpen,
+        rightIcon: existingRightIcon || chevronIcon,
         onClick: (e: unknown) => {
           elementProps.onClick?.(e);
           setIsOpen(!isOpen);
@@ -129,8 +151,16 @@ export const Dropdown = ({
       } as Record<string, unknown>);
     }
     return (
-      <div onClick={() => setIsOpen(!isOpen)} tabIndex={0} role="button" aria-haspopup="menu" aria-expanded={isOpen}>
+      <div
+        onClick={() => setIsOpen(!isOpen)}
+        tabIndex={0}
+        role="button"
+        aria-haspopup="menu"
+        aria-expanded={isOpen}
+        style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', cursor: 'pointer' }}
+      >
         {triggerElement}
+        {chevronIcon}
       </div>
     );
   };

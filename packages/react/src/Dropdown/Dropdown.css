@@ -7,13 +7,26 @@
 
 .mi-dropdown__trigger {
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.mi-dropdown-chevron {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mi-dropdown-chevron--open {
+  transform: rotate(180deg);
 }
 
 .mi-dropdown__menu {
   position: absolute;
   top: calc(100% + 6px);
   z-index: 1050;
-  min-width: 180px;
+  min-width: 190px;
   padding: 0.4rem;
   background-color: var(--mi-color-bg-subtle, #14121A);
   border: 1px solid var(--mi-color-border-accent, #FF4D00);
