@@ -18,6 +18,7 @@ export interface TabItem {
 export interface TabsProps {
   items: TabItem[];
   defaultTabId?: string;
+  activeTabId?: string;
   onChange?: (tabId: string) => void;
   className?: string;
 }
@@ -25,16 +26,20 @@ export interface TabsProps {
 export const Tabs: FC<TabsProps> = ({
   items,
   defaultTabId,
+  activeTabId: controlledActiveTabId,
   onChange,
   className = '',
 }) => {
-  const [activeTabId, setActiveTabId] = useState<string>(
+  const [internalActiveTabId, setInternalActiveTabId] = useState<string>(
     defaultTabId || items[0]?.id || ''
   );
+  const activeTabId = controlledActiveTabId !== undefined ? controlledActiveTabId : internalActiveTabId;
   const baseId = useId();
 
   const handleTabSelect = (tabId: string) => {
-    setActiveTabId(tabId);
+    if (controlledActiveTabId === undefined) {
+      setInternalActiveTabId(tabId);
+    }
     if (onChange) onChange(tabId);
   };
 
@@ -74,7 +79,7 @@ export const Tabs: FC<TabsProps> = ({
     }
   };
 
-  const activeItem = items.find((item) => item.id === activeTabId);
+  const activeItem = items.find((item) => item.id === activeTabId) || items[0];
 
   return (
     <div className={`mi-tabs ${className}`.trim()}>

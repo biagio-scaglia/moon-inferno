@@ -208,6 +208,15 @@ function MasterGuideWebsite() {
 
   const { addToast } = useToast();
 
+  const [activeTabId, setActiveTabId] = useState('components-catalog');
+
+  const handleGlobalSearch = (query: string) => {
+    setSearchQuery(query);
+    if (query.trim() && activeTabId !== 'components-catalog') {
+      setActiveTabId('components-catalog');
+    }
+  };
+
   const matchesSearch = (keywords: string) => {
     if (!searchQuery.trim()) return true;
     const q = searchQuery.toLowerCase().trim();
@@ -256,24 +265,18 @@ function MasterGuideWebsite() {
 
           {/* Controls */}
           <div className="header-controls">
+            <div className="header-search-container">
+              <SearchBar
+                size="sm"
+                variant="inferno"
+                placeholder="Search primitives (Ctrl+K)..."
+                value={searchQuery}
+                onChange={handleGlobalSearch}
+                shortcutKey="Ctrl+K"
+              />
+            </div>
+
             <div className="header-controls-toggles">
-              <Tooltip content="Search 50+ primitives by name or keyword">
-                <Button
-                  size="sm"
-                  variant={searchQuery ? 'inferno' : 'outline'}
-                  onClick={() => {
-                    const el = document.getElementById('main-tabs');
-                    el?.scrollIntoView({ behavior: 'smooth' });
-                    setTimeout(() => {
-                      const searchInput = document.getElementById('catalog-search-input');
-                      searchInput?.focus();
-                    }, 100);
-                  }}
-                  leftIcon={<SearchIcon size={14} />}
-                >
-                  {searchQuery ? `Search: "${searchQuery}"` : 'Search Catalog'}
-                </Button>
-              </Tooltip>
 
               <Tooltip content="Toggle cyberpunk ASCII matrix rain background animation">
                 <Button
@@ -464,6 +467,8 @@ function MasterGuideWebsite() {
         {/* Master Portal Tabs */}
         <main id="main-tabs">
           <Tabs
+            activeTabId={activeTabId}
+            onChange={setActiveTabId}
             items={[
               {
                 id: 'architecture-guide',
@@ -644,10 +649,34 @@ export default function App() {
                             id="catalog-search-input"
                             placeholder="Type to filter 50+ components (e.g. Table, Slider, SearchBar, Glitch, Canvas, RPG...)"
                             value={searchQuery}
-                            onChange={setSearchQuery}
+                            onChange={handleGlobalSearch}
                             variant="inferno"
                             shortcutKey="Ctrl+K"
                           />
+
+                          {/* Quick Category Filter Chips */}
+                          <Stack direction="row" gap="0.4rem" wrap style={{ marginTop: '0.25rem' }}>
+                            {[
+                              { label: '🚀 ALL (50+)', query: '' },
+                              { label: '🔥 MOON PRIMITIVES', query: 'Moon' },
+                              { label: '✨ TEXT & FX', query: 'Glitch' },
+                              { label: '⚡ BUTTONS & NAV', query: 'Button' },
+                              { label: '🎚️ FORMS & SLIDER', query: 'Slider' },
+                              { label: '📊 DATA & TABLES', query: 'Table' },
+                              { label: '🎨 CANVAS & NOTEPAD', query: 'Canvas' },
+                              { label: '📈 CHARTS & COLOR', query: 'Chart' },
+                            ].map((f) => (
+                              <Button
+                                key={f.label}
+                                size="sm"
+                                variant={searchQuery.toLowerCase() === f.query.toLowerCase() ? 'inferno' : 'ghost'}
+                                onClick={() => handleGlobalSearch(f.query)}
+                                style={{ fontSize: '0.72rem', padding: '0.2rem 0.55rem' }}
+                              >
+                                {f.label}
+                              </Button>
+                            ))}
+                          </Stack>
                         </Stack>
                       </CardBody>
                     </Card>
