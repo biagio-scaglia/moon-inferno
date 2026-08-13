@@ -339,6 +339,82 @@ function MasterGuideWebsite() {
               </div>
             </NavbarItem>
           </NavbarContent>
+
+          <NavbarMenuToggle
+            isOpen={isNavbarMenuOpen}
+            onToggle={() => setIsNavbarMenuOpen(!isNavbarMenuOpen)}
+          />
+
+          <NavbarMenu isOpen={isNavbarMenuOpen} onClose={() => setIsNavbarMenuOpen(false)}>
+            <Stack gap="1rem">
+              <SearchBar
+                size="sm"
+                variant="inferno"
+                placeholder="Search 50+ primitives..."
+                value={searchQuery}
+                onChange={handleGlobalSearch}
+                shortcutKey="Ctrl+K"
+              />
+
+              <Stack direction="row" gap="0.5rem">
+                <Button
+                  size="sm"
+                  variant={isMatrixActive ? 'inferno' : 'outline'}
+                  onClick={() => {
+                    setIsMatrixActive(!isMatrixActive);
+                    addToast(`Matrix Rain ${!isMatrixActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
+                  }}
+                  leftIcon={<CodeIcon size={14} />}
+                  style={{ flex: 1 }}
+                >
+                  Matrix: {isMatrixActive ? 'ON' : 'OFF'}
+                </Button>
+
+                <Button
+                  size="sm"
+                  variant={isCRTActive ? 'inferno' : 'outline'}
+                  onClick={() => {
+                    setIsCRTActive(!isCRTActive);
+                    addToast(`CRT Shader ${!isCRTActive ? 'Enabled' : 'Disabled'}`, { variant: 'inferno' });
+                  }}
+                  leftIcon={<CpuIcon size={14} />}
+                  style={{ flex: 1 }}
+                >
+                  CRT: {isCRTActive ? 'ON' : 'OFF'}
+                </Button>
+              </Stack>
+
+              <div className="segmented-theme-group" style={{ width: '100%', display: 'flex' }}>
+                <Button
+                  size="sm"
+                  variant={currentTheme === 'moon-inferno' ? 'inferno' : 'ghost'}
+                  onClick={() => handleThemeChange('moon-inferno')}
+                  leftIcon={<FlameIcon size={13} />}
+                  style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem', flex: 1 }}
+                >
+                  Inferno
+                </Button>
+                <Button
+                  size="sm"
+                  variant={currentTheme === 'terminal' ? 'inferno' : 'ghost'}
+                  onClick={() => handleThemeChange('terminal')}
+                  leftIcon={<TerminalIcon size={13} />}
+                  style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem', flex: 1 }}
+                >
+                  Terminal
+                </Button>
+                <Button
+                  size="sm"
+                  variant={currentTheme === 'y2k' ? 'inferno' : 'ghost'}
+                  onClick={() => handleThemeChange('y2k')}
+                  leftIcon={<SunIcon size={13} />}
+                  style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem', flex: 1 }}
+                >
+                  Y2K
+                </Button>
+              </div>
+            </Stack>
+          </NavbarMenu>
         </Navbar>
 
         {/* Hero Section Banner */}
