@@ -1831,19 +1831,19 @@ export default function App() {
                             <Button
                               size="sm"
                               variant="outline"
-                              onClick={() => addToast('System status: 100% Operational', { variant: 'success' })}
+                              onClick={() => addToast({ title: 'Signal Established', description: 'System status: 100% Operational', variant: 'success' })}
                             >
-                              Trigger Success Toast
+                              Trigger Structured Toast
                             </Button>
                             <Button
                               size="sm"
                               variant="outline"
                               onClick={() => addToast('Warning: High core temperature detected', { variant: 'error' })}
                             >
-                              Trigger Error Toast
+                              Trigger String Toast
                             </Button>
                           </Stack>
-                          <CodeBlock filename="Toast.snippet.tsx" code={`const { addToast } = useToast();\naddToast('Operation success!', { variant: 'success' });`} />
+                          <CodeBlock filename="Toast.snippet.tsx" code={`const { addToast } = useToast();\n// Structured Toast (v0.3.0):\naddToast({ title: 'Signal Established', description: 'System status: 100% Operational', variant: 'success' });\n// Simple String Toast:\naddToast('Warning: High core temperature', { variant: 'error' });`} />
                         </Stack>
                       </CardBody>
                     </Card>

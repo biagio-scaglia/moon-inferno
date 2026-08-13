@@ -1,6 +1,6 @@
 # 🌙 Moon-Inferno — Developer Manual & API Reference
 
-Welcome to the complete developer manual for **Moon-Inferno** (`v0.1.3`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
+Welcome to the complete developer manual for **Moon-Inferno** (`v0.3.0`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
 
 ---
 
@@ -420,12 +420,12 @@ import { TypingText } from '@moon-inferno/react';
 ```
 
 #### `<NeonText>`
-Glowing pulsing cathode tube text.
+Glowing pulsing cathode tube text supporting custom size presets (`sm`, `md`, `lg`, `xl`) or font-size strings.
 
 ```tsx
 import { NeonText } from '@moon-inferno/react';
 
-<NeonText text="INFERNO" color="inferno" flicker />
+<NeonText text="INFERNO" color="inferno" size="xl" flicker />
 ```
 
 #### `<Marquee>`
@@ -449,12 +449,12 @@ import { Terminal } from '@moon-inferno/react';
 ```
 
 #### `<CRTEffect>`
-Retro scanlines and CRT flicker overlay.
+Retro scanlines and CRT flicker overlay supporting intensity control (`subtle`, `medium`, `high`, or custom numeric opacity).
 
 ```tsx
 import { CRTEffect } from '@moon-inferno/react';
 
-<CRTEffect />
+<CRTEffect scanlines flicker intensity="high" />
 ```
 
 #### `<MatrixRain>`
