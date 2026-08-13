@@ -4,7 +4,9 @@ import './Grid.css';
 export interface GridProps extends HTMLAttributes<HTMLDivElement> {
   minChildWidth?: string;
   columns?: number;
+  cols?: number;
   gap?: number | string;
+  responsiveGap?: string;
 }
 
 export const Grid = forwardRef<HTMLDivElement, GridProps>(
@@ -13,16 +15,20 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
       children,
       minChildWidth = '300px',
       columns,
-      gap = '1.5rem',
+      cols,
+      gap,
+      responsiveGap,
       style,
       className = '',
       ...props
     },
     ref
   ) => {
-    const gapStyle = typeof gap === 'number' ? `${gap}px` : gap;
-    const templateColumns = columns
-      ? `repeat(${columns}, minmax(0, 1fr))`
+    const finalColumns = cols ?? columns;
+    const rawGap = gap ?? responsiveGap ?? '1.5rem';
+    const gapStyle = typeof rawGap === 'number' ? `${rawGap}px` : rawGap;
+    const templateColumns = finalColumns
+      ? `repeat(${finalColumns}, minmax(0, 1fr))`
       : `repeat(auto-fit, minmax(${minChildWidth}, 1fr))`;
 
     return (

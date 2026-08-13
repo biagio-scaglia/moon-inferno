@@ -2,8 +2,10 @@ import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { ZapIcon } from '@moon-inferno/icons';
 import './Button.css';
 
+export type ButtonVariant = 'inferno' | 'outline' | 'ghost' | 'pixel' | 'default' | 'primary' | 'danger';
+
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'inferno' | 'outline' | 'ghost' | 'pixel';
+  variant?: ButtonVariant;
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
   leftIcon?: ReactNode;
@@ -26,9 +28,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
+    const normalizedVariant = (variant === 'default' || variant === 'primary') ? 'inferno' : variant;
+
     const classNames = [
       'mi-button',
-      `mi-button--${variant}`,
+      `mi-button--${normalizedVariant}`,
       `mi-button--${size}`,
       isLoading ? 'mi-button--loading' : '',
       disabled ? 'mi-button--disabled' : '',

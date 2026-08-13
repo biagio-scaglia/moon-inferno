@@ -9,15 +9,32 @@ import {
 import { CloseIcon } from '@moon-inferno/icons';
 import './Toast.css';
 
+export type ToastVariant = 'inferno' | 'pixel' | 'success' | 'error' | 'warning' | 'info' | 'default' | 'primary';
+
 export interface ToastItem {
   id: string;
-  message: string;
-  variant?: 'inferno' | 'success' | 'error' | 'info';
-  duration?: number;
+  title?: string | undefined;
+  description?: string | undefined;
+  message?: string | undefined;
+  variant?: ToastVariant | undefined;
+  duration?: number | undefined;
 }
 
+export type ToastInput =
+  | string
+  | {
+      title?: string;
+      description?: string;
+      message?: string;
+      variant?: ToastVariant;
+      duration?: number;
+    };
+
 interface ToastContextType {
-  addToast: (message: string, options?: Omit<ToastItem, 'id' | 'message'>) => void;
+  addToast: (
+    input: ToastInput,
+    options?: Omit<ToastItem, 'id' | 'message' | 'title' | 'description'>
+  ) => void;
   removeToast: (id: string) => void;
 }
 
@@ -31,14 +48,39 @@ export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
   }, []);
 
   const addToast = useCallback(
-    (message: string, options?: Omit<ToastItem, 'id' | 'message'>) => {
+    (
+      input: ToastInput,
+      options?: Omit<ToastItem, 'id' | 'message' | 'title' | 'description'>
+    ) => {
       const id = Math.random().toString(36).substring(2, 9);
-      const duration = options?.duration ?? 4000;
+      let title: string | undefined;
+      let description: string | undefined;
+      let message: string | undefined;
+      let variant: ToastVariant = 'inferno';
+      let duration = 4000;
+
+      if (typeof input === 'string') {
+        message = input;
+        if (options?.variant) variant = options.variant;
+        if (options?.duration !== undefined) duration = options.duration;
+      } else {
+        title = input.title;
+        description = input.description;
+        message = input.message;
+        if (input.variant) variant = input.variant;
+        if (input.duration !== undefined) duration = input.duration;
+      }
+
+      if (variant === 'default' || variant === 'primary') {
+        variant = 'inferno';
+      }
 
       const newToast: ToastItem = {
         id,
+        title,
+        description,
         message,
-        variant: options?.variant ?? 'inferno',
+        variant,
       };
 
       setToasts((prev) => [...prev, newToast]);
@@ -58,7 +100,12 @@ export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
       <div className="mi-toast-container" aria-live="polite" role="status">
         {toasts.map((toast) => (
           <div key={toast.id} className={`mi-toast mi-toast--${toast.variant}`}>
-            <span>{toast.message}</span>
+            <div className="mi-toast__content">
+              {toast.title && <strong className="mi-toast__title">{toast.title}</strong>}
+              {(toast.description || toast.message) && (
+                <p className="mi-toast__description">{toast.description || toast.message}</p>
+              )}
+            </div>
             <button
               type="button"
               className="mi-toast__close-btn"
