@@ -255,17 +255,18 @@ function MasterGuideWebsite() {
       <Stack gap="2.5rem" style={{ position: 'relative', zIndex: 1 }}>
         {isCRTActive && <CRTEffect />}
 
-        {/* Glassmorphic Cyber Header Control Deck */}
-        <header className="header-nav">
-          <div className="header-brand">
-            <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '28px', width: '28px', flexShrink: 0 }} />
-            <h1 className="brand-title">Moon-Inferno</h1>
-            <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.2.2</Badge>
-          </div>
+        {/* Responsive Cyberpunk Navbar Primitive */}
+        <Navbar variant="inferno" isSticky={false} className="header-nav">
+          <NavbarBrand>
+            <div className="header-brand">
+              <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '28px', width: '28px', flexShrink: 0 }} />
+              <h1 className="brand-title">Moon-Inferno</h1>
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.2.2</Badge>
+            </div>
+          </NavbarBrand>
 
-          {/* Controls */}
-          <div className="header-controls">
-            <div className="header-search-container">
+          <NavbarContent align="end">
+            <NavbarItem className="header-search-container">
               <SearchBar
                 size="sm"
                 variant="inferno"
@@ -274,10 +275,9 @@ function MasterGuideWebsite() {
                 onChange={handleGlobalSearch}
                 shortcutKey="Ctrl+K"
               />
-            </div>
+            </NavbarItem>
 
-            <div className="header-controls-toggles">
-
+            <NavbarItem className="header-controls-toggles">
               <Tooltip content="Toggle cyberpunk ASCII matrix rain background animation">
                 <Button
                   size="sm"
@@ -288,7 +288,7 @@ function MasterGuideWebsite() {
                   }}
                   leftIcon={<CodeIcon size={14} />}
                 >
-                  Matrix Rain: {isMatrixActive ? 'ON' : 'OFF'}
+                  Matrix: {isMatrixActive ? 'ON' : 'OFF'}
                 </Button>
               </Tooltip>
 
@@ -302,42 +302,44 @@ function MasterGuideWebsite() {
                   }}
                   leftIcon={<CpuIcon size={14} />}
                 >
-                  CRT Shader: {isCRTActive ? 'ON' : 'OFF'}
+                  CRT: {isCRTActive ? 'ON' : 'OFF'}
                 </Button>
               </Tooltip>
-            </div>
+            </NavbarItem>
 
-            <div className="segmented-theme-group">
-              <Button
-                size="sm"
-                variant={currentTheme === 'moon-inferno' ? 'inferno' : 'ghost'}
-                onClick={() => handleThemeChange('moon-inferno')}
-                leftIcon={<FlameIcon size={13} />}
-                style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem', flex: 1 }}
-              >
-                Inferno
-              </Button>
-              <Button
-                size="sm"
-                variant={currentTheme === 'terminal' ? 'inferno' : 'ghost'}
-                onClick={() => handleThemeChange('terminal')}
-                leftIcon={<TerminalIcon size={13} />}
-                style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem', flex: 1 }}
-              >
-                Terminal
-              </Button>
-              <Button
-                size="sm"
-                variant={currentTheme === 'y2k' ? 'inferno' : 'ghost'}
-                onClick={() => handleThemeChange('y2k')}
-                leftIcon={<SunIcon size={13} />}
-                style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem', flex: 1 }}
-              >
-                Y2K
-              </Button>
-            </div>
-          </div>
-        </header>
+            <NavbarItem>
+              <div className="segmented-theme-group">
+                <Button
+                  size="sm"
+                  variant={currentTheme === 'moon-inferno' ? 'inferno' : 'ghost'}
+                  onClick={() => handleThemeChange('moon-inferno')}
+                  leftIcon={<FlameIcon size={13} />}
+                  style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem' }}
+                >
+                  Inferno
+                </Button>
+                <Button
+                  size="sm"
+                  variant={currentTheme === 'terminal' ? 'inferno' : 'ghost'}
+                  onClick={() => handleThemeChange('terminal')}
+                  leftIcon={<TerminalIcon size={13} />}
+                  style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem' }}
+                >
+                  Terminal
+                </Button>
+                <Button
+                  size="sm"
+                  variant={currentTheme === 'y2k' ? 'inferno' : 'ghost'}
+                  onClick={() => handleThemeChange('y2k')}
+                  leftIcon={<SunIcon size={13} />}
+                  style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem' }}
+                >
+                  Y2K
+                </Button>
+              </div>
+            </NavbarItem>
+          </NavbarContent>
+        </Navbar>
 
         {/* Hero Section Banner */}
         <section className="hero-card">
