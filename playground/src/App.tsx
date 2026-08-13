@@ -657,20 +657,21 @@ export default function App() {
                           {/* Quick Category Filter Chips */}
                           <Stack direction="row" gap="0.4rem" wrap style={{ marginTop: '0.25rem' }}>
                             {[
-                              { label: '🚀 ALL (50+)', query: '' },
-                              { label: '🔥 MOON PRIMITIVES', query: 'Moon' },
-                              { label: '✨ TEXT & FX', query: 'Glitch' },
-                              { label: '⚡ BUTTONS & NAV', query: 'Button' },
-                              { label: '🎚️ FORMS & SLIDER', query: 'Slider' },
-                              { label: '📊 DATA & TABLES', query: 'Table' },
-                              { label: '🎨 CANVAS & NOTEPAD', query: 'Canvas' },
-                              { label: '📈 CHARTS & COLOR', query: 'Chart' },
+                              { label: 'ALL (50+)', query: '', icon: <LayersIcon size={14} /> },
+                              { label: 'MOON PRIMITIVES', query: 'Moon', icon: <FlameIcon size={14} /> },
+                              { label: 'TEXT & FX', query: 'Glitch', icon: <SparklesIcon size={14} /> },
+                              { label: 'BUTTONS & NAV', query: 'Button', icon: <ZapIcon size={14} /> },
+                              { label: 'FORMS & SLIDER', query: 'Slider', icon: <SettingsIcon size={14} /> },
+                              { label: 'DATA & TABLES', query: 'Table', icon: <CodeIcon size={14} /> },
+                              { label: 'CANVAS & NOTEPAD', query: 'Canvas', icon: <TerminalIcon size={14} /> },
+                              { label: 'CHARTS & COLOR', query: 'Chart', icon: <CpuIcon size={14} /> },
                             ].map((f) => (
                               <Button
                                 key={f.label}
                                 size="sm"
                                 variant={searchQuery.toLowerCase() === f.query.toLowerCase() ? 'inferno' : 'ghost'}
                                 onClick={() => handleGlobalSearch(f.query)}
+                                leftIcon={f.icon}
                                 style={{ fontSize: '0.72rem', padding: '0.2rem 0.55rem' }}
                               >
                                 {f.label}
