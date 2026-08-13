@@ -75,6 +75,7 @@ import {
   MoonConsoleLogger,
   MoonProvider,
   useMoonTheme,
+  SearchBar,
 } from '@moon-inferno/react';
 import { AccessibilitySpecTab } from './components/AccessibilitySpecTab';
 import { RecipesTab } from './components/RecipesTab';
@@ -207,6 +208,12 @@ function MasterGuideWebsite() {
 
   const { addToast } = useToast();
 
+  const matchesSearch = (keywords: string) => {
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.toLowerCase().trim();
+    return keywords.toLowerCase().includes(q);
+  };
+
   const handleThemeChange = (newTheme: ThemeName) => {
     setMoonTheme(newTheme);
     addToast(`Theme switched to ${newTheme.toUpperCase()}`, { variant: 'info' });
@@ -244,12 +251,30 @@ function MasterGuideWebsite() {
           <div className="header-brand">
             <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '28px', width: '28px', flexShrink: 0 }} />
             <h1 className="brand-title">Moon-Inferno</h1>
-            <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.2.1</Badge>
+            <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.2.2</Badge>
           </div>
 
           {/* Controls */}
           <div className="header-controls">
             <div className="header-controls-toggles">
+              <Tooltip content="Search 50+ primitives by name or keyword">
+                <Button
+                  size="sm"
+                  variant={searchQuery ? 'inferno' : 'outline'}
+                  onClick={() => {
+                    const el = document.getElementById('main-tabs');
+                    el?.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => {
+                      const searchInput = document.getElementById('catalog-search-input');
+                      searchInput?.focus();
+                    }, 100);
+                  }}
+                  leftIcon={<SearchIcon size={14} />}
+                >
+                  {searchQuery ? `Search: "${searchQuery}"` : 'Search Catalog'}
+                </Button>
+              </Tooltip>
+
               <Tooltip content="Toggle cyberpunk ASCII matrix rain background animation">
                 <Button
                   size="sm"
@@ -592,7 +617,43 @@ export default function App() {
                 ),
                 content: (
                   <Stack gap="2rem">
+                    {/* Live Search & Filter Bar Card */}
+                    <Card style={{ border: '2px solid var(--mi-color-primary, #FF4D00)', backgroundColor: '#0D090A' }}>
+                      <CardBody style={{ padding: '1.25rem' }}>
+                        <Stack gap="1rem">
+                          <Stack direction="row" align="center" justify="between" wrap gap="1rem">
+                            <Stack direction="row" align="center" gap="0.5rem">
+                              <SearchIcon size={20} color="var(--mi-color-primary, #FF4D00)" />
+                              <strong style={{ fontSize: '1rem', fontFamily: 'var(--mi-font-mono, monospace)', color: 'var(--mi-color-primary, #FF4D00)' }}>
+                                SEARCH & FILTER PRIMITIVES
+                              </strong>
+                            </Stack>
+                            {searchQuery && (
+                              <Button
+                                size="sm"
+                                variant="ghost"
+                                onClick={() => setSearchQuery('')}
+                                leftIcon={<TrashIcon size={14} />}
+                              >
+                                Clear Filter
+                              </Button>
+                            )}
+                          </Stack>
+
+                          <SearchBar
+                            id="catalog-search-input"
+                            placeholder="Type to filter 50+ components (e.g. Table, Slider, SearchBar, Glitch, Canvas, RPG...)"
+                            value={searchQuery}
+                            onChange={setSearchQuery}
+                            variant="inferno"
+                            shortcutKey="Ctrl+K"
+                          />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
                     {/* Typography & Custom Text FX */}
+                    {matchesSearch('glitchtext pixeltext neontext typingtext marquee text custom fx typography headlines') && (
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
@@ -645,8 +706,10 @@ export default function App() {
                         </Stack>
                       </CardBody>
                     </Card>
+                    )}
 
                     {/* Buttons & Actions */}
+                    {matchesSearch('button breadcrumbs pagination action triggers buttons interactive tactile') && (
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
@@ -675,8 +738,10 @@ export default function App() {
                         </Stack>
                       </CardBody>
                     </Card>
+                    )}
 
                     {/* Accessible Navbar Component */}
+                    {matchesSearch('navbar navbarbrand navbarcontent navbaritem navigation header links drawer hamburger') && (
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
@@ -718,8 +783,10 @@ export default function App() {
                         </Stack>
                       </CardBody>
                     </Card>
+                    )}
 
                     {/* Accessible DatePicker Component */}
+                    {matchesSearch('datepicker calendar date time schedule launch picker') && (
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
@@ -751,8 +818,10 @@ export default function App() {
                         </Stack>
                       </CardBody>
                     </Card>
+                    )}
 
                     {/* HoloCard 3D Parallax Card */}
+                    {matchesSearch('holocard 3d parallax tilt card holographic glare hover') && (
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
@@ -789,8 +858,10 @@ export default function App() {
                         </Stack>
                       </CardBody>
                     </Card>
+                    )}
 
                     {/* CommandPalette Component Trigger */}
+                    {matchesSearch('commandpalette cmd+k ctrl+k modal search palette shortcut command') && (
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
@@ -856,8 +927,10 @@ export default function App() {
                         </Stack>
                       </CardBody>
                     </Card>
+                    )}
 
                     {/* Accessible DropdownMenu Component */}
+                    {matchesSearch('dropdown dropdownmenu dropdownsection dropdownitem dropdowndivider popover menu') && (
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
@@ -922,8 +995,10 @@ export default function App() {
                         </Stack>
                       </CardBody>
                     </Card>
+                    )}
 
                     {/* Interactive PieChart Component */}
+                    {matchesSearch('piechart donut chart visualization graph data percentage svg') && (
                     <Card>
                       <CardHeader>
                         <Stack direction="row" align="center" gap="0.5rem">
@@ -968,6 +1043,7 @@ export default function App() {
                         </Stack>
                       </CardBody>
                     </Card>
+                    )}
 
                     {/* Cyberpunk ColorPicker Component */}
                     <Card>
@@ -1240,6 +1316,42 @@ export default function App() {
                         </Stack>
                       </CardBody>
                     </Card>
+
+                    {/* SearchBar Component Showcase */}
+                    {matchesSearch('searchbar search bar input filter search icon shortcut clearable escape') && (
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" gap="0.5rem">
+                          <SearchIcon size={18} /> SearchBar Primitives (Retro & Cyberpunk Variants)
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Cyberpunk search bar with built-in search icon, auto-clear button, keyboard shortcut badge, and ARIA <code>role="search"</code>.
+                          </p>
+                          <Stack gap="1rem">
+                            <SearchBar
+                              variant="inferno"
+                              placeholder="Inferno SearchBar (Ctrl+K)..."
+                              shortcutKey="Ctrl+K"
+                            />
+                            <SearchBar
+                              variant="pixel"
+                              placeholder="Pixel Art SearchBar (/)..."
+                              shortcutKey="/"
+                            />
+                            <SearchBar
+                              variant="terminal"
+                              placeholder="Terminal Green CRT SearchBar..."
+                              shortcutKey="ESC"
+                            />
+                          </Stack>
+                          <CodeBlock filename="SearchBar.snippet.tsx" code={`<SearchBar\n  variant="inferno"\n  placeholder="Search database..."\n  shortcutKey="Ctrl+K"\n  onSearch={(query) => console.log(query)}\n/>`} />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+                    )}
 
                     {/* Form Controls */}
                     <Grid minChildWidth="300px" gap="1.5rem">

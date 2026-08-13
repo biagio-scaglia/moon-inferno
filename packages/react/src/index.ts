@@ -49,6 +49,7 @@ export * from './MoonRPGGrid/MoonRPGGrid';
 export * from './MoonHealthMeter/MoonHealthMeter';
 export * from './MoonSafeGlitch/MoonSafeGlitch';
 export * from './MoonConsoleLogger/MoonConsoleLogger';
+export * from './SearchBar/SearchBar';
 
 // Styles
 import './Button/Button.css';
@@ -100,3 +101,4 @@ import './MoonRPGGrid/MoonRPGGrid.css';
 import './MoonHealthMeter/MoonHealthMeter.css';
 import './MoonSafeGlitch/MoonSafeGlitch.css';
 import './MoonConsoleLogger/MoonConsoleLogger.css';
+import './SearchBar/SearchBar.css';

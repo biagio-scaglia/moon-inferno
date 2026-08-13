@@ -1,0 +1,151 @@
+/* Moon-Inferno SearchBar Component Styles */
+
+.mi-searchbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--mi-color-bg, #0A090D);
+  border: 1.5px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-md, 6px);
+  font-family: var(--mi-font-mono, monospace);
+  color: var(--mi-color-text, #F1F5F9);
+  transition: all 0.15s ease;
+}
+
+.mi-searchbar:focus-within {
+  border-color: var(--mi-color-primary, #FF4D00);
+  box-shadow: 0 0 12px rgba(255, 77, 0, 0.35), inset 0 0 8px rgba(255, 77, 0, 0.1);
+}
+
+.mi-searchbar-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0.75rem;
+  color: var(--mi-color-primary, #FF4D00);
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.mi-searchbar-input {
+  flex: 1;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.875rem;
+  color: var(--mi-color-text, #F1F5F9);
+  padding: 0.6rem 0.75rem;
+}
+
+.mi-searchbar-input::placeholder {
+  color: var(--mi-color-text-dim, #64748B);
+}
+
+.mi-searchbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.mi-searchbar-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: 50%;
+  color: var(--mi-color-text-muted, #94A3B8);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.15s ease;
+}
+
+.mi-searchbar-clear:hover {
+  background: var(--mi-color-primary, #FF4D00);
+  color: #000;
+  border-color: var(--mi-color-primary, #FF4D00);
+}
+
+.mi-searchbar-shortcut {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.4rem;
+  font-size: 0.7rem;
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--mi-color-text-muted, #94A3B8);
+  background-color: var(--mi-color-surface, #1E1B26);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: 4px;
+}
+
+/* Sizes */
+.mi-searchbar--sm {
+  font-size: 0.78rem;
+}
+
+.mi-searchbar--sm .mi-searchbar-input {
+  padding: 0.35rem 0.5rem;
+  font-size: 0.78rem;
+}
+
+.mi-searchbar--lg {
+  font-size: 1rem;
+}
+
+.mi-searchbar--lg .mi-searchbar-input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+/* Variant: Pixel */
+.mi-searchbar--pixel {
+  border-width: 2px;
+  border-radius: 0;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.mi-searchbar--pixel .mi-searchbar-clear {
+  border-radius: 0;
+}
+
+.mi-searchbar--pixel .mi-searchbar-shortcut {
+  border-radius: 0;
+}
+
+/* Variant: Terminal */
+.mi-searchbar--terminal {
+  background-color: #050B05;
+  border-color: #00FF66;
+  color: #00FF66;
+}
+
+.mi-searchbar--terminal .mi-searchbar-icon {
+  color: #00FF66;
+}
+
+.mi-searchbar--terminal .mi-searchbar-input {
+  color: #00FF66;
+}
+
+.mi-searchbar--terminal:focus-within {
+  box-shadow: 0 0 12px rgba(0, 255, 102, 0.4);
+}
+
+/* Disabled */
+.mi-searchbar--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mi-searchbar--disabled .mi-searchbar-input {
+  cursor: not-allowed;
+}
