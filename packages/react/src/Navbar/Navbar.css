@@ -8,9 +8,9 @@
   justify-content: center;
   z-index: 1000;
   box-sizing: border-box;
-  background-color: var(--moon-bg-surface, rgba(13, 15, 20, 0.92));
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: var(--moon-bg-surface, rgba(13, 11, 18, 0.92));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   transition: all var(--moon-transition-speed, 0.2s) ease;
 }
 
@@ -22,8 +22,8 @@
 .moon-navbar__container {
   width: 100%;
   max-width: 1280px;
-  height: 64px;
-  padding: 0 var(--moon-space-md, 1rem);
+  min-height: 64px;
+  padding: 0.5rem var(--moon-space-md, 1rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,8 +33,8 @@
 
 /* Variant Styles */
 .moon-navbar--inferno {
-  border-bottom: 1px solid rgba(255, 68, 68, 0.4);
-  box-shadow: 0 4px 20px rgba(255, 68, 68, 0.15);
+  border-bottom: 1px solid var(--moon-color-border-accent, rgba(255, 77, 0, 0.45));
+  box-shadow: 0 4px 20px rgba(255, 77, 0, 0.15);
 }
 
 .moon-navbar--pixel {
@@ -57,15 +57,17 @@
   color: var(--moon-color-text, #ffffff);
   text-decoration: none;
   font-family: var(--moon-font-mono, monospace);
+  flex-shrink: 0;
 }
 
 .moon-navbar__content {
   display: flex;
   align-items: center;
-  gap: var(--moon-space-lg, 1.5rem);
+  gap: var(--moon-space-lg, 1.25rem);
   list-style: none;
   margin: 0;
   padding: 0;
+  flex: 1;
 }
 
 .moon-navbar__content--start {
@@ -74,7 +76,6 @@
 
 .moon-navbar__content--center {
   justify-content: center;
-  flex: 1;
 }
 
 .moon-navbar__content--end {
@@ -111,44 +112,48 @@
 /* Mobile Toggle & Menu */
 .moon-navbar__toggle {
   display: none;
-  background: transparent;
-  border: 1px solid var(--moon-color-border, rgba(255, 68, 68, 0.4));
-  padding: var(--moon-space-xs, 0.35rem);
-  border-radius: var(--moon-radius-sm, 4px);
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 77, 0, 0.08);
+  border: 1.5px solid var(--moon-color-border-accent, rgba(255, 77, 0, 0.45));
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
   cursor: pointer;
   outline: none;
+  transition: all 0.15s ease;
+  color: var(--moon-color-primary, #FF4D00);
 }
 
-.moon-navbar__toggle:focus-visible {
-  outline: 2px solid var(--moon-color-primary, #ff4444);
+.moon-navbar__toggle:focus-visible,
+.moon-navbar__toggle:hover {
+  background: var(--moon-color-primary, #FF4D00);
+  color: #000;
+  box-shadow: 0 0 14px rgba(255, 77, 0, 0.45);
 }
 
 .moon-navbar__toggle-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--moon-color-text, #ffffff);
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.moon-navbar__toggle:hover .moon-navbar__toggle-icon {
-  color: var(--moon-color-primary, #ff4444);
+  transition: transform 0.2s ease;
 }
 
 .moon-navbar__menu {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 100%;
+  top: calc(100% + 8px);
   left: 0;
   right: 0;
-  background-color: var(--moon-bg-surface, #0d0f14);
-  border-bottom: 2px solid var(--moon-color-primary, #ff4444);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 68, 68, 0.25);
-  backdrop-filter: blur(16px);
+  background: rgba(13, 11, 18, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid var(--moon-color-border-accent, rgba(255, 77, 0, 0.45));
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 77, 0, 0.2);
   z-index: 1001;
-  padding: var(--moon-space-md, 1rem) var(--moon-space-lg, 1.5rem);
-  animation: moonNavbarSlideDown 0.2s ease-out;
+  padding: 1.25rem;
+  animation: moonNavbarSlideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   box-sizing: border-box;
 }
 
@@ -180,11 +185,24 @@
   }
 }
 
+/* Responsive Media Queries */
 @media (max-width: 768px) {
   .moon-navbar__content {
-    display: none;
+    display: none !important;
   }
   .moon-navbar__toggle {
-    display: flex;
+    display: flex !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .moon-navbar__menu {
+    display: none !important;
+  }
+  .moon-navbar__toggle {
+    display: none !important;
+  }
+  .moon-navbar__content {
+    display: flex !important;
   }
 }

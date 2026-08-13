@@ -140,8 +140,19 @@ export const NavbarMenu: React.FC<NavbarMenuProps> = ({
         onClose();
       }
     };
+
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isOpen && onClose) {
+        onClose();
+      }
+    };
+
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', handleResize);
+    };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
