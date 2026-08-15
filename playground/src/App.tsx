@@ -80,6 +80,7 @@ import {
 import { AccessibilitySpecTab } from './components/AccessibilitySpecTab';
 import { RecipesTab } from './components/RecipesTab';
 import { CliGuideTab } from './components/CliGuideTab';
+import { DocSidebarNav } from './components/DocSidebarNav';
 import {
   FlameIcon,
   MoonIcon,
@@ -205,10 +206,9 @@ function MasterGuideWebsite() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [isNavbarMenuOpen, setIsNavbarMenuOpen] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
-
   const { addToast } = useToast();
-
   const [activeTabId, setActiveTabId] = useState('components-catalog');
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   const handleGlobalSearch = (query: string) => {
     setSearchQuery(query);
@@ -217,7 +217,10 @@ function MasterGuideWebsite() {
     }
   };
 
-  const matchesSearch = (keywords: string) => {
+  const matchesSearch = (keywords: string, category?: string) => {
+    if (selectedCategory !== 'all' && category && category !== selectedCategory) {
+      return false;
+    }
     if (!searchQuery.trim()) return true;
     const q = searchQuery.toLowerCase().trim();
     return keywords.toLowerCase().includes(q);
@@ -542,11 +545,27 @@ function MasterGuideWebsite() {
           <span>--</span>
         </Marquee>
 
-        {/* Master Portal Tabs */}
-        <main id="main-tabs">
-          <Tabs
+        {/* Master Documentation & Portal Layout */}
+        <div className="doc-layout">
+          <DocSidebarNav
             activeTabId={activeTabId}
-            onChange={setActiveTabId}
+            onSelectTab={(tabId) => {
+              setActiveTabId(tabId);
+              const el = document.getElementById('main-tabs');
+              el?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            activeCategory={selectedCategory}
+            onSelectCategory={(cat) => {
+              setSelectedCategory(cat);
+              const el = document.getElementById('main-tabs');
+              el?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          />
+
+          <main id="main-tabs" className="doc-main doc-reader">
+            <Tabs
+              activeTabId={activeTabId}
+              onChange={setActiveTabId}
             items={[
               {
                 id: 'architecture-guide',
@@ -2016,6 +2035,7 @@ export default function App() {
             ]}
           />
         </main>
+      </div>
 
         {/* Modal Dialog */}
         <Dialog
