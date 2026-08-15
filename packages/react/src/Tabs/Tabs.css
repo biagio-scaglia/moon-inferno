@@ -5,21 +5,20 @@
   flex-direction: column;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
 }
 
 .mi-tab-list {
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.35rem;
   overflow-x: auto;
   scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
   max-width: 100%;
-  border-bottom: 2px solid var(--mi-color-border, #332D40);
-  background-color: var(--mi-color-bg-subtle, #14121A);
-  padding: 0.25rem 0.25rem 0 0.25rem;
-  border-radius: var(--mi-radius-base, 4px) var(--mi-radius-base, 4px) 0 0;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0.35rem;
 }
 
 .mi-tab-list::-webkit-scrollbar {
@@ -28,54 +27,225 @@
 
 .mi-tab-list::-webkit-scrollbar-thumb {
   background-color: var(--mi-color-border-accent, #FF4D00);
+  border-radius: 2px;
 }
 
+/* Tab Item Base Styling */
 .mi-tab {
   flex-shrink: 0;
-  padding: 0.625rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
   font-family: var(--mi-font-mono, monospace);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--mi-color-text-muted, #94A3B8);
   background: transparent;
   border: 1px solid transparent;
-  border-bottom: none;
-  border-radius: var(--mi-radius-base, 4px) var(--mi-radius-base, 4px) 0 0;
+  border-radius: var(--mi-radius-base, 6px);
   cursor: pointer;
   outline: none;
-  transition: all 0.15s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  bottom: -2px;
-  min-height: 44px;
+  user-select: none;
 }
 
-.mi-tab:hover:not(.mi-tab--selected) {
+.mi-tab__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+}
+
+.mi-tab__label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mi-tab__badge {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: currentColor;
+}
+
+.mi-tab:hover:not(.mi-tab--selected):not(:disabled) {
   color: var(--mi-color-text, #F1F5F9);
-  background-color: rgba(255, 77, 0, 0.05);
+  background-color: rgba(255, 77, 0, 0.08);
 }
 
-.mi-tab--selected {
-  color: var(--mi-color-primary, #FF4D00);
-  background-color: var(--mi-color-surface, #1E1B26);
-  border-color: var(--mi-color-border-accent, #FF4D00);
-  border-bottom: 2px solid var(--mi-color-surface, #1E1B26);
-  box-shadow: 0 -2px 8px rgba(255, 77, 0, 0.2);
+.mi-tab:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .mi-tab:focus-visible {
   outline: 2px solid var(--mi-color-focus-ring, #FF4D00);
-  outline-offset: -2px;
+  outline-offset: 2px;
 }
 
+/* ==========================================================================
+   Variant: Inferno (Default Cyber Glass Deck)
+   ========================================================================== */
+.mi-tabs--inferno .mi-tab-list {
+  background: rgba(18, 16, 25, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--mi-color-border, rgba(255, 255, 255, 0.12));
+  border-radius: 12px 12px 0 0;
+  border-bottom: 2px solid var(--mi-color-border-accent, #FF4D00);
+}
+
+.mi-tabs--inferno .mi-tab--selected {
+  color: var(--mi-color-primary, #FF4D00);
+  background: rgba(255, 77, 0, 0.14);
+  border-color: var(--mi-color-border-accent, #FF4D00);
+  box-shadow: 0 0 16px rgba(255, 77, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.mi-tabs--inferno .mi-tab--selected::after {
+  content: '';
+  position: absolute;
+  bottom: -0.35rem;
+  left: 0.5rem;
+  right: 0.5rem;
+  height: 2px;
+  background: var(--mi-color-primary, #FF4D00);
+  box-shadow: 0 0 10px var(--mi-color-primary, #FF4D00);
+}
+
+/* ==========================================================================
+   Variant: Pills (Segmented Capsule Deck)
+   ========================================================================== */
+.mi-tabs--pills .mi-tab-list {
+  background: rgba(10, 9, 14, 0.8);
+  border: 1px solid var(--mi-color-border, rgba(255, 255, 255, 0.12));
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.mi-tabs--pills .mi-tab {
+  border-radius: 7px;
+}
+
+.mi-tabs--pills .mi-tab--selected {
+  color: #000;
+  background-color: var(--mi-color-primary, #FF4D00);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(255, 77, 0, 0.4);
+}
+
+.mi-tabs--pills .mi-tab--selected .mi-tab__icon {
+  color: #000;
+}
+
+/* ==========================================================================
+   Variant: Pixel (Arcade Retro Stepped)
+   ========================================================================== */
+.mi-tabs--pixel .mi-tab-list {
+  background-color: #0D0F14;
+  border: 2px solid var(--mi-color-primary, #FF4D00);
+  border-radius: 0;
+  padding: 4px;
+}
+
+.mi-tabs--pixel .mi-tab {
+  border-radius: 0;
+  border: 1px solid transparent;
+  font-family: var(--mi-font-mono, monospace);
+}
+
+.mi-tabs--pixel .mi-tab--selected {
+  color: #FFF;
+  background-color: var(--mi-color-primary, #FF4D00);
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
+}
+
+/* ==========================================================================
+   Variant: Underline (Minimal Line Strip)
+   ========================================================================== */
+.mi-tabs--underline .mi-tab-list {
+  background: transparent;
+  border-bottom: 1.5px solid var(--mi-color-border, rgba(255, 255, 255, 0.12));
+  padding: 0;
+  gap: 1rem;
+}
+
+.mi-tabs--underline .mi-tab {
+  border-radius: 0;
+  padding: 0.6rem 0.25rem;
+}
+
+.mi-tabs--underline .mi-tab--selected {
+  color: var(--mi-color-primary, #FF4D00);
+  background: transparent;
+}
+
+.mi-tabs--underline .mi-tab--selected::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--mi-color-primary, #FF4D00);
+  box-shadow: 0 0 10px var(--mi-color-primary, #FF4D00);
+}
+
+/* ==========================================================================
+   Size Modifiers (sm, md, lg)
+   ========================================================================== */
+.mi-tabs--sm .mi-tab {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  min-height: 34px;
+}
+
+.mi-tabs--md .mi-tab {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  min-height: 42px;
+}
+
+.mi-tabs--lg .mi-tab {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  min-height: 50px;
+}
+
+/* Fitted Mode (Spread Equal Width) */
+.mi-tabs--fitted .mi-tab-list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+}
+
+.mi-tabs--fitted .mi-tab {
+  width: 100%;
+}
+
+/* Tab Panel Styling */
 .mi-tab-panel {
-  padding: 1.25rem;
-  background-color: var(--mi-color-surface, #1E1B26);
-  border: 1px solid var(--mi-color-border, #332D40);
+  padding: 1.5rem;
+  background-color: var(--mi-color-surface, rgba(18, 16, 25, 0.96));
+  border: 1px solid var(--mi-color-border, rgba(255, 255, 255, 0.12));
   border-top: none;
-  border-radius: 0 0 var(--mi-radius-md, 6px) var(--mi-radius-md, 6px);
+  border-radius: 0 0 12px 12px;
   outline: none;
   overflow-x: auto;
   max-width: 100%;
+}
+
+.mi-tabs--pills .mi-tab-panel,
+.mi-tabs--underline .mi-tab-panel {
+  border-top: 1px solid var(--mi-color-border, rgba(255, 255, 255, 0.12));
+  border-radius: 12px;
+  margin-top: 0.75rem;
 }
 
 .mi-tab-panel:focus-visible {
@@ -84,6 +254,6 @@
 
 @media (max-width: 640px) {
   .mi-tab-panel {
-    padding: 0.875rem 0.75rem;
+    padding: 1rem 0.75rem;
   }
 }

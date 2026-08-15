@@ -9,7 +9,8 @@ import {
   ShieldIcon,
   CodeIcon,
   CpuIcon,
-  ZapIcon
+  ZapIcon,
+  InfoIcon
 } from '@moon-inferno/icons';
 
 export interface NavSection {
@@ -34,6 +35,7 @@ export const DocSidebarNav: React.FC<DocSidebarNavProps> = ({
   onSelectCategory,
 }) => {
   const mainNavItems = [
+    { id: 'architecture-guide', label: 'Architecture & Vision', icon: <InfoIcon size={15} /> },
     {
       id: 'components-catalog',
       label: 'Component Catalog',

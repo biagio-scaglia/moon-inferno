@@ -8,17 +8,25 @@ import {
 import { KEYS } from '@moon-inferno/core';
 import './Tabs.css';
 
+export type TabsVariant = 'inferno' | 'pills' | 'pixel' | 'underline' | 'default' | 'primary';
+export type TabsSize = 'sm' | 'md' | 'lg';
+
 export interface TabItem {
   id: string;
   label: ReactNode;
   content: ReactNode;
   disabled?: boolean;
+  icon?: ReactNode;
+  badge?: ReactNode;
 }
 
 export interface TabsProps {
   items: TabItem[];
   defaultTabId?: string;
   activeTabId?: string;
+  variant?: TabsVariant;
+  size?: TabsSize;
+  isFitted?: boolean;
   onChange?: (tabId: string) => void;
   className?: string;
 }
@@ -27,6 +35,9 @@ export const Tabs: FC<TabsProps> = ({
   items,
   defaultTabId,
   activeTabId: controlledActiveTabId,
+  variant = 'inferno',
+  size = 'md',
+  isFitted = false,
   onChange,
   className = '',
 }) => {
@@ -80,9 +91,20 @@ export const Tabs: FC<TabsProps> = ({
   };
 
   const activeItem = items.find((item) => item.id === activeTabId) || items[0];
+  const normalizedVariant = (variant === 'default' || variant === 'primary') ? 'inferno' : variant;
+
+  const classNames = [
+    'mi-tabs',
+    `mi-tabs--${normalizedVariant}`,
+    `mi-tabs--${size}`,
+    isFitted ? 'mi-tabs--fitted' : '',
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <div className={`mi-tabs ${className}`.trim()}>
+    <div className={classNames}>
       <div role="tablist" aria-orientation="horizontal" className="mi-tab-list">
         {items.map((item, index) => {
           const isSelected = item.id === activeTabId;
@@ -103,7 +125,9 @@ export const Tabs: FC<TabsProps> = ({
               onKeyDown={(e) => handleKeyDown(e, index)}
               className={`mi-tab ${isSelected ? 'mi-tab--selected' : ''}`}
             >
-              {item.label}
+              {item.icon && <span className="mi-tab__icon">{item.icon}</span>}
+              <span className="mi-tab__label">{item.label}</span>
+              {item.badge && <span className="mi-tab__badge">{item.badge}</span>}
             </button>
           );
         })}

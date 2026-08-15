@@ -76,6 +76,7 @@ import {
   MoonProvider,
   useMoonTheme,
   SearchBar,
+  type TabsVariant,
 } from '@moon-inferno/react';
 import { AccessibilitySpecTab } from './components/AccessibilitySpecTab';
 import { RecipesTab } from './components/RecipesTab';
@@ -209,6 +210,7 @@ function MasterGuideWebsite() {
   const { addToast } = useToast();
   const [activeTabId, setActiveTabId] = useState('components-catalog');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [demoTabsVariant, setDemoTabsVariant] = useState<TabsVariant>('inferno');
 
   const handleGlobalSearch = (query: string) => {
     setSearchQuery(query);
@@ -1752,6 +1754,90 @@ export default function App() {
                       </CardBody>
                     </Card>
 
+                    {/* Interactive Accessible Tabs Component (v0.3.0 Variants) */}
+                    <Card>
+                      <CardHeader>
+                        <Stack direction="row" align="center" justify="between" wrap gap="1rem">
+                          <Stack direction="row" align="center" gap="0.5rem">
+                            <LayersIcon size={18} /> Interactive Tabs Primitives (v0.3.0)
+                          </Stack>
+                          <Stack direction="row" gap="0.35rem">
+                            {(['inferno', 'pills', 'pixel', 'underline'] as TabsVariant[]).map((v) => (
+                              <Button
+                                key={v}
+                                size="sm"
+                                variant={demoTabsVariant === v ? 'inferno' : 'ghost'}
+                                onClick={() => setDemoTabsVariant(v)}
+                                style={{ fontSize: '0.75rem', padding: '0.2rem 0.55rem' }}
+                              >
+                                {v.toUpperCase()}
+                              </Button>
+                            ))}
+                          </Stack>
+                        </Stack>
+                      </CardHeader>
+                      <CardBody>
+                        <Stack gap="1.5rem">
+                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                            Full WCAG 2.1 AA keyboard support (<kbd>Left/Right</kbd>, <kbd>Home/End</kbd>), icons, badges, and 4 design variants (<code>inferno</code> | <code>pills</code> | <code>pixel</code> | <code>underline</code>).
+                          </p>
+
+                          <Tabs
+                            variant={demoTabsVariant}
+                            size="md"
+                            items={[
+                              {
+                                id: 'tab-1',
+                                label: 'CYBER_CORE',
+                                icon: <FlameIcon size={14} />,
+                                badge: 'v0.3.0',
+                                content: (
+                                  <Stack gap="0.75rem" style={{ padding: '0.5rem 0' }}>
+                                    <strong style={{ color: 'var(--mi-color-primary)' }}>Inferno Engine Active</strong>
+                                    <p style={{ margin: 0, color: 'var(--mi-color-text-muted)', fontSize: '0.875rem' }}>
+                                      Decoupled theme tokens with instant CSS variable reactivity and screen reader announcements.
+                                    </p>
+                                  </Stack>
+                                ),
+                              },
+                              {
+                                id: 'tab-2',
+                                label: 'SHADERS & FX',
+                                icon: <CpuIcon size={14} />,
+                                content: (
+                                  <Stack gap="0.75rem" style={{ padding: '0.5rem 0' }}>
+                                    <strong style={{ color: 'var(--mi-color-info, #00E5FF)' }}>CRT & Matrix Overlays</strong>
+                                    <p style={{ margin: 0, color: 'var(--mi-color-text-muted)', fontSize: '0.875rem' }}>
+                                      Hardware-accelerated CSS & HTML5 Canvas effects respecting <code>(prefers-reduced-motion: reduce)</code>.
+                                    </p>
+                                  </Stack>
+                                ),
+                              },
+                              {
+                                id: 'tab-3',
+                                label: 'ACCESSIBILITY',
+                                icon: <ShieldIcon size={14} />,
+                                badge: 'AA',
+                                content: (
+                                  <Stack gap="0.75rem" style={{ padding: '0.5rem 0' }}>
+                                    <strong style={{ color: 'var(--mi-color-success, #00FF66)' }}>WCAG 2.1 AA Compliant</strong>
+                                    <p style={{ margin: 0, color: 'var(--mi-color-text-muted)', fontSize: '0.875rem' }}>
+                                      Automatic WAI-ARIA <code>role="tablist"</code>, <code>aria-selected</code>, and <code>aria-controls</code> management.
+                                    </p>
+                                  </Stack>
+                                ),
+                              },
+                            ]}
+                          />
+
+                          <CodeBlock
+                            filename="Tabs.snippet.tsx"
+                            code={`<Tabs\n  variant="${demoTabsVariant}"\n  size="md"\n  items={[\n    { id: '1', label: 'CYBER_CORE', icon: <FlameIcon size={14} />, badge: 'v0.3.0', content: <Content1 /> },\n    { id: '2', label: 'SHADERS & FX', icon: <CpuIcon size={14} />, content: <Content2 /> }\n  ]}\n/>`}
+                          />
+                        </Stack>
+                      </CardBody>
+                    </Card>
+
                     {/* Containers & Modal Dialog */}
                     <Card>
                       <CardHeader>
@@ -1879,6 +1965,44 @@ export default function App() {
                 content: <CliGuideTab />,
               },
               {
+                id: 'custom-css-guide',
+                label: (
+                  <Stack direction="row" align="center" gap="0.5rem">
+                    <SettingsIcon size={16} /> CSS Variables & Themes Guide
+                  </Stack>
+                ),
+                content: (
+                  <Stack gap="1.5rem">
+                    <PixelContainer title="DESIGN TOKENS AND NATIVE CSS VARIABLES">
+                      <Stack gap="1rem">
+                        <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
+                          All Moon-Inferno components use native CSS variables. Override any color, shadow, or radius token directly in your stylesheet to create custom themes:
+                        </p>
+                        <CodeBlock filename="custom-theme.css" code={`:root {\n  --mi-color-bg: #0A090D;\n  --mi-color-bg-subtle: #14121A;\n  --mi-color-surface: #1E1B26;\n  --mi-color-border: #332D40;\n  --mi-color-border-accent: #FF4D00;\n  --mi-color-primary: #FF4D00;\n  --mi-color-primary-hover: #FF661A;\n  --mi-shadow-glow: 0 0 16px rgba(255, 77, 0, 0.45);\n}`} />
+                      </Stack>
+                    </PixelContainer>
+                  </Stack>
+                ),
+              },
+              {
+                id: 'accessibility-spec',
+                label: (
+                  <Stack direction="row" align="center" gap="0.5rem">
+                    <ShieldIcon size={16} /> Accessibility Specification
+                  </Stack>
+                ),
+                content: <AccessibilitySpecTab />,
+              },
+              {
+                id: 'recipes-templates',
+                label: (
+                  <Stack direction="row" align="center" gap="0.5rem">
+                    <SparklesIcon size={16} /> Recipes & Templates
+                  </Stack>
+                ),
+                content: <RecipesTab />,
+              },
+              {
                 id: 'icon-explorer',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
@@ -1970,26 +2094,6 @@ export default function App() {
                 ),
               },
               {
-                id: 'custom-css-guide',
-                label: (
-                  <Stack direction="row" align="center" gap="0.5rem">
-                    <SettingsIcon size={16} /> CSS Variables & Themes Guide
-                  </Stack>
-                ),
-                content: (
-                  <Stack gap="1.5rem">
-                    <PixelContainer title="DESIGN TOKENS AND NATIVE CSS VARIABLES">
-                      <Stack gap="1rem">
-                        <p style={{ margin: 0, color: 'var(--mi-color-text-muted)' }}>
-                          All Moon-Inferno components use native CSS variables. Override any color, shadow, or radius token directly in your stylesheet to create custom themes:
-                        </p>
-                        <CodeBlock filename="custom-theme.css" code={`:root {\n  --mi-color-bg: #0A090D;\n  --mi-color-bg-subtle: #14121A;\n  --mi-color-surface: #1E1B26;\n  --mi-color-border: #332D40;\n  --mi-color-border-accent: #FF4D00;\n  --mi-color-primary: #FF4D00;\n  --mi-color-primary-hover: #FF661A;\n  --mi-shadow-glow: 0 0 16px rgba(255, 77, 0, 0.45);\n}`} />
-                      </Stack>
-                    </PixelContainer>
-                  </Stack>
-                ),
-              },
-              {
                 id: 'terminal',
                 label: (
                   <Stack direction="row" align="center" gap="0.5rem">
@@ -2013,24 +2117,6 @@ export default function App() {
                     }}
                   />
                 ),
-              },
-              {
-                id: 'accessibility-spec',
-                label: (
-                  <Stack direction="row" align="center" gap="0.5rem">
-                    <ShieldIcon size={16} /> Accessibility Specification
-                  </Stack>
-                ),
-                content: <AccessibilitySpecTab />,
-              },
-              {
-                id: 'recipes-templates',
-                label: (
-                  <Stack direction="row" align="center" gap="0.5rem">
-                    <SparklesIcon size={16} /> Recipes & Templates
-                  </Stack>
-                ),
-                content: <RecipesTab />,
               },
             ]}
           />
