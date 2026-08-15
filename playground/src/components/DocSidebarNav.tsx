@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type KeyboardEvent } from 'react';
 import { Stack, Badge } from '@moon-inferno/react';
 import {
   LayersIcon,
@@ -57,30 +57,54 @@ export const DocSidebarNav: React.FC<DocSidebarNavProps> = ({
     { id: 'terminal', label: 'Interactive Terminal OS', icon: <TerminalIcon size={15} /> },
   ];
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const allFocusable = Array.from(
+        document.querySelectorAll<HTMLButtonElement>('.doc-sidebar button')
+      );
+      const currentIndex = allFocusable.indexOf(e.currentTarget);
+      if (currentIndex === -1) return;
+
+      const nextIndex =
+        e.key === 'ArrowDown'
+          ? (currentIndex + 1) % allFocusable.length
+          : (currentIndex - 1 + allFocusable.length) % allFocusable.length;
+
+      allFocusable[nextIndex]?.focus();
+    }
+  };
+
   return (
     <aside className="doc-sidebar" aria-label="Documentation Navigation Index">
       <div className="doc-sidebar__header">
-        <h2 className="doc-sidebar__title">
+        <h2 className="doc-sidebar__title" id="doc-sidebar-title">
           <LayersIcon size={16} color="var(--mi-color-primary)" /> Index & Navigation
         </h2>
         <span className="doc-sidebar__subtitle">Developer Manual v0.3.1</span>
       </div>
 
-      <nav className="doc-sidebar__nav">
-        <Stack gap="0.75rem">
+      <nav className="doc-sidebar__nav" aria-labelledby="doc-sidebar-title">
+        <Stack gap="0.75rem" role="list">
           {mainNavItems.map((item) => {
             const isTabActive = activeTabId === item.id;
+            const hasSubnav = Boolean(item.categories);
+            const subnavId = `subnav-${item.id}`;
 
             return (
-              <div key={item.id} className="doc-sidebar__group">
+              <div key={item.id} className="doc-sidebar__group" role="listitem">
                 <button
                   type="button"
+                  aria-current={isTabActive ? 'page' : undefined}
+                  aria-expanded={hasSubnav ? isTabActive : undefined}
+                  aria-controls={hasSubnav ? subnavId : undefined}
                   onClick={() => {
                     onSelectTab(item.id);
                     if (item.categories && onSelectCategory) {
                       onSelectCategory('all');
                     }
                   }}
+                  onKeyDown={handleKeyDown}
                   className={`doc-sidebar__link ${isTabActive ? 'doc-sidebar__link--active' : ''}`}
                 >
                   <span className="doc-sidebar__link-content">
@@ -96,7 +120,12 @@ export const DocSidebarNav: React.FC<DocSidebarNavProps> = ({
 
                 {/* Nested Component Categories if Catalog is Active */}
                 {isTabActive && item.categories && onSelectCategory && (
-                  <div className="doc-sidebar__subnav">
+                  <div
+                    id={subnavId}
+                    role="group"
+                    aria-label={`${item.label} Categories`}
+                    className="doc-sidebar__subnav"
+                  >
                     {item.categories.map((cat) => {
                       const isCatActive = activeCategory === cat.id;
 
@@ -104,10 +133,12 @@ export const DocSidebarNav: React.FC<DocSidebarNavProps> = ({
                         <button
                           key={cat.id}
                           type="button"
+                          aria-current={isCatActive ? 'true' : undefined}
                           onClick={() => {
                             onSelectTab('components-catalog');
                             onSelectCategory(cat.id);
                           }}
+                          onKeyDown={handleKeyDown}
                           className={`doc-sidebar__sublink ${isCatActive ? 'doc-sidebar__sublink--active' : ''}`}
                         >
                           <span className="doc-sidebar__sublink-content">

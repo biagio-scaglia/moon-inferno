@@ -280,6 +280,12 @@ body {
   gap: 0.6rem;
 }
 
+.doc-sidebar__link:focus-visible {
+  outline: 2px solid var(--mi-color-focus-ring, #FF4D00);
+  outline-offset: 2px;
+  background: rgba(255, 77, 0, 0.1);
+}
+
 .doc-sidebar__link:hover {
   background: rgba(255, 77, 0, 0.08);
   color: #FFF;
@@ -318,6 +324,13 @@ body {
   cursor: pointer;
   text-align: left;
   transition: all 0.15s ease;
+}
+
+.doc-sidebar__sublink:focus-visible {
+  outline: 2px solid var(--mi-color-focus-ring, #FF4D00);
+  outline-offset: 1px;
+  color: #F8FAFC;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .doc-sidebar__sublink-content {
