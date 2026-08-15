@@ -1,6 +1,6 @@
 # 🌙 Moon-Inferno — Developer Manual & API Reference
 
-Welcome to the complete developer manual for **Moon-Inferno** (`v0.3.0`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
+Welcome to the complete developer manual for **Moon-Inferno** (`v0.3.1`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
 
 ---
 
@@ -225,6 +225,35 @@ import { Dialog, DialogFooter, Button } from '@moon-inferno/react';
     <Button onClick={() => setOpen(false)}>Close</Button>
   </DialogFooter>
 </Dialog>
+```
+
+#### `<Tabs>`
+Accessible tab strip primitive with full WAI-ARIA keyboard navigation (`Left/Right`, `Home/End`), icons, badges, fitted mode, 4 design variants (`inferno` | `pills` | `pixel` | `underline`), and 3 size scale options (`sm` | `md` | `lg`).
+
+```tsx
+import { Tabs } from '@moon-inferno/react';
+import { FlameIcon, CpuIcon } from '@moon-inferno/icons';
+
+<Tabs
+  variant="inferno" // 'inferno' | 'pills' | 'pixel' | 'underline'
+  size="md"        // 'sm' | 'md' | 'lg'
+  isFitted         // Stretch tabs equally to fill container width
+  items={[
+    {
+      id: 'core',
+      label: 'CYBER_CORE',
+      icon: <FlameIcon size={14} />,
+      badge: 'v0.3.1',
+      content: <div>Inferno Engine Active</div>,
+    },
+    {
+      id: 'shaders',
+      label: 'SHADERS & FX',
+      icon: <CpuIcon size={14} />,
+      content: <div>CRT & Matrix Canvas Overlays</div>,
+    },
+  ]}
+/>
 ```
 
 #### `<Dropdown>`

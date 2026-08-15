@@ -63,7 +63,7 @@ export const DocSidebarNav: React.FC<DocSidebarNavProps> = ({
         <h2 className="doc-sidebar__title">
           <LayersIcon size={16} color="var(--mi-color-primary)" /> Index & Navigation
         </h2>
-        <span className="doc-sidebar__subtitle">Developer Manual v0.3.0</span>
+        <span className="doc-sidebar__subtitle">Developer Manual v0.3.1</span>
       </div>
 
       <nav className="doc-sidebar__nav">
