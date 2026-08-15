@@ -266,7 +266,7 @@ function MasterGuideWebsite() {
             <div className="header-brand">
               <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '28px', width: '28px', flexShrink: 0 }} />
               <h1 className="brand-title">Moon-Inferno</h1>
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.3.1</Badge>
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.3.2</Badge>
             </div>
           </NavbarBrand>
 

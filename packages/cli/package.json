@@ -1,6 +1,6 @@
 {
   "name": "@moon-inferno/cli",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Command line tool to add Moon-Inferno accessible retro components directly into your React codebase.",
   "bin": {
     "moon-inferno": "./bin/index.js",
