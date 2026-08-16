@@ -5,7 +5,7 @@ export const TerminalTab: React.FC = () => {
   return (
     <Terminal
       initialLines={[
-        { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.3.4 (NPM PUBLISHED & CDN READY) INITIALIZED.' },
+        { id: '1', type: 'output', text: 'MOON-INFERNO OS v0.3.5 (NPM PUBLISHED & CDN READY) INITIALIZED.' },
         { id: '2', type: 'output', text: 'Type "help", "author", "install", "cdn", "status", "icons", or "clear".' },
       ]}
       onCommand={(cmd) => {
