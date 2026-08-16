@@ -55,14 +55,14 @@ importers:
   packages/react:
     dependencies:
       '@moon-inferno/core':
-        specifier: ^0.1.2
-        version: 0.1.4
+        specifier: workspace:*
+        version: link:../core
       '@moon-inferno/icons':
-        specifier: ^0.1.2
-        version: 0.1.5(react@19.2.8)
+        specifier: workspace:*
+        version: link:../icons
       '@moon-inferno/themes':
-        specifier: ^0.1.2
-        version: 0.1.4
+        specifier: workspace:*
+        version: link:../themes
     devDependencies:
       '@types/react':
         specifier: ^19.2.18
@@ -525,17 +525,6 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
-
-  '@moon-inferno/core@0.1.4':
-    resolution: {integrity: sha512-53eKcweiZHAnfn+3znQst8UZJdgubOAfrFm/gUk/7Ag0pdL1yfLBtobnJFut9rsMetwicCxuOkvcMd3X3Yh09g==}
-
-  '@moon-inferno/icons@0.1.5':
-    resolution: {integrity: sha512-udfDb8gAs3eqiSomCnDi98k2or3GZ4nCYq3+hQG6xUcL1hDb/vYHp9CCBlgnuS6wFjNN6fD71CpzN4XlpXegsQ==}
-    peerDependencies:
-      react: ^18.0.0 || ^19.0.0
-
-  '@moon-inferno/themes@0.1.4':
-    resolution: {integrity: sha512-BBYmKh07MvdpBJ4rnXfzJDcICkfuytYWbxpVrmzWTGNE6Tof1v+8F5t7KC6yRQ26qxp0aw90W1ZGpXSgRtJ2yQ==}
 
   '@napi-rs/lzma-linux-x64-gnu@1.5.1':
     resolution: {integrity: sha512-oTXEIha4SsuXdTA4Iyskj0kpdx2yVXdhd75c2v3xGrHFfVMsbhTPZU/nMPL4sWKo4pBHm3aucLaqGlF696dTyQ==}
@@ -1331,14 +1320,6 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
-
-  '@moon-inferno/core@0.1.4': {}
-
-  '@moon-inferno/icons@0.1.5(react@19.2.8)':
-    dependencies:
-      react: 19.2.8
-
-  '@moon-inferno/themes@0.1.4': {}
 
   '@napi-rs/lzma-linux-x64-gnu@1.5.1':
     optional: true

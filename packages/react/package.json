@@ -52,8 +52,8 @@
     "react-dom": "^19.2.8"
   },
   "dependencies": {
-    "@moon-inferno/core": "^0.3.2",
-    "@moon-inferno/icons": "^0.3.2",
-    "@moon-inferno/themes": "^0.3.2"
+    "@moon-inferno/core": "workspace:*",
+    "@moon-inferno/icons": "workspace:*",
+    "@moon-inferno/themes": "workspace:*"
   }
 }

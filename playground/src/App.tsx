@@ -792,46 +792,70 @@ export default function App() {
                       <CardBody>
                         <Stack gap="1.5rem">
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>GLITCH TEXT: Animated RGB-split glitch headline component.</span>
+                            <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>GLITCH TEXT: Animated RGB-split glitch headline component.</span>
                             <GlitchText text="CYBERPUNK INFERNO" as="h3" style={{ fontSize: '1.5rem' }} />
-                            <CodeBlock filename="GlitchText.snippet.tsx" code={`<GlitchText text="CYBERPUNK INFERNO" as="h3" />`} />
                           </Stack>
 
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>PIXEL TEXT: Stepped pixelated retro typography with hard pixel shadow.</span>
+                            <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>PIXEL TEXT: Stepped pixelated retro typography with hard pixel shadow.</span>
                             <Stack direction="row" align="center" gap="1rem" wrap>
                               <PixelText text="LEVEL 01" size="sm" />
                               <PixelText text="GAME OVER" size="md" />
                               <PixelText text="PRESS START" size="lg" />
                               <PixelText text="INFERNO" size="xl" />
                             </Stack>
-                            <CodeBlock filename="PixelText.snippet.tsx" code={`<PixelText text="PRESS START" size="lg" />`} />
                           </Stack>
 
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>NEON TEXT: Glowing pulsing cathode tube text with optional flicker.</span>
+                            <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>NEON TEXT: Glowing pulsing cathode tube text with optional flicker.</span>
                             <Stack direction="row" align="center" gap="1.5rem" wrap>
                               <NeonText text="INFERNO" color="inferno" flicker />
                               <NeonText text="CYBERPUNK" color="cyan" />
                               <NeonText text="MATRIX" color="green" />
                               <NeonText text="SYNTHWAVE" color="magenta" flicker />
                             </Stack>
-                            <CodeBlock filename="NeonText.snippet.tsx" code={`<NeonText text="INFERNO" color="inferno" flicker />`} />
                           </Stack>
 
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>TYPING EFFECT: Typewriter animation with blinking terminal cursor.</span>
+                            <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>TYPING EFFECT: Typewriter animation with blinking terminal cursor.</span>
                             <TypingText text="Establishing encrypted link to satellite node 094..." speed={40} cursorChar="█" />
-                            <CodeBlock filename="TypingText.snippet.tsx" code={`<TypingText text="Establishing encrypted link..." speed={40} cursorChar="█" />`} />
                           </Stack>
 
                           <Stack gap="0.5rem">
-                            <span style={{ fontSize: '0.8rem', color: 'var(--mi-color-text-dim)' }}>MARQUEE TICKER: Infinite continuous scrolling marquee primitive.</span>
+                            <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>MARQUEE TICKER: Infinite continuous scrolling marquee primitive.</span>
                             <Marquee speed={18} variant="pixel">
                               <span>RETRO PRIMITIVES</span> - <span>ACCESSIBLE TICKER</span> - <span>MOON-INFERNO</span>
                             </Marquee>
-                            <CodeBlock filename="Marquee.snippet.tsx" code={`<Marquee speed={18} variant="pixel">\n  <span>RETRO PRIMITIVES</span>\n</Marquee>`} />
                           </Stack>
+
+                          <CodeBlock
+                            collapsible
+                            title="FULL COPY-PASTE CODE SNIPPET (TYPOGRAPHY & TEXT FX — ALL VARIANTS)"
+                            code={`import { GlitchText, PixelText, NeonText, TypingText, Marquee } from '@moon-inferno/react';
+
+// 1. GlitchText (RGB-split animated headline with custom HTML element tag)
+<GlitchText text="CYBERPUNK INFERNO" as="h3" style={{ fontSize: '1.5rem' }} />
+
+// 2. PixelText (Stepped pixelated retro typography in sizes sm | md | lg | xl)
+<PixelText text="LEVEL 01" size="sm" />
+<PixelText text="GAME OVER" size="md" />
+<PixelText text="PRESS START" size="lg" />
+<PixelText text="SOLAR INFERNO" size="xl" />
+
+// 3. NeonText (Cathode tube glow in colors inferno | cyan | green | magenta with flicker)
+<NeonText text="INFERNO" color="inferno" flicker />
+<NeonText text="CYBERPUNK" color="cyan" />
+<NeonText text="MATRIX" color="green" />
+<NeonText text="SYNTHWAVE" color="magenta" flicker />
+
+// 4. TypingText (Typewriter reveal animation with custom speed and blinking cursor)
+<TypingText text="Establishing encrypted link to satellite node 094..." speed={40} cursorChar="█" />
+
+// 5. Marquee Ticker (Continuous infinite scroll ticker in variants pixel | inferno | outline)
+<Marquee speed={18} variant="pixel">
+  <span>RETRO PRIMITIVES</span> - <span>ACCESSIBLE TICKER</span> - <span>MOON-INFERNO</span>
+</Marquee>`}
+                          />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -847,7 +871,7 @@ export default function App() {
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.25rem">
-                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                          <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
                             Tactile interactive button supporting stepped pixel borders, loading state aria-busy, and high-contrast focus rings.
                           </p>
                           <Stack direction="row" align="center" gap="0.5rem" wrap>
@@ -863,7 +887,29 @@ export default function App() {
                             <Button isLoading variant="inferno">Processing</Button>
                             <Button disabled variant="outline" leftIcon={<LockIcon size={16} />}>Disabled</Button>
                           </Stack>
-                          <CodeBlock filename="Breadcrumbs.snippet.tsx" code={`<Breadcrumbs items={[\n  { label: 'Home', href: '/' },\n  { label: 'Docs', href: '/docs' },\n  { label: 'Breadcrumbs', isCurrent: true }\n]} />`} />
+                          <CodeBlock
+                            collapsible
+                            title="FULL COPY-PASTE CODE SNIPPET (BUTTON VARIANTS, SIZES & STATES)"
+                            code={`import { Button } from '@moon-inferno/react';
+import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moon-inferno/icons';
+
+// 1. Button Variants (inferno | outline | ghost | pixel | danger | success | warning | info)
+<Button variant="inferno" leftIcon={<FlameIcon size={16} />}>Inferno Variant</Button>
+<Button variant="outline" leftIcon={<ShieldIcon size={16} />}>Outline Variant</Button>
+<Button variant="ghost" leftIcon={<SparklesIcon size={16} />}>Ghost Variant</Button>
+<Button variant="pixel" leftIcon={<GamepadIcon size={16} />}>Pixel Variant</Button>
+<Button variant="danger">Danger Action</Button>
+<Button variant="success">Success Action</Button>
+
+// 2. Button Sizes (sm | md | lg)
+<Button size="sm" variant="inferno">Small (32px)</Button>
+<Button size="md" variant="inferno">Medium (42px)</Button>
+<Button size="lg" variant="inferno">Large (50px)</Button>
+
+// 3. Button Interactive States (isLoading | disabled)
+<Button isLoading variant="inferno">Processing...</Button>
+<Button disabled variant="outline" leftIcon={<LockIcon size={16} />}>Disabled State</Button>`}
+                          />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -879,7 +925,7 @@ export default function App() {
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
-                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                          <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
                             Responsive navigation header supporting brand, links, action buttons, and mobile hamburger drawer.
                           </p>
                           <Navbar variant="inferno" isSticky={false}>
@@ -908,7 +954,46 @@ export default function App() {
                               </NavbarMenu>
                             )}
                           </Navbar>
-                          <CodeBlock filename="Navbar.snippet.tsx" code={`<Navbar variant="inferno">\n  <NavbarBrand>INFERNO_NAV</NavbarBrand>\n  <NavbarContent align="end">\n    <NavbarItem isActive>Dashboard</NavbarItem>\n    <NavbarItem>Docs</NavbarItem>\n  </NavbarContent>\n</Navbar>`} />
+                          <CodeBlock
+                            collapsible
+                            title="FULL COPY-PASTE CODE SNIPPET (NAVBAR, BRAND, ITEMS & MOBILE DRAWER)"
+                            code={`import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, Button } from '@moon-inferno/react';
+import { FlameIcon } from '@moon-inferno/icons';
+
+// 1. Full Responsive Desktop & Mobile Drawer Navbar
+export function HeaderNavigation() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <Navbar variant="inferno" isSticky>
+      <NavbarBrand>
+        <FlameIcon size={20} color="#FF4D00" />
+        <span>INFERNO_NAV</span>
+      </NavbarBrand>
+
+      <NavbarContent align="end">
+        <NavbarItem isActive>Dashboard</NavbarItem>
+        <NavbarItem>Telemetry</NavbarItem>
+        <NavbarItem>Docs</NavbarItem>
+        <NavbarItem>
+          <Button size="sm" variant="inferno">Connect Wallet</Button>
+        </NavbarItem>
+      </NavbarContent>
+
+      <NavbarMenuToggle isOpen={isOpen} onToggle={() => setIsOpen(!isOpen)} />
+
+      {isOpen && (
+        <NavbarMenu isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          <NavbarItem isActive>Dashboard</NavbarItem>
+          <NavbarItem>Telemetry</NavbarItem>
+          <NavbarItem>Docs</NavbarItem>
+          <Button size="sm" variant="inferno" style={{ marginTop: '0.5rem' }}>Connect Wallet</Button>
+        </NavbarMenu>
+      )}
+    </Navbar>
+  );
+}`}
+                          />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -924,7 +1009,7 @@ export default function App() {
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
-                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                          <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
                             Full WCAG 2.1 AA keyboard grid navigation (Arrow keys, PageUp/Down, Home/End, Enter, Escape).
                           </p>
                           <Stack direction="row" gap="2rem" wrap align="start">
@@ -943,7 +1028,32 @@ export default function App() {
                               placeholder="Choose date..."
                             />
                           </Stack>
-                          <CodeBlock filename="DatePicker.snippet.tsx" code={`<DatePicker\n  label="Launch Date"\n  variant="inferno"\n  value={selectedDate}\n  onChange={(date) => setSelectedDate(date)}\n/>`} />
+                          <CodeBlock
+                            collapsible
+                            title="FULL COPY-PASTE CODE SNIPPET (DATEPICKER & CALENDAR VARIANTS)"
+                            code={`import { DatePicker, Calendar } from '@moon-inferno/react';
+
+// 1. DatePicker with label, variant (inferno | pixel | outline) and onChange handler
+<DatePicker
+  label="Launch Date"
+  variant="inferno"
+  value={selectedDate}
+  onChange={(date: Date) => setSelectedDate(date)}
+/>
+
+// 2. Pixel Variant DatePicker
+<DatePicker
+  label="Scheduled Maintenance"
+  variant="pixel"
+  placeholder="Choose date..."
+/>
+
+// 3. Standalone Inline Calendar Grid
+<Calendar
+  value={selectedDate}
+  onChange={(date: Date) => setSelectedDate(date)}
+/>`}
+                          />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -959,7 +1069,7 @@ export default function App() {
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
-                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                          <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
                             Interactive 3D card with cursor-based parallax tilt, dynamic holographic glare, and prefers-reduced-motion fallback.
                           </p>
                           <Grid minChildWidth="260px" gap="1.5rem">
@@ -967,7 +1077,7 @@ export default function App() {
                               <Stack gap="0.75rem">
                                 <Badge variant="inferno">SOLAR_INFERNO</Badge>
                                 <h4 style={{ margin: 0, fontSize: '1.1rem' }}>Cybernetic Core Node</h4>
-                                <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--mi-color-text-muted)' }}>
+                                <p style={{ margin: 0, fontSize: '0.85rem', color: '#F8FAFC' }}>
                                   Hover cursor to tilt and observe dynamic holographic iridescence reflection.
                                 </p>
                               </Stack>
@@ -977,13 +1087,35 @@ export default function App() {
                               <Stack gap="0.75rem">
                                 <Badge variant="pixel">CYBER_GRID</Badge>
                                 <h4 style={{ margin: 0, fontSize: '1.1rem' }}>Quantum Stream</h4>
-                                <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--mi-color-text-muted)' }}>
+                                <p style={{ margin: 0, fontSize: '0.85rem', color: '#F8FAFC' }}>
                                   High-contrast neon cyan border and glowing glare reflection.
                                 </p>
                               </Stack>
                             </HoloCard>
                           </Grid>
-                          <CodeBlock filename="HoloCard.snippet.tsx" code={`<HoloCard variant="inferno" maxTilt={15}>\n  <h4>Cybernetic Core Node</h4>\n  <p>Hover cursor to tilt.</p>\n</HoloCard>`} />
+                          <CodeBlock
+                            collapsible
+                            title="FULL COPY-PASTE CODE SNIPPET (HOLOCARD VARIANTS & PARALLAX PROPS)"
+                            code={`import { HoloCard, Badge, Stack } from '@moon-inferno/react';
+
+// 1. Inferno Variant 3D Parallax Card
+<HoloCard variant="inferno" maxTilt={15} glareOpacity={0.4}>
+  <Stack gap="0.75rem">
+    <Badge variant="inferno">SOLAR_INFERNO</Badge>
+    <h4>Cybernetic Core Node</h4>
+    <p>Hover cursor to tilt and observe dynamic holographic reflection.</p>
+  </Stack>
+</HoloCard>
+
+// 2. Cyber Variant 3D Parallax Card
+<HoloCard variant="cyber" maxTilt={20}>
+  <Stack gap="0.75rem">
+    <Badge variant="pixel">CYBER_GRID</Badge>
+    <h4>Quantum Stream</h4>
+    <p>High-contrast neon cyan border and glowing glare.</p>
+  </Stack>
+</HoloCard>`}
+                          />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -999,7 +1131,7 @@ export default function App() {
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
-                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                          <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
                             Modal search palette triggered via <code>Cmd+K</code> or <code>Ctrl+K</code> with full keyboard selection and ARIA combobox pattern.
                           </p>
                           <Stack direction="row" align="center" gap="1rem">
@@ -1052,7 +1184,46 @@ export default function App() {
                               },
                             ]}
                           />
-                          <CodeBlock filename="CommandPalette.snippet.tsx" code={`<CommandPalette\n  isOpen={isOpen}\n  onClose={() => setIsOpen(false)}\n  items={[\n    { id: '1', label: 'Switch Theme: Inferno', group: 'Themes', onSelect: () => setTheme('moon-inferno') }\n  ]}\n/>`} />
+                          <CodeBlock
+                            collapsible
+                            title="FULL COPY-PASTE CODE SNIPPET (COMMANDPALETTE SETUP & SHORTCUTS)"
+                            code={`import { useState } from 'react';
+import { CommandPalette, Button } from '@moon-inferno/react';
+import { TerminalIcon } from '@moon-inferno/icons';
+
+export function CommandPaletteDemo() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <Button variant="inferno" onClick={() => setIsOpen(true)}>
+        Open Command Palette (Cmd+K)
+      </Button>
+
+      <CommandPalette
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        items={[
+          {
+            id: 'theme-inferno',
+            label: 'Switch Theme: Inferno',
+            group: 'Themes',
+            shortcut: 'Alt+1',
+            onSelect: () => console.log('Theme changed')
+          },
+          {
+            id: 'toggle-crt',
+            label: 'Toggle CRT Shader Effect',
+            group: 'Display FX',
+            shortcut: 'Ctrl+Shift+C',
+            onSelect: () => console.log('CRT toggled')
+          }
+        ]}
+      />
+    </>
+  );
+}`}
+                          />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -1068,7 +1239,7 @@ export default function App() {
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
-                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                          <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
                             WAI-ARIA menu popover supporting items, sections, dividers, custom icons, and keyboard navigation.
                           </p>
                           <Stack direction="row" gap="1.5rem" wrap align="center">
@@ -1120,7 +1291,32 @@ export default function App() {
                               </DropdownMenu>
                             </Dropdown>
                           </Stack>
-                          <CodeBlock filename="Dropdown.snippet.tsx" code={`<Dropdown variant="inferno">\n  <DropdownTrigger>\n    <Button variant="inferno">Actions Menu</Button>\n  </DropdownTrigger>\n  <DropdownMenu>\n    <DropdownSection title="Options">\n      <DropdownItem icon={<FlameIcon size={14} />}>Option 1</DropdownItem>\n    </DropdownSection>\n    <DropdownDivider />\n    <DropdownItem destructive>Delete</DropdownItem>\n  </DropdownMenu>\n</Dropdown>`} />
+                          <CodeBlock
+                            collapsible
+                            title="FULL COPY-PASTE CODE SNIPPET (DROPDOWN VARIANTS, SECTIONS & DESTRUCTIVE ITEMS)"
+                            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, DropdownDivider, Button } from '@moon-inferno/react';
+import { SettingsIcon, FlameIcon, TerminalIcon, SunIcon, TrashIcon } from '@moon-inferno/icons';
+
+// 1. Inferno Variant Dropdown with Sections & Dividers
+<Dropdown variant="inferno">
+  <DropdownTrigger>
+    <Button variant="inferno" leftIcon={<SettingsIcon size={16} />}>Quick Actions</Button>
+  </DropdownTrigger>
+
+  <DropdownMenu>
+    <DropdownSection title="System Controls">
+      <DropdownItem icon={<FlameIcon size={14} />} onSelect={() => console.log('Inferno')}>Set Theme: Inferno</DropdownItem>
+      <DropdownItem icon={<TerminalIcon size={14} />} onSelect={() => console.log('Terminal')}>Set Theme: Terminal</DropdownItem>
+    </DropdownSection>
+
+    <DropdownDivider />
+
+    <DropdownItem icon={<TrashIcon size={14} />} destructive onSelect={() => console.log('Clear')}>
+      Clear System Cache
+    </DropdownItem>
+  </DropdownMenu>
+</Dropdown>`}
+                          />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -1136,12 +1332,28 @@ export default function App() {
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
-                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                          <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
                             SVG-based pie & donut chart visualization with hover slice expansion, percentage calculation, and accessible table summary.
                           </p>
                           <Grid minChildWidth="260px" gap="2rem">
                             <Stack gap="1rem" align="center">
-                              <h5 style={{ margin: 0, fontSize: '0.9rem', color: 'var(--mi-color-text-muted)' }}>Inferno Donut Chart</h5>
+                              <h5 style={{ margin: 0, fontSize: '0.9rem', color: '#F8FAFC' }}>Inferno Donut Chart</h5>
+                              <PieChart
+                                donut
+                                size={180}
+                                centerValue="100%"
+                                centerText="ALLOCATED"
+                                data={[
+                                  { label: 'Cyberpunk UI', value: 45, color: '#FF4D00' },
+                                  { label: 'Terminal Core', value: 30, color: '#00FF66' },
+                                  { label: 'Y2K Theme', value: 15, color: '#00E5FF' },
+                                  { label: 'Pixel Assets', value: 10, color: '#FF00A0' },
+                                ]}
+                              />
+                            </Stack>
+
+                            <Stack gap="1rem" align="center">
+                              <h5 style={{ margin: 0, fontSize: '0.9rem', color: '#F8FAFC' }}>Solid Pie Chart</h5>
                               <PieChart
                                 donut
                                 size={180}
@@ -1296,14 +1508,23 @@ export default function App() {
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
-                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                          <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
                             Retro text editor notepad with real-time line numbering, word/char counter, copy text action, and markdown preview mode.
                           </p>
                           <SheetEditor
                             title="CYBER_LOG_NOTES.MD"
                             defaultValue={`# MOON-INFERNO CYBER LOG\n- All 50+ primitives compiled successfully.\n- Full WCAG 2.1 AA accessibility compliance.\n- Built by Biagio Scaglia.`}
                           />
-                          <CodeBlock filename="SheetEditor.snippet.tsx" code={`<SheetEditor\n  title="CYBER_LOG_NOTES.MD"\n  defaultValue="# INFERNO NOTES..."\n/>`} />
+                          <CodeBlock
+                            collapsible
+                            title="FULL COPY-PASTE CODE SNIPPET (SHEETEDITOR PROPS & MARKDOWN PREVIEW)"
+                            code={`import { SheetEditor } from '@moon-inferno/react';
+
+<SheetEditor
+  title="CYBER_LOG_NOTES.MD"
+  defaultValue="# MOON-INFERNO LOG\\n- Real-time line numbering\\n- Word/character counter\\n- Live markdown preview"
+/>`}
+                          />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -1317,7 +1538,7 @@ export default function App() {
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
-                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                          <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
                             Retro RPG typewriter dialogue box with gradual letter reveal. Features WAI-ARIA <code>aria-live="polite"</code> screen reader immediate text fallback.
                           </p>
                           <MoonTypewriterDialogue
@@ -1326,7 +1547,19 @@ export default function App() {
                             text="Welcome to Moon-Inferno! Every signature component is designed for 100% WCAG 2.1 AA accessibility and retro gaming aesthetics."
                             speed={25}
                           />
-                          <CodeBlock filename="MoonTypewriterDialogue.snippet.tsx" code={`<MoonTypewriterDialogue\n  speaker="CYBER_NAVIGATOR_AI"\n  text="Welcome to Moon-Inferno! Built for WCAG 2.1 AA accessibility."\n  speed={25}\n/>`} />
+                          <CodeBlock
+                            collapsible
+                            title="FULL COPY-PASTE CODE SNIPPET (MOONTYPEWRITERDIALOGUE RPG PROPS)"
+                            code={`import { MoonTypewriterDialogue } from '@moon-inferno/react';
+import { FlameIcon } from '@moon-inferno/icons';
+
+<MoonTypewriterDialogue
+  speaker="CYBER_NAVIGATOR_AI"
+  avatar={<FlameIcon size={20} color="#FF4D00" />}
+  text="Welcome to Moon-Inferno! Built for WCAG 2.1 AA accessibility and gaming."
+  speed={25}
+/>`}
+                          />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -1340,7 +1573,7 @@ export default function App() {
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
-                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                          <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
                             Pixel art 2D inventory slot grid with full keyboard arrow navigation, <code>Space/Enter</code> slot swapping, and live voice announcements for screen readers.
                           </p>
                           <MoonRPGGrid
@@ -1354,7 +1587,24 @@ export default function App() {
                               { id: '4', name: 'Security Key', count: 1, icon: <CheckIcon size={24} color="#00E5FF" />, description: 'Encrypted Y2K mainframe clearance key' },
                             ]}
                           />
-                          <CodeBlock filename="MoonRPGGrid.snippet.tsx" code={`<MoonRPGGrid\n  columns={5}\n  totalSlots={10}\n  items={[\n    { id: '1', name: 'Inferno Core', count: 1, icon: <FlameIcon /> }\n  ]}\n/>`} />
+                          <CodeBlock
+                            collapsible
+                            title="FULL COPY-PASTE CODE SNIPPET (MOONRPGGRID 2D KEYBOARD INVENTORY)"
+                            code={`import { MoonRPGGrid } from '@moon-inferno/react';
+import { FlameIcon, ZapIcon, RefreshIcon, CheckIcon } from '@moon-inferno/icons';
+
+<MoonRPGGrid
+  columns={5}
+  totalSlots={10}
+  title="CYBERNETIC_INVENTORY"
+  items={[
+    { id: '1', name: 'Inferno Core', count: 1, icon: <FlameIcon size={24} color="#FF4D00" />, description: 'Overclocked quantum core' },
+    { id: '2', name: 'Lightning Cell', count: 5, icon: <ZapIcon size={24} color="#FFD700" />, description: 'High-voltage energy cell' },
+    { id: '3', name: 'Refresh Matrix', count: 2, icon: <RefreshIcon size={24} color="#00FF66" />, description: 'Reboot protocol' },
+    { id: '4', name: 'Security Key', count: 1, icon: <CheckIcon size={24} color="#00E5FF" />, description: 'Y2K clearance key' }
+  ]}
+/>`}
+                          />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -1368,7 +1618,7 @@ export default function App() {
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
-                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                          <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
                             Animated gaming health, mana, and shield meters built natively on HTML5 <code>&lt;meter&gt;</code> tags for live percentage reporting to screen readers.
                           </p>
                           <Stack gap="1rem">
@@ -1377,7 +1627,17 @@ export default function App() {
                             <MoonHealthMeter type="energy" value={95} max={100} label="STAMINA" />
                             <MoonHealthMeter type="shield" value={40} max={100} label="CYBER SHIELD" />
                           </Stack>
-                          <CodeBlock filename="MoonHealthMeter.snippet.tsx" code={`<MoonHealthMeter type="health" value={85} max={100} label="HP (HEALTH)" />\n<MoonHealthMeter type="mana" value={60} max={100} label="MP (MANA)" />`} />
+                          <CodeBlock
+                            collapsible
+                            title="FULL COPY-PASTE CODE SNIPPET (MOONHEALTHMETER TYPES: HEALTH, MANA, ENERGY, SHIELD)"
+                            code={`import { MoonHealthMeter } from '@moon-inferno/react';
+
+// Health (HP), Mana (MP), Energy (Stamina), and Cyber Shield Bars
+<MoonHealthMeter type="health" value={85} max={100} label="HP (HEALTH)" />
+<MoonHealthMeter type="mana" value={60} max={100} label="MP (MANA)" />
+<MoonHealthMeter type="energy" value={95} max={100} label="STAMINA" />
+<MoonHealthMeter type="shield" value={40} max={100} label="CYBER SHIELD" />`}
+                          />
                         </Stack>
                       </CardBody>
                     </Card>
@@ -1391,13 +1651,19 @@ export default function App() {
                       </CardHeader>
                       <CardBody>
                         <Stack gap="1.5rem">
-                          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text-muted)' }}>
+                          <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
                             Cyberpunk RGB split glitch text that automatically disables intense flickering when <code>(prefers-reduced-motion: reduce)</code> is set.
                           </p>
                           <div style={{ fontSize: 'clamp(1rem, 4vw, 1.4rem)', textAlign: 'center', padding: '0.75rem', background: '#0A090D', borderRadius: '4px', maxWidth: '100%', overflow: 'hidden' }}>
                             <MoonSafeGlitch text="NEO_INFERNO_PROTOCOL" as="h3" style={{ margin: 0 }} />
                           </div>
-                          <CodeBlock filename="MoonSafeGlitch.snippet.tsx" code={`<MoonSafeGlitch text="NEO_INFERNO_PROTOCOL" as="h3" />`} />
+                          <CodeBlock
+                            collapsible
+                            title="FULL COPY-PASTE CODE SNIPPET (MOONSAFEGLITCH ACCESSIBLE GLITCH)"
+                            code={`import { MoonSafeGlitch } from '@moon-inferno/react';
+
+<MoonSafeGlitch text="NEO_INFERNO_PROTOCOL" as="h3" />`}
+                          />
                         </Stack>
                       </CardBody>
                     </Card>

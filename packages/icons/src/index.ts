@@ -38,4 +38,6 @@ export * from './icons/FilterIcon';
 export * from './icons/CalendarIcon';
 export * from './icons/ChevronLeftIcon';
 export * from './icons/ChevronRightIcon';
+export * from './icons/ChevronDownIcon';
+export * from './icons/ChevronUpIcon';
 export * from './icons/MenuIcon';
