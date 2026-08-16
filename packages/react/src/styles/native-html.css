@@ -1,0 +1,177 @@
+/* Moon-Inferno Pure Vanilla HTML & Web Standards Native Component Styles */
+
+/* ==========================================================================
+   1. Base Select Primitive (Pure HTML <select>)
+   ========================================================================== */
+select.mi-select,
+.mi-select-native {
+  width: 100%;
+  padding: 0.65rem 2.25rem 0.65rem 0.875rem;
+  font-family: var(--mi-font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.875rem;
+  background-color: var(--mi-color-surface, #1E1B26);
+  color: var(--mi-color-text, #F1F5F9);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-base, 4px);
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23FF4D00' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  min-height: 42px;
+}
+
+select.mi-select:focus,
+.mi-select-native:focus {
+  border-color: var(--mi-color-focus-ring, #FF4D00);
+  box-shadow: var(--mi-shadow-glow, 0 0 16px rgba(255, 77, 0, 0.45));
+}
+
+select.mi-select option,
+.mi-select-native option {
+  background-color: var(--mi-color-surface, #1E1B26);
+  color: var(--mi-color-text, #F1F5F9);
+  padding: 0.65rem;
+}
+
+select.mi-select--pixel {
+  border-radius: 0;
+  border-width: 2px;
+  box-shadow: var(--mi-shadow-pixel, 3px 3px 0 #000);
+}
+
+/* ==========================================================================
+   2. Base HTML5 Gaming <meter> Primitive
+   ========================================================================== */
+meter.mi-health-meter,
+meter.mi-healthmeter,
+.mi-meter-native {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 18px;
+  background: #0A090D;
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-sm, 4px);
+  overflow: hidden;
+  display: block;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+/* WebKit Meter Styling */
+meter.mi-health-meter::-webkit-meter-bar,
+meter.mi-healthmeter::-webkit-meter-bar {
+  background: #0A090D;
+  border-radius: var(--mi-radius-sm, 4px);
+}
+
+/* Default / Health (HP) */
+meter.mi-health-meter::-webkit-meter-optimum-value,
+meter.mi-healthmeter::-webkit-meter-optimum-value,
+meter.mi-health-meter--health::-webkit-meter-optimum-value {
+  background: linear-gradient(90deg, #CC0029 0%, #FF0033 60%, #FF4D00 100%);
+  box-shadow: 0 0 10px #FF0033;
+}
+
+/* Mana (MP) */
+meter.mi-health-meter--mana::-webkit-meter-optimum-value,
+meter.mi-healthmeter--mana::-webkit-meter-optimum-value {
+  background: linear-gradient(90deg, #0055FF 0%, #00AAFF 60%, #00E5FF 100%);
+  box-shadow: 0 0 10px #00E5FF;
+}
+
+/* Shield (SP) */
+meter.mi-health-meter--shield::-webkit-meter-optimum-value,
+meter.mi-healthmeter--shield::-webkit-meter-optimum-value {
+  background: linear-gradient(90deg, #7700FF 0%, #AA00FF 60%, #FF00E5 100%);
+  box-shadow: 0 0 10px #FF00E5;
+}
+
+/* Energy */
+meter.mi-health-meter--energy::-webkit-meter-optimum-value,
+meter.mi-healthmeter--energy::-webkit-meter-optimum-value {
+  background: linear-gradient(90deg, #009933 0%, #00FF66 60%, #AAFF00 100%);
+  box-shadow: 0 0 10px #00FF66;
+}
+
+/* Firefox Meter Styling */
+meter.mi-health-meter::-moz-meter-bar,
+meter.mi-healthmeter::-moz-meter-bar,
+meter.mi-health-meter--health::-moz-meter-bar {
+  background: linear-gradient(90deg, #CC0029 0%, #FF0033 60%, #FF4D00 100%);
+}
+
+meter.mi-health-meter--mana::-moz-meter-bar,
+meter.mi-healthmeter--mana::-moz-meter-bar {
+  background: linear-gradient(90deg, #0055FF 0%, #00AAFF 60%, #00E5FF 100%);
+}
+
+meter.mi-health-meter--shield::-moz-meter-bar,
+meter.mi-healthmeter--shield::-moz-meter-bar {
+  background: linear-gradient(90deg, #7700FF 0%, #AA00FF 60%, #FF00E5 100%);
+}
+
+meter.mi-health-meter--energy::-moz-meter-bar,
+meter.mi-healthmeter--energy::-moz-meter-bar {
+  background: linear-gradient(90deg, #009933 0%, #00FF66 60%, #AAFF00 100%);
+}
+
+/* ==========================================================================
+   3. Base HTML5 <progress> Primitive
+   ========================================================================== */
+progress.mi-progress {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 14px;
+  background-color: var(--mi-color-bg-subtle, #14121A);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-full, 9999px);
+  overflow: hidden;
+  display: block;
+}
+
+progress.mi-progress::-webkit-progress-bar {
+  background-color: var(--mi-color-bg-subtle, #14121A);
+}
+
+progress.mi-progress::-webkit-progress-value {
+  background: linear-gradient(90deg, var(--mi-color-primary, #FF4D00), #FF8000);
+  box-shadow: var(--mi-shadow-glow, 0 0 16px rgba(255, 77, 0, 0.45));
+}
+
+progress.mi-progress::-moz-progress-bar {
+  background: linear-gradient(90deg, var(--mi-color-primary, #FF4D00), #FF8000);
+}
+
+/* ==========================================================================
+   4. Textarea & Native Inputs
+   ========================================================================== */
+textarea.mi-input,
+textarea.mi-textarea {
+  width: 100%;
+  min-height: 90px;
+  padding: 0.625rem 0.875rem;
+  font-family: var(--mi-font-mono, monospace);
+  font-size: 0.875rem;
+  background-color: var(--mi-color-bg-subtle, #14121A);
+  color: var(--mi-color-text, #F1F5F9);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-base, 4px);
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+textarea.mi-input:focus,
+textarea.mi-textarea:focus {
+  border-color: var(--mi-color-focus-ring, #FF4D00);
+  box-shadow: var(--mi-shadow-glow);
+}

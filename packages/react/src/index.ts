@@ -51,7 +51,13 @@ export * from './MoonSafeGlitch/MoonSafeGlitch';
 export * from './MoonConsoleLogger/MoonConsoleLogger';
 export * from './SearchBar/SearchBar';
 
+// Global Themes & CSS Custom Properties
+import '../../themes/src/moon-inferno.css';
+import '../../themes/src/terminal.css';
+import '../../themes/src/y2k.css';
+
 // Styles
+import './styles/native-html.css';
 import './Button/Button.css';
 import './Card/Card.css';
 import './Input/Input.css';

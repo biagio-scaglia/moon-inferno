@@ -25,6 +25,17 @@
   --mi-shadow-pixel: 3px 3px 0px #000000;
 
   --mi-crt-scanline: rgba(255, 77, 0, 0.05);
+
+  /* Typography & Font Stacks */
+  --mi-font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --mi-font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mi-font-pixel: 'Press Start 2P', 'Courier New', monospace;
+
+  /* Border Radii */
+  --mi-radius-sm: 2px;
+  --mi-radius-base: 4px;
+  --mi-radius-md: 8px;
+  --mi-radius-full: 9999px;
 }
 
 /* Custom Retro Scrollbars */

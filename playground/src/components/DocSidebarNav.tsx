@@ -78,11 +78,11 @@ export const DocSidebarNav: React.FC<DocSidebarNavProps> = ({
   return (
     <aside className="doc-sidebar" aria-label="Documentation Navigation Index">
       <div className="doc-sidebar__header">
-        <div className="doc-sidebar-brand-sub">WCAG 2.1 AA UI // v0.3.5</div>
+        <div className="doc-sidebar-brand-sub">WCAG 2.1 AA UI // v0.3.6</div>
         <h2 className="doc-sidebar__title" id="doc-sidebar-title">
           <LayersIcon size={16} color="var(--mi-color-primary)" /> Index & Navigation
         </h2>
-        <span className="doc-sidebar__subtitle">Developer Manual v0.3.5</span>
+        <span className="doc-sidebar__subtitle">Developer Manual v0.3.6</span>
       </div>
 
       <nav className="doc-sidebar__nav" aria-labelledby="doc-sidebar-title">
