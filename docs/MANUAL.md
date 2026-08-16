@@ -1,4 +1,4 @@
-# 🌙 Moon-Inferno — Developer Manual & API Reference
+# Moon-Inferno — Developer Manual & API Reference
 
 Welcome to the complete developer manual for **Moon-Inferno** (`v0.3.4`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
 
@@ -587,13 +587,41 @@ import { CommandPalette } from '@moon-inferno/react';
 
 ## 4. Vector Iconography (`@moon-inferno/icons`)
 
-Import vector icons directly from `@moon-inferno/icons`:
+Import 45+ custom retro vector icons directly from `@moon-inferno/icons` or `moon-inferno`:
 
 ```tsx
-import { FlameIcon, ShieldIcon, TerminalIcon, SunIcon } from '@moon-inferno/icons';
+import { 
+  ReactIcon, 
+  HtmlIcon, 
+  CssIcon, 
+  JsIcon, 
+  TsIcon, 
+  NpmIcon, 
+  GlobeIcon, 
+  FlameIcon, 
+  ShieldIcon, 
+  TerminalIcon 
+} from '@moon-inferno/icons';
 
-<FlameIcon size={20} color="var(--mi-color-primary)" />
+<ReactIcon size={20} color="#00F0FF" />
+<HtmlIcon size={20} color="#FF4D00" />
+<CssIcon size={20} color="#3B82F6" />
+<TsIcon size={20} color="#3178C6" />
+<NpmIcon size={20} color="#CB3837" />
+<GlobeIcon size={20} color="#39FF14" />
 ```
+
+### Available Icons
+
+| Category | Available Icons |
+| :--- | :--- |
+| **Languages & Web** | `ReactIcon`, `HtmlIcon`, `CssIcon`, `JsIcon`, `TsIcon`, `NpmIcon`, `GlobeIcon` |
+| **Theme & Atmosphere** | `FlameIcon`, `MoonIcon`, `SunIcon`, `TerminalIcon`, `ZapIcon`, `SparklesIcon` |
+| **System & Tech** | `CpuIcon`, `LayersIcon`, `CodeIcon`, `LockIcon`, `ShieldIcon`, `RefreshIcon`, `SettingsIcon` |
+| **Media & Gaming** | `GamepadIcon`, `SkullIcon`, `CrosshairIcon`, `VolumeIcon`, `VolumeMuteIcon` |
+| **UI & Navigation** | `SearchIcon`, `FilterIcon`, `CopyIcon`, `TrashIcon`, `CalendarIcon`, `ExternalLinkIcon`, `MenuIcon` |
+| **Arrows & Chevrons** | `ArrowLeftIcon`, `ArrowRightIcon`, `ArrowUpIcon`, `ArrowDownIcon`, `ChevronLeftIcon`, `ChevronRightIcon`, `ChevronUpIcon`, `ChevronDownIcon` |
+| **Status & Feedback** | `CheckIcon`, `CloseIcon`, `WarnIcon`, `InfoIcon`, `EyeIcon`, `EyeOffIcon`, `UserIcon` |
 
 ---
 

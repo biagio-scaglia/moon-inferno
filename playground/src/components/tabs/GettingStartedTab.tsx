@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Stack, PixelContainer, CodeBlock, Card, CardHeader, CardBody, Button, Table, TableHeader, TableRow, TableHead, TableBody, TableCell, Badge } from '@moon-inferno/react';
-import { SparklesIcon, CodeIcon, LayersIcon, CheckIcon } from '@moon-inferno/icons';
+import { SparklesIcon, CodeIcon, LayersIcon, CheckIcon, ReactIcon, HtmlIcon } from '@moon-inferno/icons';
 
 export const GettingStartedTab: React.FC = () => {
   const [quickstartMode, setQuickstartMode] = useState<'react' | 'html'>('react');
@@ -22,17 +22,17 @@ export const GettingStartedTab: React.FC = () => {
                 size="sm"
                 variant={quickstartMode === 'react' ? 'inferno' : 'outline'}
                 onClick={() => setQuickstartMode('react')}
-                leftIcon={<CodeIcon size={14} />}
+                leftIcon={<ReactIcon size={16} />}
               >
-                ⚛️ React JSX
+                React JSX
               </Button>
               <Button
                 size="sm"
                 variant={quickstartMode === 'html' ? 'inferno' : 'outline'}
                 onClick={() => setQuickstartMode('html')}
-                leftIcon={<LayersIcon size={14} />}
+                leftIcon={<HtmlIcon size={16} />}
               >
-                🌐 Pure HTML (CDN Link)
+                Pure HTML (CDN Link)
               </Button>
             </Stack>
           </Stack>

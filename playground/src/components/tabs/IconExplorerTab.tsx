@@ -41,9 +41,23 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
   MenuIcon,
+  ReactIcon,
+  HtmlIcon,
+  CssIcon,
+  JsIcon,
+  TsIcon,
+  NpmIcon,
+  GlobeIcon,
 } from '@moon-inferno/icons';
 
 const ALL_ICONS = [
+  { name: 'ReactIcon', Component: ReactIcon },
+  { name: 'HtmlIcon', Component: HtmlIcon },
+  { name: 'CssIcon', Component: CssIcon },
+  { name: 'JsIcon', Component: JsIcon },
+  { name: 'TsIcon', Component: TsIcon },
+  { name: 'NpmIcon', Component: NpmIcon },
+  { name: 'GlobeIcon', Component: GlobeIcon },
   { name: 'FlameIcon', Component: FlameIcon },
   { name: 'MoonIcon', Component: MoonIcon },
   { name: 'SunIcon', Component: SunIcon },

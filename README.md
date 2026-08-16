@@ -18,7 +18,7 @@
 
 ---
 
-## 🌟 The 4 Pillars of World-Class DX & Accessibility
+## The 4 Pillars of World-Class DX & Accessibility
 
 Moon-Inferno elevates developer experience (DX) and accessibility to industry-leading standards:
 
@@ -29,7 +29,7 @@ Moon-Inferno elevates developer experience (DX) and accessibility to industry-le
 
 ---
 
-## 🎮 Signature Accessible Gaming & Web3 Primitives
+## Signature Accessible Gaming & Web3 Primitives
 
 | Component | Description | Accessibility Key Feature |
 | --- | --- | --- |
@@ -44,7 +44,7 @@ Moon-Inferno elevates developer experience (DX) and accessibility to industry-le
 
 ---
 
-## 📦 Installation & CLI Usage
+## Installation & CLI Usage
 
 ### Recommended All-in-One Command
 
@@ -67,7 +67,7 @@ npx @moon-inferno/cli add MoonTypewriterDialogue
 npx @moon-inferno/cli list
 ```
 
-### 🌐 Bootstrap-Style CDN `<link>` (Vanilla HTML / No Bundler)
+### Bootstrap-Style CDN `<link>` (Vanilla HTML / No Bundler)
 
 You can use Moon-Inferno styling and design tokens on **any static HTML website**, Astro, WordPress, or plain HTML file without bundlers via jsDelivr / UNPKG CDN:
 
@@ -90,7 +90,7 @@ You can use Moon-Inferno styling and design tokens on **any static HTML website*
 
 ---
 
-## ⚡ Quickstart Code Example
+## Quickstart Code Example
 
 ```tsx
 import '@moon-inferno/react/styles.css';
@@ -135,15 +135,15 @@ export default function App() {
 
 ---
 
-## 🌐 Official Links & Documentation
+## Official Links & Documentation
 
-* 📖 **Developer Manual & API Reference**: [docs/MANUAL.md](docs/MANUAL.md)
-* 🌐 **Official Live Playground & Website**: [https://biagio-scaglia.github.io/moon-inferno/](https://biagio-scaglia.github.io/moon-inferno/)
-* 📦 **NPM Package**: [https://www.npmjs.com/package/@moon-inferno/react](https://www.npmjs.com/package/@moon-inferno/react)
-* 🐙 **GitHub Repository**: [https://github.com/biagio-scaglia/moon-inferno](https://github.com/biagio-scaglia/moon-inferno)
+- **Developer Manual & API Reference**: [docs/MANUAL.md](docs/MANUAL.md)
+- **Official Live Playground & Website**: [https://biagio-scaglia.github.io/moon-inferno/](https://biagio-scaglia.github.io/moon-inferno/)
+- **NPM Package**: [https://www.npmjs.com/package/@moon-inferno/react](https://www.npmjs.com/package/@moon-inferno/react)
+- **GitHub Repository**: [https://github.com/biagio-scaglia/moon-inferno](https://github.com/biagio-scaglia/moon-inferno)
 
 ---
 
-## 📄 License
+## License
 
 Distributed under the MIT License. Created and maintained by [Biagio Scaglia](https://github.com/biagio-scaglia).

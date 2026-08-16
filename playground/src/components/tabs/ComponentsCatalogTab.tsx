@@ -88,6 +88,8 @@ import {
   TrashIcon,
   SunIcon,
   SearchIcon,
+  ReactIcon,
+  HtmlIcon,
 } from '@moon-inferno/icons';
 
 const GALLERY_ITEMS = [
@@ -182,7 +184,7 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
           <Stack direction="row" align="center" justify="between" wrap gap="1rem">
             <Stack gap="0.25rem">
               <strong style={{ fontSize: '1rem', color: '#F8FAFC' }}>
-                CODE SNIPPET GENERATOR: {snippetFormat === 'react' ? '⚛️ REACT JSX' : '🌐 PURE HTML (CDN LINK)'}
+                CODE SNIPPET GENERATOR: {snippetFormat === 'react' ? 'REACT JSX MODE' : 'PURE HTML (CDN LINK) MODE'}
               </strong>
               <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--mi-color-text-muted)' }}>
                 Switch code snippets across all component cards below between React components and Pure HTML + CDN classes:
@@ -196,9 +198,9 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
                   setSnippetFormat('react');
                   addToast('Switched code snippets to React JSX mode', { variant: 'inferno' });
                 }}
-                leftIcon={<CodeIcon size={14} />}
+                leftIcon={<ReactIcon size={16} />}
               >
-                ⚛️ React JSX
+                React JSX
               </Button>
               <Button
                 size="sm"
@@ -207,9 +209,9 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
                   setSnippetFormat('html');
                   addToast('Switched code snippets to Pure HTML (CDN) mode', { variant: 'success' });
                 }}
-                leftIcon={<LayersIcon size={14} />}
+                leftIcon={<HtmlIcon size={16} />}
               >
-                🌐 Pure HTML (CDN &lt;link&gt;)
+                Pure HTML (CDN &lt;link&gt;)
               </Button>
             </Stack>
           </Stack>
