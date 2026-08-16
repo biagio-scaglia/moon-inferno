@@ -46,6 +46,7 @@ pnpm-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.npmrc
 *.pem
 
 # Testing & Coverage
