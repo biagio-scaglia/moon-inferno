@@ -41,7 +41,7 @@
 }
 
 .moon-datepicker__placeholder {
-  color: var(--moon-color-text-muted, #707585);
+  color: var(--mi-color-text-muted, #94A3B8);
 }
 
 .moon-datepicker__value {
@@ -112,7 +112,7 @@
 .moon-datepicker__weekday {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--moon-color-text-muted, #707585);
+  color: var(--mi-color-text-muted, #94A3B8);
 }
 
 .moon-datepicker__grid {

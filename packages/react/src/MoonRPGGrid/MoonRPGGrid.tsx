@@ -115,29 +115,35 @@ export const MoonRPGGrid = ({
 
       <div
         className="mi-rpggrid-grid"
-        style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
         role="grid"
         aria-label={title}
       >
-        {gridItems.map((item, idx) => (
-          <div
-            key={idx}
-            tabIndex={0}
-            role="gridcell"
-            aria-selected={selectedIndex === idx}
-            aria-label={`Slot ${idx + 1}: ${item ? item.name : 'Empty'}`}
-            className={[
-              'mi-rpggrid-slot',
-              selectedIndex === idx ? 'mi-rpggrid-slot--selected' : '',
-            ].filter(Boolean).join(' ')}
-            onClick={() => handleSlotClick(idx)}
-            onKeyDown={(e) => handleKeyDown(e, idx)}
-            onFocus={() => setFocusedIndex(idx)}
-          >
-            {item?.icon ? item.icon : <span style={{ opacity: 0.3 }}>{idx + 1}</span>}
-            {item && item.count && item.count > 1 && (
-              <span className="mi-rpggrid-item-count">x{item.count}</span>
-            )}
+        {Array.from({ length: Math.ceil(totalSlots / columns) }, (_, rowIndex) => (
+          <div key={rowIndex} role="row" className="mi-rpggrid-row">
+            {gridItems.slice(rowIndex * columns, (rowIndex + 1) * columns).map((item, colIdx) => {
+              const idx = rowIndex * columns + colIdx;
+              return (
+                <div
+                  key={idx}
+                  tabIndex={0}
+                  role="gridcell"
+                  aria-selected={selectedIndex === idx}
+                  aria-label={`Slot ${idx + 1}: ${item ? item.name : 'Empty'}`}
+                  className={[
+                    'mi-rpggrid-slot',
+                    selectedIndex === idx ? 'mi-rpggrid-slot--selected' : '',
+                  ].filter(Boolean).join(' ')}
+                  onClick={() => handleSlotClick(idx)}
+                  onKeyDown={(e) => handleKeyDown(e, idx)}
+                  onFocus={() => setFocusedIndex(idx)}
+                >
+                  {item?.icon ? item.icon : <span style={{ opacity: 0.3 }}>{idx + 1}</span>}
+                  {item && item.count && item.count > 1 && (
+                    <span className="mi-rpggrid-item-count">x{item.count}</span>
+                  )}
+                </div>
+              );
+            })}
           </div>
         ))}
       </div>

@@ -36,6 +36,7 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
         )}
         <div
           role="progressbar"
+          aria-label={props['aria-label'] || label || `Progress: ${percentage}%`}
           aria-valuenow={value}
           aria-valuemin={0}
           aria-valuemax={max}

@@ -17,19 +17,19 @@
 
 .mi-badge--inferno {
   background-color: rgba(255, 77, 0, 0.15);
-  color: var(--mi-color-primary, #FF4D00);
-  border: 1px solid var(--mi-color-primary, #FF4D00);
+  color: #FF8533;
+  border: 1px solid #FF661A;
 }
 
 .mi-badge--pixel {
   background-color: var(--mi-color-bg-subtle, #14121A);
-  color: var(--mi-color-primary, #FF4D00);
+  color: #FF8533;
   border: none;
   box-shadow: 
-    0 -2px 0 0 var(--mi-color-primary, #FF4D00),
-    0 2px 0 0 var(--mi-color-primary, #FF4D00),
-    -2px 0 0 0 var(--mi-color-primary, #FF4D00),
-    2px 0 0 0 var(--mi-color-primary, #FF4D00);
+    0 -2px 0 0 #FF8533,
+    0 2px 0 0 #FF8533,
+    -2px 0 0 0 #FF8533,
+    2px 0 0 0 #FF8533;
   margin: 2px;
 }
 
@@ -41,8 +41,8 @@
 
 .mi-badge--error {
   background-color: rgba(255, 0, 51, 0.15);
-  color: var(--mi-color-error, #FF0033);
-  border: 1px solid var(--mi-color-error, #FF0033);
+  color: #FF6680;
+  border: 1px solid #FF3355;
 }
 
 .mi-badge--outline {

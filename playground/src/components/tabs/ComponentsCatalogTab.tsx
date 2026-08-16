@@ -1240,7 +1240,7 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
                   </p>
                   <Grid minChildWidth="260px" gap="2rem">
                     <Stack gap="1rem" align="center">
-                      <h5 style={{ margin: 0, fontSize: '0.9rem', color: '#F8FAFC' }}>Inferno Donut Chart</h5>
+                      <h4 style={{ margin: 0, fontSize: '0.9rem', color: '#F8FAFC' }}>Inferno Donut Chart</h4>
                       <PieChart
                         donut
                         size={180}
@@ -1256,7 +1256,7 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
                     </Stack>
 
                     <Stack gap="1rem" align="center">
-                      <h5 style={{ margin: 0, fontSize: '0.9rem', color: '#F8FAFC' }}>Solid Pie Chart</h5>
+                      <h4 style={{ margin: 0, fontSize: '0.9rem', color: '#F8FAFC' }}>Solid Pie Chart</h4>
                       <PieChart
                         size={180}
                         data={[

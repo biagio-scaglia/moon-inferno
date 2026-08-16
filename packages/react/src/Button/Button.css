@@ -53,7 +53,8 @@
 /* Variants */
 .mi-button--inferno {
   background-color: var(--mi-color-primary, #FF4D00);
-  color: var(--mi-color-primary-text, #FFFFFF);
+  color: var(--mi-color-primary-text, #050406);
+  font-weight: 700;
   border-color: var(--mi-color-primary, #FF4D00);
 }
 

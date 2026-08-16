@@ -27,13 +27,22 @@
 }
 
 .mi-rpggrid-grid {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
+}
+
+.mi-rpggrid-row {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .mi-rpggrid-slot {
   width: 52px;
   height: 52px;
+  flex-shrink: 0;
   background-color: #0A090D;
   border: 1px solid var(--mi-color-border, #332D40);
   border-radius: var(--mi-radius-sm, 4px);
