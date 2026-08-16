@@ -67,6 +67,27 @@ npx @moon-inferno/cli add MoonTypewriterDialogue
 npx @moon-inferno/cli list
 ```
 
+### 🌐 Bootstrap-Style CDN `<link>` (Vanilla HTML / No Bundler)
+
+You can use Moon-Inferno styling and design tokens on **any static HTML website**, Astro, WordPress, or plain HTML file without bundlers via jsDelivr / UNPKG CDN:
+
+```html
+<!-- Full Moon-Inferno CSS Bundle via jsDelivr CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno/dist/styles.css">
+
+<!-- Or via UNPKG CDN -->
+<link rel="stylesheet" href="https://unpkg.com/moon-inferno/dist/styles.css">
+```
+
+#### Pure HTML Usage:
+```html
+<body data-theme="moon-inferno">
+  <button class="mi-button mi-button--inferno">Inferno Button</button>
+  <button class="mi-button mi-button--pixel">Pixel Button</button>
+  <span class="mi-badge mi-badge--inferno">ONLINE</span>
+</body>
+```
+
 ---
 
 ## ⚡ Quickstart Code Example

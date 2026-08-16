@@ -73,6 +73,27 @@ export default function App() {
 }
 ```
 
+### 1.3 Using Moon-Inferno via CDN (Vanilla HTML / No Bundler)
+
+Just like Bootstrap, you can load Moon-Inferno design tokens, pixel borders, badges, buttons, cards, and theme cascading into any HTML page via CDN:
+
+```html
+<!-- Full CSS Bundle via jsDelivr CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno/dist/styles.css">
+
+<!-- Or via UNPKG CDN -->
+<link rel="stylesheet" href="https://unpkg.com/moon-inferno/dist/styles.css">
+```
+
+#### Pure HTML Example:
+```html
+<body data-theme="moon-inferno">
+  <button class="mi-button mi-button--inferno">Inferno Button</button>
+  <button class="mi-button mi-button--pixel">Pixel Button</button>
+  <span class="mi-badge mi-badge--inferno">ONLINE</span>
+</body>
+```
+
 ---
 
 ## 2. Theme Management & `<MoonProvider>`
