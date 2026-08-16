@@ -3,8 +3,8 @@ import { Icon, type IconProps } from '../Icon';
 export const TsIcon = (props: IconProps) => (
   <Icon {...props}>
     <rect x="3" y="3" width="18" height="18" rx="2" />
-    <path d="M6 9h4" />
-    <path d="M8 9v7" />
-    <path d="M13 16a2 2 0 0 0 2-2v-1.5a1.5 1.5 0 0 0-1.5-1.5h-1a1.5 1.5 0 0 1-1.5-1.5V9a2 2 0 0 1 2-2h2" />
+    <line x1="6.5" y1="10" x2="11.5" y2="10" />
+    <line x1="9" y1="10" x2="9" y2="16" />
+    <polyline points="16.5 10 13.5 10 13.5 13 16.5 13 16.5 16 13.5 16" />
   </Icon>
 );

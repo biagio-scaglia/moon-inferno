@@ -2,9 +2,8 @@ import { Icon, type IconProps } from '../Icon';
 
 export const HtmlIcon = (props: IconProps) => (
   <Icon {...props}>
-    <path d="M4 3l1.8 15.5L12 21l6.2-2.5L20 3H4z" />
-    <path d="M9 8l-3 4 3 4" />
-    <path d="M15 8l3 4-3 4" />
-    <line x1="13" y1="7" x2="11" y2="17" />
+    <polyline points="7 8 3 12 7 16" />
+    <polyline points="17 8 21 12 17 16" />
+    <line x1="14" y1="5" x2="10" y2="19" />
   </Icon>
 );
