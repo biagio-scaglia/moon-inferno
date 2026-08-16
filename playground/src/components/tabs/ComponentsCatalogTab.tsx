@@ -31,7 +31,6 @@ import {
   Loader,
   Gallery,
   Breadcrumbs,
-  BreadcrumbItem,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -133,6 +132,9 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
   isMatrixActive,
   setIsMatrixActive,
 }) => {
+  // Global Code Snippet format switcher state: React vs Pure HTML
+  const [snippetFormat, setSnippetFormat] = useState<'react' | 'html'>('react');
+
   // Component internal states
   const [inputValue, setInputValue] = useState('');
   const [inputError, setInputError] = useState('');
@@ -174,6 +176,46 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
 
   return (
     <Stack gap="2.5rem">
+      {/* Interactive React vs Pure HTML Code Snippet Switcher Bar */}
+      <Card style={{ border: '1px solid var(--mi-color-primary, #FF4D00)' }}>
+        <CardBody>
+          <Stack direction="row" align="center" justify="between" wrap gap="1rem">
+            <Stack gap="0.25rem">
+              <strong style={{ fontSize: '1rem', color: '#F8FAFC' }}>
+                CODE SNIPPET GENERATOR: {snippetFormat === 'react' ? '⚛️ REACT JSX' : '🌐 PURE HTML (CDN LINK)'}
+              </strong>
+              <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--mi-color-text-muted)' }}>
+                Switch code snippets across all component cards below between React components and Pure HTML + CDN classes:
+              </p>
+            </Stack>
+            <Stack direction="row" gap="0.5rem">
+              <Button
+                size="sm"
+                variant={snippetFormat === 'react' ? 'inferno' : 'outline'}
+                onClick={() => {
+                  setSnippetFormat('react');
+                  addToast('Switched code snippets to React JSX mode', { variant: 'inferno' });
+                }}
+                leftIcon={<CodeIcon size={14} />}
+              >
+                ⚛️ React JSX
+              </Button>
+              <Button
+                size="sm"
+                variant={snippetFormat === 'html' ? 'inferno' : 'outline'}
+                onClick={() => {
+                  setSnippetFormat('html');
+                  addToast('Switched code snippets to Pure HTML (CDN) mode', { variant: 'success' });
+                }}
+                leftIcon={<LayersIcon size={14} />}
+              >
+                🌐 Pure HTML (CDN &lt;link&gt;)
+              </Button>
+            </Stack>
+          </Stack>
+        </CardBody>
+      </Card>
+
       {/* Category: RETRO & TYPOGRAPHY */}
       {matchesCategory('retro') && (
         <>
@@ -182,7 +224,7 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
             <Card>
               <CardHeader>
                 <Stack direction="row" align="center" gap="0.5rem">
-                  <SparklesIcon size={18} /> Custom Text Primitives & Tickers
+                  <SparklesIcon size={18} /> Custom Text Primitives &amp; Tickers
                 </Stack>
               </CardHeader>
               <CardBody>
@@ -226,31 +268,54 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
 
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (TYPOGRAPHY & TEXT FX — ALL VARIANTS)"
-                    code={`import { GlitchText, PixelText, NeonText, TypingText, Marquee } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (TYPOGRAPHY & TEXT FX — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { GlitchText, PixelText, NeonText, TypingText, Marquee } from '@moon-inferno/react';
 
-// 1. GlitchText (RGB-split animated headline with custom HTML element tag)
+// 1. GlitchText (RGB-split animated headline)
 <GlitchText text="CYBERPUNK INFERNO" as="h3" style={{ fontSize: '1.5rem' }} />
 
-// 2. PixelText (Stepped pixelated retro typography in sizes sm | md | lg | xl)
+// 2. PixelText (sizes sm | md | lg | xl)
 <PixelText text="LEVEL 01" size="sm" />
 <PixelText text="GAME OVER" size="md" />
 <PixelText text="PRESS START" size="lg" />
 <PixelText text="SOLAR INFERNO" size="xl" />
 
-// 3. NeonText (Cathode tube glow in colors inferno | cyan | green | magenta with flicker)
+// 3. NeonText (cathode tube glow with flicker)
 <NeonText text="INFERNO" color="inferno" flicker />
 <NeonText text="CYBERPUNK" color="cyan" />
-<NeonText text="MATRIX" color="green" />
-<NeonText text="SYNTHWAVE" color="magenta" flicker />
 
-// 4. TypingText (Typewriter reveal animation with custom speed and blinking cursor)
-<TypingText text="Establishing encrypted link to satellite node 094..." speed={40} cursorChar="█" />
+// 4. TypingText (Typewriter effect)
+<TypingText text="Establishing encrypted link..." speed={40} cursorChar="█" />
 
-// 5. Marquee Ticker (Continuous infinite scroll ticker in variants pixel | inferno | outline)
+// 5. Marquee (Continuous infinite scroll ticker)
 <Marquee speed={18} variant="pixel">
-  <span>RETRO PRIMITIVES</span> - <span>ACCESSIBLE TICKER</span> - <span>MOON-INFERNO</span>
-</Marquee>`}
+  <span>RETRO PRIMITIVES</span> - <span>ACCESSIBLE TICKER</span>
+</Marquee>`
+                        : `<!-- Pure HTML CDN Classes for Typography & Text FX -->
+<!-- Include CDN: <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno/dist/styles.css"> -->
+
+<!-- 1. Glitch Text -->
+<h3 class="mi-glitch-text" data-text="CYBERPUNK INFERNO">CYBERPUNK INFERNO</h3>
+
+<!-- 2. Pixel Text (sm | md | lg | xl) -->
+<span class="mi-pixel-text mi-pixel-text--sm">LEVEL 01</span>
+<span class="mi-pixel-text mi-pixel-text--md">GAME OVER</span>
+<span class="mi-pixel-text mi-pixel-text--lg">PRESS START</span>
+<span class="mi-pixel-text mi-pixel-text--xl">SOLAR INFERNO</span>
+
+<!-- 3. Neon Text Glow (inferno | cyan | green | magenta) -->
+<span class="mi-neon-text mi-neon-text--inferno mi-neon-text--flicker">INFERNO</span>
+<span class="mi-neon-text mi-neon-text--cyan">CYBERPUNK</span>
+
+<!-- 4. Marquee Ticker -->
+<div class="mi-marquee mi-marquee--pixel">
+  <div class="mi-marquee__track">
+    <span>RETRO PRIMITIVES</span> - <span>ACCESSIBLE TICKER</span>
+  </div>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -293,8 +358,10 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
                   </Grid>
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (HOLOCARD VARIANTS & PARALLAX PROPS)"
-                    code={`import { HoloCard, Badge, Stack } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (HOLOCARD — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { HoloCard, Badge, Stack } from '@moon-inferno/react';
 
 // 1. Inferno Variant 3D Parallax Card
 <HoloCard variant="inferno" maxTilt={15} glareOpacity={0.4}>
@@ -303,16 +370,18 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
     <h4>Cybernetic Core Node</h4>
     <p>Hover cursor to tilt and observe dynamic holographic reflection.</p>
   </Stack>
-</HoloCard>
-
-// 2. Cyber Variant 3D Parallax Card
-<HoloCard variant="cyber" maxTilt={20}>
-  <Stack gap="0.75rem">
-    <Badge variant="pixel">CYBER_GRID</Badge>
-    <h4>Quantum Stream</h4>
-    <p>High-contrast neon cyan border and glowing glare.</p>
-  </Stack>
-</HoloCard>`}
+</HoloCard>`
+                        : `<!-- Pure HTML Retro Card (with Moon-Inferno CSS) -->
+<div class="mi-card" style="border: 2px solid #FF4D00; box-shadow: 0 0 16px rgba(255, 77, 0, 0.35);">
+  <div class="mi-card-header">
+    <span class="mi-badge mi-badge--inferno">SOLAR_INFERNO</span>
+  </div>
+  <div class="mi-card-body">
+    <h4 style="margin: 0 0 0.5rem 0;">Cybernetic Core Node</h4>
+    <p style="margin: 0; color: #94A3B8;">WCAG 2.1 AA compliant retro styling via pure HTML.</p>
+  </div>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -335,10 +404,17 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
                   <CyberCanvas height={280} gridOverlay strokeColor="#FF4D00" />
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (CYBERCANVAS PROPS & EXPORT)"
-                    code={`import { CyberCanvas } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (CYBERCANVAS — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { CyberCanvas } from '@moon-inferno/react';
 
-<CyberCanvas height={280} gridOverlay strokeColor="#FF4D00" />`}
+<CyberCanvas height={280} gridOverlay strokeColor="#FF4D00" />`
+                        : `<!-- Pure HTML5 Canvas Container -->
+<div class="mi-card" style="padding: 1rem; background: #0A090D;">
+  <canvas class="mi-cyber-canvas" width="600" height="280" style="border: 2px solid #FF4D00; border-radius: 4px;"></canvas>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -364,13 +440,23 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
                   />
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (SHEETEDITOR PROPS & MARKDOWN PREVIEW)"
-                    code={`import { SheetEditor } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (SHEETEDITOR — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { SheetEditor } from '@moon-inferno/react';
 
 <SheetEditor
   title="CYBER_LOG_NOTES.MD"
-  defaultValue="# MOON-INFERNO LOG\\n- Real-time line numbering\\n- Word/character counter\\n- Live markdown preview"
-/>`}
+  defaultValue="# MOON-INFERNO LOG\\n- Real-time line numbering\\n- Word/character counter"
+/>`
+                        : `<!-- Pure HTML Text Notepad Container -->
+<div class="mi-card" style="background: #000; color: #00FF66; font-family: monospace; border: 2px solid #00FF66;">
+  <div class="mi-card-header" style="border-bottom: 1px solid #00FF66;"><strong>CYBER_LOG.TXT</strong></div>
+  <div class="mi-card-body">
+    <textarea class="mi-input" style="width: 100%; height: 180px; background: transparent; color: #00FF66; border: none; font-family: inherit;"># Terminal log entry...</textarea>
+  </div>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -403,8 +489,10 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
                   />
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (MOONTYPEWRITERDIALOGUE RPG PROPS)"
-                    code={`import { MoonTypewriterDialogue } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (MOONTYPEWRITERDIALOGUE — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { MoonTypewriterDialogue } from '@moon-inferno/react';
 import { FlameIcon } from '@moon-inferno/icons';
 
 <MoonTypewriterDialogue
@@ -412,7 +500,13 @@ import { FlameIcon } from '@moon-inferno/icons';
   avatar={<FlameIcon size={20} color="#FF4D00" />}
   text="Welcome to Moon-Inferno! Built for WCAG 2.1 AA accessibility and gaming."
   speed={25}
-/>`}
+/>`
+                        : `<!-- Pure HTML RPG Dialogue Box -->
+<div class="mi-pixel-container" style="border: 4px solid #FF4D00; background: #0A090D; padding: 1.25rem;">
+  <div style="color: #FF4D00; font-weight: bold; margin-bottom: 0.5rem; font-family: monospace;">[CYBER_NAVIGATOR_AI]</div>
+  <p style="margin: 0; color: #F8FAFC; font-family: monospace;">Welcome to Moon-Inferno! Built for WCAG 2.1 AA accessibility and gaming.</p>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -445,8 +539,10 @@ import { FlameIcon } from '@moon-inferno/icons';
                   />
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (MOONRPGGRID 2D KEYBOARD INVENTORY)"
-                    code={`import { MoonRPGGrid } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (MOONRPGGRID — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { MoonRPGGrid } from '@moon-inferno/react';
 import { FlameIcon, ZapIcon, RefreshIcon, CheckIcon } from '@moon-inferno/icons';
 
 <MoonRPGGrid
@@ -454,12 +550,19 @@ import { FlameIcon, ZapIcon, RefreshIcon, CheckIcon } from '@moon-inferno/icons'
   totalSlots={10}
   title="CYBERNETIC_INVENTORY"
   items={[
-    { id: '1', name: 'Inferno Core', count: 1, icon: <FlameIcon size={24} color="#FF4D00" />, description: 'Overclocked quantum core' },
-    { id: '2', name: 'Lightning Cell', count: 5, icon: <ZapIcon size={24} color="#FFD700" />, description: 'High-voltage energy cell' },
-    { id: '3', name: 'Refresh Matrix', count: 2, icon: <RefreshIcon size={24} color="#00FF66" />, description: 'Reboot protocol' },
-    { id: '4', name: 'Security Key', count: 1, icon: <CheckIcon size={24} color="#00E5FF" />, description: 'Y2K clearance key' }
+    { id: '1', name: 'Inferno Core', count: 1, icon: <FlameIcon size={24} color="#FF4D00" /> },
+    { id: '2', name: 'Lightning Cell', count: 5, icon: <ZapIcon size={24} color="#FFD700" /> }
   ]}
-/>`}
+/>`
+                        : `<!-- Pure HTML Inventory Grid -->
+<div class="mi-card" style="background: #14121A; border: 2px solid #332D40;">
+  <div class="mi-card-header"><strong>CYBERNETIC_INVENTORY</strong></div>
+  <div class="mi-card-body" style="display: grid; grid-template-columns: repeat(5, 54px); gap: 8px;">
+    <div style="width: 54px; height: 54px; border: 2px solid #FF4D00; background: #0A090D; display: flex; align-items: center; justify-content: center; color: #FF4D00;">🔥</div>
+    <div style="width: 54px; height: 54px; border: 2px solid #332D40; background: #0A090D;"></div>
+  </div>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -487,14 +590,22 @@ import { FlameIcon, ZapIcon, RefreshIcon, CheckIcon } from '@moon-inferno/icons'
                   </Stack>
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (MOONHEALTHMETER TYPES: HEALTH, MANA, ENERGY, SHIELD)"
-                    code={`import { MoonHealthMeter } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (MOONHEALTHMETER — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { MoonHealthMeter } from '@moon-inferno/react';
 
 // Health (HP), Mana (MP), Energy (Stamina), and Cyber Shield Bars
 <MoonHealthMeter type="health" value={85} max={100} label="HP (HEALTH)" />
 <MoonHealthMeter type="mana" value={60} max={100} label="MP (MANA)" />
 <MoonHealthMeter type="energy" value={95} max={100} label="STAMINA" />
-<MoonHealthMeter type="shield" value={40} max={100} label="CYBER SHIELD" />`}
+<MoonHealthMeter type="shield" value={40} max={100} label="CYBER SHIELD" />`
+                        : `<!-- Pure HTML5 Semantic <meter> Tags (Styled with Moon-Inferno CSS) -->
+<meter class="mi-health-meter mi-health-meter--health" value="85" min="0" max="100" aria-label="HP (HEALTH)"></meter>
+<meter class="mi-health-meter mi-health-meter--mana" value="60" min="0" max="100" aria-label="MP (MANA)"></meter>
+<meter class="mi-health-meter mi-health-meter--energy" value="95" min="0" max="100" aria-label="STAMINA"></meter>
+<meter class="mi-health-meter mi-health-meter--shield" value="40" min="0" max="100" aria-label="CYBER SHIELD"></meter>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -519,10 +630,15 @@ import { FlameIcon, ZapIcon, RefreshIcon, CheckIcon } from '@moon-inferno/icons'
                   </div>
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (MOONSAFEGLITCH ACCESSIBLE GLITCH)"
-                    code={`import { MoonSafeGlitch } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (MOONSAFEGLITCH — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { MoonSafeGlitch } from '@moon-inferno/react';
 
-<MoonSafeGlitch text="NEO_INFERNO_PROTOCOL" as="h3" />`}
+<MoonSafeGlitch text="NEO_INFERNO_PROTOCOL" as="h3" />`
+                        : `<!-- Pure HTML Safe Glitch Text -->
+<h3 class="mi-glitch-text" data-text="NEO_INFERNO_PROTOCOL">NEO_INFERNO_PROTOCOL</h3>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -553,8 +669,10 @@ import { FlameIcon, ZapIcon, RefreshIcon, CheckIcon } from '@moon-inferno/icons'
                   />
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (MOONCONSOLELOGGER LIVE STREAM PROPS)"
-                    code={`import { MoonConsoleLogger } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (MOONCONSOLELOGGER — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { MoonConsoleLogger } from '@moon-inferno/react';
 
 <MoonConsoleLogger
   title="BLOCKCHAIN_TX_LOGGER"
@@ -563,7 +681,19 @@ import { FlameIcon, ZapIcon, RefreshIcon, CheckIcon } from '@moon-inferno/icons'
     { timestamp: '23:48:14', type: 'success', message: 'Connected to Mainnet Node #01' },
     { timestamp: '23:48:22', type: 'success', message: 'Transaction confirmed' }
   ]}
-/>`}
+/>`
+                        : `<!-- Pure HTML Console Logger Box -->
+<div class="mi-card" style="background: #050E05; border: 2px solid #00FF66; color: #00FF66; font-family: monospace; padding: 1rem;">
+  <div style="border-bottom: 1px solid #00FF66; padding-bottom: 0.5rem; margin-bottom: 0.5rem; font-weight: bold;">
+    [BLOCKCHAIN_TX_LOGGER]
+  </div>
+  <div style="font-size: 0.85rem; line-height: 1.6;">
+    <div>[23:48:12] Initializing Web3 provider connection...</div>
+    <div>[23:48:14] Connected to Moon-Inferno Node #01</div>
+    <div style="color: #00E5FF;">[23:48:22] Transaction confirmed in block #189420</div>
+  </div>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -603,26 +733,35 @@ import { FlameIcon, ZapIcon, RefreshIcon, CheckIcon } from '@moon-inferno/icons'
                   </Stack>
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (BUTTON VARIANTS, SIZES & STATES)"
-                    code={`import { Button } from '@moon-inferno/react';
-import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moon-inferno/icons';
+                    title={`FULL COPY-PASTE CODE SNIPPET (BUTTONS — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { Button } from '@moon-inferno/react';
+import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/icons';
 
-// 1. Button Variants (inferno | outline | ghost | pixel | danger | success | warning | info)
+// 1. Button Variants (inferno | outline | ghost | pixel | danger | success)
 <Button variant="inferno" leftIcon={<FlameIcon size={16} />}>Inferno Variant</Button>
 <Button variant="outline" leftIcon={<ShieldIcon size={16} />}>Outline Variant</Button>
 <Button variant="ghost" leftIcon={<SparklesIcon size={16} />}>Ghost Variant</Button>
 <Button variant="pixel" leftIcon={<GamepadIcon size={16} />}>Pixel Variant</Button>
-<Button variant="danger">Danger Action</Button>
-<Button variant="success">Success Action</Button>
 
 // 2. Button Sizes (sm | md | lg)
 <Button size="sm" variant="inferno">Small (32px)</Button>
 <Button size="md" variant="inferno">Medium (42px)</Button>
-<Button size="lg" variant="inferno">Large (50px)</Button>
+<Button size="lg" variant="inferno">Large (50px)</Button>`
+                        : `<!-- Pure HTML Button Classes (with Moon-Inferno CDN) -->
+<!-- 1. Variants -->
+<button class="mi-button mi-button--inferno">Inferno Variant</button>
+<button class="mi-button mi-button--outline">Outline Variant</button>
+<button class="mi-button mi-button--ghost">Ghost Variant</button>
+<button class="mi-button mi-button--pixel">Pixel Variant</button>
 
-// 3. Button Interactive States (isLoading | disabled)
-<Button isLoading variant="inferno">Processing...</Button>
-<Button disabled variant="outline" leftIcon={<LockIcon size={16} />}>Disabled State</Button>`}
+<!-- 2. Sizes -->
+<button class="mi-button mi-button--inferno mi-button--sm">Small</button>
+<button class="mi-button mi-button--inferno mi-button--md">Medium</button>
+<button class="mi-button mi-button--inferno mi-button--lg">Large</button>
+<button class="mi-button mi-button--inferno" disabled>Disabled</button>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -653,38 +792,26 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moo
                       placeholder="Pixel Art SearchBar (/)..."
                       shortcutKey="/"
                     />
-                    <SearchBar
-                      variant="terminal"
-                      placeholder="Terminal Green CRT SearchBar..."
-                      shortcutKey="ESC"
-                    />
                   </Stack>
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (SEARCHBAR VARIANTS & PROPS)"
-                    code={`import { SearchBar } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (SEARCHBAR — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { SearchBar } from '@moon-inferno/react';
 
-// 1. Inferno Variant SearchBar
 <SearchBar
   variant="inferno"
   placeholder="Search database..."
   shortcutKey="Ctrl+K"
   onSearch={(query) => console.log(query)}
-/>
-
-// 2. Pixel Variant SearchBar
-<SearchBar
-  variant="pixel"
-  placeholder="Pixel Art Search..."
-  shortcutKey="/"
-/>
-
-// 3. Terminal Variant SearchBar
-<SearchBar
-  variant="terminal"
-  placeholder="Terminal Search..."
-  shortcutKey="ESC"
-/>`}
+/>`
+                        : `<!-- Pure HTML SearchBar Container -->
+<div class="mi-search-bar mi-search-bar--inferno" role="search">
+  <input type="search" class="mi-search-bar__input" placeholder="Search database (Ctrl+K)..." />
+  <span class="mi-search-bar__shortcut">Ctrl+K</span>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -722,29 +849,23 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moo
                   </Stack>
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (DATEPICKER & CALENDAR VARIANTS)"
-                    code={`import { DatePicker, Calendar } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (DATEPICKER — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { DatePicker } from '@moon-inferno/react';
 
-// 1. DatePicker with label, variant (inferno | pixel | outline) and onChange handler
 <DatePicker
   label="Launch Date"
   variant="inferno"
   value={selectedDate}
   onChange={(date: Date) => setSelectedDate(date)}
-/>
-
-// 2. Pixel Variant DatePicker
-<DatePicker
-  label="Scheduled Maintenance"
-  variant="pixel"
-  placeholder="Choose date..."
-/>
-
-// 3. Standalone Inline Calendar Grid
-<Calendar
-  value={selectedDate}
-  onChange={(date: Date) => setSelectedDate(date)}
-/>`}
+/>`
+                        : `<!-- Pure HTML Date Input -->
+<div class="mi-input-container">
+  <label class="mi-input-label">Launch Date</label>
+  <input type="date" class="mi-input mi-input--inferno" />
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -825,25 +946,33 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moo
 
                     <CodeBlock
                       collapsible
-                      title="FULL COPY-PASTE CODE SNIPPET (INPUT, SELECT, SLIDER PROPS)"
-                      code={`import { Input, Select, Slider } from '@moon-inferno/react';
+                      title={`FULL COPY-PASTE CODE SNIPPET (INPUT, SELECT, SLIDER — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                      code={
+                        snippetFormat === 'react'
+                          ? `import { Input, Select, Slider } from '@moon-inferno/react';
 
-// 1. Text Input with validation error message
-<Input label="TRANSMISSION_KEY" placeholder="Key..." errorMessage={error} />
+<Input label="TRANSMISSION_KEY" placeholder="Key..." />
+<Select label="SECURITY_PROTOCOL" value={protocol} onChange={setProtocol} options={opts} />
+<Slider label="POWER LEVEL" value={power} onChange={setPower} min={0} max={100} />`
+                          : `<!-- Pure HTML Form Controls -->
+<div class="mi-input-container">
+  <label class="mi-input-label">TRANSMISSION_KEY</label>
+  <input type="text" class="mi-input" placeholder="e.g. ALPHA-994" />
+</div>
 
-// 2. Select Dropdown with options array
-<Select
-  label="SECURITY_PROTOCOL"
-  value={protocol}
-  onChange={setProtocol}
-  options={[
-    { value: 'alpha', label: 'Protocol Alpha' },
-    { value: 'beta', label: 'Protocol Beta' }
-  ]}
-/>
+<div class="mi-input-container">
+  <label class="mi-input-label">SECURITY_PROTOCOL</label>
+  <select class="mi-input">
+    <option value="alpha">Protocol Alpha</option>
+    <option value="beta">Protocol Beta</option>
+  </select>
+</div>
 
-// 3. Power Slider Control
-<Slider label="POWER LEVEL" value={power} onChange={setPower} min={0} max={100} />`}
+<div class="mi-input-container">
+  <label class="mi-input-label">POWER LEVEL</label>
+  <input type="range" class="mi-slider" min="0" max="100" value="75" />
+</div>`
+                      }
                     />
                   </Stack>
                 </CardBody>
@@ -895,20 +1024,38 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moo
 
                     <CodeBlock
                       collapsible
-                      title="FULL COPY-PASTE CODE SNIPPET (CHECKBOX, RADIOGROUP & SWITCH)"
-                      code={`import { Checkbox, RadioGroup, Radio, Switch } from '@moon-inferno/react';
+                      title={`FULL COPY-PASTE CODE SNIPPET (CHECKBOX, RADIO & SWITCH — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                      code={
+                        snippetFormat === 'react'
+                          ? `import { Checkbox, RadioGroup, Radio, Switch } from '@moon-inferno/react';
 
-// 1. Checkbox with description
-<Checkbox label="Quantum Telemetry" description="Transmits live telemetry stream." checked={checked} onChange={toggle} />
-
-// 2. Radio Group
+<Checkbox label="Quantum Telemetry" checked={checked} onChange={toggle} />
 <RadioGroup name="mode" value={mode} onChange={setMode}>
   <Radio value="inferno" label="Solar Inferno" />
-  <Radio value="cyber" label="Cyberpunk Grid" />
 </RadioGroup>
+<Switch label="CRT Scanlines" checked={isCrt} onChange={toggleCrt} />`
+                          : `<!-- Pure HTML Checkbox, Radio & Switch -->
+<!-- Checkbox -->
+<label class="mi-checkbox">
+  <input type="checkbox" checked />
+  <span class="mi-checkbox__box"></span>
+  <span class="mi-checkbox__label">Quantum Telemetry</span>
+</label>
 
-// 3. Switch Toggle
-<Switch label="CRT Scanline Shaders" checked={isCrt} onChange={toggleCrt} />`}
+<!-- Radio -->
+<label class="mi-radio">
+  <input type="radio" name="mode" value="inferno" checked />
+  <span class="mi-radio__circle"></span>
+  <span class="mi-radio__label">Solar Inferno</span>
+</label>
+
+<!-- Switch Toggle -->
+<label class="mi-switch">
+  <input type="checkbox" />
+  <span class="mi-switch__track"><span class="mi-switch__thumb"></span></span>
+  <span class="mi-switch__label">CRT Scanline Shaders</span>
+</label>`
+                      }
                     />
                   </Stack>
                 </CardBody>
@@ -961,15 +1108,23 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moo
                   </Stack>
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (COLORPICKER PROPS & PRESETS)"
-                    code={`import { ColorPicker } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (COLORPICKER — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { ColorPicker } from '@moon-inferno/react';
 
 <ColorPicker
   label="ACCENT COLOR"
   variant="inferno"
   value={color}
   onChange={(hex: string) => setColor(hex)}
-/>`}
+/>`
+                        : `<!-- Pure HTML Color Input -->
+<div class="mi-input-container">
+  <label class="mi-input-label">ACCENT COLOR</label>
+  <input type="color" class="mi-input" value="#FF4D00" />
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -1027,8 +1182,10 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moo
                   </Table>
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (TABLE, STRIPED, HOVERABLE & BADGES)"
-                    code={`import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell, TableCaption, Badge } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (TABLE — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell, TableCaption, Badge } from '@moon-inferno/react';
 
 <Table variant="inferno" striped hoverable>
   <TableCaption>Cluster Status Log</TableCaption>
@@ -1044,7 +1201,22 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moo
       <TableCell><Badge variant="success">ONLINE</Badge></TableCell>
     </TableRow>
   </TableBody>
-</Table>`}
+</Table>`
+                        : `<!-- Pure HTML Table (with Moon-Inferno CDN) -->
+<table class="mi-table mi-table--inferno mi-table--striped mi-table--hoverable">
+  <caption>Cluster Status Log</caption>
+  <thead>
+    <tr><th>NODE ID</th><th>STATUS</th><th>LATENCY</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>#NODE-01</td>
+      <td><span class="mi-badge mi-badge--success">ONLINE</span></td>
+      <td>12ms</td>
+    </tr>
+  </tbody>
+</table>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -1095,10 +1267,11 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moo
                   </Grid>
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (PIECHART & DONUT VISUALIZER)"
-                    code={`import { PieChart } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (PIECHART — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { PieChart } from '@moon-inferno/react';
 
-// 1. Donut Chart with Center Text
 <PieChart
   donut
   size={180}
@@ -1108,16 +1281,12 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moo
     { label: 'Cyberpunk UI', value: 45, color: '#FF4D00' },
     { label: 'Terminal Core', value: 30, color: '#00FF66' }
   ]}
-/>
-
-// 2. Solid Pie Chart
-<PieChart
-  size={180}
-  data={[
-    { label: 'System Memory', value: 60, color: '#FF4D00' },
-    { label: 'GPU VRAM', value: 40, color: '#9D00FF' }
-  ]}
-/>`}
+/>`
+                        : `<!-- Pure HTML Progress Bar alternative for charts -->
+<div class="mi-progress mi-progress--inferno" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+  <div class="mi-progress__bar" style="width: 75%;"></div>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -1152,34 +1321,30 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moo
                         <Avatar size="xl" src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" name="Solar Nomad" variant="square" />
                       </Stack>
                     </Stack>
-
-                    <Stack gap="0.5rem">
-                      <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
-                        INITIALS AVATARS (FALLBACK WHEN NO IMAGE):
-                      </span>
-                      <Stack direction="row" align="center" gap="1rem" wrap>
-                        <Avatar size="sm" name="Alpha One" />
-                        <Avatar size="md" name="Biagio Scaglia" variant="circle" />
-                        <Avatar size="lg" name="Cyber Punk" variant="pixel" />
-                        <Avatar size="xl" name="Solar Inferno" variant="square" />
-                      </Stack>
-                    </Stack>
                   </Stack>
 
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (PROGRESS & AVATAR VARIANTS)"
-                    code={`import { Progress, Avatar } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (PROGRESS & AVATARS — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { Progress, Avatar } from '@moon-inferno/react';
 
-// 1. Progress Bar Variants (inferno | pixel | striped)
 <Progress value={75} label="Core Charge" variant="inferno" />
-<Progress value={85} label="Matrix Stream" variant="striped" animated />
-
-// 2. Avatar with Image
 <Avatar size="md" src="/profile.jpg" name="Biagio Scaglia" variant="circle" />
+<Avatar size="lg" name="Cyber Hacker" variant="pixel" />`
+                        : `<!-- Pure HTML Progress Bars & Avatars -->
+<!-- Progress Bar -->
+<div class="mi-progress mi-progress--inferno">
+  <div class="mi-progress__bar" style="width: 75%;"></div>
+</div>
 
-// 3. Fallback Initials Avatar (square | pixel | circle)
-<Avatar size="lg" name="Cyber Hacker" variant="pixel" />`}
+<!-- Image Avatar -->
+<img class="mi-avatar mi-avatar--md mi-avatar--circle" src="/profile.jpg" alt="User Profile" />
+
+<!-- Pixel Art Avatar -->
+<img class="mi-avatar mi-avatar--lg mi-avatar--pixel" src="/avatar.png" alt="Pixel Avatar" />`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -1197,18 +1362,27 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moo
               <CardBody>
                 <Stack gap="1rem">
                   <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
-                    Click any image card to open the accessible Lightbox modal with keyboard arrow navigation (Left/Right arrow keys, Escape key dismissal).
+                    Click any image card to open the accessible Lightbox modal with keyboard arrow navigation.
                   </p>
                   <Gallery items={GALLERY_ITEMS} />
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (GALLERY & LIGHTBOX MODAL)"
-                    code={`import { Gallery } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (GALLERY — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { Gallery } from '@moon-inferno/react';
 
 <Gallery items={[
-  { id: '1', src: '/img1.png', title: 'NODE_01', caption: 'Atmospheric crimson visual.' },
-  { id: '2', src: '/img2.png', title: 'NODE_02', caption: 'Cyberpunk grid streams.' }
-]} />`}
+  { id: '1', src: '/img1.png', title: 'NODE_01', caption: 'Crimson visual stream.' }
+]} />`
+                        : `<!-- Pure HTML Media Grid (with Moon-Inferno CSS) -->
+<div class="mi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+  <div class="mi-card" style="overflow: hidden;">
+    <img src="/img1.png" style="width: 100%; display: block;" alt="NODE_01" />
+    <div class="mi-card-body"><strong style="font-size: 0.85rem;">NODE_01</strong></div>
+  </div>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -1248,21 +1422,31 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon, LockIcon } from '@moo
 
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (SIGNALLIGHT, LOADER & BADGE)"
-                    code={`import { SignalLight, Loader, Badge } from '@moon-inferno/react';
-import { FlameIcon, CheckIcon, WarnIcon } from '@moon-inferno/icons';
+                    title={`FULL COPY-PASTE CODE SNIPPET (SIGNALLIGHT & BADGES — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { SignalLight, Loader, Badge } from '@moon-inferno/react';
+import { FlameIcon, CheckIcon } from '@moon-inferno/icons';
 
-// 1. SignalLight (online | warning | error | offline with blink)
-<SignalLight status="online" label="CORE MATRIX" blink />
-<SignalLight status="warning" label="THERMAL OVERLOAD" blink />
-
-// 2. Loaders (sizes sm | md | lg, variants inferno | pixel)
+<SignalLight status="online" label="CORE MATRIX" pulse />
 <Loader size="sm" variant="inferno" label="Connecting..." />
-<Loader size="md" variant="pixel" />
-
-// 3. Badges (inferno | success | error | warn | pixel | outline)
 <Badge variant="inferno" icon={<FlameIcon size={12} />}>SOLAR_INFERNO</Badge>
-<Badge variant="success" icon={<CheckIcon size={12} />}>VERIFIED</Badge>`}
+<Badge variant="success" icon={<CheckIcon size={12} />}>VERIFIED</Badge>`
+                        : `<!-- Pure HTML Badges & Status Indicators (CDN Ready) -->
+<!-- Badges -->
+<span class="mi-badge mi-badge--inferno">SOLAR_INFERNO</span>
+<span class="mi-badge mi-badge--success">VERIFIED</span>
+<span class="mi-badge mi-badge--error">ERROR</span>
+<span class="mi-badge mi-badge--pixel">PIXEL_PERFECT</span>
+
+<!-- Signal Light Indicator -->
+<div class="mi-signal-light mi-signal-light--online"><span>CORE MATRIX</span></div>
+<div class="mi-signal-light mi-signal-light--warning"><span>WARNING</span></div>
+
+<!-- Loaders -->
+<div class="mi-loader mi-loader--inferno mi-loader--sm"></div>
+<div class="mi-loader mi-loader--pixel mi-loader--md"></div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -1318,8 +1502,10 @@ import { FlameIcon, CheckIcon, WarnIcon } from '@moon-inferno/icons';
                   </Stack>
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (USETOAST HOOK & VARIANTS)"
-                    code={`import { useToast, Button } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (USETOAST — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { useToast, Button } from '@moon-inferno/react';
 
 export function ToastDemo() {
   const { addToast } = useToast();
@@ -1332,7 +1518,13 @@ export function ToastDemo() {
       Show Inferno Toast
     </Button>
   );
-}`}
+}`
+                        : `<!-- Pure HTML Toast Alert Notification -->
+<div class="mi-toast mi-toast--inferno" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+  <div class="mi-toast__title">Transmission received!</div>
+  <div class="mi-toast__description">Satellite telemetry confirmed.</div>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -1385,11 +1577,12 @@ export function ToastDemo() {
                   </Navbar>
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (NAVBAR, BRAND, ITEMS & MOBILE DRAWER)"
-                    code={`import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, Button } from '@moon-inferno/react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (NAVBAR — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, Button } from '@moon-inferno/react';
 import { FlameIcon } from '@moon-inferno/icons';
 
-// 1. Full Responsive Desktop & Mobile Drawer Navbar
 export function HeaderNavigation() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -1403,25 +1596,26 @@ export function HeaderNavigation() {
       <NavbarContent align="end">
         <NavbarItem isActive>Dashboard</NavbarItem>
         <NavbarItem>Telemetry</NavbarItem>
-        <NavbarItem>Docs</NavbarItem>
         <NavbarItem>
-          <Button size="sm" variant="inferno">Connect Wallet</Button>
+          <Button size="sm" variant="inferno">Connect</Button>
         </NavbarItem>
       </NavbarContent>
-
-      <NavbarMenuToggle isOpen={isOpen} onToggle={() => setIsOpen(!isOpen)} />
-
-      {isOpen && (
-        <NavbarMenu isOpen={isOpen} onClose={() => setIsOpen(false)}>
-          <NavbarItem isActive>Dashboard</NavbarItem>
-          <NavbarItem>Telemetry</NavbarItem>
-          <NavbarItem>Docs</NavbarItem>
-          <Button size="sm" variant="inferno" style={{ marginTop: '0.5rem' }}>Connect Wallet</Button>
-        </NavbarMenu>
-      )}
     </Navbar>
   );
-}`}
+}`
+                        : `<!-- Pure HTML Navbar (Bootstrap-style) -->
+<nav class="mi-navbar mi-navbar--inferno">
+  <div class="mi-navbar__brand">
+    <strong>INFERNO_NAV</strong>
+  </div>
+  <div class="mi-navbar__content">
+    <a href="#" class="mi-navbar__item mi-navbar__item--active">Dashboard</a>
+    <a href="#" class="mi-navbar__item">Telemetry</a>
+    <a href="#" class="mi-navbar__item">Docs</a>
+    <button class="mi-button mi-button--inferno mi-button--sm">Connect</button>
+  </div>
+</nav>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -1493,10 +1687,11 @@ export function HeaderNavigation() {
                   />
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (COMMANDPALETTE SETUP & SHORTCUTS)"
-                    code={`import { useState } from 'react';
+                    title={`FULL COPY-PASTE CODE SNIPPET (COMMANDPALETTE — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { useState } from 'react';
 import { CommandPalette, Button } from '@moon-inferno/react';
-import { TerminalIcon } from '@moon-inferno/icons';
 
 export function CommandPaletteDemo() {
   const [isOpen, setIsOpen] = useState(false);
@@ -1511,25 +1706,21 @@ export function CommandPaletteDemo() {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         items={[
-          {
-            id: 'theme-inferno',
-            label: 'Switch Theme: Inferno',
-            group: 'Themes',
-            shortcut: 'Alt+1',
-            onSelect: () => console.log('Theme changed')
-          },
-          {
-            id: 'toggle-crt',
-            label: 'Toggle CRT Shader Effect',
-            group: 'Display FX',
-            shortcut: 'Ctrl+Shift+C',
-            onSelect: () => console.log('CRT toggled')
-          }
+          { id: '1', label: 'Theme: Inferno', group: 'Themes', onSelect: () => {} }
         ]}
       />
     </>
   );
-}`}
+}`
+                        : `<!-- Pure HTML Modal Search Box -->
+<div class="mi-dialog-backdrop">
+  <div class="mi-dialog" role="dialog" aria-modal="true" style="max-width: 500px;">
+    <div class="mi-dialog__header">
+      <input type="search" class="mi-input" placeholder="Type a command or search (Cmd+K)..." autofocus />
+    </div>
+  </div>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -1600,11 +1791,12 @@ export function CommandPaletteDemo() {
                   </Stack>
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (DROPDOWN VARIANTS, SECTIONS & DESTRUCTIVE ITEMS)"
-                    code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, DropdownDivider, Button } from '@moon-inferno/react';
-import { SettingsIcon, FlameIcon, TerminalIcon, SunIcon, TrashIcon } from '@moon-inferno/icons';
+                    title={`FULL COPY-PASTE CODE SNIPPET (DROPDOWN — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, DropdownDivider, Button } from '@moon-inferno/react';
+import { SettingsIcon, FlameIcon, TerminalIcon } from '@moon-inferno/icons';
 
-// 1. Inferno Variant Dropdown with Sections & Dividers
 <Dropdown variant="inferno">
   <DropdownTrigger>
     <Button variant="inferno" leftIcon={<SettingsIcon size={16} />}>Quick Actions</Button>
@@ -1612,17 +1804,21 @@ import { SettingsIcon, FlameIcon, TerminalIcon, SunIcon, TrashIcon } from '@moon
 
   <DropdownMenu>
     <DropdownSection title="System Controls">
-      <DropdownItem icon={<FlameIcon size={14} />} onSelect={() => console.log('Inferno')}>Set Theme: Inferno</DropdownItem>
-      <DropdownItem icon={<TerminalIcon size={14} />} onSelect={() => console.log('Terminal')}>Set Theme: Terminal</DropdownItem>
+      <DropdownItem icon={<FlameIcon size={14} />}>Set Theme: Inferno</DropdownItem>
+      <DropdownItem icon={<TerminalIcon size={14} />}>Set Theme: Terminal</DropdownItem>
     </DropdownSection>
-
-    <DropdownDivider />
-
-    <DropdownItem icon={<TrashIcon size={14} />} destructive onSelect={() => console.log('Clear')}>
-      Clear System Cache
-    </DropdownItem>
   </DropdownMenu>
-</Dropdown>`}
+</Dropdown>`
+                        : `<!-- Pure HTML Dropdown Menu (CDN Styled) -->
+<div class="mi-dropdown mi-dropdown--inferno">
+  <button class="mi-button mi-button--inferno">Quick Actions ▼</button>
+  <div class="mi-dropdown__menu" role="menu">
+    <div class="mi-dropdown__section-title">System Controls</div>
+    <a href="#" class="mi-dropdown__item" role="menuitem">🔥 Set Theme: Inferno</a>
+    <a href="#" class="mi-dropdown__item" role="menuitem">📟 Set Theme: Terminal</a>
+  </div>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -1664,22 +1860,14 @@ import { SettingsIcon, FlameIcon, TerminalIcon, SunIcon, TrashIcon } from '@moon
                     />
                   </Stack>
 
-                  <Stack gap="0.5rem">
-                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>GHOST VARIANT WITH ICONS:</span>
-                    <Breadcrumbs variant="ghost">
-                      <BreadcrumbItem href="#" icon={<TerminalIcon size={14} />}>Console</BreadcrumbItem>
-                      <BreadcrumbItem href="#" icon={<ShieldIcon size={14} />}>Protocols</BreadcrumbItem>
-                      <BreadcrumbItem isCurrent icon={<SparklesIcon size={14} />}>Active Transmission</BreadcrumbItem>
-                    </Breadcrumbs>
-                  </Stack>
-
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (BREADCRUMBS VARIANTS & CUSTOM SEPARATORS)"
-                    code={`import { Breadcrumbs, BreadcrumbItem } from '@moon-inferno/react';
-import { FlameIcon, TerminalIcon, ShieldIcon, SparklesIcon } from '@moon-inferno/icons';
+                    title={`FULL COPY-PASTE CODE SNIPPET (BREADCRUMBS — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { Breadcrumbs } from '@moon-inferno/react';
+import { FlameIcon } from '@moon-inferno/icons';
 
-// 1. Array declarative format
 <Breadcrumbs
   variant="pixel"
   separator=">"
@@ -1688,14 +1876,18 @@ import { FlameIcon, TerminalIcon, ShieldIcon, SparklesIcon } from '@moon-inferno
     { label: 'ARCADE', href: '#' },
     { label: 'HIGH SCORES', isCurrent: true }
   ]}
-/>
-
-// 2. JSX Composition format
-<Breadcrumbs variant="ghost">
-  <BreadcrumbItem href="#" icon={<TerminalIcon size={14} />}>Console</BreadcrumbItem>
-  <BreadcrumbItem href="#" icon={<ShieldIcon size={14} />}>Protocols</BreadcrumbItem>
-  <BreadcrumbItem isCurrent icon={<SparklesIcon size={14} />}>Active Transmission</BreadcrumbItem>
-</Breadcrumbs>`}
+/>`
+                        : `<!-- Pure HTML Breadcrumbs (CDN Styled) -->
+<nav class="mi-breadcrumbs mi-breadcrumbs--pixel" aria-label="Breadcrumb">
+  <ol>
+    <li class="mi-breadcrumbs__item"><a href="#">HOME</a></li>
+    <li class="mi-breadcrumbs__separator">&gt;</li>
+    <li class="mi-breadcrumbs__item"><a href="#">ARCADE</a></li>
+    <li class="mi-breadcrumbs__separator">&gt;</li>
+    <li class="mi-breadcrumbs__item mi-breadcrumbs__item--current" aria-current="page">HIGH SCORES</li>
+  </ol>
+</nav>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -1777,38 +1969,33 @@ import { FlameIcon, TerminalIcon, ShieldIcon, SparklesIcon } from '@moon-inferno
 
                   <CodeBlock
                     collapsible
-                    title="FULL COPY-PASTE CODE SNIPPET (TABS VARIANTS, ICONS, BADGES & SIZES)"
-                    code={`import { Tabs } from '@moon-inferno/react';
-import { FlameIcon, CpuIcon, ShieldIcon } from '@moon-inferno/icons';
+                    title={`FULL COPY-PASTE CODE SNIPPET (TABS — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                    code={
+                      snippetFormat === 'react'
+                        ? `import { Tabs } from '@moon-inferno/react';
+import { FlameIcon, CpuIcon } from '@moon-inferno/icons';
 
 <Tabs
   variant="${demoTabsVariant}" // inferno | pills | pixel | underline
-  size="md" // sm | md | lg
+  size="md"
   activeTabId={activeTab}
   onChange={setActiveTab}
   items={[
-    {
-      id: 'tab-1',
-      label: 'TELEMETRY NODE',
-      icon: <FlameIcon size={14} />,
-      badge: 'LIVE',
-      content: <div>Node 01 telemetry active</div>
-    },
-    {
-      id: 'tab-2',
-      label: 'SYSTEM METRICS',
-      icon: <CpuIcon size={14} />,
-      badge: '99.9%',
-      content: <div>All systems nominal</div>
-    },
-    {
-      id: 'tab-3',
-      label: 'SECURITY',
-      icon: <ShieldIcon size={14} />,
-      content: <div>Zero-trust encryption</div>
-    }
+    { id: '1', label: 'TELEMETRY NODE', icon: <FlameIcon size={14} />, badge: 'LIVE', content: <Content1 /> },
+    { id: '2', label: 'SYSTEM METRICS', icon: <CpuIcon size={14} />, content: <Content2 /> }
   ]}
-/>`}
+/>`
+                        : `<!-- Pure HTML Tabs (with Moon-Inferno CDN) -->
+<div class="mi-tabs mi-tabs--${demoTabsVariant}">
+  <div class="mi-tabs__list" role="tablist">
+    <button class="mi-tabs__tab mi-tabs__tab--active" role="tab" aria-selected="true">TELEMETRY NODE</button>
+    <button class="mi-tabs__tab" role="tab" aria-selected="false">SYSTEM METRICS</button>
+  </div>
+  <div class="mi-tabs__panel" role="tabpanel">
+    <p>Node 01 active telemetry stream.</p>
+  </div>
+</div>`
+                    }
                   />
                 </Stack>
               </CardBody>
@@ -1859,8 +2046,10 @@ import { FlameIcon, CpuIcon, ShieldIcon } from '@moon-inferno/icons';
 
                     <CodeBlock
                       collapsible
-                      title="FULL COPY-PASTE CODE SNIPPET (DIALOG MODAL PROPS)"
-                      code={`import { useState } from 'react';
+                      title={`FULL COPY-PASTE CODE SNIPPET (DIALOG MODAL — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                      code={
+                        snippetFormat === 'react'
+                          ? `import { useState } from 'react';
 import { Dialog, DialogFooter, Button } from '@moon-inferno/react';
 
 export function DialogDemo() {
@@ -1878,7 +2067,24 @@ export function DialogDemo() {
       </Dialog>
     </>
   );
-}`}
+}`
+                          : `<!-- Pure HTML Modal Dialog (CDN Ready) -->
+<div class="mi-dialog-backdrop">
+  <div class="mi-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+    <div class="mi-dialog__header">
+      <span id="dialog-title">Security Override</span>
+      <button class="mi-dialog__close-btn" aria-label="Close">✕</button>
+    </div>
+    <div class="mi-dialog__body">
+      <p>Modal body content with focus trapping.</p>
+    </div>
+    <div class="mi-dialog__footer">
+      <button class="mi-button mi-button--outline mi-button--sm">Cancel</button>
+      <button class="mi-button mi-button--inferno mi-button--sm">Confirm</button>
+    </div>
+  </div>
+</div>`
+                      }
                     />
                   </Stack>
                 </CardBody>
@@ -1913,17 +2119,24 @@ export function DialogDemo() {
 
                     <CodeBlock
                       collapsible
-                      title="FULL COPY-PASTE CODE SNIPPET (ACCORDION & ACCORDIONITEM)"
-                      code={`import { Accordion, AccordionItem } from '@moon-inferno/react';
+                      title={`FULL COPY-PASTE CODE SNIPPET (ACCORDION — ${snippetFormat === 'react' ? 'REACT JSX' : 'PURE HTML'})`}
+                      code={
+                        snippetFormat === 'react'
+                          ? `import { Accordion, AccordionItem } from '@moon-inferno/react';
 
 <Accordion>
   <AccordionItem title="What makes Moon-Inferno unique?" defaultOpen>
     <p>Retro aesthetics combined with WCAG 2.1 AA accessibility.</p>
   </AccordionItem>
-  <AccordionItem title="Theme Customization">
-    <p>Powered by CSS custom properties and [data-theme] datasets.</p>
-  </AccordionItem>
-</Accordion>`}
+</Accordion>`
+                          : `<!-- Pure HTML Accordion Details Element (CDN Styled) -->
+<details class="mi-accordion-item" open>
+  <summary class="mi-accordion-item__header">What makes Moon-Inferno unique?</summary>
+  <div class="mi-accordion-item__content">
+    <p>Retro aesthetics combined with WCAG 2.1 AA accessibility.</p>
+  </div>
+</details>`
+                      }
                     />
                   </Stack>
                 </CardBody>
