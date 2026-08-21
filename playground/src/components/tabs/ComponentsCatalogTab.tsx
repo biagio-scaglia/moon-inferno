@@ -2146,7 +2146,7 @@ export function DialogDemo() {
               </Card>
 
               {/* MoonHtmlVisualizer */}
-              <Card>
+              <Card style={{ gridColumn: '1 / -1', width: '100%' }}>
                 <CardHeader>
                   <Stack direction="row" justify="space-between" align="center" style={{ width: '100%' }}>
                     <Stack direction="row" align="center" gap="0.5rem">
@@ -2162,10 +2162,10 @@ export function DialogDemo() {
                       Real-time interactive code visualizer and sandboxed renderer for testing pure HTML and CSS with Moon-Inferno CDN stylesheet injection.
                     </p>
                     <MoonHtmlVisualizer
-                      height="460px"
+                      height="560px"
                       title="MOON LIVE SANDBOX"
                       defaultTab="split"
-                      initialHtml={'<div style="padding: 1rem;"><button class="mi-button mi-button--inferno">Interactive Button</button> <span class="mi-badge mi-badge--success">ONLINE</span></div>'}
+                      initialHtml={'<div style="padding: 1rem;"><button class="mi-button mi-button--inferno" onclick="alert(\'Live Click!\')">Interactive Button</button> <span class="mi-badge mi-badge--success">ONLINE</span></div>'}
                       initialCss="body { background: #0A090D; }"
                     />
                     <CodeBlock
