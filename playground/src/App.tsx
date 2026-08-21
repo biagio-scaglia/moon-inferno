@@ -37,6 +37,7 @@ import {
   ExternalLinkIcon,
   InfoIcon,
   SettingsIcon,
+  HtmlIcon,
 } from '@moon-inferno/icons';
 
 // Modular Tab Components
@@ -50,6 +51,7 @@ import { ComponentsCatalogTab } from './components/tabs/ComponentsCatalogTab';
 import { CssThemesTab } from './components/tabs/CssThemesTab';
 import { IconExplorerTab } from './components/tabs/IconExplorerTab';
 import { TerminalTab } from './components/tabs/TerminalTab';
+import { HtmlVisualizerTab } from './components/tabs/HtmlVisualizerTab';
 
 function MasterGuideWebsite() {
   const [currentTheme, setCurrentTheme] = useState<'moon-inferno' | 'terminal' | 'y2k'>('moon-inferno');
@@ -97,7 +99,7 @@ function MasterGuideWebsite() {
             <div className="header-brand">
               <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '28px', width: '28px', flexShrink: 0 }} />
               <h1 className="brand-title">Moon-Inferno</h1>
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.3.7</Badge>
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.3.8</Badge>
             </div>
           </NavbarBrand>
 
@@ -365,7 +367,7 @@ function MasterGuideWebsite() {
 
         {/* Global Ticker Marquee */}
         <Marquee variant="pixel" speed={22}>
-          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.3.7 IS LIVE ON NPM &amp; CDN</span>
+          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.3.8 IS LIVE ON NPM &amp; CDN</span>
           <span>--</span>
           <span>npm install moon-inferno</span>
           <span>--</span>
@@ -407,6 +409,15 @@ function MasterGuideWebsite() {
                     </Stack>
                   ),
                   content: <ArchitectureTab />,
+                },
+                {
+                  id: 'html-visualizer',
+                  label: (
+                    <Stack direction="row" align="center" gap="0.5rem">
+                      <HtmlIcon size={16} /> HTML &amp; CSS Visualizer
+                    </Stack>
+                  ),
+                  content: <HtmlVisualizerTab />,
                 },
                 {
                   id: 'getting-started',

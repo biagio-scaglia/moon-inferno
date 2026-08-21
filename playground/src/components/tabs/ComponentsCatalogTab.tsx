@@ -64,6 +64,7 @@ import {
   MoonConsoleLogger,
   SearchBar,
   Tabs,
+  MoonHtmlVisualizer,
 } from '@moon-inferno/react';
 import {
   FlameIcon,
@@ -2139,6 +2140,47 @@ export function DialogDemo() {
   </div>
 </details>`
                       }
+                    />
+                  </Stack>
+                </CardBody>
+              </Card>
+
+              {/* MoonHtmlVisualizer */}
+              <Card>
+                <CardHeader>
+                  <Stack direction="row" justify="space-between" align="center" style={{ width: '100%' }}>
+                    <Stack direction="row" align="center" gap="0.5rem">
+                      <SparklesIcon size={18} color="var(--mi-color-primary)" />
+                      <h3 style={{ margin: 0, fontSize: '1.05rem' }}>MoonHtmlVisualizer (Live HTML/CSS Sandbox)</h3>
+                    </Stack>
+                    <Badge variant="pixel">NEW COMPONENT</Badge>
+                  </Stack>
+                </CardHeader>
+                <CardBody>
+                  <Stack gap="1rem">
+                    <p style={{ margin: 0, fontSize: '0.875rem' }}>
+                      Real-time interactive code visualizer and sandboxed renderer for testing pure HTML and CSS with Moon-Inferno CDN stylesheet injection.
+                    </p>
+                    <MoonHtmlVisualizer
+                      height="460px"
+                      title="MOON LIVE SANDBOX"
+                      defaultTab="split"
+                      initialHtml={'<div style="padding: 1rem;"><button class="mi-button mi-button--inferno">Interactive Button</button> <span class="mi-badge mi-badge--success">ONLINE</span></div>'}
+                      initialCss="body { background: #0A090D; }"
+                    />
+                    <CodeBlock
+                      collapsible
+                      title="USAGE SNIPPET (MOON HTML VISUALIZER)"
+                      code={`import { MoonHtmlVisualizer } from '@moon-inferno/react';
+
+<MoonHtmlVisualizer
+  title="LIVE HTML / CSS HUD"
+  defaultTab="split"
+  height="480px"
+  enableCdnInjection={true}
+  enableCrtOverlay={true}
+  allowExport={true}
+/>`}
                     />
                   </Stack>
                 </CardBody>

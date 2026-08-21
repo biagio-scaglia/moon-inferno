@@ -36,6 +36,10 @@
   --mi-radius-base: 4px;
   --mi-radius-md: 8px;
   --mi-radius-full: 9999px;
+
+  /* Cross-Browser Standards & Firefox Scrollbars */
+  scrollbar-width: thin;
+  scrollbar-color: var(--mi-color-primary, #FF4D00) var(--mi-color-bg-subtle, #14121A);
 }
 
 /* Custom Retro Scrollbars */

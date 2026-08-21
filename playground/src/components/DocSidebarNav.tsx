@@ -10,7 +10,8 @@ import {
   CodeIcon,
   CpuIcon,
   ZapIcon,
-  InfoIcon
+  InfoIcon,
+  HtmlIcon
 } from '@moon-inferno/icons';
 
 export interface NavSection {
@@ -36,6 +37,7 @@ export const DocSidebarNav: React.FC<DocSidebarNavProps> = ({
 }) => {
   const mainNavItems = [
     { id: 'architecture-guide', label: 'Architecture & Vision', icon: <InfoIcon size={15} /> },
+    { id: 'html-visualizer', label: 'HTML & CSS Visualizer', icon: <HtmlIcon size={15} />, badge: 'Live HUD' },
     {
       id: 'components-catalog',
       label: 'Component Catalog',
@@ -78,11 +80,11 @@ export const DocSidebarNav: React.FC<DocSidebarNavProps> = ({
   return (
     <aside className="doc-sidebar" aria-label="Documentation Navigation Index">
       <div className="doc-sidebar__header">
-        <div className="doc-sidebar-brand-sub">WCAG 2.1 AA UI // v0.3.7</div>
+        <div className="doc-sidebar-brand-sub">WCAG 2.1 AA UI // v0.3.8</div>
         <h2 className="doc-sidebar__title" id="doc-sidebar-title">
           <LayersIcon size={16} color="var(--mi-color-primary)" /> Index & Navigation
         </h2>
-        <span className="doc-sidebar__subtitle">Developer Manual v0.3.7</span>
+        <span className="doc-sidebar__subtitle">Developer Manual v0.3.8</span>
       </div>
 
       <nav className="doc-sidebar__nav" aria-labelledby="doc-sidebar-title">

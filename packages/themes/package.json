@@ -1,6 +1,6 @@
 {
   "name": "@moon-inferno/themes",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Signature color palettes and CSS variable theme definitions for Moon-Inferno (Inferno, Terminal, Y2K).",
   "license": "MIT",
   "author": "Biagio Scaglia",

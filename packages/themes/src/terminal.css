@@ -21,7 +21,28 @@
 
   --mi-color-focus-ring: #00FF66;
   --mi-shadow-glow: 0 0 16px rgba(0, 255, 102, 0.45);
-  --mi-shadow-pixel: 3px 3px 0px #000000;
-
   --mi-crt-scanline: rgba(0, 255, 102, 0.08);
+
+  scrollbar-width: thin;
+  scrollbar-color: #00FF66 #0B2213;
+}
+
+[data-theme="terminal"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme="terminal"] ::-webkit-scrollbar-track {
+  background: #0B2213;
+  border: 1px solid #1A542E;
+}
+
+[data-theme="terminal"] ::-webkit-scrollbar-thumb {
+  background: #00FF66;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
+}
+
+[data-theme="terminal"] ::-webkit-scrollbar-thumb:hover {
+  background: #33FF85;
 }

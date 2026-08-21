@@ -1,4 +1,5 @@
-/* Moon-Inferno Pure Vanilla HTML & Web Standards Native Component Styles */
+/* Moon-Inferno Pure Vanilla HTML & Web Standards Native Component Styles
+   100% Cross-Browser Normalized (WebKit / Blink / Gecko / Firefox / Safari / Edge) */
 
 /* ==========================================================================
    1. Base Select Primitive (Pure HTML <select>)
@@ -9,6 +10,7 @@ select.mi-select,
   padding: 0.65rem 2.25rem 0.65rem 0.875rem;
   font-family: var(--mi-font-mono, 'JetBrains Mono', monospace);
   font-size: 0.875rem;
+  font-weight: 500;
   background-color: var(--mi-color-surface, #1E1B26);
   color: var(--mi-color-text, #F1F5F9);
   border: 1px solid var(--mi-color-border, #332D40);
@@ -24,6 +26,18 @@ select.mi-select,
   background-size: 16px;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
   min-height: 42px;
+  box-sizing: border-box;
+}
+
+select.mi-select::-ms-expand,
+.mi-select-native::-ms-expand {
+  display: none;
+}
+
+select.mi-select:-moz-focusring,
+.mi-select-native:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 var(--mi-color-text, #F1F5F9);
 }
 
 select.mi-select:focus,
@@ -46,7 +60,7 @@ select.mi-select--pixel {
 }
 
 /* ==========================================================================
-   2. Base HTML5 Gaming <meter> Primitive
+   2. Base HTML5 Gaming <meter> Primitive (Cross-Browser Normalized)
    ========================================================================== */
 meter.mi-health-meter,
 meter.mi-healthmeter,
@@ -56,22 +70,24 @@ meter.mi-healthmeter,
   appearance: none;
   width: 100%;
   height: 18px;
-  background: #0A090D;
+  background: #0A090D !important;
+  background-color: #0A090D !important;
   border: 1px solid var(--mi-color-border, #332D40);
   border-radius: var(--mi-radius-sm, 4px);
   overflow: hidden;
   display: block;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
 }
 
-/* WebKit Meter Styling */
+/* WebKit Track Styling */
 meter.mi-health-meter::-webkit-meter-bar,
 meter.mi-healthmeter::-webkit-meter-bar {
   background: #0A090D;
   border-radius: var(--mi-radius-sm, 4px);
 }
 
-/* Default / Health (HP) */
+/* WebKit Filled Bars */
 meter.mi-health-meter::-webkit-meter-optimum-value,
 meter.mi-healthmeter::-webkit-meter-optimum-value,
 meter.mi-health-meter--health::-webkit-meter-optimum-value {
@@ -79,51 +95,56 @@ meter.mi-health-meter--health::-webkit-meter-optimum-value {
   box-shadow: 0 0 10px #FF0033;
 }
 
-/* Mana (MP) */
 meter.mi-health-meter--mana::-webkit-meter-optimum-value,
 meter.mi-healthmeter--mana::-webkit-meter-optimum-value {
   background: linear-gradient(90deg, #0055FF 0%, #00AAFF 60%, #00E5FF 100%);
   box-shadow: 0 0 10px #00E5FF;
 }
 
-/* Shield (SP) */
 meter.mi-health-meter--shield::-webkit-meter-optimum-value,
 meter.mi-healthmeter--shield::-webkit-meter-optimum-value {
   background: linear-gradient(90deg, #7700FF 0%, #AA00FF 60%, #FF00E5 100%);
   box-shadow: 0 0 10px #FF00E5;
 }
 
-/* Energy */
 meter.mi-health-meter--energy::-webkit-meter-optimum-value,
 meter.mi-healthmeter--energy::-webkit-meter-optimum-value {
   background: linear-gradient(90deg, #009933 0%, #00FF66 60%, #AAFF00 100%);
   box-shadow: 0 0 10px #00FF66;
 }
 
-/* Firefox Meter Styling */
+/* Firefox (Gecko) Filled Bars & Glow */
 meter.mi-health-meter::-moz-meter-bar,
 meter.mi-healthmeter::-moz-meter-bar,
 meter.mi-health-meter--health::-moz-meter-bar {
-  background: linear-gradient(90deg, #CC0029 0%, #FF0033 60%, #FF4D00 100%);
+  background: linear-gradient(90deg, #CC0029 0%, #FF0033 60%, #FF4D00 100%) !important;
+  border-radius: var(--mi-radius-sm, 4px);
+  box-shadow: 0 0 10px #FF0033;
 }
 
 meter.mi-health-meter--mana::-moz-meter-bar,
 meter.mi-healthmeter--mana::-moz-meter-bar {
-  background: linear-gradient(90deg, #0055FF 0%, #00AAFF 60%, #00E5FF 100%);
+  background: linear-gradient(90deg, #0055FF 0%, #00AAFF 60%, #00E5FF 100%) !important;
+  border-radius: var(--mi-radius-sm, 4px);
+  box-shadow: 0 0 10px #00E5FF;
 }
 
 meter.mi-health-meter--shield::-moz-meter-bar,
 meter.mi-healthmeter--shield::-moz-meter-bar {
-  background: linear-gradient(90deg, #7700FF 0%, #AA00FF 60%, #FF00E5 100%);
+  background: linear-gradient(90deg, #7700FF 0%, #AA00FF 60%, #FF00E5 100%) !important;
+  border-radius: var(--mi-radius-sm, 4px);
+  box-shadow: 0 0 10px #FF00E5;
 }
 
 meter.mi-health-meter--energy::-moz-meter-bar,
 meter.mi-healthmeter--energy::-moz-meter-bar {
-  background: linear-gradient(90deg, #009933 0%, #00FF66 60%, #AAFF00 100%);
+  background: linear-gradient(90deg, #009933 0%, #00FF66 60%, #AAFF00 100%) !important;
+  border-radius: var(--mi-radius-sm, 4px);
+  box-shadow: 0 0 10px #00FF66;
 }
 
 /* ==========================================================================
-   3. Base HTML5 <progress> Primitive
+   3. Base HTML5 <progress> Primitive (Cross-Browser Normalized)
    ========================================================================== */
 progress.mi-progress {
   -webkit-appearance: none;
@@ -131,35 +152,153 @@ progress.mi-progress {
   appearance: none;
   width: 100%;
   height: 14px;
-  background-color: var(--mi-color-bg-subtle, #14121A);
+  background-color: var(--mi-color-bg-subtle, #14121A) !important;
   border: 1px solid var(--mi-color-border, #332D40);
   border-radius: var(--mi-radius-full, 9999px);
   overflow: hidden;
   display: block;
+  box-sizing: border-box;
 }
 
 progress.mi-progress::-webkit-progress-bar {
   background-color: var(--mi-color-bg-subtle, #14121A);
+  border-radius: var(--mi-radius-full, 9999px);
 }
 
 progress.mi-progress::-webkit-progress-value {
   background: linear-gradient(90deg, var(--mi-color-primary, #FF4D00), #FF8000);
+  border-radius: var(--mi-radius-full, 9999px);
   box-shadow: var(--mi-shadow-glow, 0 0 16px rgba(255, 77, 0, 0.45));
 }
 
 progress.mi-progress::-moz-progress-bar {
-  background: linear-gradient(90deg, var(--mi-color-primary, #FF4D00), #FF8000);
+  background: linear-gradient(90deg, var(--mi-color-primary, #FF4D00), #FF8000) !important;
+  border-radius: var(--mi-radius-full, 9999px);
+  box-shadow: var(--mi-shadow-glow, 0 0 16px rgba(255, 77, 0, 0.45));
 }
 
 /* ==========================================================================
-   4. Textarea & Native Inputs
+   4. Native Sliders (<input type="range" class="mi-slider">)
+   ========================================================================== */
+input[type="range"].mi-slider {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: var(--mi-color-bg-subtle, #14121A);
+  border: 1px solid var(--mi-color-border-accent, #FF4D00);
+  border-radius: var(--mi-radius-sm, 4px);
+  outline: none;
+  cursor: pointer;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+}
+
+input[type="range"].mi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--mi-color-primary, #FF4D00);
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 10px var(--mi-color-primary, #FF4D00);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+input[type="range"].mi-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--mi-color-primary, #FF4D00);
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 10px var(--mi-color-primary, #FF4D00);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+/* ==========================================================================
+   5. Native Checkbox & Radio Inputs
+   ========================================================================== */
+input[type="checkbox"].mi-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background-color: var(--mi-color-bg-subtle, #14121A);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-sm, 2px);
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+input[type="checkbox"].mi-checkbox:checked {
+  background-color: var(--mi-color-primary, #FF4D00);
+  border-color: var(--mi-color-primary, #FF4D00);
+  box-shadow: var(--mi-shadow-glow, 0 0 12px rgba(255, 77, 0, 0.45));
+}
+
+input[type="checkbox"].mi-checkbox:checked::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: solid #050406;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+}
+
+input[type="radio"].mi-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background-color: var(--mi-color-bg-subtle, #14121A);
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+input[type="radio"].mi-radio:checked {
+  border-color: var(--mi-color-primary, #FF4D00);
+  box-shadow: var(--mi-shadow-glow, 0 0 12px rgba(255, 77, 0, 0.45));
+}
+
+input[type="radio"].mi-radio:checked::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background-color: var(--mi-color-primary, #FF4D00);
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   6. Textarea & Native Inputs
    ========================================================================== */
 textarea.mi-input,
 textarea.mi-textarea {
   width: 100%;
   min-height: 90px;
   padding: 0.625rem 0.875rem;
-  font-family: var(--mi-font-mono, monospace);
+  font-family: var(--mi-font-mono, 'JetBrains Mono', monospace);
   font-size: 0.875rem;
   background-color: var(--mi-color-bg-subtle, #14121A);
   color: var(--mi-color-text, #F1F5F9);
@@ -168,10 +307,54 @@ textarea.mi-textarea {
   outline: none;
   resize: vertical;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
 }
 
 textarea.mi-input:focus,
 textarea.mi-textarea:focus {
   border-color: var(--mi-color-focus-ring, #FF4D00);
   box-shadow: var(--mi-shadow-glow);
+}
+
+/* ==========================================================================
+   7. Native Details & Accordion Primitive
+   ========================================================================== */
+details.mi-accordion {
+  border: 1px solid var(--mi-color-border, #332D40);
+  border-radius: var(--mi-radius-base, 4px);
+  background-color: var(--mi-color-bg-subtle, #14121A);
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+details.mi-accordion summary {
+  padding: 0.75rem 1rem;
+  font-family: var(--mi-font-mono, monospace);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--mi-color-text, #F1F5F9);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  background-color: var(--mi-color-surface, #1E1B26);
+  border-bottom: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+details.mi-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+details.mi-accordion[open] summary {
+  border-bottom-color: var(--mi-color-border, #332D40);
+  color: var(--mi-color-primary, #FF4D00);
+}
+
+details.mi-accordion .mi-accordion-content {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--mi-color-text-muted, #94A3B8);
 }

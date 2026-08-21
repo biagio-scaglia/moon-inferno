@@ -50,6 +50,7 @@ export * from './MoonHealthMeter/MoonHealthMeter';
 export * from './MoonSafeGlitch/MoonSafeGlitch';
 export * from './MoonConsoleLogger/MoonConsoleLogger';
 export * from './SearchBar/SearchBar';
+export * from './MoonHtmlVisualizer/MoonHtmlVisualizer';
 
 // Global Themes & CSS Custom Properties
 import '../../themes/src/moon-inferno.css';
@@ -108,3 +109,4 @@ import './MoonHealthMeter/MoonHealthMeter.css';
 import './MoonSafeGlitch/MoonSafeGlitch.css';
 import './MoonConsoleLogger/MoonConsoleLogger.css';
 import './SearchBar/SearchBar.css';
+import './MoonHtmlVisualizer/MoonHtmlVisualizer.css';
