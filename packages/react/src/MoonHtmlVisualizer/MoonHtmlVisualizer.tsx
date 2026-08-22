@@ -46,6 +46,7 @@ export interface MoonHtmlVisualizerProps extends Omit<HTMLAttributes<HTMLDivElem
   presets?: VisualizerPreset[];
   onHtmlChange?: (html: string) => void;
   onCssChange?: (css: string) => void;
+  onChange?: (html: string, css: string) => void;
 }
 
 const DEFAULT_PRESETS: VisualizerPreset[] = [
@@ -192,6 +193,7 @@ export const MoonHtmlVisualizer = ({
   presets = DEFAULT_PRESETS,
   onHtmlChange,
   onCssChange,
+  onChange,
   className = '',
   ...props
 }: MoonHtmlVisualizerProps) => {
@@ -507,12 +509,14 @@ export const MoonHtmlVisualizer = ({
     const val = e.target.value;
     setHtmlCode(val);
     onHtmlChange?.(val);
+    onChange?.(val, cssCode);
   };
 
   const handleCssChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const val = e.target.value;
     setCssCode(val);
     onCssChange?.(val);
+    onChange?.(htmlCode, val);
   };
 
   const handleCopyCode = async () => {
@@ -548,6 +552,7 @@ export const MoonHtmlVisualizer = ({
       setCssCode(found.css);
       onHtmlChange?.(found.html);
       onCssChange?.(found.css);
+      onChange?.(found.html, found.css);
       setAnnouncement(`Loaded preset: ${found.name}`);
     }
   };

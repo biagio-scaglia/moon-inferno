@@ -1,15 +1,22 @@
 import { forwardRef, type HTMLAttributes } from 'react';
 import './PixelContainer.css';
 
+export type PixelContainerVariant = 'inferno' | 'pixel' | 'terminal' | 'y2k';
+
 export interface PixelContainerProps extends HTMLAttributes<HTMLDivElement> {
   title?: string;
   onClose?: () => void;
+  variant?: PixelContainerVariant;
 }
 
 export const PixelContainer = forwardRef<HTMLDivElement, PixelContainerProps>(
-  ({ title, onClose, children, className = '', ...props }, ref) => {
+  ({ title, onClose, variant = 'pixel', children, className = '', ...props }, ref) => {
     return (
-      <div ref={ref} className={`mi-pixel-container ${className}`.trim()} {...props}>
+      <div
+        ref={ref}
+        className={`mi-pixel-container mi-pixel-container--${variant} ${className}`.trim()}
+        {...props}
+      >
         {title && (
           <div className="mi-pixel-container__titlebar">
             <span>{title}</span>

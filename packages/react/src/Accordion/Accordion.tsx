@@ -1,6 +1,8 @@
 import {
   useState,
   useId,
+  createContext,
+  useContext,
   forwardRef,
   type ReactNode,
   type HTMLAttributes,
@@ -8,11 +10,20 @@ import {
 import { ArrowDownIcon } from '@moon-inferno/icons';
 import './Accordion.css';
 
+export type AccordionVariant = 'inferno' | 'pixel' | 'terminal';
+
+interface AccordionContextType {
+  variant?: AccordionVariant;
+}
+
+const AccordionContext = createContext<AccordionContextType>({ variant: 'inferno' });
+
 export interface AccordionItemProps {
   id?: string;
   title: ReactNode;
   children: ReactNode;
   defaultOpen?: boolean;
+  variant?: AccordionVariant;
 }
 
 export const AccordionItem = ({
@@ -20,7 +31,10 @@ export const AccordionItem = ({
   title,
   children,
   defaultOpen = false,
+  variant: itemVariant,
 }: AccordionItemProps) => {
+  const context = useContext(AccordionContext);
+  const variant = itemVariant || context.variant || 'inferno';
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const generatedId = useId();
   const itemId = id || generatedId;
@@ -28,7 +42,7 @@ export const AccordionItem = ({
   const panelId = `accordion-panel-${itemId}`;
 
   return (
-    <div className={`mi-accordion-item ${isOpen ? 'mi-accordion-item--open' : ''}`}>
+    <div className={`mi-accordion-item mi-accordion-item--${variant} ${isOpen ? 'mi-accordion-item--open' : ''}`}>
       <button
         type="button"
         id={headerId}
@@ -58,14 +72,17 @@ export const AccordionItem = ({
 
 export interface AccordionProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
+  variant?: AccordionVariant;
 }
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  ({ children, className = '', ...props }, ref) => {
+  ({ children, variant = 'inferno', className = '', ...props }, ref) => {
     return (
-      <div ref={ref} className={`mi-accordion ${className}`.trim()} {...props}>
-        {children}
-      </div>
+      <AccordionContext.Provider value={{ variant }}>
+        <div ref={ref} className={`mi-accordion mi-accordion--${variant} ${className}`.trim()} {...props}>
+          {children}
+        </div>
+      </AccordionContext.Provider>
     );
   }
 );

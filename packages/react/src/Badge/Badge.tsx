@@ -1,7 +1,7 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
 import './Badge.css';
 
-export type BadgeVariant = 'inferno' | 'pixel' | 'success' | 'error' | 'warning' | 'info' | 'outline' | 'default' | 'primary';
+export type BadgeVariant = 'inferno' | 'pixel' | 'success' | 'error' | 'danger' | 'warning' | 'info' | 'outline' | 'ghost' | 'default' | 'primary';
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: BadgeVariant;
@@ -10,7 +10,7 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   ({ children, variant = 'inferno', icon, className = '', ...props }, ref) => {
-    const normalizedVariant = (variant === 'default' || variant === 'primary') ? 'inferno' : variant;
+    const normalizedVariant = (variant === 'default' || variant === 'primary') ? 'inferno' : variant === 'danger' ? 'error' : variant;
 
     return (
       <span

@@ -1,6 +1,6 @@
 # Moon-Inferno — Developer Manual & API Reference
 
-Welcome to the complete developer manual for **Moon-Inferno** (`v0.3.8`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
+Welcome to the complete developer manual for **Moon-Inferno** (`v0.3.9`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
 
 ---
 
@@ -615,6 +615,9 @@ import {
 
 | Category | Available Icons |
 | :--- | :--- |
+| **RPG Ranks** | `RankBronzeIcon`, `RankSilverIcon`, `RankGoldIcon`, `RankDiamondIcon` |
+| **RPG Badges & Trophies** | `BadgeTagIcon`, `BadgeSemanticIcon`, `BadgeFormIcon`, `BadgeStyleIcon`, `BadgeBoxIcon`, `BadgeFlexboxIcon`, `BadgeGridIcon`, `BadgeInfernoIcon` |
+| **Levels & Celebrations** | `LevelShieldIcon`, `LevelLightningIcon`, `CelebrationIcon`, `TargetIcon`, `MoonLogoIcon` |
 | **Languages & Web** | `ReactIcon`, `HtmlIcon`, `CssIcon`, `JsIcon`, `TsIcon`, `NpmIcon`, `GlobeIcon` |
 | **Theme & Atmosphere** | `FlameIcon`, `MoonIcon`, `SunIcon`, `TerminalIcon`, `ZapIcon`, `SparklesIcon` |
 | **System & Tech** | `CpuIcon`, `LayersIcon`, `CodeIcon`, `LockIcon`, `ShieldIcon`, `RefreshIcon`, `SettingsIcon` |

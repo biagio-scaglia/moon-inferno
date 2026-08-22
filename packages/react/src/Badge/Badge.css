@@ -39,6 +39,7 @@
   border: 1px solid var(--mi-color-success, #00FF66);
 }
 
+.mi-badge--danger,
 .mi-badge--error {
   background-color: rgba(255, 0, 51, 0.15);
   color: #FF6680;
@@ -49,4 +50,11 @@
   background-color: transparent;
   color: var(--mi-color-text-muted, #94A3B8);
   border: 1px solid var(--mi-color-border, #332D40);
+}
+
+.mi-badge--ghost {
+  background-color: transparent;
+  color: var(--mi-color-text-muted, #94A3B8);
+  border: 1px solid transparent;
+  opacity: 0.85;
 }

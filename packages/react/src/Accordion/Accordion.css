@@ -19,6 +19,15 @@
   border-color: var(--mi-color-border-accent, #FF4D00);
 }
 
+.mi-accordion-item--pixel {
+  border-radius: 0;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.mi-accordion-item--terminal.mi-accordion-item--open {
+  border-color: #00FF66;
+}
+
 .mi-accordion-header {
   width: 100%;
   padding: 0.875rem 1.125rem;

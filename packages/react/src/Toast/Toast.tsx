@@ -9,7 +9,7 @@ import {
 import { CloseIcon } from '@moon-inferno/icons';
 import './Toast.css';
 
-export type ToastVariant = 'inferno' | 'pixel' | 'success' | 'error' | 'warning' | 'info' | 'default' | 'primary';
+export type ToastVariant = 'inferno' | 'pixel' | 'success' | 'error' | 'danger' | 'warning' | 'info' | 'default' | 'primary';
 
 export interface ToastItem {
   id: string;
@@ -73,6 +73,8 @@ export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
       if (variant === 'default' || variant === 'primary') {
         variant = 'inferno';
+      } else if (variant === 'danger') {
+        variant = 'error';
       }
 
       const newToast: ToastItem = {

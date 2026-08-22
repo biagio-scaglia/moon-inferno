@@ -5,6 +5,7 @@ import './CodeBlock.css';
 export interface CodeBlockProps extends HTMLAttributes<HTMLDivElement> {
   code: string;
   filename?: string;
+  language?: string;
   collapsible?: boolean;
   defaultExpanded?: boolean;
   title?: string;
@@ -15,6 +16,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
     {
       code,
       filename,
+      language,
       collapsible = false,
       defaultExpanded = false,
       title,
@@ -40,7 +42,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
       }
     };
 
-    const headerTitle = title || filename || 'code snippet';
+    const headerTitle = title || filename || (language ? `code.${language}` : 'code snippet');
 
     return (
       <div
@@ -63,6 +65,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
               </span>
             )}
             <span>{headerTitle}</span>
+            {language && <span className="mi-codeblock-lang-tag">{language}</span>}
             {collapsible && (
               <span className="mi-codeblock-collapse-hint">
                 {isExpanded ? '(click to collapse)' : '(click to expand full copy-paste code)'}
@@ -83,7 +86,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
 
         {isExpanded && (
           <pre className="mi-codeblock-pre">
-            <code>{code}</code>
+            <code data-language={language} className={language ? `language-${language}` : undefined}>{code}</code>
           </pre>
         )}
       </div>

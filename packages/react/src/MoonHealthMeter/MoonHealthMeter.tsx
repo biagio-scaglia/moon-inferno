@@ -2,7 +2,8 @@ import { type HTMLAttributes } from 'react';
 import './MoonHealthMeter.css';
 
 export interface MoonHealthMeterProps extends HTMLAttributes<HTMLDivElement> {
-  value: number;
+  value?: number;
+  current?: number;
   max?: number;
   label?: string;
   type?: 'health' | 'mana' | 'energy' | 'shield';
@@ -12,6 +13,7 @@ export interface MoonHealthMeterProps extends HTMLAttributes<HTMLDivElement> {
 
 export const MoonHealthMeter = ({
   value,
+  current,
   max = 100,
   label,
   type = 'health',
@@ -20,7 +22,8 @@ export const MoonHealthMeter = ({
   className = '',
   ...props
 }: MoonHealthMeterProps) => {
-  const percentage = Math.min(100, Math.max(0, (value / max) * 100));
+  const actualValue = value !== undefined ? value : current !== undefined ? current : 0;
+  const percentage = Math.min(100, Math.max(0, (actualValue / max) * 100));
   const defaultLabel = label || type.toUpperCase();
 
   return (
@@ -30,7 +33,7 @@ export const MoonHealthMeter = ({
     >
       <div className="mi-healthmeter-header">
         <span>{defaultLabel}</span>
-        {showPercentage && <span>{value} / {max} ({percentage.toFixed(0)}%)</span>}
+        {showPercentage && <span>{actualValue} / {max} ({percentage.toFixed(0)}%)</span>}
       </div>
 
       <div className="mi-healthmeter-track">
@@ -38,8 +41,8 @@ export const MoonHealthMeter = ({
         <meter
           min={0}
           max={max}
-          value={value}
-          aria-label={`${defaultLabel}: ${value} of ${max}`}
+          value={actualValue}
+          aria-label={`${defaultLabel}: ${actualValue} of ${max}`}
           className="mi-healthmeter-native"
         >
           {percentage.toFixed(0)}%

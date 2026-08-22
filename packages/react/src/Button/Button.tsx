@@ -2,7 +2,7 @@ import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { ZapIcon } from '@moon-inferno/icons';
 import './Button.css';
 
-export type ButtonVariant = 'inferno' | 'outline' | 'ghost' | 'pixel' | 'default' | 'primary' | 'danger';
+export type ButtonVariant = 'inferno' | 'outline' | 'ghost' | 'pixel' | 'default' | 'primary' | 'danger' | 'success';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;

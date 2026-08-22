@@ -62,6 +62,40 @@
   line-height: 1.6;
 }
 
+/* Variants */
+.mi-pixel-container--inferno .mi-pixel-container__titlebar {
+  background-color: var(--mi-color-primary, #FF4D00);
+  color: #000000;
+}
+
+.mi-pixel-container--terminal .mi-pixel-container__titlebar {
+  background-color: #00FF66;
+  color: #05130A;
+}
+
+.mi-pixel-container--terminal {
+  box-shadow: 
+    0 -3px 0 0 #00FF66,
+    0 3px 0 0 #00FF66,
+    -3px 0 0 0 #00FF66,
+    3px 0 0 0 #00FF66,
+    3px 3px 0 0 #000000;
+}
+
+.mi-pixel-container--y2k .mi-pixel-container__titlebar {
+  background-color: #00E5FF;
+  color: #0F0E17;
+}
+
+.mi-pixel-container--y2k {
+  box-shadow: 
+    0 -3px 0 0 #00E5FF,
+    0 3px 0 0 #00E5FF,
+    -3px 0 0 0 #00E5FF,
+    3px 0 0 0 #00E5FF,
+    3px 3px 0 0 #0F0E17;
+}
+
 @media (max-width: 640px) {
   .mi-pixel-container {
     margin: 2px 4px 4px 2px;

@@ -48,3 +48,22 @@ export * from './icons/JsIcon';
 export * from './icons/TsIcon';
 export * from './icons/NpmIcon';
 export * from './icons/GlobeIcon';
+
+// RPG Ranks & RPG Badges
+export * from './icons/RankBronzeIcon';
+export * from './icons/RankSilverIcon';
+export * from './icons/RankGoldIcon';
+export * from './icons/RankDiamondIcon';
+export * from './icons/BadgeTagIcon';
+export * from './icons/BadgeSemanticIcon';
+export * from './icons/BadgeFormIcon';
+export * from './icons/BadgeStyleIcon';
+export * from './icons/BadgeBoxIcon';
+export * from './icons/BadgeFlexboxIcon';
+export * from './icons/BadgeGridIcon';
+export * from './icons/BadgeInfernoIcon';
+export * from './icons/LevelShieldIcon';
+export * from './icons/LevelLightningIcon';
+export * from './icons/CelebrationIcon';
+export * from './icons/TargetIcon';
+export * from './icons/MoonLogoIcon';

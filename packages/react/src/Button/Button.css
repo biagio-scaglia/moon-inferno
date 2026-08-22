@@ -64,6 +64,19 @@
   box-shadow: var(--mi-shadow-glow);
 }
 
+.mi-button--success {
+  background-color: var(--mi-color-success, #00FF66);
+  color: #05130A;
+  font-weight: 700;
+  border-color: var(--mi-color-success, #00FF66);
+}
+
+.mi-button--success:hover:not(:disabled) {
+  background-color: #33FF85;
+  border-color: #33FF85;
+  box-shadow: 0 0 16px rgba(0, 255, 102, 0.45);
+}
+
 .mi-button--inferno:active:not(:disabled) {
   background-color: var(--mi-color-primary-active, #FF2E00);
   transform: translateY(1px);
