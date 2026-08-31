@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -48,7 +49,9 @@ function getNextVersion(currentVersion, bumpType) {
 }
 
 function main() {
-  const targetArg = process.argv[2] || 'patch';
+  const args = process.argv.slice(2);
+  const shouldPublish = !args.includes('--no-publish');
+  const targetArg = args.find((arg) => !arg.startsWith('--')) || 'patch';
 
   const refPkgPath = path.join(rootDir, packageJsonPaths[0]);
   const refPkgData = JSON.parse(fs.readFileSync(refPkgPath, 'utf8'));
@@ -56,10 +59,11 @@ function main() {
 
   const newVersion = getNextVersion(currentVersion, targetArg);
 
-  console.log(`\n🌙 Moon-Inferno Automated Version Bumper`);
-  console.log(`========================================`);
+  console.log(`\n🌙 Moon-Inferno Automated Release & NPM Publisher`);
+  console.log(`=================================================`);
   console.log(`Current version: v${currentVersion}`);
-  console.log(`New version:     v${newVersion}\n`);
+  console.log(`New version:     v${newVersion}`);
+  console.log(`NPM Publish:     ${shouldPublish ? 'ENABLED' : 'DISABLED'}\n`);
 
   // 1. Update package.json files
   for (const relPath of packageJsonPaths) {
@@ -87,7 +91,23 @@ function main() {
     }
   }
 
-  console.log(`\n🎉 Successfully bumped all packages to v${newVersion}!\n`);
+  console.log(`\n🎉 Successfully bumped version to v${newVersion}!`);
+
+  // 3. Build & Publish to NPM
+  if (shouldPublish) {
+    console.log(`\n🔨 Building all monorepo packages...`);
+    execSync('pnpm run build', { cwd: rootDir, stdio: 'inherit' });
+
+    console.log(`\n🚀 Publishing all packages to NPM registry...`);
+    try {
+      execSync('pnpm publish -r --access public --no-git-checks', { cwd: rootDir, stdio: 'inherit' });
+      console.log(`\n✨ ALL MOON-INFERNO PACKAGES PUBLISHED TO NPM AS v${newVersion}! ✨\n`);
+    } catch (err) {
+      console.error(`\n⚠️ NPM Publish encountered an issue or requires login:`, err.message);
+    }
+  } else {
+    console.log(`\nℹ️ Skipped NPM Publish (--no-publish flag passed).\n`);
+  }
 }
 
 main();
