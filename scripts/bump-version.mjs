@@ -19,6 +19,10 @@ const packageJsonPaths = [
 const docPaths = [
   'docs/MANUAL.md',
   'README.md',
+  'playground/src/App.tsx',
+  'playground/src/components/DocSidebarNav.tsx',
+  'playground/src/components/tabs/TerminalTab.tsx',
+  'playground/src/main.tsx',
 ];
 
 function getNextVersion(currentVersion, bumpType) {
