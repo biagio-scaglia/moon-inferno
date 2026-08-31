@@ -55,6 +55,7 @@ function getNextVersion(currentVersion, bumpType) {
 function main() {
   const args = process.argv.slice(2);
   const shouldPublish = !args.includes('--no-publish');
+  const shouldPushGit = !args.includes('--no-git');
   const targetArg = args.find((arg) => !arg.startsWith('--')) || 'patch';
 
   const refPkgPath = path.join(rootDir, packageJsonPaths[0]);
@@ -67,7 +68,8 @@ function main() {
   console.log(`=================================================`);
   console.log(`Current version: v${currentVersion}`);
   console.log(`New version:     v${newVersion}`);
-  console.log(`NPM Publish:     ${shouldPublish ? 'ENABLED' : 'DISABLED'}\n`);
+  console.log(`NPM Publish:     ${shouldPublish ? 'ENABLED' : 'DISABLED'}`);
+  console.log(`Git Push:        ${shouldPushGit ? 'ENABLED' : 'DISABLED'}\n`);
 
   // 1. Update package.json files
   for (const relPath of packageJsonPaths) {
@@ -111,6 +113,19 @@ function main() {
     }
   } else {
     console.log(`\nℹ️ Skipped NPM Publish (--no-publish flag passed).\n`);
+  }
+
+  // 4. Git Commit & Push to GitHub
+  if (shouldPushGit) {
+    console.log(`\n🐙 Staging, Committing & Pushing release v${newVersion} to GitHub (main)...`);
+    try {
+      execSync('git add .', { cwd: rootDir, stdio: 'inherit' });
+      execSync(`git commit -m "release: v${newVersion} [automated bump]"`, { cwd: rootDir, stdio: 'inherit' });
+      execSync('git push origin main', { cwd: rootDir, stdio: 'inherit' });
+      console.log(`\n✨ PUSHED RELEASE v${newVersion} TO GITHUB REPOSITORY MAIN BRANCH! ✨\n`);
+    } catch (err) {
+      console.error(`\n⚠️ Git commit/push encountered an issue:`, err.message);
+    }
   }
 }
 
