@@ -97,9 +97,9 @@
 
 .mi-visualizer__tab--active {
   background-color: var(--mi-color-primary, #FF4D00);
-  color: #050406 !important;
+  color: var(--mi-color-primary-text, #050406) !important;
   font-weight: 700;
-  box-shadow: 0 0 8px rgba(255, 77, 0, 0.4);
+  box-shadow: var(--mi-shadow-glow);
 }
 
 /* Actions */
@@ -149,7 +149,7 @@
 }
 
 .mi-visualizer__btn-pill--active {
-  background-color: rgba(255, 77, 0, 0.2);
+  background-color: var(--mi-color-bg-subtle, #14121A);
   color: var(--mi-color-primary, #FF4D00) !important;
   font-weight: 700;
 }
@@ -187,9 +187,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  background-color: rgba(255, 77, 0, 0.15);
+  background-color: var(--mi-color-bg-subtle, rgba(255, 77, 0, 0.15));
   border: 1px solid var(--mi-color-primary, #FF4D00);
-  color: #FF8533;
+  color: var(--mi-color-primary, #FF8533);
   font-family: inherit;
   font-size: 0.75rem;
   font-weight: 700;
@@ -202,8 +202,8 @@
 
 .mi-visualizer__btn-action:hover {
   background-color: var(--mi-color-primary, #FF4D00);
-  color: #050406;
-  box-shadow: 0 0 10px rgba(255, 77, 0, 0.4);
+  color: var(--mi-color-primary-text, #050406);
+  box-shadow: var(--mi-shadow-glow);
 }
 
 /* Body / Workspace */
@@ -242,7 +242,7 @@
 .mi-visualizer__pane {
   display: flex;
   flex-direction: column;
-  background-color: #0A090D;
+  background-color: var(--mi-color-bg, #0A090D);
   border-right: 1px solid var(--mi-color-border, #332D40);
   position: relative;
   overflow: hidden;
@@ -294,9 +294,9 @@
 }
 
 .mi-visualizer__pane-tab--active {
-  background-color: rgba(255, 77, 0, 0.15);
+  background-color: var(--mi-color-bg-subtle, rgba(255, 77, 0, 0.15));
   border-color: var(--mi-color-primary, #FF4D00);
-  color: #FF8533 !important;
+  color: var(--mi-color-primary, #FF8533) !important;
 }
 
 .mi-visualizer__pane-badge {
@@ -319,8 +319,8 @@
   width: 100%;
   height: 100%;
   padding: 1rem;
-  background-color: #050406;
-  color: #00FF66;
+  background-color: var(--mi-color-bg, #050406);
+  color: var(--mi-color-text, #00FF66);
   font-family: var(--mi-font-mono, 'JetBrains Mono', monospace);
   font-size: 0.85rem;
   line-height: 1.55;
@@ -333,7 +333,7 @@
 }
 
 .mi-visualizer__textarea:focus {
-  background-color: #08070A;
+  background-color: var(--mi-color-bg-subtle, #08070A);
 }
 
 /* Live Canvas */

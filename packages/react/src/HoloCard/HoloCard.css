@@ -2,11 +2,11 @@
 
 .moon-holocard {
   position: relative;
-  border-radius: var(--moon-radius-md, 12px);
-  padding: var(--moon-space-lg, 1.5rem);
-  background: var(--moon-bg-surface, rgba(13, 15, 20, 0.9));
-  border: 1px solid var(--moon-color-border, rgba(255, 68, 68, 0.4));
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-radius: var(--mi-radius-md, 12px);
+  padding: 1.5rem;
+  background: var(--mi-color-surface, rgba(13, 15, 20, 0.9));
+  border: 1px solid var(--mi-color-border-accent, rgba(255, 68, 68, 0.4));
+  box-shadow: var(--mi-shadow-glow, 0 10px 30px rgba(0, 0, 0, 0.5));
   transition: transform 0.15s ease-out, box-shadow 0.2s ease;
   transform-style: preserve-3d;
   overflow: hidden;
@@ -33,8 +33,8 @@
 
 /* Variant Styles */
 .moon-holocard--inferno {
-  border-color: rgba(255, 68, 68, 0.5);
-  box-shadow: 0 10px 30px rgba(255, 68, 68, 0.2);
+  border-color: var(--mi-color-border-accent, rgba(255, 68, 68, 0.5));
+  box-shadow: var(--mi-shadow-glow, 0 10px 30px rgba(255, 68, 68, 0.2));
 }
 
 .moon-holocard--cyber {
