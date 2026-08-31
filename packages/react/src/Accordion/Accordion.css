@@ -11,7 +11,8 @@
   background-color: var(--mi-color-surface, #1E1B26);
   border: 1px solid var(--mi-color-border, #332D40);
   border-radius: var(--mi-radius-base, 4px);
-  overflow: hidden;
+  position: relative;
+  overflow: visible;
   transition: border-color 0.15s ease;
 }
 

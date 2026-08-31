@@ -5,10 +5,21 @@
   border: 1px solid var(--mi-color-border, #332D40);
   border-radius: var(--mi-radius-md, 6px);
   color: var(--mi-color-text, #F1F5F9);
-  overflow: hidden;
+  position: relative;
+  overflow: visible;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
   max-width: 100%;
+}
+
+.mi-card__header:first-child {
+  border-top-left-radius: var(--mi-radius-md, 6px);
+  border-top-right-radius: var(--mi-radius-md, 6px);
+}
+
+.mi-card__footer:last-child {
+  border-bottom-left-radius: var(--mi-radius-md, 6px);
+  border-bottom-right-radius: var(--mi-radius-md, 6px);
 }
 
 .mi-card--interactive {

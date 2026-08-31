@@ -166,7 +166,7 @@ export const Dropdown = ({
   };
 
   return (
-    <div ref={containerRef} className={`mi-dropdown ${className}`.trim()} {...props}>
+    <div ref={containerRef} className={`mi-dropdown ${isOpen ? 'mi-dropdown--open' : ''} ${className}`.trim()} {...props}>
       <div className="mi-dropdown__trigger">{renderTrigger()}</div>
 
       {isOpen && (

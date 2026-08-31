@@ -5,6 +5,10 @@
   display: inline-block;
 }
 
+.mi-dropdown--open {
+  z-index: 99999;
+}
+
 .mi-dropdown__trigger {
   cursor: pointer;
   display: inline-flex;
@@ -25,7 +29,7 @@
 .mi-dropdown__menu {
   position: absolute;
   top: calc(100% + 6px);
-  z-index: 1050;
+  z-index: 99999;
   min-width: 190px;
   padding: 0.4rem;
   background-color: var(--mi-color-bg-subtle, #14121A);
