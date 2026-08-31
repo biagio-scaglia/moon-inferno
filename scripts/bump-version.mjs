@@ -64,8 +64,8 @@ function main() {
 
   const newVersion = getNextVersion(currentVersion, targetArg);
 
-  console.log(`\n🌙 Moon-Inferno Automated Release & NPM Publisher`);
-  console.log(`=================================================`);
+  console.log(`\n🌙 Moon-Inferno Automated Release, NPM & GitHub Pages Publisher`);
+  console.log(`================================================================`);
   console.log(`Current version: v${currentVersion}`);
   console.log(`New version:     v${newVersion}`);
   console.log(`NPM Publish:     ${shouldPublish ? 'ENABLED' : 'DISABLED'}`);
@@ -99,11 +99,12 @@ function main() {
 
   console.log(`\n🎉 Successfully bumped version to v${newVersion}!`);
 
-  // 3. Build & Publish to NPM
-  if (shouldPublish) {
-    console.log(`\n🔨 Building all monorepo packages...`);
-    execSync('pnpm run build', { cwd: rootDir, stdio: 'inherit' });
+  // 3. Build Monorepo & Playground
+  console.log(`\n🔨 Building all monorepo packages & playground...`);
+  execSync('pnpm run build', { cwd: rootDir, stdio: 'inherit' });
 
+  // 4. Publish to NPM
+  if (shouldPublish) {
     console.log(`\n🚀 Publishing all packages to NPM registry...`);
     try {
       execSync('pnpm publish -r --access public --no-git-checks', { cwd: rootDir, stdio: 'inherit' });
@@ -115,7 +116,7 @@ function main() {
     console.log(`\nℹ️ Skipped NPM Publish (--no-publish flag passed).\n`);
   }
 
-  // 4. Git Commit & Push to GitHub
+  // 5. Git Commit & Push to GitHub main
   if (shouldPushGit) {
     console.log(`\n🐙 Staging, Committing & Pushing release v${newVersion} to GitHub (main)...`);
     try {
@@ -125,6 +126,15 @@ function main() {
       console.log(`\n✨ PUSHED RELEASE v${newVersion} TO GITHUB REPOSITORY MAIN BRANCH! ✨\n`);
     } catch (err) {
       console.error(`\n⚠️ Git commit/push encountered an issue:`, err.message);
+    }
+
+    // 6. Deploy live Playground to GitHub Pages gh-pages branch
+    console.log(`\n🌐 Deploying live Playground to GitHub Pages (gh-pages branch)...`);
+    try {
+      execSync('npx -y gh-pages -d playground/dist', { cwd: rootDir, stdio: 'inherit' });
+      console.log(`\n✨ LIVE PLAYGROUND DEPLOYED TO GITHUB PAGES! ✨\n`);
+    } catch (err) {
+      console.error(`\n⚠️ GitHub Pages deployment encountered an issue:`, err.message);
     }
   }
 }

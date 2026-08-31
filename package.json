@@ -13,7 +13,8 @@
     "bump:minor": "node scripts/bump-version.mjs minor",
     "bump:major": "node scripts/bump-version.mjs major",
     "bump:only": "node scripts/bump-version.mjs --no-publish",
-    "release": "node scripts/bump-version.mjs"
+    "release": "node scripts/bump-version.mjs",
+    "deploy": "pnpm run build && npx -y gh-pages -d playground/dist"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",
