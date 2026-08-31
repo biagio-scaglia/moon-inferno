@@ -182,7 +182,7 @@ const status = "ONLINE";`,onChange:d,title:u="CYBER_SHEET_NOTE.TXT",readOnly:g=!
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   
   <!-- Moon-Inferno CDN Stylesheet -->
-  ${p?'<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno@0.3.8/dist/styles.css">':""}
+  ${p?'<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno@0.4.2/dist/styles.css">':""}
 
   <style>
     /* Instant Theme Tokens Fallback */
@@ -323,9 +323,9 @@ const status = "ONLINE";`,onChange:d,title:u="CYBER_SHEET_NOTE.TXT",readOnly:g=!
       letter-spacing: 0.05em;
     }
     .mi-badge--inferno {
-      background: rgba(255, 77, 0, 0.15);
-      color: #FF8533;
-      border: 1px solid #FF661A;
+      background: var(--mi-color-bg-subtle, rgba(255, 77, 0, 0.15));
+      color: var(--mi-color-primary, #FF8533);
+      border: 1px solid var(--mi-color-border-accent, #FF661A);
     }
     .mi-badge--success {
       background: rgba(0, 255, 102, 0.15);
