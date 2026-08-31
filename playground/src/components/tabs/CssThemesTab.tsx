@@ -19,7 +19,7 @@ export const CssThemesTab: React.FC<CssThemesTabProps> = ({ currentTheme, onThem
         </CardHeader>
         <CardBody>
           <Stack gap="1.5rem">
-            <p style={{ margin: 0, color: '#F8FAFC', fontWeight: 600, fontSize: '0.875rem' }}>
+            <p style={{ margin: 0, color: 'var(--mi-color-text)', fontWeight: 600, fontSize: '0.875rem' }}>
               Moon-Inferno provides 3 built-in signature themes. Switch themes live to see instant CSS custom property cascades across the UI:
             </p>
 
@@ -74,7 +74,7 @@ export const CssThemesTab: React.FC<CssThemesTabProps> = ({ currentTheme, onThem
         </CardHeader>
         <CardBody>
           <Stack gap="1rem">
-            <p style={{ margin: 0, color: '#F8FAFC', fontWeight: 600, fontSize: '0.875rem' }}>
+            <p style={{ margin: 0, color: 'var(--mi-color-text)', fontWeight: 600, fontSize: '0.875rem' }}>
               All primitives are styled with standard CSS variables. You can override any token in your global stylesheet:
             </p>
 
@@ -119,7 +119,7 @@ export const CssThemesTab: React.FC<CssThemesTabProps> = ({ currentTheme, onThem
         </CardHeader>
         <CardBody>
           <Stack gap="1rem">
-            <p style={{ margin: 0, color: '#F8FAFC', fontWeight: 600, fontSize: '0.875rem' }}>
+            <p style={{ margin: 0, color: 'var(--mi-color-text)', fontWeight: 600, fontSize: '0.875rem' }}>
               Import Moon-Inferno styling and theme tokens in ANY website using a CDN link:
             </p>
             <CodeBlock

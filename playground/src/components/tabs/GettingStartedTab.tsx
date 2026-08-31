@@ -12,7 +12,7 @@ export const GettingStartedTab: React.FC = () => {
         <CardBody>
           <Stack direction="row" align="center" justify="between" wrap gap="1rem">
             <Stack gap="0.25rem">
-              <strong style={{ fontSize: '1.05rem', color: '#F8FAFC' }}>CHOOSE YOUR INTEGRATION STACK</strong>
+              <strong style={{ fontSize: '1.05rem', color: 'var(--mi-color-text)' }}>CHOOSE YOUR INTEGRATION STACK</strong>
               <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--mi-color-text-muted)' }}>
                 Toggle between modern React JSX package usage or zero-build Vanilla HTML CDN &lt;link&gt; (like Bootstrap):
               </p>
@@ -45,7 +45,7 @@ export const GettingStartedTab: React.FC = () => {
           {/* 1. All-in-One vs Modular Installation */}
           <PixelContainer title="1. INSTALL VIA PACKAGE MANAGERS (NPM / PNPM / YARN / BUN)">
             <Stack gap="1rem">
-              <p style={{ margin: 0, color: '#F8FAFC', fontWeight: 600, fontSize: '0.875rem' }}>
+              <p style={{ margin: 0, color: 'var(--mi-color-text)', fontWeight: 600, fontSize: '0.875rem' }}>
                 Install the all-in-one bundle or modular individual packages:
               </p>
               <CodeBlock filename="npm (All-in-One)" code="npm install moon-inferno" />
@@ -66,7 +66,7 @@ pnpm add @moon-inferno/core @moon-inferno/react @moon-inferno/themes @moon-infer
           {/* 2. React Setup & Provider */}
           <PixelContainer title="2. REACT APPLICATION ROOT SETUP">
             <Stack gap="1rem">
-              <p style={{ margin: 0, color: '#F8FAFC', fontWeight: 600, fontSize: '0.875rem' }}>
+              <p style={{ margin: 0, color: 'var(--mi-color-text)', fontWeight: 600, fontSize: '0.875rem' }}>
                 Wrap your React root inside <code>&lt;MoonProvider&gt;</code> and import the global styles:
               </p>
               <CodeBlock
@@ -98,7 +98,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             </CardHeader>
             <CardBody>
               <Stack gap="1rem">
-                <p style={{ margin: 0, color: '#F8FAFC', fontWeight: 600, fontSize: '0.875rem' }}>
+                <p style={{ margin: 0, color: 'var(--mi-color-text)', fontWeight: 600, fontSize: '0.875rem' }}>
                   Import components and icons directly into your pages:
                 </p>
                 <CodeBlock
@@ -135,7 +135,7 @@ export function CyberDashboard() {
           {/* 1. CDN <link> Inclusion */}
           <PixelContainer title="1. BOOTSTRAP-STYLE CDN <LINK> (VANILLA HTML / NO BUNDLER)">
             <Stack gap="1rem">
-              <p style={{ margin: 0, color: '#F8FAFC', fontWeight: 600, fontSize: '0.875rem' }}>
+              <p style={{ margin: 0, color: 'var(--mi-color-text)', fontWeight: 600, fontSize: '0.875rem' }}>
                 Include the CDN stylesheet directly in your HTML <code>&lt;head&gt;</code> without any build tools:
               </p>
               <CodeBlock
@@ -158,7 +158,7 @@ export function CyberDashboard() {
             </CardHeader>
             <CardBody>
               <Stack gap="1.25rem">
-                <p style={{ margin: 0, color: '#F8FAFC', fontWeight: 600, fontSize: '0.875rem' }}>
+                <p style={{ margin: 0, color: 'var(--mi-color-text)', fontWeight: 600, fontSize: '0.875rem' }}>
                   A production-ready static HTML starter featuring buttons, cards, badges, and Google Fonts:
                 </p>
 
@@ -229,7 +229,7 @@ export function CyberDashboard() {
             </CardHeader>
             <CardBody>
               <Stack gap="1.5rem">
-                <p style={{ margin: 0, color: '#F8FAFC', fontWeight: 600, fontSize: '0.875rem' }}>
+                <p style={{ margin: 0, color: 'var(--mi-color-text)', fontWeight: 600, fontSize: '0.875rem' }}>
                   Use any of the following CSS classes directly on standard HTML elements:
                 </p>
 

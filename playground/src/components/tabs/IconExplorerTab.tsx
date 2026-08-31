@@ -155,7 +155,7 @@ export const IconExplorerTab: React.FC<IconExplorerTabProps> = ({ onCopyIcon }) 
             onChange={(e) => setIconQuery(e.target.value)}
           />
         </div>
-        <p style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC', margin: 0 }}>
+        <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)', margin: 0 }}>
           Click any SVG icon to copy JSX tag to clipboard. ({ALL_ICONS.length} available)
         </p>
       </Stack>
@@ -168,29 +168,29 @@ export const IconExplorerTab: React.FC<IconExplorerTabProps> = ({ onCopyIcon }) 
         </CardHeader>
         <CardBody>
           <Stack gap="1rem">
-            <p style={{ margin: 0, fontSize: '0.875rem', color: '#F8FAFC', fontWeight: 600 }}>
+            <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--mi-color-text)', fontWeight: 600 }}>
               Pass <code style={{ color: 'var(--mi-color-primary)' }}>hoverEffect=&quot;glow | spin | bounce | pulse | scale&quot;</code> to any vector icon:
             </p>
             <Stack direction="row" gap="1.5rem" wrap align="center">
               <Stack align="center" gap="0.35rem">
                 <FlameIcon size={32} color="#FF4D00" hoverEffect="glow" />
-                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)', color: '#F8FAFC' }}>glow</span>
+                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)', color: 'var(--mi-color-text)' }}>glow</span>
               </Stack>
               <Stack align="center" gap="0.35rem">
                 <RefreshIcon size={32} color="#00FF66" hoverEffect="spin" />
-                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)', color: '#F8FAFC' }}>spin</span>
+                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)', color: 'var(--mi-color-text)' }}>spin</span>
               </Stack>
               <Stack align="center" gap="0.35rem">
                 <ZapIcon size={32} color="#00E5FF" hoverEffect="bounce" />
-                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)', color: '#F8FAFC' }}>bounce</span>
+                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)', color: 'var(--mi-color-text)' }}>bounce</span>
               </Stack>
               <Stack align="center" gap="0.35rem">
                 <SparklesIcon size={32} color="#FF00A0" hoverEffect="pulse" />
-                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)', color: '#F8FAFC' }}>pulse</span>
+                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)', color: 'var(--mi-color-text)' }}>pulse</span>
               </Stack>
               <Stack align="center" gap="0.35rem">
                 <GamepadIcon size={32} color="#FFD700" hoverEffect="scale" />
-                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)', color: '#F8FAFC' }}>scale</span>
+                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--mi-font-mono)', color: 'var(--mi-color-text)' }}>scale</span>
               </Stack>
             </Stack>
             <CodeBlock
@@ -223,7 +223,7 @@ export const IconExplorerTab: React.FC<IconExplorerTabProps> = ({ onCopyIcon }) 
               backgroundColor: 'var(--mi-color-bg-subtle, #14121A)',
               border: '1px solid var(--mi-color-border, #332D40)',
               borderRadius: 'var(--mi-radius-base, 6px)',
-              color: '#F8FAFC',
+              color: 'var(--mi-color-text)',
               cursor: 'pointer',
               fontFamily: 'var(--mi-font-mono)',
               fontSize: '0.75rem',

@@ -1,6 +1,6 @@
 # Moon-Inferno — Developer Manual & API Reference
 
-Welcome to the complete developer manual for **Moon-Inferno** (`v0.3.9`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
+Welcome to the complete developer manual for **Moon-Inferno** (`v0.4.0`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
 
 ---
 

@@ -184,7 +184,7 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
         <CardBody>
           <Stack direction="row" align="center" justify="between" wrap gap="1rem">
             <Stack gap="0.25rem">
-              <strong style={{ fontSize: '1rem', color: '#F8FAFC' }}>
+              <strong style={{ fontSize: '1rem', color: 'var(--mi-color-text)' }}>
                 CODE SNIPPET GENERATOR: {snippetFormat === 'react' ? 'REACT JSX MODE' : 'PURE HTML (CDN LINK) MODE'}
               </strong>
               <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--mi-color-text-muted)' }}>
@@ -233,12 +233,12 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
               <CardBody>
                 <Stack gap="1.5rem">
                   <Stack gap="0.5rem">
-                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>GLITCH TEXT: Animated RGB-split glitch headline component.</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>GLITCH TEXT: Animated RGB-split glitch headline component.</span>
                     <GlitchText text="CYBERPUNK INFERNO" as="h3" style={{ fontSize: '1.5rem' }} />
                   </Stack>
 
                   <Stack gap="0.5rem">
-                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>PIXEL TEXT: Stepped pixelated retro typography with hard pixel shadow.</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>PIXEL TEXT: Stepped pixelated retro typography with hard pixel shadow.</span>
                     <Stack direction="row" align="center" gap="1rem" wrap>
                       <PixelText text="LEVEL 01" size="sm" />
                       <PixelText text="GAME OVER" size="md" />
@@ -248,7 +248,7 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
                   </Stack>
 
                   <Stack gap="0.5rem">
-                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>NEON TEXT: Glowing pulsing cathode tube text with optional flicker.</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>NEON TEXT: Glowing pulsing cathode tube text with optional flicker.</span>
                     <Stack direction="row" align="center" gap="1.5rem" wrap>
                       <NeonText text="INFERNO" color="inferno" flicker />
                       <NeonText text="CYBERPUNK" color="cyan" />
@@ -258,12 +258,12 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
                   </Stack>
 
                   <Stack gap="0.5rem">
-                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>TYPING EFFECT: Typewriter animation with blinking terminal cursor.</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>TYPING EFFECT: Typewriter animation with blinking terminal cursor.</span>
                     <TypingText text="Establishing encrypted link to satellite node 094..." speed={40} cursorChar="█" />
                   </Stack>
 
                   <Stack gap="0.5rem">
-                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>MARQUEE TICKER: Infinite continuous scrolling marquee primitive.</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>MARQUEE TICKER: Infinite continuous scrolling marquee primitive.</span>
                     <Marquee speed={18} variant="pixel">
                       <span>RETRO PRIMITIVES</span> - <span>ACCESSIBLE TICKER</span> - <span>MOON-INFERNO</span>
                     </Marquee>
@@ -335,7 +335,7 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Interactive 3D card with cursor-based parallax tilt, dynamic holographic glare, and prefers-reduced-motion fallback.
                   </p>
                   <Grid minChildWidth="260px" gap="1.5rem">
@@ -343,7 +343,7 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
                       <Stack gap="0.75rem">
                         <Badge variant="inferno">SOLAR_INFERNO</Badge>
                         <h4 style={{ margin: 0, fontSize: '1.1rem' }}>Cybernetic Core Node</h4>
-                        <p style={{ margin: 0, fontSize: '0.85rem', color: '#F8FAFC' }}>
+                        <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--mi-color-text)' }}>
                           Hover cursor to tilt and observe dynamic holographic iridescence reflection.
                         </p>
                       </Stack>
@@ -353,7 +353,7 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
                       <Stack gap="0.75rem">
                         <Badge variant="pixel">CYBER_GRID</Badge>
                         <h4 style={{ margin: 0, fontSize: '1.1rem' }}>Quantum Stream</h4>
-                        <p style={{ margin: 0, fontSize: '0.85rem', color: '#F8FAFC' }}>
+                        <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--mi-color-text)' }}>
                           High-contrast neon cyan border and glowing glare reflection.
                         </p>
                       </Stack>
@@ -401,7 +401,7 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     HTML5 drawing canvas with pixel grid overlay, neon color palette, eraser, clear tool, and PNG image export button.
                   </p>
                   <CyberCanvas height={280} gridOverlay strokeColor="#FF4D00" />
@@ -434,7 +434,7 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Retro text editor notepad with real-time line numbering, word/char counter, copy text action, and markdown preview mode.
                   </p>
                   <SheetEditor
@@ -481,7 +481,7 @@ export const ComponentsCatalogTab: React.FC<ComponentsCatalogTabProps> = ({
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Retro RPG typewriter dialogue box with gradual letter reveal. Features WAI-ARIA <code>aria-live="polite"</code> screen reader immediate text fallback.
                   </p>
                   <MoonTypewriterDialogue
@@ -526,7 +526,7 @@ import { FlameIcon } from '@moon-inferno/icons';
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Pixel art 2D inventory slot grid with full keyboard arrow navigation, <code>Space/Enter</code> slot swapping, and live voice announcements for screen readers.
                   </p>
                   <MoonRPGGrid
@@ -582,7 +582,7 @@ import { FlameIcon, ZapIcon, RefreshIcon, CheckIcon } from '@moon-inferno/icons'
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Animated gaming health, mana, and shield meters built natively on HTML5 <code>&lt;meter&gt;</code> tags for live percentage reporting to screen readers.
                   </p>
                   <Stack gap="1rem">
@@ -625,7 +625,7 @@ import { FlameIcon, ZapIcon, RefreshIcon, CheckIcon } from '@moon-inferno/icons'
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Cyberpunk RGB split glitch text that automatically disables intense flickering when <code>(prefers-reduced-motion: reduce)</code> is set.
                   </p>
                   <div style={{ fontSize: 'clamp(1rem, 4vw, 1.4rem)', textAlign: 'center', padding: '0.75rem', background: '#0A090D', borderRadius: '4px', maxWidth: '100%', overflow: 'hidden' }}>
@@ -658,7 +658,7 @@ import { FlameIcon, ZapIcon, RefreshIcon, CheckIcon } from '@moon-inferno/icons'
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Phosphor green CRT console logger for blockchain transactions or server logs with <code>aria-live="polite"</code> stream updates.
                   </p>
                   <MoonConsoleLogger
@@ -718,7 +718,7 @@ import { FlameIcon, ZapIcon, RefreshIcon, CheckIcon } from '@moon-inferno/icons'
               </CardHeader>
               <CardBody>
                 <Stack gap="1.25rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Tactile interactive button supporting stepped pixel borders, loading state aria-busy, and high-contrast focus rings.
                   </p>
                   <Stack direction="row" align="center" gap="0.5rem" wrap>
@@ -781,7 +781,7 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Cyberpunk search bar with built-in search icon, auto-clear button, keyboard shortcut badge, and ARIA <code>role="search"</code>.
                   </p>
                   <Stack gap="1rem">
@@ -831,7 +831,7 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Full WCAG 2.1 AA keyboard grid navigation (Arrow keys, PageUp/Down, Home/End, Enter, Escape).
                   </p>
                   <Stack direction="row" gap="2rem" wrap align="start">
@@ -1006,7 +1006,7 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
                     />
 
                     <div>
-                      <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC', display: 'block', marginBottom: '0.5rem' }}>
+                      <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)', display: 'block', marginBottom: '0.5rem' }}>
                         MODE SELECTOR (RADIO GROUP):
                       </span>
                       <RadioGroup name="mode" value={radioValue} onChange={setRadioValue}>
@@ -1076,7 +1076,7 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Cyberpunk color picker with preset swatches, native color trigger, hex text input, and live color preview.
                   </p>
                   <Stack direction="row" gap="2rem" wrap align="center">
@@ -1149,7 +1149,7 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Cyberpunk data table with striped rows, hover highlighting, and semantic HTML5 WAI-ARIA accessibility.
                   </p>
                   <Table variant="inferno" striped hoverable>
@@ -1236,12 +1236,12 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
               </CardHeader>
               <CardBody>
                 <Stack gap="1.5rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     SVG-based pie &amp; donut chart visualization with hover slice expansion, percentage calculation, and accessible table summary.
                   </p>
                   <Grid minChildWidth="260px" gap="2rem">
                     <Stack gap="1rem" align="center">
-                      <h4 style={{ margin: 0, fontSize: '0.9rem', color: '#F8FAFC' }}>Inferno Donut Chart</h4>
+                      <h4 style={{ margin: 0, fontSize: '0.9rem', color: 'var(--mi-color-text)' }}>Inferno Donut Chart</h4>
                       <PieChart
                         donut
                         size={180}
@@ -1257,7 +1257,7 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
                     </Stack>
 
                     <Stack gap="1rem" align="center">
-                      <h4 style={{ margin: 0, fontSize: '0.9rem', color: '#F8FAFC' }}>Solid Pie Chart</h4>
+                      <h4 style={{ margin: 0, fontSize: '0.9rem', color: 'var(--mi-color-text)' }}>Solid Pie Chart</h4>
                       <PieChart
                         size={180}
                         data={[
@@ -1314,7 +1314,7 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
 
                   <Stack gap="1.5rem">
                     <Stack gap="0.5rem">
-                      <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                      <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                         IMAGE AVATARS (SIZES &amp; VARIANTS):
                       </span>
                       <Stack direction="row" align="center" gap="1rem" wrap>
@@ -1364,7 +1364,7 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
               </CardHeader>
               <CardBody>
                 <Stack gap="1rem">
-                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>
+                  <p style={{ margin: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>
                     Click any image card to open the accessible Lightbox modal with keyboard arrow navigation.
                   </p>
                   <Gallery items={GALLERY_ITEMS} />
@@ -1403,7 +1403,7 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
               <CardBody>
                 <Stack gap="1.5rem">
                   <Stack gap="0.5rem">
-                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>SIGNAL LIGHT (LED STATUS WITH PULSE):</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>SIGNAL LIGHT (LED STATUS WITH PULSE):</span>
                     <Stack direction="row" align="center" gap="1.5rem" wrap>
                       <SignalLight status="online" label="CORE MATRIX" pulse />
                       <SignalLight status="warning" label="THERMAL OVERLOAD" pulse />
@@ -1413,7 +1413,7 @@ import { FlameIcon, ShieldIcon, SparklesIcon, GamepadIcon } from '@moon-inferno/
                   </Stack>
 
                   <Stack gap="0.5rem">
-                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC' }}>SPINNER LOADERS &amp; BADGES:</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--mi-color-text)' }}>SPINNER LOADERS &amp; BADGES:</span>
                     <Stack direction="row" align="center" gap="1.5rem" wrap>
                       <Loader size="sm" variant="inferno" label="Connecting..." />
                       <Loader size="md" variant="pixel" />

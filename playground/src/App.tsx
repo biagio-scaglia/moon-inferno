@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   MoonProvider,
+  useMoonTheme,
   Container,
   Stack,
   Grid,
@@ -54,7 +55,7 @@ import { TerminalTab } from './components/tabs/TerminalTab';
 import { HtmlVisualizerTab } from './components/tabs/HtmlVisualizerTab';
 
 function MasterGuideWebsite() {
-  const [currentTheme, setCurrentTheme] = useState<'moon-inferno' | 'terminal' | 'y2k'>('moon-inferno');
+  const { theme: currentTheme, setTheme } = useMoonTheme();
   const [isCRTActive, setIsCRTActive] = useState(false);
   const [isMatrixActive, setIsMatrixActive] = useState(false);
   const [activeTabId, setActiveTabId] = useState('components-catalog');
@@ -64,12 +65,8 @@ function MasterGuideWebsite() {
 
   const { addToast } = useToast();
 
-  useEffect(() => {
-    document.body.setAttribute('data-theme', currentTheme);
-  }, [currentTheme]);
-
   const handleThemeChange = (theme: 'moon-inferno' | 'terminal' | 'y2k') => {
-    setCurrentTheme(theme);
+    setTheme(theme);
     addToast(`Theme switched to ${theme.toUpperCase()}`, { variant: 'inferno' });
   };
 

@@ -19,6 +19,9 @@ export interface MoonProviderProps {
 function setDOMTheme(theme: ThemeName): void {
   if (typeof document !== 'undefined') {
     document.documentElement.setAttribute('data-theme', theme);
+    if (document.body) {
+      document.body.setAttribute('data-theme', theme);
+    }
   }
 }
 
