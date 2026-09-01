@@ -23,6 +23,7 @@ const docPaths = [
   'playground/src/components/DocSidebarNav.tsx',
   'playground/src/components/tabs/TerminalTab.tsx',
   'playground/src/main.tsx',
+  'packages/react/src/MoonHtmlVisualizer/MoonHtmlVisualizer.tsx',
 ];
 
 function getNextVersion(currentVersion, bumpType) {
@@ -84,14 +85,17 @@ function main() {
   }
 
   // 2. Update doc files
-  const versionRegex = new RegExp(`v${currentVersion.replace(/\./g, '\\.')}`, 'g');
+  const versionRegex = /v\d+\.\d+\.\d+/g;
+  const cdnRegex = /moon-inferno@\d+\.\d+\.\d+/g;
   for (const relPath of docPaths) {
     const fullPath = path.join(rootDir, relPath);
     if (fs.existsSync(fullPath)) {
       let content = fs.readFileSync(fullPath, 'utf8');
-      if (content.includes(`v${currentVersion}`)) {
-        content = content.replace(versionRegex, `v${newVersion}`);
-        fs.writeFileSync(fullPath, content, 'utf8');
+      const updated = content
+        .replace(versionRegex, `v${newVersion}`)
+        .replace(cdnRegex, `moon-inferno@${newVersion}`);
+      if (updated !== content) {
+        fs.writeFileSync(fullPath, updated, 'utf8');
         console.log(`  ✓ Updated version strings in ${relPath}`);
       }
     }

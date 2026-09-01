@@ -229,7 +229,7 @@ export const MoonHtmlVisualizer = ({
   <!-- Moon-Inferno CDN Stylesheet -->
   ${
     enableCdnInjection
-      ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno@0.4.2/dist/styles.css">'
+      ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno@0.4.7/dist/styles.css">'
       : ''
   }
 
@@ -703,7 +703,7 @@ export const MoonHtmlVisualizer = ({
 
           {/* Viewport Resizer */}
           {allowViewportResize && (
-            <div className="mi-visualizer__btn-group" role="group" aria-label="Viewport Size">
+            <div className="mi-visualizer__btn-group mi-visualizer__btn-group--viewport" role="group" aria-label="Viewport Size">
               <button
                 type="button"
                 className={`mi-visualizer__btn-pill ${viewport === 'desktop' ? 'mi-visualizer__btn-pill--active' : ''}`}

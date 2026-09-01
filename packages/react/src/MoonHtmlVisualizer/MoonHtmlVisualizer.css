@@ -224,13 +224,6 @@
   width: 100%;
 }
 
-@media (max-width: 860px) {
-  .mi-visualizer__body--split {
-    grid-template-columns: 100%;
-    grid-template-rows: 1fr 1fr;
-  }
-}
-
 .mi-visualizer__body--preview .mi-visualizer__pane--preview,
 .mi-visualizer__body--html .mi-visualizer__pane--full,
 .mi-visualizer__body--css .mi-visualizer__pane--full {
@@ -394,4 +387,95 @@
 .mi-visualizer--pixel .mi-visualizer__frame-wrapper {
   border-radius: 0;
   box-shadow: 2px 2px 0 #000;
+}
+
+/* Responsive Mobile Overrides for MoonHtmlVisualizer */
+@media (max-width: 768px) {
+  .mi-visualizer__toolbar {
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .mi-visualizer__actions {
+    gap: 0.35rem;
+  }
+
+  .mi-visualizer__body--split {
+    grid-template-columns: 100%;
+    grid-template-rows: minmax(220px, 1fr) minmax(240px, 1.2fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .mi-visualizer {
+    border-width: 1px;
+    border-radius: var(--mi-radius-sm, 4px);
+    min-height: 480px;
+  }
+
+  .mi-visualizer__toolbar {
+    padding: 0.45rem 0.5rem;
+    gap: 0.4rem;
+  }
+
+  .mi-visualizer__brand {
+    gap: 0.35rem;
+  }
+
+  .mi-visualizer__title {
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .mi-visualizer__tabs {
+    padding: 2px;
+    gap: 2px;
+  }
+
+  .mi-visualizer__tab {
+    padding: 0.25rem 0.45rem;
+    font-size: 0.7rem;
+  }
+
+  .mi-visualizer__actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+
+  .mi-visualizer__btn-group--viewport {
+    display: none !important;
+  }
+
+  .mi-visualizer__select {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.35rem;
+    max-width: 130px;
+  }
+
+  .mi-visualizer__btn-pill {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.68rem;
+  }
+
+  .mi-visualizer__btn-action,
+  .mi-visualizer__btn-icon {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.45rem;
+  }
+
+  .mi-visualizer__textarea {
+    font-size: 0.78rem;
+    padding: 0.65rem;
+  }
+
+  .mi-visualizer__canvas-container {
+    padding: 0.25rem;
+  }
+
+  .mi-visualizer__pane-header {
+    padding: 0.35rem 0.6rem;
+    min-height: 32px;
+  }
 }
