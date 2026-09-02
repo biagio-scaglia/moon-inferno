@@ -1,4 +1,4 @@
-import { useState, forwardRef, type HTMLAttributes, type MouseEvent, type KeyboardEvent } from 'react';
+import { useState, forwardRef, type HTMLAttributes, type MouseEvent } from 'react';
 import { CopyIcon, CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@moon-inferno/icons';
 import './CodeBlock.css';
 
@@ -35,13 +35,6 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
       setTimeout(() => setCopied(false), 2000);
     };
 
-    const handleHeaderKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-      if (collapsible && (e.key === 'Enter' || e.key === ' ')) {
-        e.preventDefault();
-        setIsExpanded(!isExpanded);
-      }
-    };
-
     const headerTitle = title || filename || (language ? `code.${language}` : 'code snippet');
 
     return (
@@ -50,28 +43,30 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
         className={`mi-codeblock-wrapper ${collapsible ? 'mi-codeblock-wrapper--collapsible' : ''} ${className}`.trim()}
         {...props}
       >
-        <div
-          className={`mi-codeblock-header ${collapsible ? 'mi-codeblock-header--clickable' : ''}`}
-          onClick={collapsible ? () => setIsExpanded(!isExpanded) : undefined}
-          role={collapsible ? 'button' : undefined}
-          tabIndex={collapsible ? 0 : undefined}
-          onKeyDown={handleHeaderKeyDown}
-          aria-expanded={collapsible ? isExpanded : undefined}
-        >
-          <div className="mi-codeblock-header-title">
-            {collapsible && (
+        <div className="mi-codeblock-header">
+          {collapsible ? (
+            <button
+              type="button"
+              className="mi-codeblock-header-title mi-codeblock-header-title--clickable"
+              onClick={() => setIsExpanded(!isExpanded)}
+              aria-expanded={isExpanded}
+              style={{ background: 'none', border: 'none', padding: 0, font: 'inherit', color: 'inherit', textAlign: 'left', display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+            >
               <span className="mi-codeblock-toggle-icon">
                 {isExpanded ? <ChevronUpIcon size={14} /> : <ChevronDownIcon size={14} />}
               </span>
-            )}
-            <span>{headerTitle}</span>
-            {language && <span className="mi-codeblock-lang-tag">{language}</span>}
-            {collapsible && (
+              <span>{headerTitle}</span>
+              {language && <span className="mi-codeblock-lang-tag">{language}</span>}
               <span className="mi-codeblock-collapse-hint">
-                {isExpanded ? '(click to collapse)' : '(click to expand full copy-paste code)'}
+                {isExpanded ? '(click to collapse)' : '(click to expand)'}
               </span>
-            )}
-          </div>
+            </button>
+          ) : (
+            <div className="mi-codeblock-header-title">
+              <span>{headerTitle}</span>
+              {language && <span className="mi-codeblock-lang-tag">{language}</span>}
+            </div>
+          )}
 
           <button
             type="button"

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   MoonProvider,
   useMoonTheme,
@@ -65,6 +65,18 @@ function MasterGuideWebsite() {
 
   const { addToast } = useToast();
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector<HTMLInputElement>('.header-search-container input, .mi-searchbar-input');
+        searchInput?.focus();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const handleThemeChange = (theme: 'moon-inferno' | 'terminal' | 'y2k') => {
     setTheme(theme);
     addToast(`Theme switched to ${theme.toUpperCase()}`, { variant: 'inferno' });
@@ -96,7 +108,7 @@ function MasterGuideWebsite() {
             <div className="header-brand">
               <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Moon-Inferno Favicon" style={{ height: '28px', width: '28px', flexShrink: 0 }} />
               <h1 className="brand-title">Moon-Inferno</h1>
-              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.4.8</Badge>
+              <Badge variant="pixel" icon={<SparklesIcon size={12} />}>v0.4.9</Badge>
             </div>
           </NavbarBrand>
 
@@ -364,7 +376,7 @@ function MasterGuideWebsite() {
 
         {/* Global Ticker Marquee */}
         <Marquee variant="pixel" speed={22}>
-          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.4.8 IS LIVE ON NPM &amp; CDN</span>
+          <span style={{ color: 'var(--mi-color-primary)', fontWeight: 'bold' }}>MOON-INFERNO v0.4.9 IS LIVE ON NPM &amp; CDN</span>
           <span>--</span>
           <span>npm install moon-inferno</span>
           <span>--</span>

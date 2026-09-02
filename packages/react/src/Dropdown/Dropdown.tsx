@@ -2,6 +2,10 @@ import {
   useState,
   useRef,
   useEffect,
+  createContext,
+  useContext,
+  Children,
+  isValidElement,
   type ReactNode,
   type ReactElement,
   type HTMLAttributes,
@@ -9,6 +13,13 @@ import {
   cloneElement,
 } from 'react';
 import './Dropdown.css';
+
+interface DropdownContextValue {
+  isOpen: boolean;
+  closeDropdown: () => void;
+}
+
+const DropdownContext = createContext<DropdownContextValue | null>(null);
 
 export interface DropdownProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
@@ -35,6 +46,8 @@ export const DropdownItem = ({
   onClick,
   ...props
 }: DropdownItemProps) => {
+  const context = useContext(DropdownContext);
+
   return (
     <button
       type="button"
@@ -50,6 +63,7 @@ export const DropdownItem = ({
         if (disabled) return;
         onClick?.(e);
         onSelect?.();
+        context?.closeDropdown();
       }}
       {...props}
     >
@@ -82,6 +96,8 @@ export const Dropdown = ({
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const closeDropdown = () => setIsOpen(false);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
@@ -107,16 +123,15 @@ export const Dropdown = ({
   let triggerElement: ReactElement<{ children?: ReactNode; onClick?: (e: unknown) => void; rightIcon?: ReactNode }> | null = null;
   let menuElement: ReactNode = null;
 
-  if (Array.isArray(children)) {
-    children.forEach((child) => {
-      const element = child as ReactElement<{ children?: ReactNode }>;
-      if (element?.type === DropdownTrigger) {
-        triggerElement = element.props.children as ReactElement<{ children?: ReactNode; onClick?: (e: unknown) => void; rightIcon?: ReactNode }>;
-      } else if (element?.type === DropdownMenu) {
-        menuElement = element.props.children;
+  Children.forEach(children, (child) => {
+    if (isValidElement(child)) {
+      if (child.type === DropdownTrigger) {
+        triggerElement = (child.props as { children?: ReactNode }).children as ReactElement<{ children?: ReactNode; onClick?: (e: unknown) => void; rightIcon?: ReactNode }>;
+      } else if (child.type === DropdownMenu) {
+        menuElement = (child.props as { children?: ReactNode }).children;
       }
-    });
-  }
+    }
+  });
 
   const chevronIcon = showChevron ? (
     <svg
@@ -136,20 +151,26 @@ export const Dropdown = ({
   ) : null;
 
   const renderTrigger = () => {
-    if (triggerElement && typeof triggerElement === 'object' && 'props' in triggerElement) {
-      const elementProps = (triggerElement as ReactElement<{ onClick?: (e: unknown) => void; rightIcon?: ReactNode }>).props || {};
-      const existingRightIcon = elementProps.rightIcon;
+    if (triggerElement && isValidElement(triggerElement)) {
+      const elementProps = (triggerElement.props as { onClick?: (e: unknown) => void; rightIcon?: ReactNode }) || {};
+      const isCustomComponent = typeof triggerElement.type !== 'string';
 
-      return cloneElement(triggerElement, {
+      const cloneProps: Record<string, unknown> = {
         'aria-haspopup': 'menu',
         'aria-expanded': isOpen,
-        rightIcon: existingRightIcon || chevronIcon,
         onClick: (e: unknown) => {
           elementProps.onClick?.(e);
           setIsOpen(!isOpen);
         },
-      } as Record<string, unknown>);
+      };
+
+      if (isCustomComponent && showChevron) {
+        cloneProps.rightIcon = elementProps.rightIcon || chevronIcon;
+      }
+
+      return cloneElement(triggerElement, cloneProps);
     }
+
     return (
       <div
         onClick={() => setIsOpen(!isOpen)}
@@ -166,18 +187,20 @@ export const Dropdown = ({
   };
 
   return (
-    <div ref={containerRef} className={`mi-dropdown ${isOpen ? 'mi-dropdown--open' : ''} ${className}`.trim()} {...props}>
-      <div className="mi-dropdown__trigger">{renderTrigger()}</div>
+    <DropdownContext.Provider value={{ isOpen, closeDropdown }}>
+      <div ref={containerRef} className={`mi-dropdown ${isOpen ? 'mi-dropdown--open' : ''} ${className}`.trim()} {...props}>
+        <div className="mi-dropdown__trigger">{renderTrigger()}</div>
 
-      {isOpen && (
-        <div
-          role="menu"
-          className={`mi-dropdown__menu mi-dropdown__menu--${align} ${variant === 'pixel' ? 'mi-dropdown__menu--pixel' : ''}`.trim()}
-          tabIndex={-1}
-        >
-          {menuElement}
-        </div>
-      )}
-    </div>
+        {isOpen && (
+          <div
+            role="menu"
+            className={`mi-dropdown__menu mi-dropdown__menu--${align} ${variant === 'pixel' ? 'mi-dropdown__menu--pixel' : ''}`.trim()}
+            tabIndex={-1}
+          >
+            {menuElement}
+          </div>
+        )}
+      </div>
+    </DropdownContext.Provider>
   );
 };

@@ -1,4 +1,4 @@
-import { useState, type ReactNode, type KeyboardEvent, type HTMLAttributes } from 'react';
+import { useState, useEffect, useRef, type ReactNode, type KeyboardEvent, type HTMLAttributes } from 'react';
 import './MoonRPGGrid.css';
 
 export interface RPGItem {
@@ -18,6 +18,16 @@ export interface MoonRPGGridProps extends HTMLAttributes<HTMLDivElement> {
   variant?: 'inferno' | 'pixel';
 }
 
+function buildGridArray(items: (RPGItem | null)[] | undefined, totalSlots: number): (RPGItem | null)[] {
+  const arr = new Array(totalSlots).fill(null);
+  if (items && items.length > 0) {
+    items.slice(0, totalSlots).forEach((item, idx) => {
+      arr[idx] = item;
+    });
+  }
+  return arr;
+}
+
 export const MoonRPGGrid = ({
   items: initialItems,
   columns = 5,
@@ -28,20 +38,21 @@ export const MoonRPGGrid = ({
   className = '',
   ...props
 }: MoonRPGGridProps) => {
-  const [gridItems, setGridItems] = useState<(RPGItem | null)[]>(() => {
-    if (initialItems && initialItems.length > 0) {
-      const arr = new Array(totalSlots).fill(null);
-      initialItems.slice(0, totalSlots).forEach((item, idx) => {
-        arr[idx] = item;
-      });
-      return arr;
-    }
-    return new Array(totalSlots).fill(null);
-  });
+  const [gridItems, setGridItems] = useState<(RPGItem | null)[]>(() =>
+    buildGridArray(initialItems, totalSlots)
+  );
 
   const [focusedIndex, setFocusedIndex] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [announcement, setAnnouncement] = useState('');
+
+  const slotRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    if (initialItems) {
+      setGridItems(buildGridArray(initialItems, totalSlots));
+    }
+  }, [initialItems, totalSlots]);
 
   const handleSlotClick = (index: number) => {
     setFocusedIndex(index);
@@ -90,6 +101,7 @@ export const MoonRPGGrid = ({
 
     e.preventDefault();
     setFocusedIndex(nextIndex);
+    slotRefs.current[nextIndex]?.focus();
     const focusedItem = gridItems[nextIndex];
     setAnnouncement(`Focused slot ${nextIndex + 1}: ${focusedItem ? focusedItem.name : 'Empty'}`);
   };
@@ -125,7 +137,8 @@ export const MoonRPGGrid = ({
               return (
                 <div
                   key={idx}
-                  tabIndex={0}
+                  ref={(el) => { slotRefs.current[idx] = el; }}
+                  tabIndex={focusedIndex === idx ? 0 : -1}
                   role="gridcell"
                   aria-selected={selectedIndex === idx}
                   aria-label={`Slot ${idx + 1}: ${item ? item.name : 'Empty'}`}

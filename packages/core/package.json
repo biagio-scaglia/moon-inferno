@@ -1,6 +1,6 @@
 {
   "name": "@moon-inferno/core",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "description": "Framework-independent design tokens, CSS variables, responsive primitives, and accessibility utilities for Moon-Inferno.",
   "license": "MIT",
   "author": "Biagio Scaglia",
@@ -28,7 +28,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "scripts": {

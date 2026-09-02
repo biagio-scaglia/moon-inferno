@@ -54,7 +54,7 @@ export const SheetEditor = ({
   const charCount = value.length;
 
   return (
-    <div className={`mi-sheeteditor ${className}`.trim()} {...props}>
+    <div className={`mi-sheeteditor mi-sheeteditor--${variant} ${className}`.trim()} {...props}>
       <div className="mi-sheeteditor-header">
         <div className="mi-sheeteditor-title">
           <span>{title}</span>

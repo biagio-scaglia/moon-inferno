@@ -31,7 +31,8 @@ function getNextVersion(currentVersion, bumpType) {
     return bumpType;
   }
 
-  const parts = currentVersion.split('.').map((n) => parseInt(n, 10));
+  const cleanVersion = currentVersion.replace(/^v/, '');
+  const parts = cleanVersion.split('.').map((n) => parseInt(n, 10));
   let [major = 0, minor = 0, patch = 0] = parts;
 
   switch (bumpType) {
@@ -53,10 +54,23 @@ function getNextVersion(currentVersion, bumpType) {
   return `${major}.${minor}.${patch}`;
 }
 
+function run(cmd, desc) {
+  console.log(`\n⏳ [${desc}] -> ${cmd}`);
+  try {
+    execSync(cmd, { cwd: rootDir, stdio: 'inherit' });
+    console.log(`✅ [${desc}] completed.`);
+  } catch (err) {
+    console.error(`❌ [${desc}] failed: ${err.message}`);
+    throw err;
+  }
+}
+
 function main() {
   const args = process.argv.slice(2);
   const shouldPublish = !args.includes('--no-publish');
   const shouldPushGit = !args.includes('--no-git');
+  const shouldDeployDocs = !args.includes('--no-deploy');
+  const isDryRun = args.includes('--dry-run');
   const targetArg = args.find((arg) => !arg.startsWith('--')) || 'patch';
 
   const refPkgPath = path.join(rootDir, packageJsonPaths[0]);
@@ -65,28 +79,41 @@ function main() {
 
   const newVersion = getNextVersion(currentVersion, targetArg);
 
-  console.log(`\n🌙 Moon-Inferno Automated Release, NPM & GitHub Pages Publisher`);
+  console.log(`\n🔥 MOON-INFERNO SIMULTANEOUS RELEASE PIPELINE 🔥`);
   console.log(`================================================================`);
   console.log(`Current version: v${currentVersion}`);
   console.log(`New version:     v${newVersion}`);
-  console.log(`NPM Publish:     ${shouldPublish ? 'ENABLED' : 'DISABLED'}`);
-  console.log(`Git Push:        ${shouldPushGit ? 'ENABLED' : 'DISABLED'}\n`);
+  console.log(`Dry Run:         ${isDryRun ? 'YES (No changes will be pushed)' : 'NO'}`);
+  console.log(`NPM Publish:     ${shouldPublish && !isDryRun ? 'ENABLED' : 'DISABLED'}`);
+  console.log(`Git Push & Tag:  ${shouldPushGit && !isDryRun ? 'ENABLED' : 'DISABLED'}`);
+  console.log(`GitHub Pages:    ${shouldDeployDocs && !isDryRun ? 'ENABLED' : 'DISABLED'}`);
+  console.log(`================================================================\n`);
 
-  // 1. Update package.json files
+  // Step 1: Pre-flight Verification (Typecheck & Tests)
+  console.log(`🧪 Running pre-flight verification checks...`);
+  run('pnpm run typecheck', 'Typecheck All Packages');
+  run('pnpm run test', 'Run Vitest Test Suite');
+
+  // Step 2: Update package.json files
+  console.log(`\n📦 Updating package.json manifests...`);
   for (const relPath of packageJsonPaths) {
     const fullPath = path.join(rootDir, relPath);
     if (fs.existsSync(fullPath)) {
       const content = fs.readFileSync(fullPath, 'utf8');
       const json = JSON.parse(content);
       json.version = newVersion;
-      fs.writeFileSync(fullPath, JSON.stringify(json, null, 2) + '\n', 'utf8');
+      if (!isDryRun) {
+        fs.writeFileSync(fullPath, JSON.stringify(json, null, 2) + '\n', 'utf8');
+      }
       console.log(`  ✓ Updated ${relPath} -> v${newVersion}`);
     }
   }
 
-  // 2. Update doc files
-  const versionRegex = /v\d+\.\d+\.\d+/g;
-  const cdnRegex = /moon-inferno@\d+\.\d+\.\d+/g;
+  // Step 3: Update documentation & UI strings
+  console.log(`\n📝 Updating documentation & badge version strings...`);
+  const versionRegex = new RegExp(`v${currentVersion.replace(/\./g, '\\.')}`, 'g');
+  const cdnRegex = new RegExp(`moon-inferno@${currentVersion.replace(/\./g, '\\.')}`, 'g');
+
   for (const relPath of docPaths) {
     const fullPath = path.join(rootDir, relPath);
     if (fs.existsSync(fullPath)) {
@@ -95,52 +122,59 @@ function main() {
         .replace(versionRegex, `v${newVersion}`)
         .replace(cdnRegex, `moon-inferno@${newVersion}`);
       if (updated !== content) {
-        fs.writeFileSync(fullPath, updated, 'utf8');
+        if (!isDryRun) {
+          fs.writeFileSync(fullPath, updated, 'utf8');
+        }
         console.log(`  ✓ Updated version strings in ${relPath}`);
       }
     }
   }
 
-  console.log(`\n🎉 Successfully bumped version to v${newVersion}!`);
+  // Step 4: Build Monorepo & Playground
+  run('pnpm run build', 'Build Monorepo Packages & Playground');
 
-  // 3. Build Monorepo & Playground
-  console.log(`\n🔨 Building all monorepo packages & playground...`);
-  execSync('pnpm run build', { cwd: rootDir, stdio: 'inherit' });
-
-  // 4. Publish to NPM
-  if (shouldPublish) {
-    console.log(`\n🚀 Publishing all packages to NPM registry...`);
-    try {
-      execSync('pnpm publish -r --access public --no-git-checks', { cwd: rootDir, stdio: 'inherit' });
-      console.log(`\n✨ ALL MOON-INFERNO PACKAGES PUBLISHED TO NPM AS v${newVersion}! ✨\n`);
-    } catch (err) {
-      console.error(`\n⚠️ NPM Publish encountered an issue or requires login:`, err.message);
-    }
-  } else {
-    console.log(`\nℹ️ Skipped NPM Publish (--no-publish flag passed).\n`);
+  if (isDryRun) {
+    console.log(`\n✨ DRY-RUN COMPLETED! All checks, manifests, and builds succeeded without pushing.\n`);
+    return;
   }
 
-  // 5. Git Commit & Push to GitHub main
-  if (shouldPushGit) {
-    console.log(`\n🐙 Staging, Committing & Pushing release v${newVersion} to GitHub (main)...`);
+  // Step 5: Publish all packages to NPM registry
+  if (shouldPublish) {
+    console.log(`\n🚀 Publishing all monorepo packages to NPM registry...`);
     try {
-      execSync('git add .', { cwd: rootDir, stdio: 'inherit' });
-      execSync(`git commit -m "release: v${newVersion} [automated bump]"`, { cwd: rootDir, stdio: 'inherit' });
-      execSync('git push origin main', { cwd: rootDir, stdio: 'inherit' });
-      console.log(`\n✨ PUSHED RELEASE v${newVersion} TO GITHUB REPOSITORY MAIN BRANCH! ✨\n`);
+      run('pnpm publish -r --access public --no-git-checks', 'Publish Packages to NPM');
+      console.log(`\n✨ ALL PACKAGES SUCCESSFULLY PUBLISHED TO NPM AS v${newVersion}! ✨\n`);
     } catch (err) {
-      console.error(`\n⚠️ Git commit/push encountered an issue:`, err.message);
+      console.error(`\n⚠️ NPM Publish encountered an issue (check credentials / npm login):`, err.message);
     }
+  }
 
-    // 6. Deploy live Playground to GitHub Pages gh-pages branch
-    console.log(`\n🌐 Deploying live Playground to GitHub Pages (gh-pages branch)...`);
+  // Step 6: Git Commit, Tag & Push to GitHub
+  if (shouldPushGit) {
+    console.log(`\n🐙 Committing, tagging, and pushing release v${newVersion} to Git...`);
     try {
-      execSync('npx -y gh-pages -d playground/dist', { cwd: rootDir, stdio: 'inherit' });
+      run('git add .', 'Stage Modified Files');
+      run(`git commit -m "release: v${newVersion} [automated bump & sync]"`, 'Create Release Commit');
+      run(`git tag -a v${newVersion} -m "Release v${newVersion}"`, 'Create Git Tag');
+      run('git push --follow-tags origin main', 'Push Main Branch and Tags to GitHub');
+      console.log(`\n✨ GIT COMMIT & TAG v${newVersion} PUSHED TO GITHUB REPOSITORY! ✨\n`);
+    } catch (err) {
+      console.error(`\n⚠️ Git commit/tag/push encountered an issue:`, err.message);
+    }
+  }
+
+  // Step 7: Deploy live Playground to GitHub Pages
+  if (shouldDeployDocs) {
+    console.log(`\n🌐 Deploying live Playground to GitHub Pages...`);
+    try {
+      run('npx -y gh-pages -d playground/dist', 'Deploy to GitHub Pages');
       console.log(`\n✨ LIVE PLAYGROUND DEPLOYED TO GITHUB PAGES! ✨\n`);
     } catch (err) {
       console.error(`\n⚠️ GitHub Pages deployment encountered an issue:`, err.message);
     }
   }
+
+  console.log(`\n🎉 RELEASE v${newVersion} COMPLETED SUCCESSFULLY! 🔥\n`);
 }
 
 main();

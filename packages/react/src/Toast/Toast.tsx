@@ -3,6 +3,8 @@ import {
   createContext,
   useContext,
   useCallback,
+  useRef,
+  useEffect,
   type ReactNode,
   type FC,
 } from 'react';
@@ -42,9 +44,23 @@ const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
 export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
+  const timerMapRef = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
 
   const removeToast = useCallback((id: string) => {
+    const existingTimer = timerMapRef.current.get(id);
+    if (existingTimer) {
+      clearTimeout(existingTimer);
+      timerMapRef.current.delete(id);
+    }
     setToasts((prev) => prev.filter((t) => t.id !== id));
+  }, []);
+
+  useEffect(() => {
+    const timers = timerMapRef.current;
+    return () => {
+      timers.forEach((timer) => clearTimeout(timer));
+      timers.clear();
+    };
   }, []);
 
   const addToast = useCallback(
@@ -88,9 +104,10 @@ export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
       setToasts((prev) => [...prev, newToast]);
 
       if (duration > 0) {
-        setTimeout(() => {
+        const timer = setTimeout(() => {
           removeToast(id);
         }, duration);
+        timerMapRef.current.set(id, timer);
       }
     },
     [removeToast]

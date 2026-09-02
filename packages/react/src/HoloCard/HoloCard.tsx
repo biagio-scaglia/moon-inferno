@@ -1,4 +1,4 @@
-import React, { useState, useRef, type HTMLAttributes, type ReactNode } from 'react';
+import React, { useRef, type HTMLAttributes, type ReactNode } from 'react';
 
 export interface HoloCardProps extends HTMLAttributes<HTMLDivElement> {
   variant?: 'inferno' | 'cyber' | 'y2k';
@@ -13,19 +13,18 @@ export const HoloCard: React.FC<HoloCardProps> = ({
   glareOpacity = 0.4,
   className = '',
   children,
+  style,
   ...props
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [transformStr, setTransformStr] = useState<string>('perspective(1000px) rotateX(0deg) rotateY(0deg)');
-  const [glarePos, setGlarePos] = useState<{ x: number; y: number; opacity: number }>({
-    x: 50,
-    y: 50,
-    opacity: 0,
-  });
+  const glareRef = useRef<HTMLDivElement>(null);
+  const animFrameRef = useRef<number | null>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
+    const card = cardRef.current;
+    const glare = glareRef.current;
+    const rect = card.getBoundingClientRect();
 
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -39,13 +38,29 @@ export const HoloCard: React.FC<HoloCardProps> = ({
     const glareX = (x / rect.width) * 100;
     const glareY = (y / rect.height) * 100;
 
-    setTransformStr(`perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`);
-    setGlarePos({ x: glareX, y: glareY, opacity: glareOpacity });
+    if (animFrameRef.current) {
+      cancelAnimationFrame(animFrameRef.current);
+    }
+
+    animFrameRef.current = requestAnimationFrame(() => {
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+      if (glare) {
+        glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255, 255, 255, ${glareOpacity}) 0%, rgba(255, 0, 128, 0.15) 30%, transparent 70%)`;
+        glare.style.opacity = '1';
+      }
+    });
   };
 
   const handleMouseLeave = () => {
-    setTransformStr('perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)');
-    setGlarePos((prev) => ({ ...prev, opacity: 0 }));
+    if (animFrameRef.current) {
+      cancelAnimationFrame(animFrameRef.current);
+    }
+    if (cardRef.current) {
+      cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    }
+    if (glareRef.current) {
+      glareRef.current.style.opacity = '0';
+    }
   };
 
   const classes = ['moon-holocard', `moon-holocard--${variant}`, className].filter(Boolean).join(' ');
@@ -56,17 +71,19 @@ export const HoloCard: React.FC<HoloCardProps> = ({
       className={classes}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ transform: transformStr }}
+      style={{
+        transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
+        transition: 'transform 0.1s ease-out',
+        ...style,
+      }}
       {...props}
     >
       <div className="moon-holocard__content">{children}</div>
 
       <div
+        ref={glareRef}
         className="moon-holocard__glare"
-        style={{
-          background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(255, 255, 255, ${glarePos.opacity}) 0%, rgba(255, 0, 128, 0.15) 30%, transparent 70%)`,
-          opacity: glarePos.opacity > 0 ? 1 : 0,
-        }}
+        style={{ opacity: 0 }}
         aria-hidden="true"
       />
     </div>

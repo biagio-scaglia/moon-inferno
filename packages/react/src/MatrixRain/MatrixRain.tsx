@@ -1,4 +1,5 @@
 import { useEffect, useRef, type FC } from 'react';
+import { isReducedMotionPreferred } from '@moon-inferno/core';
 import './MatrixRain.css';
 
 export interface MatrixRainProps {
@@ -20,24 +21,30 @@ export const MatrixRain: FC<MatrixRainProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
 
+    if (isReducedMotionPreferred()) {
+      return undefined;
+    }
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return undefined;
 
     let animationFrameId: number;
+    let drops: number[] = [];
+
+    const chars = '0123456789ABCDEFMOONINFERNO⚡λΨΞ010101';
 
     const resize = () => {
-      if (canvas.parentElement) {
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight;
+      const parent = canvas.parentElement || document.body;
+      canvas.width = parent.clientWidth;
+      canvas.height = parent.clientHeight;
+      const columns = Math.max(1, Math.floor(canvas.width / fontSize));
+      if (drops.length !== columns) {
+        drops = Array.from({ length: columns }, () => Math.floor(Math.random() * -100));
       }
     };
 
     resize();
     window.addEventListener('resize', resize);
-
-    const chars = '0123456789ABCDEFMOONINFERNO⚡λΨΞ010101';
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops: number[] = Array.from({ length: columns }, () => Math.floor(Math.random() * -100));
 
     let lastTime = 0;
     const render = (time: number) => {

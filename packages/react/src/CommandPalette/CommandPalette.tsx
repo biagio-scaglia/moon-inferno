@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, type ReactNode, type HTMLAttributes } from 'react';
 import { SearchIcon } from '@moon-inferno/icons';
+import { trapFocus } from '@moon-inferno/core';
 
 export interface CommandItem {
   id: string;
@@ -13,6 +14,7 @@ export interface CommandItem {
 export interface CommandPaletteProps extends HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
   onClose: () => void;
+  onOpen?: () => void;
   items: CommandItem[];
   placeholder?: string;
   variant?: 'inferno' | 'pixel' | 'ghost';
@@ -22,6 +24,7 @@ export interface CommandPaletteProps extends HTMLAttributes<HTMLDivElement> {
 export const CommandPalette: React.FC<CommandPaletteProps> = ({
   isOpen,
   onClose,
+  onOpen,
   items,
   placeholder = 'Type a command or search...',
   variant = 'inferno',
@@ -32,6 +35,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   const [search, setSearch] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -44,16 +48,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         e.preventDefault();
         if (isOpen) {
           onClose();
-        } else {
-          // Focus palette
+        } else if (onOpen) {
+          onOpen();
         }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [enableHotkey, isOpen, onClose]);
+  }, [enableHotkey, isOpen, onClose, onOpen]);
 
-  // Focus input when opened
+  // Focus input and reset when opened
   useEffect(() => {
     if (isOpen) {
       setSearch('');
@@ -86,14 +90,29 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       return;
     }
 
+    if (e.key === 'Tab' && containerRef.current) {
+      trapFocus(containerRef.current, e.nativeEvent);
+      return;
+    }
+
     if (filteredItems.length === 0) return;
 
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setSelectedIndex((prev) => (prev + 1) % filteredItems.length);
+      setSelectedIndex((prev) => {
+        const next = (prev + 1) % filteredItems.length;
+        const targetEl = listRef.current?.querySelector(`[data-index="${next}"]`);
+        targetEl?.scrollIntoView({ block: 'nearest' });
+        return next;
+      });
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setSelectedIndex((prev) => (prev - 1 + filteredItems.length) % filteredItems.length);
+      setSelectedIndex((prev) => {
+        const next = (prev - 1 + filteredItems.length) % filteredItems.length;
+        const targetEl = listRef.current?.querySelector(`[data-index="${next}"]`);
+        targetEl?.scrollIntoView({ block: 'nearest' });
+        return next;
+      });
     } else if (e.key === 'Enter') {
       e.preventDefault();
       const selectedItem = filteredItems[selectedIndex];
@@ -123,12 +142,14 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       role="presentation"
     >
       <div
+        ref={containerRef}
         className={classes}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-label="Command Palette"
         onKeyDown={handleKeyDown}
+        tabIndex={-1}
         {...props}
       >
         {/* Search Header */}
@@ -168,6 +189,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                   return (
                     <div
                       key={item.id}
+                      data-index={itemIndex}
                       role="option"
                       aria-selected={isSelected}
                       className={`moon-command-palette__item ${

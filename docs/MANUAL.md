@@ -1,6 +1,6 @@
 # Moon-Inferno — Developer Manual & API Reference
 
-Welcome to the complete developer manual for **Moon-Inferno** (`v0.4.8`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
+Welcome to the complete developer manual for **Moon-Inferno** (`v0.4.9`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
 
 ---
 
@@ -264,7 +264,7 @@ import { FlameIcon, CpuIcon } from '@moon-inferno/icons';
       id: 'core',
       label: 'CYBER_CORE',
       icon: <FlameIcon size={14} />,
-      badge: 'v0.4.8',
+      badge: 'v0.4.9',
       content: <div>Inferno Engine Active</div>,
     },
     {
@@ -635,3 +635,52 @@ Moon-Inferno is **built with WCAG 2.1 AA accessibility principles at its core**:
 - Full keyboard traversal (`Tab`, `Esc`, `Enter`, `Space`, `Arrow Keys`).
 - Screen reader ARIA roles (`dialog`, `combobox`, `tablist`, `tooltip`, `status`).
 - Reduced motion protection via `@media (prefers-reduced-motion: reduce)`.
+
+---
+
+## 6. CLI Component Installer (`@moon-inferno/cli`)
+
+The Moon-Inferno CLI allows developers to add individual component source files directly into their local project tree without requiring a full library import:
+
+```bash
+# List all 51 available accessible UI primitives
+npx @moon-inferno/cli list
+
+# Add a specific component to your project (default: src/components/moon-inferno/<component>)
+npx @moon-inferno/cli add MoonTypewriterDialogue
+
+# Add a component to a custom target directory
+npx @moon-inferno/cli add MoonRPGGrid --dir ./components/game-ui
+```
+
+---
+
+## 7. Testing & Simultaneous Release Pipeline
+
+Moon-Inferno provides built-in automated scripts to ensure safe, simultaneous version bumping across packages, Git, and NPM:
+
+```bash
+# Run unit & component test suite
+pnpm run test
+
+# Run tests in interactive watch mode
+pnpm run test:watch
+
+# Dry-run release pipeline (validates typecheck, tests, and builds without pushing)
+pnpm run release:dry-run
+
+# Perform simultaneous version bump, git commit, tag, npm publish & docs deployment
+pnpm run release:patch   # e.g., v0.4.9 -> v0.4.9
+pnpm run release:minor   # e.g., v0.4.9 -> v0.5.0
+pnpm run release:major   # e.g., v0.4.9 -> v1.0.0
+```
+
+### Release Pipeline Flow
+1. **Pre-flight Checks**: Runs `pnpm run typecheck` and `pnpm run test`.
+2. **Manifest Updates**: Updates `version` across all 6 `package.json` manifests.
+3. **Documentation Sync**: Synchronizes version strings across `README.md`, `MANUAL.md`, and Playground shell badges.
+4. **Full Workspace Build**: Builds all monorepo packages and compiles playground dist bundle.
+5. **NPM Registry Publish**: Publishes all packages to npm via `pnpm publish -r --access public`.
+6. **Git Tag & Push**: Creates release commit, creates annotated Git tag `vX.Y.Z`, and pushes with `--follow-tags`.
+7. **Playground Deployment**: Deploys live docs and playground to GitHub Pages (`gh-pages` branch).
+

@@ -58,9 +58,11 @@ export const MoonConsoleLogger = ({
           visibleLogs.map((log, index) => (
             <div key={log.id || index} className="mi-consolelogger-line">
               <span className="mi-consolelogger-meta">
-                <span className="mi-consolelogger-timestamp">
-                  [{log.timestamp || new Date().toLocaleTimeString()}]
-                </span>
+                {log.timestamp && (
+                  <span className="mi-consolelogger-timestamp">
+                    [{log.timestamp}]
+                  </span>
+                )}
                 <span className={`mi-consolelogger-type mi-consolelogger-type--${log.type || 'info'}`}>
                   {log.type ? log.type.toUpperCase() : 'INFO'}:
                 </span>

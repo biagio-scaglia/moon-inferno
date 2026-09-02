@@ -229,7 +229,7 @@ export const MoonHtmlVisualizer = ({
   <!-- Moon-Inferno CDN Stylesheet -->
   ${
     enableCdnInjection
-      ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno@0.4.8/dist/styles.css">'
+      ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno@0.4.9/dist/styles.css">'
       : ''
   }
 
@@ -898,7 +898,7 @@ export const MoonHtmlVisualizer = ({
                 <iframe
                   ref={iframeRef}
                   title="Moon-Inferno Live Sandbox Render Frame"
-                  sandbox="allow-scripts allow-same-origin allow-modals"
+                  sandbox="allow-scripts allow-modals"
                   className="mi-visualizer__iframe"
                 />
               </div>

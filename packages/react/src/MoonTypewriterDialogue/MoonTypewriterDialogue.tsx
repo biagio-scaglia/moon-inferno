@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactNode, type HTMLAttributes } from 'react';
+import { useState, useEffect, useRef, type ReactNode, type HTMLAttributes } from 'react';
 import './MoonTypewriterDialogue.css';
 
 export interface MoonTypewriterDialogueProps extends HTMLAttributes<HTMLDivElement> {
@@ -23,6 +23,9 @@ export const MoonTypewriterDialogue = ({
   const [displayedText, setDisplayedText] = useState('');
   const [isFinished, setIsFinished] = useState(false);
 
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
+
   useEffect(() => {
     setDisplayedText('');
     setIsFinished(false);
@@ -35,16 +38,18 @@ export const MoonTypewriterDialogue = ({
       } else {
         clearInterval(timer);
         setIsFinished(true);
-        onComplete?.();
+        onCompleteRef.current?.();
       }
     }, speed);
 
     return () => clearInterval(timer);
-  }, [text, speed, onComplete]);
+  }, [text, speed]);
+
+  const variantClass = variant === 'pixel' ? 'mi-typewriter-box--pixel' : variant === 'terminal' ? 'mi-typewriter-box--terminal' : '';
 
   return (
     <div
-      className={`mi-typewriter-box ${variant === 'pixel' ? 'mi-typewriter-box--pixel' : ''} ${className}`.trim()}
+      className={`mi-typewriter-box ${variantClass} ${className}`.trim()}
       {...props}
     >
       {/* WCAG Accessibility: Screen readers receive the full text immediately via aria-live polite */}

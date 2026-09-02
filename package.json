@@ -7,18 +7,29 @@
     "dev": "pnpm --filter playground dev",
     "build": "pnpm --filter @moon-inferno/core build && pnpm --filter @moon-inferno/themes build && pnpm --filter @moon-inferno/icons build && pnpm --filter @moon-inferno/react build && pnpm --filter moon-inferno build && pnpm --filter playground build",
     "typecheck": "pnpm --recursive run typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "publish:all": "pnpm publish -r --access public --no-git-checks",
-    "bump": "node scripts/bump-version.mjs",
-    "bump:patch": "node scripts/bump-version.mjs patch",
-    "bump:minor": "node scripts/bump-version.mjs minor",
-    "bump:major": "node scripts/bump-version.mjs major",
-    "bump:only": "node scripts/bump-version.mjs --no-publish",
-    "release": "node scripts/bump-version.mjs",
+    "release": "node scripts/bump-version.mjs patch",
+    "release:patch": "node scripts/bump-version.mjs patch",
+    "release:minor": "node scripts/bump-version.mjs minor",
+    "release:major": "node scripts/bump-version.mjs major",
+    "release:dry-run": "node scripts/bump-version.mjs patch --dry-run",
+    "bump": "node scripts/bump-version.mjs patch --no-publish --no-git --no-deploy",
     "deploy": "pnpm run build && npx -y gh-pages -d playground/dist"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
     "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^30.0.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "tsup": "^8.5.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.11"
   }
 }

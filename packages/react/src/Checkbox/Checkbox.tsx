@@ -1,4 +1,4 @@
-import { forwardRef, type InputHTMLAttributes } from 'react';
+import { forwardRef, useId, type InputHTMLAttributes } from 'react';
 import { CheckIcon } from '@moon-inferno/icons';
 import './Checkbox.css';
 
@@ -9,7 +9,8 @@ export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ label, description, disabled, className = '', id, ...props }, ref) => {
-    const inputId = id || (label ? `mi-cb-${label.toLowerCase().replace(/\s+/g, '-')}` : undefined);
+    const generatedId = useId();
+    const inputId = id || generatedId;
     const descId = description ? `${inputId}-desc` : undefined;
 
     return (

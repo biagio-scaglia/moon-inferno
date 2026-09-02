@@ -1,4 +1,4 @@
-import { forwardRef, type InputHTMLAttributes } from 'react';
+import { forwardRef, useId, type InputHTMLAttributes } from 'react';
 import './Switch.css';
 
 export interface SwitchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
@@ -7,7 +7,8 @@ export interface SwitchProps extends Omit<InputHTMLAttributes<HTMLInputElement>,
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   ({ label, disabled, className = '', id, ...props }, ref) => {
-    const inputId = id || (label ? `mi-switch-${label.toLowerCase().replace(/\s+/g, '-')}` : undefined);
+    const generatedId = useId();
+    const inputId = id || generatedId;
 
     return (
       <label

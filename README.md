@@ -135,6 +135,27 @@ export default function App() {
 
 ---
 
+## Development, Testing & Release Pipeline
+
+Moon-Inferno provides a fully automated release pipeline that synchronizes version bumps, pre-flight typechecking, test suites, builds, NPM publishing, Git tagging, and GitHub Pages deployment in a single command.
+
+```bash
+# 1. Run local test suite
+pnpm run test
+# or watch mode
+pnpm run test:watch
+
+# 2. Dry run release (validates builds and manifests without publishing)
+pnpm run release:dry-run
+
+# 3. Simultaneous Release (Bumps version, commits, tags, pushes to Git, publishes to NPM & deploys live site)
+pnpm run release:patch   # e.g., v0.4.9 -> v0.4.9
+pnpm run release:minor   # e.g., v0.4.9 -> v0.5.0
+pnpm run release:major   # e.g., v0.4.9 -> v1.0.0
+```
+
+---
+
 ## Official Links & Documentation
 
 - **Developer Manual & API Reference**: [docs/MANUAL.md](docs/MANUAL.md)

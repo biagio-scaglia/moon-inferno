@@ -78,6 +78,9 @@ export const CyberCanvas = ({
   };
 
   const draw = (e: MouseEvent<HTMLCanvasElement> | TouchEvent<HTMLCanvasElement>) => {
+    if ('touches' in e && e.cancelable) {
+      e.preventDefault();
+    }
     if (!isDrawing) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -108,11 +111,13 @@ export const CyberCanvas = ({
     const link = document.createElement('a');
     link.download = `moon-inferno-drawing-${Date.now()}.png`;
     link.href = dataUrl;
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   return (
-    <div className={`mi-cybercanvas-container ${className}`.trim()} {...props}>
+    <div className={`mi-cybercanvas-container mi-cybercanvas--${variant} ${className}`.trim()} {...props}>
       <div className="mi-cybercanvas-toolbar">
         <div className="mi-cybercanvas-tools">
           <span style={{ fontSize: '0.75rem', color: 'var(--mi-color-text-muted)', fontWeight: 'bold' }}>COLOR:</span>

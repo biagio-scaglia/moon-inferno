@@ -26,9 +26,11 @@ export const MoonHealthMeter = ({
   const percentage = Math.min(100, Math.max(0, (actualValue / max) * 100));
   const defaultLabel = label || type.toUpperCase();
 
+  const variantClass = variant === 'pixel' ? 'mi-healthmeter--pixel' : variant === 'terminal' ? 'mi-healthmeter--terminal' : '';
+
   return (
     <div
-      className={`mi-healthmeter ${variant === 'pixel' ? 'mi-healthmeter--pixel' : ''} ${className}`.trim()}
+      className={`mi-healthmeter ${variantClass} ${className}`.trim()}
       {...props}
     >
       <div className="mi-healthmeter-header">

@@ -57,10 +57,9 @@ export const ColorPicker = ({
       {...props}
     >
       <div className="mi-colorpicker-control">
-        <button
-          type="button"
+        <label
           className="mi-colorpicker-swatch-btn"
-          style={{ backgroundColor: color }}
+          style={{ backgroundColor: color, display: 'inline-flex', position: 'relative', cursor: 'pointer' }}
           aria-label={`Color preview swatch: ${color}`}
         >
           <input
@@ -70,7 +69,7 @@ export const ColorPicker = ({
             className="mi-colorpicker-native-input"
             aria-label="Pick color"
           />
-        </button>
+        </label>
 
         <span style={{ fontSize: '0.75rem', color: 'var(--mi-color-text-muted, #94A3B8)' }}>{label}</span>
 

@@ -32,7 +32,7 @@ export const MoonSafeGlitch = ({
   return (
     <Component
       data-text={text}
-      className={`mi-safeglitch ${shouldGlitch ? 'mi-safeglitch--active' : ''} ${className}`.trim()}
+      className={`mi-safeglitch mi-safeglitch--${intensity} ${shouldGlitch ? 'mi-safeglitch--active' : ''} ${className}`.trim()}
       {...props}
     >
       {text}
