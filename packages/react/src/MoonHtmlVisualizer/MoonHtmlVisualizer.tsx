@@ -229,7 +229,7 @@ export const MoonHtmlVisualizer = ({
   <!-- Moon-Inferno CDN Stylesheet -->
   ${
     enableCdnInjection
-      ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno@0.4.9/dist/styles.css">'
+      ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno@0.4.10/dist/styles.css">'
       : ''
   }
 

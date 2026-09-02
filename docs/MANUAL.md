@@ -1,6 +1,6 @@
 # Moon-Inferno — Developer Manual & API Reference
 
-Welcome to the complete developer manual for **Moon-Inferno** (`v0.4.9`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
+Welcome to the complete developer manual for **Moon-Inferno** (`v0.4.10`), **The Expressive Web UI Framework & Design System** designed for retro, Y2K, CRT, cyberpunk, pixel art, and experimental web applications.
 
 ---
 
@@ -264,7 +264,7 @@ import { FlameIcon, CpuIcon } from '@moon-inferno/icons';
       id: 'core',
       label: 'CYBER_CORE',
       icon: <FlameIcon size={14} />,
-      badge: 'v0.4.9',
+      badge: 'v0.4.10',
       content: <div>Inferno Engine Active</div>,
     },
     {
@@ -670,9 +670,9 @@ pnpm run test:watch
 pnpm run release:dry-run
 
 # Perform simultaneous version bump, git commit, tag, npm publish & docs deployment
-pnpm run release:patch   # e.g., v0.4.9 -> v0.4.9
-pnpm run release:minor   # e.g., v0.4.9 -> v0.5.0
-pnpm run release:major   # e.g., v0.4.9 -> v1.0.0
+pnpm run release:patch   # e.g., v0.4.10 -> v0.4.10
+pnpm run release:minor   # e.g., v0.4.10 -> v0.5.0
+pnpm run release:major   # e.g., v0.4.10 -> v1.0.0
 ```
 
 ### Release Pipeline Flow

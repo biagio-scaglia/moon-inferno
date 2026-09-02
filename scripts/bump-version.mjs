@@ -67,10 +67,12 @@ function run(cmd, desc) {
 
 function main() {
   const args = process.argv.slice(2);
-  const shouldPublish = !args.includes('--no-publish');
+  const shouldPublish = args.includes('--publish');
   const shouldPushGit = !args.includes('--no-git');
   const shouldDeployDocs = !args.includes('--no-deploy');
   const isDryRun = args.includes('--dry-run');
+  const otpArg = args.find((arg) => arg.startsWith('--otp='));
+  const otp = otpArg ? otpArg.split('=')[1] : null;
   const targetArg = args.find((arg) => !arg.startsWith('--')) || 'patch';
 
   const refPkgPath = path.join(rootDir, packageJsonPaths[0]);
@@ -79,14 +81,14 @@ function main() {
 
   const newVersion = getNextVersion(currentVersion, targetArg);
 
-  console.log(`\n🔥 MOON-INFERNO SIMULTANEOUS RELEASE PIPELINE 🔥`);
+  console.log(`\n🔥 MOON-INFERNO RELEASE & VERSION BUMP PIPELINE 🔥`);
   console.log(`================================================================`);
   console.log(`Current version: v${currentVersion}`);
   console.log(`New version:     v${newVersion}`);
   console.log(`Dry Run:         ${isDryRun ? 'YES (No changes will be pushed)' : 'NO'}`);
-  console.log(`NPM Publish:     ${shouldPublish && !isDryRun ? 'ENABLED' : 'DISABLED'}`);
   console.log(`Git Push & Tag:  ${shouldPushGit && !isDryRun ? 'ENABLED' : 'DISABLED'}`);
   console.log(`GitHub Pages:    ${shouldDeployDocs && !isDryRun ? 'ENABLED' : 'DISABLED'}`);
+  console.log(`NPM Publish:     ${shouldPublish && !isDryRun ? 'ENABLED (Local)' : 'DISABLED (Use "pnpm run publish:npm" to publish with OTP)'}`);
   console.log(`================================================================\n`);
 
   // Step 1: Pre-flight Verification (Typecheck & Tests)
@@ -138,18 +140,7 @@ function main() {
     return;
   }
 
-  // Step 5: Publish all packages to NPM registry
-  if (shouldPublish) {
-    console.log(`\n🚀 Publishing all monorepo packages to NPM registry...`);
-    try {
-      run('pnpm publish -r --access public --no-git-checks', 'Publish Packages to NPM');
-      console.log(`\n✨ ALL PACKAGES SUCCESSFULLY PUBLISHED TO NPM AS v${newVersion}! ✨\n`);
-    } catch (err) {
-      console.error(`\n⚠️ NPM Publish encountered an issue (check credentials / npm login):`, err.message);
-    }
-  }
-
-  // Step 6: Git Commit, Tag & Push to GitHub
+  // Step 5: Git Commit, Tag & Push to GitHub
   if (shouldPushGit) {
     console.log(`\n🐙 Committing, tagging, and pushing release v${newVersion} to Git...`);
     try {
@@ -163,7 +154,7 @@ function main() {
     }
   }
 
-  // Step 7: Deploy live Playground to GitHub Pages
+  // Step 6: Deploy live Playground to GitHub Pages
   if (shouldDeployDocs) {
     console.log(`\n🌐 Deploying live Playground to GitHub Pages...`);
     try {
@@ -172,6 +163,23 @@ function main() {
     } catch (err) {
       console.error(`\n⚠️ GitHub Pages deployment encountered an issue:`, err.message);
     }
+  }
+
+  // Step 7: Optional Local NPM Publish with OTP
+  if (shouldPublish) {
+    console.log(`\n🚀 Publishing all monorepo packages to NPM registry...`);
+    try {
+      const publishCmd = otp
+        ? `pnpm publish -r --access public --no-git-checks --otp=${otp}`
+        : 'pnpm publish -r --access public --no-git-checks';
+      run(publishCmd, 'Publish Packages to NPM');
+      console.log(`\n✨ ALL PACKAGES SUCCESSFULLY PUBLISHED TO NPM AS v${newVersion}! ✨\n`);
+    } catch (err) {
+      console.error(`\n⚠️ NPM Publish failed (if 2FA is required, use "pnpm run publish:npm --otp=<code>"):`, err.message);
+    }
+  } else {
+    console.log(`\n💡 To publish this release to NPM with your 2FA OTP:`);
+    console.log(`   pnpm run publish:npm --otp=<code>\n`);
   }
 
   console.log(`\n🎉 RELEASE v${newVersion} COMPLETED SUCCESSFULLY! 🔥\n`);

@@ -49,7 +49,7 @@ if (typeof window !== 'undefined') {
               framework: 'Moon-Inferno UI Framework',
               creator: 'Biagio Scaglia',
               component: componentName,
-              cdnSnippet: '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno@0.4.9/dist/styles.css">',
+              cdnSnippet: '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/moon-inferno@0.4.10/dist/styles.css">',
               npmPackage: 'moon-inferno',
               accessibility: 'WCAG 2.1 AA Compliant with keyboard navigation & high contrast states',
             };

@@ -149,9 +149,9 @@ pnpm run test:watch
 pnpm run release:dry-run
 
 # 3. Simultaneous Release (Bumps version, commits, tags, pushes to Git, publishes to NPM & deploys live site)
-pnpm run release:patch   # e.g., v0.4.9 -> v0.4.9
-pnpm run release:minor   # e.g., v0.4.9 -> v0.5.0
-pnpm run release:major   # e.g., v0.4.9 -> v1.0.0
+pnpm run release:patch   # e.g., v0.4.10 -> v0.4.10
+pnpm run release:minor   # e.g., v0.4.10 -> v0.5.0
+pnpm run release:major   # e.g., v0.4.10 -> v1.0.0
 ```
 
 ---

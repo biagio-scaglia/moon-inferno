@@ -1,13 +1,15 @@
-name: Publish to NPM
+name: CI / Build & Test
 
 on:
   push:
-    tags:
-      - 'v*'
-  workflow_dispatch:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  publish:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -22,20 +24,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build Monorepo
-        run: pnpm run build
-        env:
-          NODE_ENV: production
-
       - name: Typecheck
         run: pnpm run typecheck
 
-      - name: Publish to NPM Registry
-        run: pnpm publish -r --access public --no-git-checks
+      - name: Run Test Suite
+        run: pnpm run test
+
+      - name: Build Monorepo & Playground
+        run: pnpm run build
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_ENV: production

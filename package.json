@@ -9,13 +9,14 @@
     "typecheck": "pnpm --recursive run typecheck",
     "test": "vitest run",
     "test:watch": "vitest",
+    "publish:npm": "pnpm publish -r --access public --no-git-checks",
     "publish:all": "pnpm publish -r --access public --no-git-checks",
     "release": "node scripts/bump-version.mjs patch",
     "release:patch": "node scripts/bump-version.mjs patch",
     "release:minor": "node scripts/bump-version.mjs minor",
     "release:major": "node scripts/bump-version.mjs major",
     "release:dry-run": "node scripts/bump-version.mjs patch --dry-run",
-    "bump": "node scripts/bump-version.mjs patch --no-publish --no-git --no-deploy",
+    "bump": "node scripts/bump-version.mjs patch --no-git --no-deploy",
     "deploy": "pnpm run build && npx -y gh-pages -d playground/dist"
   },
   "devDependencies": {
